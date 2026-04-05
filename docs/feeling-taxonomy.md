@@ -54,11 +54,14 @@ feeling_package {
     structural_tags JSONB          // 结构性参数（见第三节）
     signal_config   JSONB          // 下发给 Layer 2 的神经信号参数
     core_score      FLOAT          // AI 判断的内核置信度（0-1）
-    intensity_range INT[]          // 适用强度区间，如 [30, 60]
+    intensity_nominal INT          // 标称强度 1-100（评分引擎输出的单点值）
+    intensity_version INT          // 评分版本号（score_v1/v2/v3...随重打分迭代）
     created_by      UUID           // 上传者
     created_at      TIMESTAMPTZ
 }
 ```
+
+强度存储为单点标称值而非区间，原因：评分引擎（见 scoring-engine.md）对每个感受包输出一个具体分数，随数据积累版本迭代。区间描述（如「适合30-60分用户」）是推荐层的计算结果，不是感受包本身的属性。
 
 ### 叙事的双重角色
 
