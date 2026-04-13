@@ -488,7 +488,102 @@ Web 端    TypeScript + React
 
 ---
 
-## 十二、测试策略
+## 十三、Stream First：流式架构原则
+
+神经系统是流动的系统，感受是连续的状态，不是离散的事件。
+
+这对技术架构有一个根本性的影响：**Stream First。**
+
+### 为什么不能用 Request/Response
+
+```
+Request/Response 模型
+    用户按一下 → 系统处理 → 返回结果
+    离散的，有明确的开始和结束
+    适合：查询数据库、提交表单、调用API
+
+Feelings 需要的
+    设备戴上，信号就在流
+    感受一直在变化，基准一直在更新
+    AI教练一直在监测，不是定时检查
+    这是持续的双向流，没有停顿
+```
+
+用 Request/Response 处理感受，就像用快照描述河流——你只得到了某个时刻的截面，不是流本身。
+
+### Stream First 的具体实现
+
+```
+信号采集层（设备 → Layer 2）
+    不是    每秒发送一次心率值（polling）
+    而是    心率信号的持续流（streaming）
+            WebSocket / gRPC bidirectional streaming
+            延迟目标：<10ms
+
+感受注入层（Layer 2 → 设备）
+    不是    「开始注入」「停止注入」的离散指令
+    而是    刺激参数的持续流
+            实时调节强度曲线，平滑过渡
+            不是阶梯式跳变，是连续的流动
+
+个人基准更新
+    不是    体验结束后批量处理
+    而是    流式更新，每个信号都在实时修正基准
+            增量计算，不是全量重算
+
+AI教练感知
+    不是    定时检查用户状态
+    而是    持续监测信号流
+            矛盾点检测是流式的，不是快照比对
+            一旦出现矛盾，实时响应
+```
+
+### 延迟要求
+
+```
+感受是连续的，中断是可以被感知的
+
+信号采集    目标 <10ms，超过50ms用户能感知到断裂
+感受注入    目标 <10ms，强度变化必须平滑
+矛盾点检测  目标 <100ms，检测到异常立刻响应
+AI教练响应  目标 <500ms，不能让用户感到「卡了」
+```
+
+### 中医的启发
+
+中医讲经络，讲气血的流动。气滞，是流停了。
+
+Feelings的工作，不是「给」感受，是「调节」感受的流动——
+
+```
+疏通    帮用户接触那些从来没有流动过的感受维度
+调节    在感受过强或过弱时，调节到合适的强度
+维持    让流动保持连续，不被异常中断
+```
+
+就像针灸——不是在身体里放一根针产生一个效果，而是疏通经络，让气血重新流动起来。
+
+Stream First 是这个哲学在技术层的实现。
+
+### Go 的实现方向
+
+```go
+// 不是这样
+func GetHeartRate(userID string) (int, error)
+
+// 而是这样
+func StreamHeartRate(ctx context.Context, userID string) (<-chan HeartRateSignal, error)
+
+// 感受注入也是流
+func StreamFeelingInjection(ctx context.Context, sessionID string) (chan<- InjectionParams, error)
+
+// 四诊合参是流式处理
+func StreamFourDiagnosis(ctx context.Context, signals <-chan MultiModalSignal) <-chan DiagnosisResult
+```
+
+gRPC bidirectional streaming 是 Layer 3 和 Layer 2 之间的主要通信方式。
+
+---
 
 Feelings 不是普通的后端服务——它的输出直接作用于人的神经系统。
 
