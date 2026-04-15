@@ -527,8 +527,6 @@ PersistentVolume  数据持久化
 
 ---
 
-## 十四、存储层设计
-
 pg + etcd 不够，需要按数据类型选择合适的存储。
 
 ### 数据类型分析
@@ -928,67 +926,108 @@ KubePivot 管部署，Feelings 专注感受。
 
 ```
 根目录
-├── Feelings-README.md          项目介绍（对外，好奇心入场券）
-├── Feelings-PHILOSOPHY.md      产品哲学（12节）
-├── Feelings-ROADMAP.md         路线图 + 睡眠验证指标
-├── Feelings-HARD-PROBLEMS.md   硬骨头文档
-├── Feelings-PASS.md            十分及格，价值观声明
-├── GOVERNANCE.md               治理宪章，不可谈判红线
-├── on-right-and-wrong.md       对与不对，坐标系本身没有对错
-├── existence-threat-anger.md   存在性威胁触发的愤怒
-└── astrology-birthchart.md     星盘分析
+├── Feelings-README.md              项目介绍（对外，好奇心入场券）
+├── Feelings-PHILOSOPHY.md          产品哲学（含洛书/流/五维/如果变可以等）
+├── Feelings-ROADMAP.md             路线图 + 三阶段技术路线 + 神经科学研究方向
+├── Feelings-HARD-PROBLEMS.md       硬骨头文档
+├── Feelings-PASS.md                十分及格，价值观声明
+├── Feelings-TOKENOMICS.md          商业治理与存储池设计（链上版·女帝钦定）
+├── GOVERNANCE.md                   治理宪章，不可谈判红线
+├── Feelings-EXISTENCE-THREAT-ANGER.md  存在性威胁触发的愤怒
+├── Feelings-RIGHT-AND-WRONG.md     对与不对，坐标系本身没有对错
+├── Feelings-INTROSPECTION.md       自省系统（根目录版）
+├── giants-vs-feelings.md           科技巨头vs Feelings：冲突与互补
+├── tech-validation.md              技术可行性验证，2026年前沿进展
+├── product-positioning.md          产品定位：DK人体大百科对话
+├── capitalism-original-sin.md      资本的原罪（第100篇，待最终修订）
+└── astrology-birthchart.md         星盘分析
 
 docs/
-├── product-boundary.md         个体感受层/关系感受层/虚拟世界增强
-├── device-architecture.md      设备套件设计，分工与协作协议
-├── closed-loop.md              感受闭环，TCP慢启动模型
-├── safety-system.md            安全体系，TCP解锁，犟种协议
-├── usage-contract.md           使用契约，戴上即授权
-├── contrast-protocol.md        盲选强度，反差感受设计
-├── intensity-scale.md          100档对数分布，TCP解锁
-├── scoring-engine.md           强度评分引擎，动态重打分
-├── feeling-taxonomy.md         感受分类体系，三种检索入口
-├── feeling-example-happiness.md 快乐解剖，混音结构示例
-├── feeling-shapes.md           感受的七种基本形状 + 突停子类
-├── feeling-naming.md           准确命名比美好更重要
-├── feeling-map.md              感受地图，镜子不是任务清单
-├── feeling-map-patterns.md     三种特殊模式：Kpop/游戏社交/现实实验者
-├── music-system.md             音乐系统，三层架构
-├── music-partnership.md        音乐平台合作，服务器AI分析
-├── leaderboard-region.md       榜单与区域划分
-├── introspection.md            自省系统，反依赖设计
-├── temporal-system.md          时间维度，心动模式/生日/成长/状态周期
-├── social-layer.md             社会传播层，多人体验
-├── trauma-protocol.md          创伤协议，互补心理治疗
-├── ai-coach.md                 AI教练系统（15节）
-├── ai-integration.md           AI对话接入，感受过滤引擎
-├── four-diagnosis.md           四诊合参，矛盾点检测
-├── sleep-environment.md        睡眠环境系统
-├── posture-plasticity.md       体态可塑性
-├── body-sovereignty.md         身体主权，代偿机制
-├── interest-guidance.md        兴趣引导，感受空白的入口
-├── opportunity.md              机会就是过程
-├── curiosity.md                好奇：Feelings的底层态度
-├── sense-of-proportion.md      分寸感：点到为止是一种尊重
-├── empathy.md                  共情：读取他人，不消融自己
-├── introspection.md            自省系统
-├── on-death.md                 死而无憾，逐步消除死亡恐惧
-├── love-vs-hate.md             真实的爱给力量
+├── product-boundary.md             个体感受层/关系感受层/虚拟世界增强
+├── device-architecture.md          设备套件设计 + 柔性吸附形态
+├── closed-loop.md                  感受闭环，TCP慢启动模型
+├── safety-system.md                安全体系，TCP解锁，犟种协议
+├── usage-contract.md               使用契约，戴上即授权
+├── contrast-protocol.md            盲选强度，反差感受设计
+├── intensity-scale.md              100档对数分布，TCP解锁
+├── scoring-engine.md               强度评分引擎，动态重打分
+├── feeling-taxonomy.md             感受分类体系，三种检索入口 + 痛苦分类
+├── feeling-example-happiness.md    快乐解剖，混音结构示例
+├── feeling-shapes.md               感受的七种基本形状 + 突停子类（含ASCII图）
+├── feeling-naming.md               准确命名比美好更重要
+├── feeling-map.md                  感受地图，镜子不是任务清单
+├── feeling-map-patterns.md         三种特殊模式：Kpop/游戏社交/现实实验者
+├── feeling-spectrum.md             感受频段差异：小确幸与大格局
+├── music-system.md                 音乐系统，三层架构
+├── music-partnership.md            音乐平台合作，服务器AI分析
+├── leaderboard-region.md           榜单与区域划分
+├── introspection.md                自省系统，「我慢慢觉得…」是成功标准
+├── temporal-system.md              时间维度 + 五维生物 + 状态周期
+├── social-layer.md                 社会传播层 + 海纳百川归属
+├── trauma-protocol.md              创伤协议，互补心理治疗
+├── ai-coach.md                     AI教练系统（19节，含保护义务/启动神经/唯一性）
+├── ai-integration.md               AI对话接入，感受过滤引擎
+├── ai-companion.md                 AI伴侣与具身AI
+├── four-diagnosis.md               四诊合参 + 矛盾点检测
+├── sleep-environment.md            睡眠环境系统
+├── posture-plasticity.md           体态可塑性
+├── body-sovereignty.md             身体主权，代偿机制
+├── body-as-signal.md               身体比语言更诚实
+├── interest-guidance.md            兴趣引导，感受空白的入口
+├── opportunity.md                  机会就是过程 + 进城啦
+├── curiosity.md                    好奇：Feelings的底层态度
+├── sense-of-proportion.md          分寸感：点到为止是一种尊重
+├── empathy.md                      共情：读取他人，不消融自己
+├── on-death.md                     死而无憾，逐步消除死亡恐惧
+├── love-vs-hate.md                 真实的爱给力量
 ├── love-itself-vs-feeling-loved.md 爱本身vs被爱的感觉
-├── love-into-hate.md           爱到极致的恨，没有恶意的转化
-├── perfectionism.md            完美主义：恐惧穿着追求的外衣
-├── white-bear.md               白熊效应：不对抗，给它一个位置
-├── cant-stop.md                停不下来：三种驱动与一个陷阱
-├── reality-gap.md              认知与感受的落差
-├── compensation-drive.md       补偿驱动：被保护的童年
-├── lazy-but-trying.md          很懒，但在努力地变好
-├── history-as-feeling.md       历史作为感受教科书
-├── dream-journal.md            梦境记录与解析
-├── intelligence.md             智力可塑性
-├── intimate-feelings.md        亲密感受独立维度
-├── tactile-expansion.md        触觉边界与硬件扩展路径
-├── two-modes.md                增强模式vs生成模式
-└── tech-architecture.md        本文档
+├── love-into-hate.md               爱到极致的恨，没有恶意的转化
+├── love-not-transaction.md         爱不是交易：幸福/代价/服务的区别
+├── love-illusions.md               爱的幻象：想象中的她/痴情/病娇
+├── perfectionism.md                完美主义 + 伤人vs可爱的不完美
+├── white-bear.md                   白熊效应：不对抗，给它一个位置
+├── cant-stop.md                    停不下来：三种驱动与一个陷阱
+├── reality-gap.md                  认知与感受的落差
+├── compensation-drive.md           补偿驱动：被保护的童年
+├── lazy-but-trying.md              很懒，但在努力地变好
+├── blocked-expression.md           感受表达受阻 + 攻击性作为连接
+├── self-knowledge-blindspots.md    自我认知盲区：爱说自我/人无癖不可交
+├── narrative-as-feeling.md         叙事即感受，对创作者至关重要
+├── look-inward.md                  莫向外求：自我标签/讲道理/向内
+├── murphy-and-fear.md              墨菲定律：害怕什么就来什么
+├── hundred-percent-mortality.md    死亡率100%：做什么都正确
+├── small-fullness.md               小满胜万全：宏大与琐碎/水母/烦恼即生活
+├── history-as-feeling.md           历史作为感受教科书 + 文化遗产
+├── dream-journal.md                梦境记录与解析
+├── intelligence.md                 智力可塑性
+├── intimate-feelings.md            亲密感受独立维度
+├── tactile-expansion.md            触觉边界与硬件扩展路径
+├── two-modes.md                    增强模式vs生成模式
+├── companion-device.md             飞行陪伴体：伙伴的眼睛
+├── device-identity.md              设备唯一标识与远程销毁
+├── disability-mode.md              残障群体：守护者模式
+├── child-protection.md             儿童保护 + 父母吼叫不干预
+├── long-term-relationship.md       七年之痒与搭伙人生
+├── family-wounds.md                原生家庭创伤：扭曲/补偿/自救
+├── jung-and-feelings.md            荣格：看清真相后继续热爱
+├── being-seen.md                   被看见：好看与丑陋/认同与理解
+├── sleep-environment.md            睡眠环境系统
+├── pricing.md                      定价模型：耳后免费，扩展收费
+├── body-sovereignty.md             身体主权，代偿机制
+├── compensation-drive.md           补偿驱动：被保护的童年
+├── recommendation-system.md        推荐系统：只为高控制权用户
+├── suggestion-handling.md          心理暗示的识别与处理
+├── anger-as-fuel.md                愤怒作为执行燃料
+├── on-right-and-wrong.md           对与不对（docs版）
+├── empathy.md                      共情
+├── network-protocol.md             QUIC/IPv6网络协议设计
+├── ui-design.md                    UI设计：立方体入口/主题/协议开放
+├── compliance.md                   合规路径：进入市场，不是进入资本
+├── security-design.md              安全设计：数据/系统/人身三层
+├── access-control.md               权限管控 + 生物识别安全
+├── pattern-registry.md             感受包仓库：feelings-core/feelings-store
+├── webhook.md                      Webhook：感受层开放接口，双向
+└── tech-architecture.md            本文档
 ```
 
 ---
