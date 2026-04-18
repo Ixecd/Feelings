@@ -281,17 +281,97 @@ Root 锚点采用 M-of-N 多签
 
 ---
 
-## 八、许可证
+## 八、许可证策略
+
+### 8.1 协议分层原则
 
 ```
-代码        MIT License
-            和 KubePivot、Cloud 保持一致
-            最大化开源友好度
+代码    MIT License
+        最大化开源友好度
+        任何人可以基于代码构建生态（包括商业产品）
+        前提是遵守 GOVERNANCE 精神
 
-文档        CC BY-SA 4.0
-            允许自由引用和分发
-            要求署名
-            衍生作品必须同样开源
+文档    CC BY-SA 4.0
+        允许自由引用和分发
+        要求署名
+        衍生作品必须同样开源
+        防止哲学被闭源稀释
+
+感受包    CC BY-SA 4.0
+          感受包本质是创作内容，类似文档
+          防止有人把开源感受包改改闭源卖
+```
+
+### 8.2 各仓库的协议
+
+```
+Feelings（本仓库，文档为主）
+    双协议仓库
+    LICENSE       主说明文件
+    LICENSE-CODE  MIT（示例代码、配置文件、嵌入文档中的代码片段）
+    LICENSE-DOCS  CC BY-SA 4.0（所有 .md 文档）
+
+Feelings-Server（核心服务代码，公开层）
+    MIT License
+
+Feelings-SDK（客户端 SDK，公开层）
+    MIT License
+
+Feelings-Patterns（官方感受包，公开层）
+    CC BY-SA 4.0
+    感受包是创作内容，用 copyleft 协议
+    确保衍生感受包也开源
+
+Feelings-Core（内部实现层）
+    私有仓库，无公开协议
+    包括 Root 锚点实现、Layer 2 核心算法、TEE/SGX 配置
+
+Feelings-Store（社区生态库，未来）
+    成熟后开放，协议届时确定
+```
+
+### 8.3 为什么代码和文档用不同协议
+
+**代码 MIT 的理由**
+
+```
+最大化生态采用
+    任何人可以用 Feelings-Server 的代码构建产品
+    包括闭源的商业产品
+    这是 Feelings 作为基础设施的开放性
+
+但商业产品不能
+    声称是"Feelings"（商标保留）
+    违反 GOVERNANCE 红线
+    闭源 Feelings-Server 的原始代码（MIT 本身要求保留版权声明）
+```
+
+**文档 CC BY-SA 的理由**
+
+```
+防止哲学稀释
+    有人想抄 Feelings 的感受地图/GOVERNANCE/PHILOSOPHY 来做闭源产品？
+    那他的衍生文档必须同样开源
+    哲学保持在开源生态里，不能被资本"吸走"
+
+这是 copyleft 的力量
+    对代码用 MIT（宽松）是为了生态
+    对文档用 CC BY-SA（严格）是为了哲学主权
+```
+
+### 8.4 商标和许可证的关系
+
+```
+MIT/CC BY-SA    授权的是代码和文档
+商标保留         不授权 "Feelings" 名称的使用
+
+即使你合法 fork 了代码
+    也不能叫"Feelings"
+    必须用合规后缀命名（见第三节）
+
+即使你合法引用了文档
+    也不能声称自己是"Feelings 官方"
+    必须明确标识是衍生作品
 ```
 
 ---

@@ -1,21 +1,49 @@
-MIT License
+# Feelings License
 
-Copyright (c) 2026 Ixecd
+This repository contains both documentation and code, licensed under different terms.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## Documentation (CC BY-SA 4.0)
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+All Markdown documents (`*.md`), including but not limited to:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+- Root documents: `Feelings-README.md`, `Feelings-PHILOSOPHY.md`,
+  `GOVERNANCE.md`, `Feelings-PROTOCOL.md`, etc.
+- All documents in `docs/` directory
+
+Are licensed under **Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)**.
+
+See [LICENSE-DOCS](LICENSE-DOCS) for full text.
+
+Summary:
+- You are free to share and adapt the documents
+- You must give appropriate credit
+- Derivative works must be licensed under the same CC BY-SA 4.0
+- This ensures the philosophy stays in the open ecosystem
+
+## Code (MIT)
+
+All source code files (`.go`, `.js`, `.ts`, configuration files,
+example snippets embedded in documentation, etc.) are licensed
+under the **MIT License**.
+
+See [LICENSE-CODE](LICENSE-CODE) for full text.
+
+Summary:
+- You are free to use, copy, modify, and distribute the code
+- Commercial use is permitted
+- Must include the original copyright notice
+
+## Third-party Content
+
+Any third-party content retains its original license as noted
+in the respective files or directories.
+
+## Trademark
+
+"Feelings" as a project name and associated brand assets are
+not covered by the above licenses. See [Feelings-PROTOCOL.md](Feelings-PROTOCOL.md)
+for trademark terms.
+
+---
+
+Copyright (c) 2026 qc (Ixecd)
