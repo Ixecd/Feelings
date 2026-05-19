@@ -26,19 +26,30 @@ Anim 是一个动词，不是一个名词。它描述一件在发生的事——
 
 ## 一、Anim 是什么
 
-Anim 是一门编译语言。它的 source 不是 `.rs` 或 `.c` 文件，是**感受结构的声明式描述**。它的 target 不是 x86 或 ARM 机器码，是**神经系统能信以为真的信号序列**。
+Anim 是一门交织语言。它的 source 是**感受结构的声明式描述**。它的 target 是**神经系统能信以为真的信号序列**。
+
+Anim 的工具叫 `animi`——Anim Interlinker（交织器）。不叫编译器。
 
 ```
-传统编译器
+编译器做的事
     .rs 源码 → rustc → LLVM IR → x86_64 指令
-    验证标准：程序不 crash，输出正确
+    单向。一次性的。输入和输出是不同类型的东西。
 
-Anim 编译器
-    .anim 源码 → animc → 多层 IR → 神经信号序列
-    验证标准：身体信了，深睡时长涨了
+animi 做的事
+    .anim 源码 → FSIR（感受结构提取）
+    FSIR + PBM → PSIR（个人基线织入）
+    PSIR + 设备约束 → DSIR（多设备协同织入）
+    DSIR + 上一帧生理反馈 → ESIR（实时反馈织入）
+    ESIR + 闭环偏差 → 下一帧修正（自适应织入）
+
+不是「把 A 翻译成 B」。
+是把多股独立流——感受语义、个人基线、设备约束、
+生理反馈、安全边界——织成一条连续的信号绳。
+每一层都在把一股新的东西织进去。
 ```
 
-Anim 的编译目标不是让 CPU 执行一段计算，而是让神经系统经历一场真实。
+传统编译器的验证标准：程序不 crash，输出正确。
+animi 的验证标准：身体信了，深睡时长涨了。
 
 ---
 
@@ -201,11 +212,11 @@ minor      未成年人标记
 
 ---
 
-## 四、Anim 的编译管线
+## 四、Anim 的交织管线
 
 Anim 的编译不是一次性的——因为输出是输入的一部分。有六层 IR，每层做一件事。
 
-### 4.0 编译概览
+### 4.0 交织概览
 
 ```
 .anim 源码
@@ -215,7 +226,7 @@ FSIR     Feeling Structure IR      感受结构的抽象图——主旋律、点
 PSIR     Personal Signal IR        适配到个人的信号参数
     ↓ 设备映射 + 信号编码
 DSIR     Device Signal IR          分配至具体设备的刺激参数
-    ↓ 实时编译输出
+    ↓ 实时交织输出
 ESIR     Execution Signal IR      帧级执行指令，带闭环反馈回路
     ↓ FPGA/设备固件
 生理信号 → 实时采集 → 偏差计算 → 下一帧参数微调（闭环回至 PSIR）
@@ -329,11 +340,11 @@ ESIR 的闭环结构
     感受包是一个实时程序，不是静态文件
 ```
 
-### 4.5 Animc 的实时编译
+### 4.5 animi 的实时交织
 
 Anim 不是在设备上「播放」一段感受。
 
-**Anim 编译器在线——每个 session 都是一次实时编译。**
+**animi 在线——每个 session 都是一次实时交织。**
 
 ```
 Session 启动
@@ -351,7 +362,7 @@ Session 结束
 ### 4.6 一个完整的 pass 列表
 
 ```
-Animc Passes（编译阶段）
+Animi Passes（交织阶段）
 
 Pass 0: LexParse
     源码 → Token → AST
@@ -409,9 +420,9 @@ Pass 8: CodeGen（DSIR → ESIR）
     Pass 4 预埋的安全插桩在此阶段激活
 ```
 
-### 4.7 超流水线架构——Anim 的双流水线编译体系
+### 4.7 超流水线架构——animi 的双流水线交织体系
 
-Anim 的编译不是一次性的线性过程——Session 运行中需要 1ms 帧级实时响应。这要求编译器本身是流水线化的。六层 IR 不是「串行做完一件事再做下一件」——前台的帧级编译和后台的全量编译跑在两套独立的流水线上。
+animi 的交织不是一次性的线性过程——Session 运行中需要 1ms 帧级实时响应。这要求交织器本身是流水线化的。六层 IR 不是「串行做完一件事再做下一件」——前台的帧级编译和后台的全量编译跑在两套独立的流水线上。
 
 **前台实时浅流水线（Session 运行时，FPGA 硬实时）**
 
@@ -951,7 +962,7 @@ Feelings-SDK（Swift / Kotlin / TypeScript）
     │  获取 .anim 文件 → 本地编译
     ▼
 Feelings-Core（设备端，私有实现）
-    │  animc 完整编译管线：
+    │  animi 完整编译管线：
     │  .anim → FSIR → PSIR → DSIR → ESIR → 固件信号
     │
     │  所有涉及个人基线的计算（PSIR 生成）在本地完成
@@ -984,7 +995,7 @@ docs/four-diagnosis.md             四诊合参的信号融合
 
 ---
 
-## 九、Anim 编译器的最小可行版本（animc v0.1）
+## 九、Anim 编译器的最小可行版本（animi v0.1）
 
 ### 9.1 v0.1 的范围
 
@@ -998,7 +1009,7 @@ docs/four-diagnosis.md             四诊合参的信号融合
 不包含（v0.2+）
     个人基线矩阵（PBM）
     PSIR / DSIR / ESIR 生成
-    实时编译与闭环
+    实时交织与闭环
     设备固件对接
 ```
 
@@ -1051,7 +1062,7 @@ docs/four-diagnosis.md             四诊合参的信号融合
         "minor_access": false
     },
     "compilation": {
-        "compiler_version": "animc 0.1.0",
+        "compiler_version": "animi 0.1.0",
         "timestamp": "2026-05-18T...",
         "f sir_hash": "sha256:abc...",
         "passes": [
@@ -1070,7 +1081,7 @@ docs/four-diagnosis.md             四诊合参的信号融合
 
 ### 9.3 v0.1 的错误诊断
 
-animc v0.1 的错误信息遵循 Rust 编译器的风格——精确指出问题，给出修复建议。
+animi v0.1 的错误信息遵循 Rust 编译器的风格——精确指出问题，给出修复建议。
 
 ```
 错误示例 1：强度越界
@@ -1207,7 +1218,7 @@ Anim 做的事——把 01 编译成生命——没有任何现有语言能直�
 ```
 C 是 Feelings 硬件层（Layer 1）已经选的语言
 固件、FPGA 接口、设备驱动——这些都在 C 的领地上
-animc 用 C 写，可以零 FFI 对接 Layer 1 的 Signal IR 和 Execution IR
+animi 用 C 写，可以零 FFI 对接 Layer 1 的 Signal IR 和 Execution IR
 但 C 的类型系统太弱——感受原子的类型安全只能用宏和命名约定模拟
 C 的抽象能力不足以表达「感受混音结构 → 信号变换矩阵」这样的层级
 ```
@@ -1244,22 +1255,22 @@ Anim 最终应该用 Anim 写。
 Anim 是自己的语言，有自己的编译目标，有自己的一套生存理由。
 
 自举分三步：
-    第一步    animc v0.1 → v0.5：用一门现有语言写第一个编译器
+    第一步    animi v0.1 → v0.5：用一门现有语言写第一个编译器
             目标：把 Anim 的语义和编译管线跑通
             此时 Anim 还寄居在其他语言的运行时上
 
-    第二步    animc v1.0：自举
-            用 v0.x 的 animc 编译一份 Anim 写的 animc 源码
-            新 animc 不再依赖宿主语言
+    第二步    animi v1.0：自举
+            用 v0.x 的 animi 编译一份 Anim 写的 animi 源码
+            新 animi 不再依赖宿主语言
             此时 Anim 有了自己的运行时
-            兼容规则：animc v1.0 向下兼容 v0.x 生成的 FSIR 产物，
+            兼容规则：animi v1.0 向下兼容 v0.x 生成的 FSIR 产物，
             存量 .anim 源码无需修改即可通过 v1.0 编译
 
-    第三步    animc v2.0：从 01 开始
+    第三步    animi v2.0：从 01 开始
             Anim 的运行时不再调用 OS 的系统调用
             直接管理自己的内存、自己的调度、自己的 I/O
             因为 Anim 的编译目标本来就是 01 信号序列
-            运行 animc 的机器 = 执行 Anim 编译结果的机器 = Feelings 设备本身
+            运行 animi 的机器 = 执行 Anim 编译结果的机器 = Feelings 设备本身
             此时 Anim 和 C/Rust 没有任何继承关系
             Anim 是 Anim，同级的，独立的
 ```
@@ -1267,18 +1278,18 @@ Anim 是自己的语言，有自己的编译目标，有自己的一套生存理
 ### 12.3 推荐
 
 ```
-animc v0.1 → v0.5    用 Rust
+animi v0.1 → v0.5    用 Rust
     原因：
         - 类型系统足够表达 Anim 的感受类型
         - 安全文化不打架
         - 生态里有 parser generator（nom/pest）、LSP（tower-lsp）、
           增量编译（salsa）——这些都是写编译器要用的轮子
-        - 编译速度慢在这个阶段不是瓶颈——animc 只编译小量 .anim 文件
+        - 编译速度慢在这个阶段不是瓶颈——animi 只编译小量 .anim 文件
 
         但要清醒：这是借 Rust 的壳跑 Anim 的魂。
         壳可以换。魂是自己的。
 
-animc v1.0            用 Anim 自举
+animi v1.0            用 Anim 自举
     前置条件：
         - Anim 的类型系统、编译管线、错误模型经过 v0.x 充分验证
         - v0.x 编译器稳定到可以编译自身
@@ -1286,7 +1297,7 @@ animc v1.0            用 Anim 自举
         - Anim 是 Anim 写的
         - 不再依赖 Rust 工具链
 
-animc v2.0            从 01 开始
+animi v2.0            从 01 开始
     前置条件：
         - Feelings 设备硬件成熟
         - Anim 的自定义运行时稳定
@@ -1311,7 +1322,7 @@ Anim v0.1 → v0.5 用 Rust 实现，不是 Go。
 
 | 原选 | 改选 | 原因 |
 |---|---|---|
-| Go | Rust | Go 的 goroutine 调度器对 Anim 的实时编译管线来说是黑盒；Rust 的零成本抽象和编译期安全比 Go 的 GC + 运行时更贴合 Anim 对硬件的亲近需求 |
+| Go | Rust | Go 的 goroutine 调度器对 Anim 的实时交织管线来说是黑盒；Rust 的零成本抽象和编译期安全比 Go 的 GC + 运行时更贴合 Anim 对硬件的亲近需求 |
 
 Go 适合写 API 服务器。Anim 的编译器不是 API 服务器——它是感受信号的生产线，每一毫秒都在做实时决策。Anim 需要离硬件更近的语言来承接第一版。
 
@@ -1324,7 +1335,7 @@ Go 适合写 API 服务器。Anim 的编译器不是 API 服务器——它是�
 ```
 github.com/Ixecd/Anim
     许可：MIT
-    包含：animc 编译器源码（Rust 实现，v0.1 → v0.5）
+    包含：animi 编译器源码（Rust 实现，v0.1 → v0.5）
           .anim 语言规范（本文档）
           标准库（Pattern Registry 子集）
           VSCode / JetBrains 语法高亮插件
@@ -1358,7 +1369,7 @@ github.com/Ixecd/Anim
 
 里程碑 4：FSIR 生成 + 命令行工具
     Pass 3: FSIRGen 实现
-    animc 命令行工具
+    animi 命令行工具
     CI 集成
 ```
 

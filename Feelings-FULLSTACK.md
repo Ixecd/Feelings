@@ -50,7 +50,7 @@ Feelings 需要二十一层，是因为 Feelings 的终点不是 JSON，是神�
                            设备贴片定位的物理载体              见 docs/device-architecture.md
  7      信号处理            FIR/IIR/FFT，自适应滤波            Layer 2 核心——神经信号解码
                            可跨 FPGA/固件/云端多层执行         见 docs/engine-design.md
- 8      编译管线            Token→AST→IR→CodeGen              animc 八 Pass 双流水线架构
+ 8      编译管线            Token→AST→IR→CodeGen              animi 八 Pass 双流水线架构
                            .anim源码→FSIR→PSIR→DSIR→ESIR      见 Feelings-LANGUAGE.md
  9      类型系统            感受类型推导，安全约束检查            双层感受原子体系（核心+沙盒）
                            编译期安全验证                       见 Feelings-LANGUAGE.md 第三章
@@ -148,7 +148,7 @@ Feelings    从头搭建 21 层
         向下兼容：硬件引脚分配、电气特性 → 约束固件驱动的寄存器配置
 
 层 7-9  （信号处理→编译管线→类型系统）
-        Anim 编译器作者：感受结构的语义验证与编译期安全保证
+        animi 交织器作者：感受结构的语义验证与交织期安全保证
         向上接口：FSIR/PSIR 标准格式
         向下兼容：硬件采样率、信号精度 → 约束 IR 参数密度
 
