@@ -15,7 +15,88 @@ Feelings 运行在计算机上。有进程。有线程。有协程。但通用 O
 
 ---
 
-## 一、地基——内存池
+## 一、硬件缓存基础——CPU 和 FPGA 的透明层
+
+硬件缓存是 Feelings 逻辑缓存的物理载体。它们自己透明运行——CPU 的 L1/L2/L3 和 FPGA 的 BRAM 对上层代码来说不可见。但如果 Feelings 的数据结构不对齐硬件缓存的物理特性，延迟会翻倍，且你查不出原因。
+
+### Cache line 对齐
+
+x86 的 cache line 是 64 字节。每次缓存未命中时，CPU 从 DRAM 加载整个 64 字节块。如果 KVCache 的一个条目跨了两条 cache line——一次读取触发两次缓存填充——延迟翻倍。
+
+```
+对齐规则
+    KVCache 条目的 payload 起始地址对齐到 64 字节边界
+    priority 字段和 value 的首字节放在同一条 cache line 里
+    → 一次读取拿到 priority + 判定驱逐 + value 全部
+    → 不在同一条 cache line → 读两次 DRAM → 延迟 2×
+
+结构体布局
+    #[repr(C, align(64))]
+    struct KvCacheEntry {
+        key_hash: u64,       // 8 字节
+        priority: u8,        // 1 字节——紧挨 key，同一 cache line
+        ttl_ms: u32,         // 4 字节
+        flags: u8,           // 1 字节
+        value_ptr: *const u8, // 8 字节
+        _pad: [u8; 42],      // 填充至 64 字节
+    }
+    // 整个结构体正好 64 字节 = 一条 cache line
+```
+
+### False sharing 防护
+
+线程 A 和线程 B 各自操作同一个 KVCache 数组里的相邻条目。线程 A 的条目和线程 B 的条目落在同一条 cache line 上。A 写 priority → CPU 标记整个 cache line 为 dirty → B 的 L1 copy 失效 → B 重新从 L2 加载。即使 A 和 B 读写的不是同一个条目。
+
+```
+防护策略
+    每条 KVCache 条目本来就是 64 字节对齐（≡ 独占一条 cache line）
+    → 相邻条目不共享 cache line
+    → 线程 A 写条目 [0] 不会让线程 B 的条目 [1] 的任何缓存拷⻉失效
+    → 零 false sharing
+    这是 64 字节对齐的附带效果——不用额外 padding
+```
+
+### FPGA BRAM 分区——双端口读写
+
+L0 层存在 FPGA 的 BRAM（Block RAM）里。BRAM 天然支持双端口——端口 A 读，端口 B 写，同一时钟周期内完成。
+
+```
+BRAM 分区策略
+
+    端口 A（只读）    主调度域的 ESIR 帧参数读取
+                     感受参数、设备映射结果、当前帧时间戳
+    端口 B（只写）    安全调度域的插桩标志写入
+                     心率超限标志、皮电异常标志、紧急停止标志
+
+    两端口的地址空间不重叠
+    → 主调度域和安域在同一时钟周期内各自访问独立 BRAM 块
+    → 零端口冲突，零等待周期
+```
+
+### 显式预取
+
+CPU 有硬件 prefetcher——检测到连续访存模式后自动预取后续 cache line。但 Feelings 的数据访问模式不总是连续的——预测器输出的下一帧 key 可能跳到一个不连续的位置。
+
+```
+显式 prefetch 的位置
+
+    Pass 6 (Personalize)
+        → 本帧使用了 PBM 行 [calm, row_42]
+        → 预测器给出下一帧 ŝₜ₊₁ 需要 PBM 行 [calm, row_45]
+        → 显式 _mm_prefetch(&pbm[calm][row_45], _MM_HINT_T0)
+        → 不等 Personalize 在 L2 里查不到才 miss
+        → 提前把 row_45 拉进 L1
+
+    Pass 8 (CodeGen)
+        → ESIR 帧顺序写入 L0 BRAM——天然连续，硬件 prefetcher 自己搞定
+        → 不需要显式 prefetch
+```
+
+硬件缓存不是透明就不管。对齐策略直接影响延迟——64 字节对齐是零成本的加速。false sharing 的防护对齐附赠。BRAM 双端口分区是结构决定的——主域和安域各自拥有独立端口。显式 prefetch 只在一处需要——预测器跳转。
+
+---
+
+## 二、地基——内存池
 
 内存池不是缓存。内存池是预分配的固定内存区域，零动态分配，零 GC。
 
@@ -38,7 +119,7 @@ Feelings 内存池
 
 ---
 
-## 二、KVCache——最小调度单元
+## 三、KVCache——最小调度单元
 
 KVCache 是 Feelings 的原子缓存单元。不是通用的 key-value store——是针对感受数据定制的。
 
@@ -59,7 +140,7 @@ KVCache 条目
 
 ---
 
-## 三、四层缓存
+## 四、四层缓存
 
 ### L0 — 寄存器级 (ns)
 
@@ -162,7 +243,7 @@ Remote 层是一条「如果」链路。如果只有一个数据中心——不�
 
 ---
 
-## 四、缓存抽象层
+## 五、缓存抽象层
 
 四层缓存在物理上是不同的硬件——FPGA 寄存器、CPU cache、DRAM、分布式存储。逻辑上，对 animi 的每个 Pass 来说只有一件事——`get(key) → value`。
 
@@ -191,7 +272,7 @@ Remote 层是一条「如果」链路。如果只有一个数据中心——不�
 
 ---
 
-## 五、和其他架构组件的关系
+## 六、和其他架构组件的关系
 
 ```
 内存池        物理内存的预分配——缓存层的物理基础
@@ -227,7 +308,7 @@ animi Pass 的缓存使用
 
 ---
 
-## 六、什么是「缓存命中的安全保证」
+## 七、什么是「缓存命中的安全保证」
 
 通用缓存系统——LRU 驱逐。不管内容是什么。八百年不用的变量和下一秒就要执行的安全校验帧——排队等驱逐。谁久没被碰就踢谁。Feelings 不能这么干。
 
