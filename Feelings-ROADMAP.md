@@ -276,6 +276,27 @@ Feelings 积累的数据，是人类有史以来
     Feelings 做着做着，可能会推动整个领域的进步
 ```
 
+**VSA 超维计算与性格锚点**
+
+```
+Feelings 的数学基底已找到正式名字——VSA（Vector Symbolic Architecture）
+MATRIX 文档里的张量/矩阵/变换全系列语言 = VSA 的同义描述
+见 docs/vsa-hyperdimensional.md + Feelings-MATRIX.md
+
+当前状态
+    VSA 数学框架对接到 Feelings 架构——已完成
+    PBM = VSA 向量——已完成
+    混音结构 = VSA 捆绑——已完成
+    shape 编码 = VSA 置换序列——已完成
+
+待推进
+    2026 年 VSA 前沿（FHRR 世界模型 / SRMU 流式记忆）→ animi 算法层集成
+    VSA 的波-几何对偶 → FPGA 物理层直接执行 VSA 操作
+    PersonalityAnchor trait → animi 类型系统实现
+    性别锚点/性格偏置 → AI 教练的 PersonalityAnchor 初始化
+    多性格基线 → 同一个 FeelingTarget 下的不同 PersonalityAnchor 实例化
+```
+
 ---
 
 *这个 Roadmap 是活的，会随着技术和思考的演进持续更新。*
