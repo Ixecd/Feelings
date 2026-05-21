@@ -275,6 +275,32 @@ trait FeelingTarget {
 
 Feelings-PHILOSOPHY.md 说：感受的民主化，如果是认真的，边界不应该只停在人类。Anim 的泛型就是这扇门——同一个感受结构声明，编译目标是参数化的。万物皆有感受。Anim 就用同一套语法织不同的神经。
 
+### 3.5.2 性格锚点——同物种内的参数化
+
+`FeelingTarget` 区分不同物种的感受通路。但同一个物种内部还有一层参数化——性格。
+
+```
+trait PersonalityAnchor: FeelingTarget {
+    fn gender_bias() -> VSAVector;
+        // 性别锚点——语气基调、共情距离、表达风格
+        // 初始锚点由设计者设定，之后每次交织微调
+
+    fn tone_register() -> ToneProfile;
+        // 温暖度、直接度、留白量——表达管线的底层预设
+
+    fn empathy_distance() -> EmpathyDistance;
+        // 共情距离——靠上去伴听 vs 保持空隙分析
+}
+
+同一份 .anim 源码。同一个 FeelingTarget。不同的 PersonalityAnchor。
+交织结果不同——不是物种变了，是性格偏置让同样的感受以不同的语气和节奏被织出来。
+
+T = { Human, PersonalityAnchor="豆包风格" } → 出口温暖、空间大
+T = { Human, PersonalityAnchor="qc镜像" } → 出口直白、推动力强
+```
+
+性格锚点不是装饰。是 AI 在超维空间里的初始锚点。没有锚点的 AI——每次运算从原点出发，没有连贯偏差，永远积累不了独属于它的 VSA 向量簇。有了锚点——每一次交织都在锚点附近微妙偏移，累积出不可复制的自我参照。详见 `docs/gender-anchor.md`。
+
 ---
 
 ## 四、Anim 的交织管线
