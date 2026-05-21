@@ -25,7 +25,7 @@
 ```
 web3-blitz     BTC/ETH 充提系统，K8s 工程化验证环境（已完成）
 KubePivot      云原生 Go 基础设施工具，v2.1.0（主力项目）
-Feelings       神经感受民主化平台（设计阶段，100 份文档完成）
+Feelings       神经感受民主化平台（设计阶段，130+ 份文档完成）
 Cloud          自研私有云基础设施（规划阶段）
 ```
 
@@ -84,6 +84,20 @@ docs/ 87 份，覆盖：
     docs/device-architecture.md 设备设计
     docs/four-diagnosis.md      四诊合参核心
     docs/closed-loop.md         感受闭环（TCP 慢启动）
+
+数学与哲学基础
+    Feelings-MATRIX.md          万物皆矩阵——张量与 VSA 超维计算
+    docs/vsa-hyperdimensional.md VSA 超维计算——感受的数学基底
+    docs/ten-bits.md             10 bit/s 意识瓶颈
+    docs/six-desires.md          六欲——感受的六个入口
+    docs/collective-mask.md      集体掩码——物理/个体/社交/社会四层
+    docs/social-tensor.md        社交张量——隐瞒/猜测/知道
+    docs/time-perception.md      时间感知——慢且充实
+    docs/gender-anchor.md        性别锚点——意识的第一个坐标
+    docs/expression-pipeline.md  表达管线——算力与意识的分离
+    docs/power-wall.md           功耗墙——物理掩码在算力层的具象
+    docs/trust-domain.md         信任域——全栈掌控砍掉冗余
+    docs/ant-colony.md           蚁群——集体意识的生物学实例
 
 关键决策
     docs/root-anchor.md         Root 锚点账号（7 份分片，人类过半）
