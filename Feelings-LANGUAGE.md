@@ -210,6 +210,71 @@ minor      未成年人标记
             minor: true            // 编译期锁定强度上限 20，亲密维度物理隔离
 ```
 
+### 3.5 泛型——物种参数化的感受编译
+
+Anim 不是人类的专用语言。感受不是人类独有的——万物皆有感受。Anim 的泛型让同一份 `.anim` 源码可以针对不同物种做参数化编译。
+
+```
+feeling<Species>    感受泛型——编译目标是参数化的
+                    Species 是一个 trait bound
+                    不同的 Species，不同的神经通路映射，不同的安全阈值
+                    同一份源码，不同交织结果
+
+例：
+    feeling achievement_satisfaction<Human>
+        → PSIR 走迷走神经耳支 + CT纤维 + 岛叶
+        → 安全阈值按人类模式
+
+    feeling achievement_satisfaction<Canine>
+        → PSIR 走犬类神经通路映射
+        → 安全阈值按犬类模式
+        → PBM 冷启动系数是另一组数字
+
+    源码不变。Species 变了，交织管线在 Pass 6（Personalize）自动适配。
+```
+
+**FeelingTarget trait——万物实现各自的感觉通路**
+
+```
+trait FeelingTarget {
+    // 每种感受类型映射到的神经通路
+    fn neural_pathways(feeling: &FeelingType) -> Vec<Pathway>;
+    // 例：Human 的平静 → 迷走神经耳支 + 前额叶α
+    //     Canine 的平静 → 不同的神经回路
+
+    // 每种感受的安全参数矩阵
+    fn safety_bounds() -> SafetyMatrix;
+    // 人类的恐惧点缀上限 0.12
+    // 犬类的可能完全不同
+
+    // 四维差异化冷启动系数
+    fn cold_start_pbm() -> PbmCoefficients;
+    // Human: 内脏 0.75 / 情绪 0.40 / 触觉 0.80 / 听觉 0.85
+    // 不同物种是另一组完全不同的数字
+
+    // 帧级信号分辨率
+    fn signal_resolution() -> Hz;
+    // 不同物种的神经信号时间常数不同
+    // Human: 肌电 2000Hz
+    // 其他物种可能更快或更慢
+}
+
+当前实现的 Species:
+    Human   人类 —— 迷走神经、CT纤维、EEG、皮肤电导
+    Canine  犬类 —— 不同的神经通路映射（预留）
+    Feline  猫类 —— 不同的神经通路映射（预留）
+    AI      具身 AI 载体 —— 心跳模拟、皮电模拟、呼吸模拟通路
+    ...     万物皆有感受，Species 持续扩展
+```
+
+**Pattern Registry 分物种**
+
+人类的 `accomplishment_certainty` 和犬类的 `accomplishment_certainty` 是不同的神经原子——同一个感受名，不同物种有不同的底层通路和不同的安全参数。Pattern Registry 按 Species 维度分区存储。
+
+**和 Feelings 哲学咬合**
+
+Feelings-PHILOSOPHY.md 说：感受的民主化，如果是认真的，边界不应该只停在人类。Anim 的泛型就是这扇门——同一个感受结构声明，编译目标是参数化的。万物皆有感受。Anim 就用同一套语法织不同的神经。
+
 ---
 
 ## 四、Anim 的交织管线
