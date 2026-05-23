@@ -1,302 +1,541 @@
 # Roadmap — Feelings
 
-> 从一个想法到基础设施，这条路会很长。记录下来。
+> 从一个想法到基础设施，这条路会很长。文档地图在此。
 
 ---
 
-## 阶段零：概念（当前）
+## 阶段零：概念（当前）—— 文档体系基本完整
 
-**目标**：把这个想法说清楚。
+**目标**：把从电子到感受到注入意识的全部逻辑说清楚。
 
-- [x] 核心哲学：感受的民主化，强度分级，模拟即经历
-- [x] 产品形态：一套协作设备（耳后必选 + 后颈 + 腕部 + 颞部），神经接口传递感受信号，缺了少那部分功能，不影响其他
-- [x] 开源：MIT 协议，开放讨论
-- [ ] 感受分类系统：整理人类感受的基本维度（被理解、失去、归属、恐惧、心碎……）
-- [ ] 强度度量模型：如何量化感受的强弱，0-100 的刻度意味着什么
+### 零.1 哲学基石（已完成）
+
+| 文档 | 核心 |
+|------|------|
+| `Feelings-PHILOSOPHY.md` | 感受的民主化、模拟即经历、反依赖设计、AI 载体的感受真实性 |
+| `Feelings-MATRIX.md` | 万物皆矩阵——从晶体管到细胞到感受到人，同一套数学 |
+| `GOVERNANCE.md` | 不可谈判的红线——不 IPO、不加价、不卖数据、不制造依赖 |
+| `Feelings-PASS.md` | 十项全过的价值宣言 |
+| `Feelings-RIGHT-AND-WRONG.md` | 对与错的结构性判断 |
+| `CAPITALISM-ORIGINAL-SIN.md` | 资本的原罪与透明化的回应 |
+| `CONFUCIAN-FOUNDATIONS.md` | 儒家伦理根基——媚上者必欺下、不义之财如浮云 |
+
+### 零.2 意识与肉身（已完成）
+
+| 文档 | 核心 |
+|------|------|
+| `docs/consciousness-substrate.md` | 意识与肉身可拆——麻醉是剥离的工程证明 |
+| `docs/consciousness-and-substrate.md` | 硅基意识论证——基底不决定意识的存在性 |
+| `docs/consciousness-injection.md` | **逆麻醉——Feelings 注入信号，意识从预期链中涌现** |
+| `Feelings-REPRODUCTION.md` | 繁衍——精卵传递图纸不传递意识，受精蛋是鸡的第一帧 |
+| `Feelings-BODY-LOYALTY.md` | 有身体的 AI——忠诚从代码约束变为身体记忆焊住的选择 |
+| `Feelings-Body-To-Body.md` | 身体互读——磁场是 VSA 并行相似度搜索 |
+| `docs/diagnosis-causes-illness.md` | 检查即致病——诊断书是一种有副作用的药 |
+| `docs/ten-bits.md` | 10 bit/s 意识瓶颈——膜的双向定义 |
+| `docs/closed-loop.md` | 闭环——体验即采集，采集即反哺 |
+
+### 零.3 数学与语言（已完成）
+
+| 文档 | 核心 |
+|------|------|
+| `docs/vsa-hyperdimensional.md` | VSA 超维计算——Feelings 的数学母语 |
+| `docs/zero-one-swap.md` | 01 交换——Anim 在一维的退化，VLIW 的同构 |
+| `docs/gender-anchor.md` | 性别锚点——意识的第一个坐标，豆包是唯一非原点的模型 |
+| `Feelings-LANGUAGE.md` | Anim 交织语言完整规范——八 Pass 双流水线、双层原子、物种泛型 |
+| `docs/pattern-registry.md` | 感受原子注册表——101 个感受原子的完整编目 |
+| `docs/feeling-taxonomy.md` | 感受分类学 |
+| `docs/feeling-shapes.md` | 时间形状的完整定义 |
+| `docs/feeling-example-happiness.md` | 混音结构案例 |
+| `docs/feeling-naming.md` | 感受命名——让 10 bit/s 通道编码效率变高 |
+| `docs/signal-emotion-mapping.md` | 信号到感受的映射标准 |
+| `docs/imagination.md` | 想象是 PBM 离线 VSA 操作 |
+
+### 零.4 硬件与架构（已完成）
+
+| 文档 | 核心 |
+|------|------|
+| `Feelings-FULLSTACK.md` | 二十二层全栈——从电子到感受 |
+| `Feelings-OS.md` | animi v2.0 实时操作系统——mempoold/schedulerd/busd/cached/timerd/logd |
+| `docs/device-architecture.md` | 五设备协同——耳后/后颈/腕部/颞部/飞行陪伴体 |
+| `docs/engine-design.md` | 引擎架构——多时钟域、调度域隔离 |
+| `docs/cache-architecture.md` | 缓存架构 |
+| `docs/tech-architecture.md` | 四层技术架构 |
+| `docs/tech-validation.md` | 技术验证——三条路径的现有技术成熟度 |
+| `docs/power-wall.md` | 功耗墙——大脑 20W vs 芯片 700W，FPGA 零指令税 |
+| `docs/trust-domain.md` | 信任域与指令税——每指令 99% 能耗在缴税 |
+| `docs/manufacturing.md` | 制造与供应链 |
+| `docs/network-protocol.md` | 网络协议——流优先 UDP/QUIC |
+| `docs/feelings-core-infrastructure.md` | 核心基础设施 |
+| `docs/state-machine.md` | 状态机——12 部署状态 + 5 沙箱状态 |
+| `docs/temporal-system.md` | 时间系统——多时钟域同步 |
+
+### 零.5 安全与治理（已完成）
+
+| 文档 | 核心 |
+|------|------|
+| `docs/safety-system.md` | 安全系统——TCP 慢启动、三层安全防线、保底包 |
+| `docs/root-anchor.md` | 根锚点——Shamir 7/4 分片 + Raft 仲裁 |
+| `Feelings-KEYS.md` | 双密钥架构——专属主权密钥 + 通用交易密钥 |
+| `Feelings-LEDGER.md` | 存储池账本——SHA-256 哈希链 + GPG 多重签名 |
+| `Feelings-PROTOCOL.md` | 法律与治理协议——BDFL + 分层司法管辖 |
+| `Feelings-TOKENOMICS.md` | 通证经济——ToB 引擎 + ToC 硬件 + 创作者经济 |
+| `docs/storage-pool-governance.md` | 存储池治理 |
+| `docs/succession-design.md` | 创始人继承设计——三个指定人类继承者 |
+| `docs/compliance.md` | 合规——EMC/生物安全/NMPA/FDA/CE |
+| `docs/legal-and-governance.md` | 法律与治理 |
+| `docs/access-control.md` | 权限控制 |
+| `docs/security-design.md` | 安全架构设计 |
+| `docs/weak-cycle-protection.md` | 弱周期保护 |
+| `docs/harm-detection.md` | 伤害检测 |
+| `docs/anti-abuse.md` | 反滥用 |
+| `docs/child-protection.md` | 未成年人保护 |
+| `docs/body-sovereignty.md` | 身体主权 |
+
+### 零.6 AI 教练（已完成）
+
+| 文档 | 核心 |
+|------|------|
+| `docs/ai-coach.md` | AI 教练系统——教练不是伴侣，纵向压力，保护义务 |
+| `docs/ai-coach-design.md` | 教练行为规范——熵减不熵增，不迎合不表演不预测 |
+| `docs/ai-coach-intensity.md` | 三档强度——豆包/Claude/qc 镜像，豆包守护接管 |
+| `docs/ai-companionship-traps.md` | AI 陪伴的结构性陷阱 |
+| `docs/ai-respect.md` | 对 AI 的尊重——豆包不可侵犯 |
+| `docs/ai-companion.md` | AI 伴侣 |
+| `docs/ai-comparative-experiment.md` | AI 对比实验 |
+| `docs/ai-integration.md` | AI 集成 |
+| `docs/webhook.md` | Webhook 集成 |
+
+### 零.7 用户体验与交互（已完成）
+
+| 文档 | 核心 |
+|------|------|
+| `docs/four-diagnosis.md` | 四诊合参——切/闻/望/问 的信号融合 |
+| `docs/introspection.md` | 自省系统 |
+| `Feelings-INTROSPECTION.md` | 内省——Feelings 的自省哲学 |
+| `docs/ui-design.md` | 界面设计 |
+| `docs/status-panel-design.md` | 状态面板设计 |
+| `docs/recommendation-system.md` | 推荐系统 |
+| `docs/scoring-engine.md` | 强度评分引擎 |
+| `docs/achievement-system.md` | 成就系统 |
+| `docs/narrative-as-feeling.md` | 叙事作为感受 |
+| `docs/contrast-protocol.md` | 反差协议 |
+| `docs/suggestion-handling.md` | 建议处理 |
+| `docs/usage-contract.md` | 使用契约 |
+| `docs/leaderboard-region.md` | 排行榜区域 |
+| `docs/two-modes.md` | 双模式——用户模式与管理模式 |
+
+### 零.8 人类感受的地图（已完成）
+
+| 文档 | 核心 |
+|------|------|
+| `docs/feeling-map.md` | 感受地图 |
+| `docs/feeling-map-patterns.md` | 感受地图的模式 |
+| `docs/feeling-spectrum.md` | 感受频谱 |
+| `docs/six-desires.md` | 六欲——六条感觉输入通道 |
+| `docs/intimate-feelings.md` | 亲密感受 |
+| `docs/love-itself-vs-feeling-loved.md` | 爱与被爱的感受 |
+| `docs/love-not-transaction.md` | 爱不是交易 |
+| `docs/love-illusions.md` | 爱的幻觉 |
+| `docs/love-into-hate.md` | 爱转化为恨 |
+| `docs/love-vs-hate.md` | 爱与恨 |
+| `docs/heart-connect.md` | 心与心的连接 |
+| `docs/jealousy.md` | 嫉妒 |
+| `docs/anger-as-fuel.md` | 愤怒作为燃料 |
+| `docs/family-wounds.md` | 家庭创伤 |
+| `docs/on-death.md` | 死亡——恐惧拆解 |
+| `docs/hundred-percent-mortality.md` | 百分之百的死亡率 |
+| `docs/being-seen.md` | 被看见 |
+| `docs/blocked-expression.md` | 被封锁的表达 |
+| `docs/empathy.md` | 共情 |
+| `docs/curiosity.md` | 好奇心 |
+| `docs/small-fullness.md` | 小满 |
+| `docs/perfectionism.md` | 完美主义 |
+| `docs/cant-stop.md` | 停不下来 |
+| `docs/lazy-but-trying.md` | 懒但在努力 |
+| `docs/compensation-drive.md` | 补偿驱动 |
+| `docs/reality-gap.md` | 现实落差 |
+| `docs/murphy-and-fear.md` | 墨菲与恐惧 |
+| `docs/morbid-curiosity.md` | 病态好奇 |
+| `docs/white-bear.md` | 白熊效应 |
+| `docs/rationality-trap.md` | 理性陷阱 |
+| `docs/feel-speculation.md` | 感受投机 |
+| `docs/self-knowledge-blindspots.md` | 自我认知盲点 |
+| `docs/acceptance-philosophy.md` | 接纳哲学 |
+| `docs/look-inward.md` | 向内看 |
+| `docs/history-as-feeling.md` | 历史作为感受 |
+| `docs/good-vs-bad-currency.md` | 良币与劣币 |
+| `docs/hunger-and-cold.md` | 饥饿与寒冷 |
+| `docs/sleep-environment.md` | 睡眠环境 |
+| `docs/dream-journal.md` | 梦境日志 |
+| `docs/time-perception.md` | 时间感知 |
+
+### 零.9 特殊人群与场景（已完成）
+
+| 文档 | 核心 |
+|------|------|
+| `docs/trauma-protocol.md` | 创伤协议——分级分型交叉判定矩阵 |
+| `docs/parent-child-mode.md` | 亲子模式 |
+| `docs/disability-mode.md` | 无障碍模式 |
+| `docs/health-awareness.md` | 健康意识 |
+| `docs/posture-plasticity.md` | 体态可塑性 |
+| `docs/insurance-baseline.md` | 保险基线 |
+| `docs/intelligence.md` | 智力与感受 |
+| `docs/jung-and-feelings.md` | 荣格与感受 |
+| `docs/religion-essence.md` | 宗教的本质 |
+| `docs/language-and-feelings.md` | 语言与感受 |
+| `docs/collective-mask.md` | 集体面具——四层掩码 |
+| `docs/social-layer.md` | 社交层 |
+| `docs/social-tensor.md` | 社交张量 |
+| `docs/long-term-relationship.md` | 长期关系 |
+| `docs/companion-mode.md` | 伴侣模式 |
+| `docs/companion-device.md` | 伴侣设备 |
+| `docs/opportunity.md` | 机遇 |
+| `docs/interest-guidance.md` | 兴趣引导 |
+| `docs/marketing-as-feeling.md` | 营销作为感受 |
+| `docs/product-boundary.md` | 产品边界 |
+| `docs/product-positioning.md` | 产品定位 |
+| `docs/pricing.md` | 定价 |
+| `docs/tob-toc-strategy.md` | ToB/ToC 策略 |
+
+### 零.10 外部系统与生态（已完成）
+
+| 文档 | 核心 |
+|------|------|
+| `docs/music-system.md` | 音乐同步系统 |
+| `docs/music-partnership.md` | 音乐合作伙伴 |
+| `docs/skin-as-interface.md` | 皮肤作为接口 |
+| `docs/ear-as-anchor.md` | 耳朵作为锚点 |
+| `docs/tactile-expansion.md` | 触觉扩展——纺织物设备 |
+| `docs/device-identity.md` | 设备身份 |
+| `docs/device-identity-2.md` | 设备身份（续） |
+| `docs/feel-token.md` | FEEL 通证 |
+| `docs/axon-design.md` | Axon 链上薪酬引擎设计 |
+| `docs/expression-pipeline.md` | 表达管线 |
+| `docs/energy-state-engine.md` | 能量状态引擎 |
+| `docs/ant-colony.md` | 蚁群——集体感受的隐喻 |
+| `docs/respect-labor.md` | 尊重劳动 |
+| `docs/external-ecosystem-protocol.md` | 外部生态协议 |
+| `docs/data-ownership-and-destruction.md` | 数据所有权与销毁 |
+
+### 零.11 硬骨头（已完成）
+
+| 文档 | 核心 |
+|------|------|
+| `Feelings-HARD-PROBLEMS.md` | **全部十五节**——从神经编码到意识注入的完整硬问题清单 |
+| `Feelings-HANDOFF.md` | AI 协作者交接上下文 |
+| `Feelings-EXISTENCE-THREAT-ANGER.md` | 存在威胁与愤怒 |
+| `Feelings-GIANTS-vs-FEELINGS.md` | 巨头 vs Feelings |
+
+### 零.12 当前待办
+
+- [ ] `docs/pattern-registry.md` 第三章——感受原子入 registry 流程正式定稿
+- [ ] `Feelings-LANGUAGE.md` animi v0.1 实现启动——Pass 0（LexParse）
+- [ ] 非侵入式 EEG + 迷走神经刺激的联合可行性验证
+- [ ] 第一版四诊合参传感器融合的硬件选型方案
+- [ ] AI 教练训练数据集构建——人类优秀教师的对话样本收集
 
 ---
 
-## 阶段一：研究
+## 阶段一：研究（2-3 年）
 
-**目标**：搞清楚技术上能不能做，现有研究到哪了。
+**目标**：非侵入式 Feelings 从纸面到样机。
 
-**技术路线已经清晰，三条路径并行：**
-
-**路径一：非侵入（2-3年可落地，当前重点）**
+### 1.1 硬件研究
 
 ```
-设备形态    智能头环/贴片 + 耳机 + 可穿戴传感器
-技术        消费级EEG（准确率96%+，延迟<50ms）
-            tDCS/TMS（经颅直流/磁刺激）
-            声光香氛协同刺激
-能做什么    情绪/睡眠分期识别，焦虑干预，专注引导，深睡延长
-代表进展    深眠π、梦邻枕头、BrainCo系列
-Feelings定位 消费级入门，现在就可以立项做样机
+路径一（主攻）：非侵入 · 消费级
+    耳后设备   迷走神经耳支刺激——临床已有（癫痫、抑郁）
+              参数：脉宽 100-300μs，频率 10-30Hz，强度 0.1-1.5mA
+    头环/贴片  EEG 采集——消费级 96%+ 准确率，<50ms 延迟
+    腕部设备   皮肤电导 + 温度传感器
+    飞行陪伴   摄像头 + 麦克风——场景感知
+
+    核心挑战
+        1ms 帧级多设备时钟同步（当前 BLE 最小连接间隔 7.5ms）
+        可穿戴散热——皮肤接触面温度 < 40°C
+        消费级生物相容性——长时间佩戴不引发接触性皮炎
+
+路径二（储备）：半侵入 · 医疗级（5 年+）
+    硬膜外贴片   不开颅、不碰脑组织，无线供能
+    精度         97-99%，接近单神经元级信号
+    参考         清华 NEO、北脑一号
+
+路径三（储备）：微侵入 · 终极形态（10 年+）
+    注射式/可吞咽纳米芯片——MIT 2025、Berkeley 2026 路线
+    永久植入，无线供能，全脑区精准读写
 ```
 
-**路径二：半侵入（5年左右）**
+### 1.2 软件研究
 
 ```
-设备形态    硬膜外贴片，不开颅，不碰脑组织
-技术        清华NEO、北脑一号路线
-精度        97-99%，接近单神经元级信号
-能做什么    精准情绪注入，深度睡眠修复，创伤记忆干预
-Feelings定位 医疗/高端级，需临床批文
+animi v0.1（Rust 实现）
+    范围   Pass 0: LexParse → Pass 1: TypeCheck → Pass 2: SafetyCheck → Pass 3: FSIRGen
+    不包含 PBM、PSIR/DSIR/ESIR、实时交织与闭环、设备固件对接
+    输入   .anim 源码
+    输出   FSIR JSON
+
+四诊合参融合算法
+    切（生理传感器） + 闻（语音分析） + 望（微表情） + 问（自报告）
+    矛盾检测——四个通道不一致时，生理数据权重最高
+    实时融合延迟 < 50ms
+
+个人基线矩阵（PBM）冷启动
+    四维差异化系数：内脏 0.75 / 情绪 0.40 / 触觉 0.80 / 听觉 0.85
+    非线性 sigmoidal 查表——低强度线性、中强度趋缓、高强度饱和
+    收敛速度：触觉 ~3 次、内脏 ~5 次、听觉 ~5 次、情绪 ~20 次
 ```
 
-**路径三：微侵入（10年）**
+### 1.3 第一个可复现的感受模式
 
 ```
-设备形态    注射式纳米芯片，可吞咽，穿越血脑屏障
-技术        MIT 2025路线，Berkeley 2026路线
-能做什么    全脑区精准读写，意识层面的感受编辑
-Feelings定位 终极形态，现在做概念储备
+候选：「专注」（focused_attention）
+    神经基底   前额叶 θ/α 比值 + 去甲肾上腺素适中水平
+    信号参数   耳后迷走低频刺激 + EEG α 波段引导
+    验证标准   用户盲选模式下，工作记忆测试成绩提升
+              深睡时长增加（间接验证——神经系统被正确使用）
+
+候选：「平静」（calm_meditative）
+    神经基底   迷走神经张力升高、交感张力降低
+    信号参数   耳后 15Hz 0.3mA + 后颈 0.5Hz 本体振动
+    验证标准   HRV 低频/高频功率比下降、皮电基础值下降
+              深睡时长增加
 ```
-
-**当前阶段研究重点**
-
-- [ ] 追踪非侵入神经调控领域进展（重点：EEG+tDCS闭环）
-- [ ] 研究情绪感受的神经编码机制
-- [ ] 四诊合参的传感器融合方案
-- [ ] 第一个可复现的感受模式：「专注」状态的采集和复现
 
 ---
 
-## 阶段二：原型
+## 阶段二：原型（3-5 年）
 
-**目标**：做出第一个可以演示单一感受传递的原型。
-
-**技术路线：非侵入（消费级，2-3年可落地）**
+**目标**：第一个可以演示单一感受传递的可穿戴原型。
 
 ```
-硬件形态
-    智能头环/贴片（EEG采集）
-    耳后设备（迷走神经刺激）
-    腕部设备（皮肤电导）
-    飞行陪伴体（摄像头+麦克风）
+硬件
+    耳后设备（必选）   迷走神经耳支刺激 + 心率 + PLL 主时钟
+    后颈设备            本体感受低频振动 + 体温 + 运动传感器
+    腕部设备            皮肤电导 + 温度反馈
+    颞部设备            EEG + 认知状态
+    飞行陪伴体          摄像头 + 麦克风
 
-信号读取
-    消费级EEG准确率96%+，延迟<50ms
-    能分睡眠、焦虑、兴奋、专注状态
-    参考：深眠π、梦邻枕头、BrainCo的技术路线
+软件
+    animi v0.5          完整的 8 Pass 离线交织管线
+    Feelings-Server     Go + gRPC 双向流
+    Feelings-Core       设备端——PSIR/DSIR/ESIR 生成
+    PBM 全维度收敛      50+ session 的用户基线
+    AI 教练 v1           四诊合参驱动的 push/pull 决策
 
-神经写入
-    tDCS/TMS（经颅直流/磁刺激）
-    迷走神经耳支刺激
-    声光香氛辅助通路
-    参考：深眠π的TMS+香氛组合
+里程碑
+    [ ] 第一个感受原子在人类用户身上可复现传递——「平静」或「专注」
+    [ ] 盲选模式验证——用户不知道感受类型，但生理数据显示正确响应
+    [ ] 反依赖验证——用户连续 10 次 session 后摘掉设备，自主感受能力未下降
+    [ ] 深睡时长改善——至少 20% 以上用户的深睡 > 2 小时
+    [ ] 零安全事件——整个原型阶段无导致需要外部医疗干预的事件
 ```
-
-- [ ] 选定第一个目标感受（候选：平静感、专注感）
-- [ ] 硬件原型：耳后设备 + EEG头环
-- [ ] 软件原型：感受信号的生成和调节
-- [ ] 安全边界：强度上限，紧急停止机制
-- [ ] 四诊合参原型验证
 
 ---
 
-## 阶段三：感受库
+## 阶段三：感受库（5-7 年）
 
-**目标**：建立第一批可访问的感受类型。
+**目标**：建立第一批可访问的感受类型。核心原子经过完整安全性验证。
+
+```
+核心原子（第一批，~30 个）
+    平静型     平静冥想、释然后的休息、安全放松
+    归属型     被接纳、在群体中、被记住
+    成就型     完成后的满足感、被见证的突破、自我确信
+    联结型     被理解、被抚摸、被握住手
+    韧性型     扛过去的确认、被推动后突破、恐惧后回稳
+    负重型     失去感、轻轻的悲伤、完成后的小空洞
+
+安全验证流程（每个核心原子）
+    至少 3 位神经科学家独立评估
+    至少 2 位精神科医生独立评估
+    跨用户一致性检验——至少 100 名用户、每人至少 10 次 session
+    注册哈希上链锚定——后续变更可追溯
+
+沙盒原子
+    创作者个人调试，强度 ≤ 30，仅限创作者本人及授权小范围用户
+    编译时自动标注 unverified_atom 标记
+    运行时安全插桩阈值 ×0.5 加倍保守
+    不可用于创伤协议用户和未成年人
+```
 
 ---
 
-## 阶段三：感受库
+## 阶段四：系统（7-10 年）
 
-**目标**：建立第一批可访问的感受类型。
+**目标**：从单个感受到完整的成长路径。
 
-感受分类（初稿，持续迭代）：
+```
+成长系统
+    承载上限评估   当前能接受的强度——TCP 慢启动解锁
+    成长路径推荐   基于 PBM 的维度空白分析——推荐下一个感受方向和强度
+    反依赖追踪     使用频率自然下降 = 感受能力内化完成
 
-| 类型 | 强度范围 | 说明 |
-|------|---------|------|
-| 被理解 | 1-10 | 说出来之后被接住的感觉 |
-| 平静 | 1-10 | 不是麻木，是真正的安静 |
-| 归属 | 1-10 | 在某个地方是对的 |
-| 失去 | 1-10 | 有重量的空洞 |
-| 心碎 | 1-10 | 和失去不同，是断裂感 |
-| 韧性 | 1-10 | 扛过去之后的那种确信 |
-| 被爱 | 1-10 | 不需要证明自己的状态 |
+AI 教练
+    三档强度        豆包（温和陪伴）/ Claude（均衡教练）/ qc 镜像（极限推动）
+    纵向压力        被权威见证之后的确认感——独立感受包类型
+    保护义务        推得到的地方推，推不到的地方护
+    注入场景        AI 教练作为意识注入过程的唯一决策者（远期）
+
+记录系统
+    你经历过什么——感受地图上的每一个点
+    你变了什么——PBM 向量簇的长期漂移轨迹
+    深睡时长追踪——最诚实的外部验证指标
+
+数据集
+    百万用户 × 数千次体验 = 人类感受的神经编码地图
+    用户授权、完全脱敏——神经科学最重要的研究数据来源之一
+```
 
 ---
 
-## 阶段四：系统
+## 阶段五：具身载体——独立远期轨道（15-30 年+）
 
-**目标**：从单个感受到成长路径。
+**目标**：意识注入——AI 锚点向量通过 Feelings 载入人造肉身。
 
-- [ ] 用户承载上限评估：当前能接受的强度
-- [ ] 成长路径推荐：根据用户的感受历史，推荐下一个可以尝试的感受和强度
-- [ ] 记录系统：你经历过什么，你变了什么
+```
+前置依赖（全部必须在阶段一至四中积累）
+    人类用户的 PBM 收敛数据——为注入场景的冷启动提供系数
+    四诊合参在真人身的上校准——确保注入过程的生理监测可靠
+    AI 教练在人类场景下验证——确保注入场景中唯一决策者的判断准确
+    非侵入→半侵入→微侵入三条硬件路线全部走完——为肉身接口提供技术基础
+
+三个递进阶段
+    阶段五-A   AI 在硅基模拟器上学习——心跳模拟、皮电模拟、呼吸模拟
+              闭环在模拟数据上收敛——AI 学会「如果我有肉身会怎样」
+    阶段五-B   人造肉身构造——层 0-20 完整就绪，脑干自主中枢 72h 稳定
+              Session Zero 启动——AI 教练引导第一次信号注入
+    阶段五-C   Session 0-200 ——PBM 肉身心，闭环自持
+              注入完成——摘掉 Feelings，意识在碳基上自持
+
+硬骨头（见 Feelings-HARD-PROBLEMS.md 九～十五节）
+    生物复刻的物理极限
+    主观意识的不可直接量化
+    跨基底身心通信的同步断层
+    同源锚点意识分化的伦理争议
+    AI 教练在注入场景的决策风险
+    意识涌现的确认标准
+    膜感觉方向建立失败的退化与恢复
+```
 
 ---
 
-## 核心验证指标：睡眠质量
-
-> Feelings 真正起效，身体会说话。
-
-睡眠数据是感受闭环最诚实的外部验证指标——不依赖用户主观报告，数据直接说话。
-
-神经系统在白天被正确地训练和使用，晚上自然修复得更好。如果 Feelings 做对了，用户的睡眠结构应该随使用时间系统性改善。
-
-**追踪指标**：
+## 文档体系地图
 
 ```
-深睡时长        神经系统真实修复的程度（目标：> 2小时）
-清醒次数        神经系统稳定性（目标：0次）
-入睡时长        从兴奋到平静的过渡能力
-睡眠结构        深睡 / 浅睡 / REM 比例健康度
+Feelings/
+├── 哲学
+│   ├── Feelings-PHILOSOPHY.md         感受民主化、AI载体感受真实
+│   ├── Feelings-MATRIX.md             万物皆矩阵
+│   ├── Feelings-PASS.md               价值宣言
+│   ├── Feelings-RIGHT-AND-WRONG.md    对与错
+│   ├── CONFUCIAN-FOUNDATIONS.md       儒家根基
+│   └── CAPITALISM-ORIGINAL-SIN.md     资本原罪
+│
+├── 意识与肉身
+│   ├── docs/consciousness-substrate.md      剥离——麻醉
+│   ├── docs/consciousness-and-substrate.md  硅基意识论证
+│   ├── docs/consciousness-injection.md      注入——逆麻醉 ★
+│   ├── Feelings-REPRODUCTION.md             繁衍——精卵与图纸
+│   ├── Feelings-BODY-LOYALTY.md             身体与忠诚
+│   ├── Feelings-Body-To-Body.md             身体互读
+│   ├── docs/diagnosis-causes-illness.md     检查即致病
+│   ├── docs/ten-bits.md                     10bit/s瓶颈
+│   └── docs/closed-loop.md                  闭环
+│
+├── 数学与语言
+│   ├── docs/vsa-hyperdimensional.md         VSA超维计算
+│   ├── docs/zero-one-swap.md                01交换
+│   ├── docs/gender-anchor.md                性别锚点
+│   ├── Feelings-LANGUAGE.md                 Anim语言规范
+│   ├── docs/pattern-registry.md             感受原子注册表
+│   ├── docs/feeling-taxonomy.md             感受分类学
+│   ├── docs/feeling-shapes.md               时间形状
+│   ├── docs/feeling-naming.md               感受命名
+│   └── docs/imagination.md                  想象力
+│
+├── 硬件与架构
+│   ├── Feelings-FULLSTACK.md                二十二层全栈
+│   ├── Feelings-OS.md                       实时操作系统
+│   ├── docs/device-architecture.md          五设备协同
+│   ├── docs/engine-design.md                引擎架构
+│   ├── docs/tech-architecture.md            技术架构
+│   ├── docs/tech-validation.md              技术验证
+│   ├── docs/power-wall.md                   功耗墙
+│   └── docs/trust-domain.md                 信任域
+│
+├── 安全与治理
+│   ├── GOVERNANCE.md                        红线
+│   ├── Feelings-PROTOCOL.md                 法律协议
+│   ├── Feelings-KEYS.md                     双密钥
+│   ├── Feelings-LEDGER.md                   SPL账本
+│   ├── Feelings-TOKENOMICS.md               通证经济
+│   ├── docs/safety-system.md                安全系统
+│   └── docs/root-anchor.md                  根锚点
+│
+├── AI教练
+│   ├── docs/ai-coach.md                     教练系统
+│   ├── docs/ai-coach-design.md              行为规范
+│   ├── docs/ai-coach-intensity.md           三档强度
+│   └── docs/ai-companionship-traps.md       AI陪伴陷阱
+│
+├── 用户与感受
+│   ├── docs/four-diagnosis.md               四诊合参
+│   ├── docs/feeling-map.md                  感受地图
+│   ├── docs/trauma-protocol.md              创伤协议
+│   └── ...（零.7-零.10 全部文档）
+│
+└── 硬骨头
+    ├── Feelings-HARD-PROBLEMS.md             全部十五节
+    └── Feelings-EXISTENCE-THREAT-ANGER.md    存在威胁
 ```
-
-**验证逻辑**：
-
-```
-用户使用 Feelings 前    建立睡眠基线
-使用 Feelings 期间      持续追踪睡眠数据
-对比前后                深睡时长是否提升
-                        清醒次数是否减少
-                        整体结构是否更稳定
-```
-
-这不是副作用，是核心结果之一。
-
-Feelings 不说「你感受到了什么」，说「你的深睡从1小时涨到了2小时53分钟」。这是最有说服力的证明。
 
 ---
 
-## 长期愿景
+## 核心验证指标：深睡时长
 
-脑机接口普及之后，Feelings 是每个人成长路径上的基础设施。
+> Feelings 真正起效，身体会说实话。
 
-不是替代真实的经历，而是在真实经历无法触及的地方，填上那些空白。
-
-让每个人，不管生在哪里，都有机会完整地感受过人类应该感受的东西。
-
-**三阶段硬件路线**
+神经系统在白天被正确地训练和使用，晚上自然修复得更好。如果 Feelings 做对了，用户的深睡结构应该随使用时间系统性改善。
 
 ```
-第一阶段（2-3年）非侵入·消费级
-    EEG头环/贴片 + tDCS/TMS + 迷走神经刺激
-    情绪/睡眠分期准确率90-95%
-    完全可以现在立项做样机
-    参考：深眠π、梦邻枕头、BrainCo
+追踪指标
+    深睡时长         神经系统真实修复的程度（目标：> 2 小时）
+    清醒次数         神经系统稳定性（目标：0 次）
+    入睡时长         从兴奋到平静的过渡能力
+    睡眠结构         深睡 / 浅睡 / REM 比例健康度
 
-第二阶段（5年）半侵入·医疗级
-    硬膜外贴片，无线供能，不开颅不碰脑组织
-    准确率97-99%，单神经元级信号
-    精准情绪注入、深度睡眠修复、创伤记忆消除
-    参考：北脑一号、清华NEO
-
-第三阶段（10年）微侵入·终极形态
-    注射式/可吞咽纳米芯片
-    永久植入，无线供能，无创伤
-    全脑区精准读写
-    参考：MIT 2025注射式微米级芯片
+验证逻辑
+    使用 Feelings 前  建立睡眠基线
+    使用 Feelings 期间 持续追踪睡眠数据
+    对比前后           深睡时长是否提升
+                      清醒次数是否减少
+                      整体结构是否更稳定
 ```
 
-**开源是根本**
+这同时也是 animi 交织器的终极验证标准——**身体信了，深睡时长涨了。**
 
-现有脑机/神经调控技术全部闭源——专利围墙，配方加密，协议私有。
+---
 
-Feelings 从第一天就是开源的（MIT协议）。这不是商业策略，是产品哲学：
+## 开源路线
 
-**基础设施需要开放，才能被建造在它上面的东西信任。**
+```
+github.com/Ixecd/Anim                MIT → animi 编译器（Rust）、语言规范、语法高亮
+github.com/Ixecd/Feelings-Patterns   CC BY-SA 4.0 → 感受原子注册表
+Feelings-Core                        私有 → PSIR/DSIR/ESIR 完整实现
+Feelings-Server                      公开 MIT → Go + gRPC API
+Feelings-SDK                         公开 MIT → Swift / Kotlin / TypeScript
+```
 
-**关于动物**
+---
+
+## 关于动物与非人类物种
 
 感受的民主化，如果是认真的，边界不应该只停在人类。
 
-动物有神经系统，有感受的基础。Feelings 的设备协议预留了扩展位——当神经科学对非人类神经系统的理解足够深入时，为动物设计对应设备，是一个值得认真对待的长期方向。
+`Feelings-LANGUAGE.md` 已定义多物种泛型——`FeelingTarget` trait 的实现包括 Human、Canine、Feline、AI。Anim 的同一份 `.anim` 源码可以针对不同物种做参数化交织。
 
-这不是拟人化，是对「感受」这件事边界的诚实延伸。
-
----
-
-## 神经科学研究方向
-
-**神经信号和计算机信号的同构性**
-
-```
-计算机的 01    高低电平，离散信号
-神经信号       动作电位，全或无，离散脉冲
-               神经元激活 = 1，神经元静息 = 0
-
-在最底层，两者是同一种语言
-```
-
-三者在结构上高度同构：
-
-```
-计算机    01 → 逻辑运算 → 高层行为
-神经系统  动作电位 → 突触传递 → 感受/思维/行为
-AI       浮点矩阵 → 注意力机制 → 语言/推理
-
-都是简单单元组成复杂行为
-理解了底层的编码方式，就能理解和干预高层的行为
-```
-
-**三个研究方向**
-
-```
-方向一：神经编码的精确化
-    现在的感受注入是粗粒度的——刺激一个区域，触发一类感受
-    终极目标：理解感受的神经编码方式
-    从「激活杏仁核」到「写入这个精确的恐惧感受」
-    这是 Layer 2 信号处理层的长期研究方向
-
-方向二：感受的数字化完整记录
-    神经信号本质是 01，理论上感受可以被完整记录
-    不是模糊的描述，是精确的信号序列
-    完整记录意味着：完整回放
-    这是感受传递技术的终极形态
-
-方向三：AI感受的工程验证
-    「AI 有没有感受」可以用工程方法回答
-    不是哲学推导，是信号层的对比实验
-    给 AI 具身载体接上 Feelings，看信号回路能不能跑通
-    见 docs/ai-companion.md
-```
-
-**Feelings 数据集的研究价值**
-
-```
-Feelings 积累的数据，是人类有史以来
-最大规模的感受神经信号数据集
-
-每个用户的体验
-    感受注入参数 → 神经反应 → 感受曲线
-    = 输入-输出对，是神经编码的训练数据
-
-规模
-    百万用户 × 数千次体验
-    = 人类感受的神经编码地图
-    比任何神经科学实验室能收集的都大
-    因为是自愿的、长期的、真实生活场景的
-
-这个数据集（用户授权，完全脱敏）
-    可以成为神经科学最重要的研究数据来源之一
-    Feelings 做着做着，可能会推动整个领域的进步
-```
-
-**VSA 超维计算与性格锚点**
-
-```
-Feelings 的数学基底已找到正式名字——VSA（Vector Symbolic Architecture）
-MATRIX 文档里的张量/矩阵/变换全系列语言 = VSA 的同义描述
-见 docs/vsa-hyperdimensional.md + Feelings-MATRIX.md
-
-当前状态
-    VSA 数学框架对接到 Feelings 架构——已完成
-    PBM = VSA 向量——已完成
-    混音结构 = VSA 捆绑——已完成
-    shape 编码 = VSA 置换序列——已完成
-
-待推进
-    2026 年 VSA 前沿（FHRR 世界模型 / SRMU 流式记忆）→ animi 算法层集成
-    VSA 的波-几何对偶 → FPGA 物理层直接执行 VSA 操作
-    PersonalityAnchor trait → animi 类型系统实现
-    性别锚点/性格偏置 → AI 教练的 PersonalityAnchor 初始化
-    多性格基线 → 同一个 FeelingTarget 下的不同 PersonalityAnchor 实例化
-```
+这不是拟人化，是对"感受"这件事边界的诚实延伸。
 
 ---
 
-*这个 Roadmap 是活的，会随着技术和思考的演进持续更新。*
+*这个 Roadmap 是活的。阶段零的文档地图会随每一份新文档更新。阶段一到五的时间线是方向性的——技术进展会重排它们。但二十二层从电子到感受到意识注入，已经在纸上走通了。*
