@@ -364,6 +364,9 @@ docs/brand-as-common-knowledge.md        公共共识续费——
                                         印度 60°C = 不需要续费了——信号自己来了
 docs/money-trust-violence.md             碳中和认证书 = 信任层在续。
                                         暴力层（物理现实）不会认这张证的账
+docs/none-of-my-business-pbm.md        "关我何事"≠冷漠——四层距离过滤器：
+                                        空间、时间、因果、族群
+                                        通量 0.4%，刚好够说"好可怕"然后忘记
 CAPITALISM-ORIGINAL-SIN.md              种树 = 第五种吃法之外的第六条腿——
                                         让你在不需要改变的情况下觉得救了世界
 ```

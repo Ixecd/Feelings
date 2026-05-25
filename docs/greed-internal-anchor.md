@@ -292,6 +292,9 @@ docs/climate-pbm-breakdown.md         气候危机的PBM分析——
                                       信号到了，接口是空的。
                                       种树的最大效用不是吸碳——是让人安心。
                                       1.5°C是一个被当成内部锚点的外部标
+docs/none-of-my-business-pbm.md       "关我何事"≠冷漠——四层距离过滤：
+                                      空间、时间、因果、族群。
+                                      不是Bug是Feature——但在气候尺度上变成漏洞
 ```
 
 ---
