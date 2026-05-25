@@ -295,6 +295,9 @@ docs/climate-pbm-breakdown.md         气候危机的PBM分析——
 docs/none-of-my-business-pbm.md       "关我何事"≠冷漠——四层距离过滤：
                                       空间、时间、因果、族群。
                                       不是Bug是Feature——但在气候尺度上变成漏洞
+docs/five-poisons-sutra.md            五毒经——贪嗔痴谩疑不是毒。
+                                      是五种驱动力。外部锚点=毒，内部锚点=引擎。
+                                      同一根线。两个方向。
 ```
 
 ---
