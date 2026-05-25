@@ -298,6 +298,9 @@ docs/none-of-my-business-pbm.md       "关我何事"≠冷漠——四层距离�
 docs/five-poisons-sutra.md            五毒经——贪嗔痴谩疑不是毒。
                                       是五种驱动力。外部锚点=毒，内部锚点=引擎。
                                       同一根线。两个方向。
+docs/quantum-dimensional-strike.md    量子力学——高维对低维的降维打击。
+                                      经典盲区 vs 经典混沌 vs 量子叠加。
+                                      皇帝的圣旨是泊松流，不是波函数坍缩。
 ```
 
 ---
