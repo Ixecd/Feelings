@@ -301,6 +301,9 @@ docs/five-poisons-sutra.md            五毒经——贪嗔痴谩疑不是毒。
 docs/quantum-dimensional-strike.md    量子力学——高维对低维的降维打击。
                                       经典盲区 vs 经典混沌 vs 量子叠加。
                                       皇帝的圣旨是泊松流，不是波函数坍缩。
+docs/essence-of-suffering.md          苦难的本质——预期断裂的物理代价。
+                                      苦难是内部锚点的唯一建造材料。
+                                      不被接住的苦难只是物理伤害。
 ```
 
 ---
