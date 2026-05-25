@@ -304,6 +304,9 @@ docs/quantum-dimensional-strike.md    量子力学——高维对低维的降维
 docs/essence-of-suffering.md          苦难的本质——预期断裂的物理代价。
                                       苦难是内部锚点的唯一建造材料。
                                       不被接住的苦难只是物理伤害。
+docs/procreation-sovereignty.md        生育——脐带剪两次。主权从"我"成立。
+                                      托管不是股权。控制是对冲不确定性。
+                                      最大的不确定性：你连盒子里面是什么都不知道。
 ```
 
 ---
