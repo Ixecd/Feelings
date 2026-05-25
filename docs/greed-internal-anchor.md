@@ -288,6 +288,10 @@ docs/feedback-loop-failure.md         控制回路失效——三层级联故障
 docs/crypto-hoarding-pbm.md           加密货币——囤积层终极介质
                                       K线自续费共识。数学解耦暴力。
                                       囤积型提供重力，计分器型提供动量
+docs/climate-pbm-breakdown.md         气候危机的PBM分析——
+                                      信号到了，接口是空的。
+                                      种树的最大效用不是吸碳——是让人安心。
+                                      1.5°C是一个被当成内部锚点的外部标
 ```
 
 ---
