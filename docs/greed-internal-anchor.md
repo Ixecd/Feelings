@@ -310,6 +310,8 @@ docs/procreation-sovereignty.md        生育——脐带剪两次。主权从"�
 docs/education-pbm.md                 教育——底色随机，锚是自己。
                                       教育的全部职能：别挡路 + 排墙。
                                       教育不是重新掷骰子。
+docs/language-pbm.md                  语言——六件事同时在场，缺一不可。
+                                      硬件、膜双向、角色不写死、信任、余量、偶然。
 ```
 
 ---
