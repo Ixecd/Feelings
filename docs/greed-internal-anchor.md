@@ -315,6 +315,9 @@ docs/language-pbm.md                  语言——六件事同时在场，缺一
 docs/demographics-pbm.md              人口结构——物种的倒计时。
                                       生育轴、赡养轴、传递轴。
                                       正态曲线端点不够宽了——天才和兜底同时缩。
+docs/subconscious-pbm.md              潜意识不是另一个意识——
+                                      同一根PBM在意识离线/太快/不想看时继续跑。
+                                      关音乐。翻被子。不是两个人在屋里。
 ```
 
 ---
