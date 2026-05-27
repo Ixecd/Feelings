@@ -149,7 +149,7 @@ Feelings 不给公安：
 
 ```
 本文                                    Feelings 与公安——互助不渗透
-docs/legal-and-governance.md             制动≠惩罚。审判永远归法律。
+Feelings-LAW.md             制动≠惩罚。审判永远归法律。
                                         数据物理上不持有。
 docs/heart-connect.md                    蓄意作恶 → 全生态封禁 + 数据清零 + 强制解绑。
                                         → Feelings 有制裁。

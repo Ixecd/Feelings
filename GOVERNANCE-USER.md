@@ -282,7 +282,7 @@ docs/ai-coach-intensity.md               AI 教练 push_back——三档强度�
                                          → 本文 §3。
 docs/ai-respect.md                       AI 教练尊重——处罚梯度。
                                          → 本文 §3。
-docs/legal-and-governance.md             制动≠惩罚。审判永远归法律。
+Feelings-LAW.md             制动≠惩罚。审判永远归法律。
                                          数据物理上不持有。
                                          → 本文 §5、§7。
 docs/data-ownership-and-destruction.md   数据权利——所有权、导出、删除。
