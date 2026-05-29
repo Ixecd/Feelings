@@ -1,0 +1,1 @@
+docs: Feelings-NAME——实体命名决策。首选us，两个字母，纯小写。备选nos/syn/nexus/hen/ambae。产品是Feelings，实体是us。
