@@ -1,0 +1,1 @@
+docs: Core-Server-Ledger三角架构——心连心与治理违规场景下的联动分析。Core设备端PBM引擎/Server云端事件路由/Ledger不可篡改治理记录链。
