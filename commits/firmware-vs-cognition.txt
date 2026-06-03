@@ -1,0 +1,9 @@
+docs: 固件与认知——用户体验优化应该在哪一层
+
+- 新增 docs/firmware-vs-cognition.md
+- iPhone 120Hz vs Android 120Hz 六层差异解剖
+- Mac 触控板固件手势分类——SPI 直连不走 USB HID 栈
+- Feelings-OS busd + FPGA 同构设计——直连总线不经过调度器
+- 画线原则：固件层 = 判决器（硬实时、确定性状态机），应用层 = 认知器（概率推理、持续迭代）
+- Feelings 全栈层 5-10+ 的精确分层对应
+- 预期链视角——"丝滑"不是帧率做出来的，是预期链在每帧都被准时接住
