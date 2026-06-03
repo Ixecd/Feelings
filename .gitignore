@@ -4,3 +4,5 @@
 
 .vscode
 .reasonix/
+.codegraph/
+reasonix.toml
