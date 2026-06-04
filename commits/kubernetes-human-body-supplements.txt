@@ -1,0 +1,8 @@
+docs: kubernetes-as-human-body 三则补充——癌症/脑裂/脊髓反射弧 + Kubelet独立章节
+
+- §5.1 新增：癌症=僵尸Pod暴走+CRD滥用——Finalizer卡死=凋亡程序被破坏，Terminating Pod持续消耗宿主=癌细胞无限复制侵占资源。p53肿瘤抑制基因=Finalizer机制。
+- §6.1 新增：脑裂=胼胝体切断与Raft共识——裂脑人左手右手做相反决定=网络分区两组Controller创建重复Pod。胼胝体不做投票做持续同步，Raft不做投票做日志复制。共识=信息对称。
+- §七 新增（独立章节）：Kubelet=脊髓——本地闭环、缩手反射=容器自动重启。§7.1：从缩手反射到组织坏死与系统放弃——NodeLease驱逐=坏疽免疫隔离。系统放弃局部以保护全局。
+- 章节编号全部重新编排：§七→Kubelet、§八→Controller、§九→Scheduler、§十→Ingress、§十一→Service、§十二→HPA、§十三→ResourceQuota、§十四→RBAC、§十五→五个最深同构（新增15.5 胼胝体与Raft）、§十六→咬合
+- 咬合表新增Kubelet一行
+- 概览表已包含Kubelet

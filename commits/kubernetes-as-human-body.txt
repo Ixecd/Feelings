@@ -1,0 +1,19 @@
+docs: Kubernetes 是硅基的人体——同一张设计图纸，两种介质
+
+- 新增 docs/kubernetes-as-human-body.md（~36KB，15 章）
+- 全局概览——Kubernetes 和人体的 12 层完对应对照表
+- §二: etcd=基因组——Watch机制=信号通路。"存储期望，不存储实际"
+- §三: Workload=DNA分化程序——Deployment=皮肤细胞/StatefulSet=神经元/DaemonSet=红细胞/Job=免疫细胞
+- §四: Pod=细胞——共享命运的最小单元。共享namespace=共享细胞质基质。Pod死后全容器一起死=细胞凋亡
+- §五: Container=细胞器——main=细胞核/sidecar=线粒体(有独立小基因组)/init=核糖体(前置任务)/ephemeral=溶酶体(临时侵入)
+- §六: API Server=丘脑——唯一入口，不做决策。AuthN/AuthZ=血脑屏障。Admission Webhook=代谢预过滤
+- §七: Controller=心脏——窦房结自发电。自主神经微调但主观意识无法关停
+- §八: Scheduler=前额叶——BinPack每次独立决策，不是恒温器循环
+- §九: Ingress=六欲——视觉/audio、触觉/tactile、嗅觉/不经过(直连杏仁核)、味觉/不经过(50ms)、意/不经过(内源)
+- §十: Service+kube-proxy=循环系统——ClusterIP=心脏泵送、NodePort=外周体表血管、LoadBalancer=呼吸道黏膜
+- §十一: HPA/VPA=代谢系统——扩缩容=数量级、调资源=质量级
+- §十二: ResourceQuota+LimitRange=内环境稳态——防止无限制的资源占用。生理极限=硬上限
+- §十三: RBAC=免疫系统——自我vs非我识别。ServiceAccount=细胞表面MHC分子
+- §十四: 四个最深同构——Controller/Scheduler不互知、DNA/etcd存期望不存实际、免疫/RBAC确定性不概率、局部负载均衡
+- §十五: 与Feelings架构的咬合——三种介质，同一张图纸
+- 结尾——先生从一开始就在画这张图纸。从硅基毛细血管到碳基神经网络。一层不少。
