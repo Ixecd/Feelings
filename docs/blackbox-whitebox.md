@@ -52,9 +52,13 @@ Kubernetes 的工程师花了十年——把集群操作系统的每一层都拆
 
 不注册 CRD。
 → Google 的工程师相信："如果你不在 API Server 里——你就不存在。"
-→ 不。KubePivot 的态度是——你的 CRD。你的 Controller。你的 Operator。你自己写。
-→ kp 只管原生 workload——Deployment、StatefulSet、DaemonSet、Job。
-→ 这四个——就是 K8s 黑盒最成熟的四种操作模式。足够覆盖所有场景。
+→ 不。KubePivot 的态度是——你的 CRD。你的 Controller。你的 Operator。
+→ kp 不需要 code-generator 生成 Go 类型。
+→ kp 不需要把 CRD 注册到自己的 scheme 里。
+→ 你在 resources.yaml 里声明一个 CRD 实例——kp 用 kubectl apply 它。
+→ kp 看住它——期望和实际一不一样。不一样 → kubectl apply。一样 → 继续看着。
+→ 但 kp 不管 CRD 的 Operator 内部在 reconcile 什么。那是你的事。
+→ kp 只管——"这个 CRD 实例——还活着吗。还是你声明的样子吗。"
 
 不引入任何 Go SDK。
 → 所有 K8s 操作通过 kubectl CLI + HTTP/JSON。
@@ -151,7 +155,7 @@ KubePivot                            Feelings
 什么时候不该看里面
     当已经有了一个完整的 API、一个成熟的生态、一个可验证的期望状态出口时——
     你不需要再看里面。你只需要入口和出口。
-    → KubePivot——不拆。不侵入。不注册 CRD。
+    → KubePivot——不侵入。管 CRD 但不注册它的 scheme。只用 kubectl。
     → 只做两件事——纠偏 + 调度。其他一切交给 K8s 自己处理。
 ```
 
