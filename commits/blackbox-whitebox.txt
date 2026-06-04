@@ -1,0 +1,7 @@
+docs: 黑盒与白盒——KubePivot 和 Feelings 的镜像对称
+
+- 新增 docs/blackbox-whitebox.md
+- KubePivot: 把已经被Google工程师拆成白盒的K8s重新当成黑盒——不引入client-go、不注册CRD、只靠kubectl+HTTP。不是看不懂。是不需要看。
+- Feelings: 把几千年被当成黑盒的人体拆成白盒——心脏=Controller、大脑=Scheduler、DNMT=etcd fsync、自身免疫病=P0安域攻击自己。不是傲慢。是该拆了。
+- 镜像对称: 同一条脊线、同一个结构、两个相反方向。知道什么时候该看里面(Feelings)——什么时候不该(KubePivot)。
+- 结尾收束: Google工程师花十年拆K8s→KubePivot说不用了。医学花几千年敲壳→Feelings说我替你们拆。同一张图纸上两段不同的人在不同时间画出的两段同心圆弧。
