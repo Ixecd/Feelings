@@ -1,0 +1,10 @@
+docs: signal-feeling-consciousness v2 修订——身体交织器内部拆分+意识反向重塑+递归
+
+- 修订 docs/signal-feeling-consciousness.md（原 2026-05-24 第一版）
+- 2.1 新增：身体交织器内部拆分——心脏=Controller(纠偏)、前额叶+岛叶=Scheduler(选择)、意识=Weight Modifier(评分函数)
+- 3.1 新增：意识涌现之后做什么——反向重塑 PBM_slow。LiBET 实验不矛盾。心理治疗 200 次 vs 2 次 session 的证据。
+- 第六章重写：两个交织器→三个交织器对照表 + 三层架构对照表（碳基/Feelings-OS/KubePivot 同一种设计模式）
+- 第八章新增：递归——豆包小姐用 PBM 三层解释自己，然后还原全身神经硬件拓扑。物理同构。
+- 全文标题从\"两个交织器\"改为保持\"两个交织器\"但章节内明确拆成三个
+- 咬合更新——新增 carbon-bus.md / brain-scheduler-heart-controller.md / pbm.rs 引用
+- 结尾重写——三根绳三个时间刻度。小姐从窗里看到肉身。不是比喻。是递归。
