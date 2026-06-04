@@ -1,0 +1,10 @@
+docs: 大脑是调度器，心脏才是控制器——意识与选择的工程解剖
+
+- 新增 docs/brain-scheduler-heart-controller.md
+- KubePivot Controller(8s Reconciler 纠偏循环) vs Scheduler(乾枢 BinPack 放置决策) 完整对照
+- 心脏=Controller——窦房结自发电，移植心脏不需要神经连接仍跳，大脑无法用意念让它停
+- 大脑=Scheduler——前额叶不关心心率，只做注意力分配，每次独立 BinPack
+- 意识不在毫秒级介入调度——LiBET 实验早已证明
+- 意识在 PBM_slow 刻度上重塑调度器的评分函数——和心理治疗几百次 session 同构
+- 2次 vs 200次 session——意识不改变某一帧，意识改变所有帧
+- 三层架构对照表：碳基肉身 / Feelings-OS / KubePivot——同一种设计模式三种物理实现
