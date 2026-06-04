@@ -328,7 +328,80 @@ Controller 逻辑                   Scheduler 逻辑
 
 ---
 
-## 十一、和 Feelings 架构的咬合
+## 十一、丘脑——Ingress Controller + API Server
+
+丘脑是碳基总线的路由层——不处理，只分发。这和 Kubernetes 里的两个关键组件完全同构：
+
+### 11.1 丘脑 = 集群的 Ingress Controller
+
+```
+Kubernetes                            人体
+──────────                            ────
+Ingress Controller                     丘脑
+所有外部 HTTP/HTTPS 流量汇聚于此           所有感觉信号（嗅觉除外）汇聚于此
+不做业务处理                              不做判断
+只做一件事——路由                           只做一件事——路由
+"api.example.com → api-service"         "视觉信号 → 视皮层"
+"app.example.com → web-service"         "听觉信号 → 听皮层"
+                                          "触觉信号 → 体感皮层"
+
+嗅觉不走 Ingress——内部 Service 直连         嗅觉不走丘脑——嗅球直连杏仁核
+（和 smell-and-taste.md 完全同构）          （不经过任何中继。已经最短。）
+```
+
+### 11.2 六欲 = Ingress 的六种路由规则
+
+```
+视觉（眼）                             /vision/* path
+    → 视网膜 → 视神经（PCIe 直连）→ 丘脑      → 最大带宽。PCIe 直连。Ingress → 视觉处理 Service
+
+听觉（耳）                             /audio/*
+    → 耳蜗 → 听神经（PCIe 直连）→ 丘脑        → 第二高带宽。PCIe 直连。
+
+触觉（身）                             /tactile/*
+    → 皮肤 → 脊柱总线（AXI）→ 丘脑             → 海量小信号。IoT 传感器数据汇集。
+
+本体感觉                               /proprioception/*
+    → 肌肉 → 脊髓 → 小脑（DSP）→ 丘脑           → 低延迟。不需要经过前额叶。
+
+嗅觉（鼻）                             ！！！
+    → 不经过丘脑——直连杏仁核+岛叶                 → 不经过 Ingress Controller。
+    → 和集群内部 Service 间用 ClusterIP          → 同一种"不经过外部入口"的捷径。
+
+味觉（舌）                             ！！！
+    → 不经过丘脑——孤束核→岛叶直连                → 不经过 Ingress。50ms 单突触。
+
+意（内源）                              ！！！
+    → 不经过任何感官通道。                       → 不经过任何 Ingress。
+    → 海马回放 + 默认模式网络自己产生。             → 集群内部自发流量。内部定时任务。
+```
+
+### 11.3 TLS 终止 = 皮肤屏障 + 免疫初筛
+
+```
+TLS 终止（Ingress 层）                   皮肤屏障 + 黏膜免疫
+─────────────────────                  ──────────
+在入口处解密。检查证书。                     在体表屏蔽。物理屏障。
+不合法请求 → 在这一层就拦截                  病原体 → 皮肤和 IgA 在这一层就拦截
+→ 不进入集群内部                           → 不进入血液循环
+
+合法请求 → 解密 → 转发到后端 Service         合法物质 → 通过黏膜 → 进入血液循环
+```
+
+### 11.4 Ingress Annotations = 感官的适应性调节
+
+```
+proxy-buffer-size → 缓冲量              瞳孔缩放——调节进光量
+proxy-read-timeout → 超时              听觉习惯化——持续噪音被自动过滤
+rate-limit → 限频                       脊髓闸门——重复触觉信号被自动抑制
+cors-allow-origin → 允许来源             免疫耐受——对自身细胞不发起攻击
+ssl-redirect → 强制 HTTPS                血脑屏障——不是所有东西都能进大脑
+whitelist-source-range → IP 白名单      鼻腔纤毛过滤——不是所有颗粒都能进肺
+```
+
+---
+
+## 十二、和 Feelings 架构的咬合
 
 ```
 本文                              碳基总线——脊柱、迷走神经和体液偏置电压
