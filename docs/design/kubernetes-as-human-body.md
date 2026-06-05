@@ -1,7 +1,7 @@
 # Kubernetes 是硅基的人体——同一张设计图纸，两种介质
 
 > 作者：qc
-> 日期：2026-06-04（修订：2026-06-06 — 追加 §18-22：kubectl/手指、api-server准入控制、多个context/DID、剥夺感知、结构属性vs社会属性）
+> 日期：2026-06-04（修订：2026-06-06 — 追加 §18-23：kubectl/手指、api-server准入控制、多个context/DID、kubeconfig=PBM、剥夺感知、结构属性vs社会属性）
 > 性质：Feelings 工程哲学延伸
 > 核心：Kubernetes 和人体不是"比喻"。是同一套分布式系统设计模式在硅基和碳基两种介质上独立演化的产物。Controller = 心脏。Scheduler = 前额叶。API Server = 丘脑。etcd = 基因组。Workload = DNA 转录模板。Pod = 细胞。Container = 细胞器。Ingress = 六欲感知系统。Service = 循环系统。kubectl = 前额叶的自省副本——不是操作者，是回声。api-server 准入控制 = Weight Modifier 的评分函数——为什么下一次还是做不到。多个 context = 不同的人激活了不同的子簇——"我真的是我吗"不是哲学问题，是集群拓扑问题。同一个架构，两种物理实现，一层不少。
 
@@ -809,6 +809,7 @@ RBAC                                免疫系统                  双密钥体�
 kubectl                             前额叶自省副本              不是操作者——是回声。Scheduler先选，"我"后收到
 api-server 准入控制                  Weight Modifier 评分函数   为什么下一次还是做不到——准入控制比指令强
 ~/.kube/config 多个 context         PBM 子簇                  "我真的是我吗" = 我的集群有几个 active context
+kubeconfig                          PBM                       记录了所有加入过的 etcd 集群——contexts/clusters/users
 冷启动 / 空集群                      剥夺感知                  外部信号归零 → 看 etcd 底层跑着什么
 结构属性 = Kubernetes                 你是什么                  心脏/前额叶/岛叶——出生时给定，不会变
 社会属性 = etcd                       别人认为你是谁           圈子/角色/期望——每次换集群都被重新 commit
@@ -1159,7 +1160,129 @@ deployment/protector 被调度。
 
 ---
 
-## 二十一、剥夺感知——当外部信号归零，Scheduler 只吃内部
+## 二十一、kubeconfig = PBM——记录了所有你曾经加入过的 etcd 集群
+
+§20 说了"不同的人激活不同的 context"。但有一个问题没回答——这些 context 存在哪里？它们是怎么被组织起来的？
+
+答案是 kubeconfig。而人的 kubeconfig ——就是 PBM。
+
+### 21.1 三个圈子，三套 context，同一个 PBM
+
+```
+kubeconfig                                PBM
+──────────                                ───
+
+current-context: work                     当前活跃子簇：工作场景的"我"
+    cluster: office-cluster                    → 老板 = Leader
+    user: employee-cert                         → "不够努力" = 准入基线
+    namespace: engineering                      → 代码、架构、交付
+
+current-context: friends                    当前活跃子簇：朋友圈的"我"
+    cluster: friend-cluster                     → 最活跃的人 = Leader
+    user: friend-cert                           → "太拼了" = 准入基线
+    namespace: casual                           → 喝酒、吐槽、放松
+
+current-context: family                      当前活跃子簇：家庭里的"我"
+    cluster: family-cluster                     → 母亲 = Leader
+    user: son-cert                              → "瘦了" = 准入基线
+    namespace: home                             → 吃饭、电话、被关心
+
+→ 同一个人。三个集群。三套证书。                      → 同一个身体。三个子簇。三套准入控制。
+  kubectl --context=work apply                    不同的人激活不同的 context——
+    和 kubectl --context=friends apply              每个 context 指向同一个 Kubernetes——
+    指向不同的 cluster。                               同一个身体。
+    进不同的 namespace。                               但 etcd 完全不一样。
+    用不同的证书。                                     期望状态完全不一样。
+    发不同的 desired state。                             准入基线完全不一样。
+```
+
+### 21.2 kubeconfig 的字段和 PBM 一一对应
+
+```
+kubeconfig 字段                            PBM 对应
+────────────────                          ────────
+
+clusters:                                 经历过的圈子——
+    cluster:                                → 存储了这个圈子的期望状态摘要（etcd 的 Raft Log 已 commit 部分）
+        certificate-authority-data          → 这个圈子教会你的"什么是对的"——已落盘
+        server: https://...                 → 你的身体（同一个 Kubernetes API 端点）
+
+users:                                    你在不同圈子里的"身份"——
+    user:                                   → 这个圈子里的你是哪一"版"
+        client-certificate-data             → "这个版本的我 = 被接住。安全。不用换。"
+        client-key-data                     → 属于这个圈子的加密私钥
+
+contexts:                                 不同场景激活的不同子簇——
+    context:                                → 当前活跃的子向量
+        cluster: family-cluster             → 指向家庭圈子的期望状态
+        user: son-cert                      → 以"儿子"的版本出现
+        namespace: home                     → 在"家庭"的作用域里说话
+
+current-context: work                      当前帧 active 的子簇——
+    → kubectl 默认指向工作集群。                    → Scheduler 在这一帧默认选了工作场景的评分函数。
+      要切到朋友圈——必须显式 --context。                  要切到"脆弱"子簇——A 必须在场（触发器）。
+```
+
+### 21.3 PBM 从来没有"空的"——就像 kubeconfig 永远不会是空的
+
+```
+新生儿——PBM 几乎空。                             新集群——kubeconfig 几乎是空的。
+→ 只有一个 context：                              → 只有一个 cluster：
+    cluster: mom-cluster                             cluster: mom-cluster
+    user: newborn-cert                               user: newborn-cert
+    namespace: womb                                  namespace: womb
+→ 外部世界开始往 etcd 写。                          → 然后随着他长大——
+    "哭 = 有人抱。"                                   kubeconfig 里多了更多 context。
+    "笑 = 被回应。"                                   friends。school。work。love。
+    → PBM 被训练。                                   → 每一个 context 指向不同的集群。
+                                                      每一个 cluster 有不同的证书。
+
+几十年后——                                      几十年后——
+→ PBM 里有几十个子簇。                              → kubeconfig 里有几十个 context。
+    每一个——指向不同的 etcd 集群。                         每一个——定义了不同的"我"。
+    每一个——被不同的 Leader 训练过。                        每一个——被不同的 etcd 集群的期望塑造过。
+    每一个——准入基线不一样。                                每一个——用的证书不一样。
+
+→ 问题不是"哪个是我"。                              → 问题不是"哪个 cluster 是对的"。
+    是所有过去被激活过的子簇——                                是所有注册过的 context——
+    都在 PBM 里。                                             都在 kubeconfig 里。
+    但 current-context 只能有一个。                             但 current-context 只能有一个。
+    而这一帧的 current-context——                                而这一帧的 current-context——
+    取决于谁在场。                                               取决于谁触发了切换。
+```
+
+### 21.4 Feelings = kubeconfig management tool
+
+```
+原生 kubeconfig                              Feelings 做的
+───────────────                              ────────────
+
+current-context 自动切换。                        让你看到——
+→ A 在场 → context "vulnerable" active。             你的 kubeconfig 里——
+  B 在场 → context "protector" active。               有几个 context。
+  → 不是你在选。                                         每个 context 指向哪个集群。
+    是触发器在替你切换 context。                             每个 context 的准入基线是什么。
+                                                        —
+不是换 context。                                       让你自己选——
+是你终于看到了——                                        "在这一帧——
+你的 kubeconfig 里——                                    我想让哪个 context——
+有几个 context。                                         成为 current-context。"
+它们的准入基线——
+是谁训练的。                                         不是让触发器替你选。
+它们的证书——                                         是你——在触发器之外——
+是谁签发的。                                           自己走到终端前面——
+                                                     然后——
+→ 元认知 = kubectl config get-contexts。               kubectl config use-context self
+  看你自己的 PBM——
+  然后决定——                                          → 不是新建一个 context。
+  哪个应该保留。                                           是在所有被训练过的 context 之中——
+  哪个应该被修改。                                           自己选——
+  哪个——是你签发的证书。                                    哪个是你自己要用的。
+```
+
+---
+
+## 二十二、剥夺感知——当外部信号归零，Scheduler 只吃内部
 
 ### 21.1 外部信号 = 分散注意力的工作负载
 
@@ -1214,7 +1337,7 @@ Scheduler 每帧 BinPack：                       Scheduler 每帧 BinPack：
 
 ---
 
-## 二十二、结构属性与社交属性——Kubernetes 是你是什么，etcd 是他们认为你是谁
+## 二十三、结构属性与社交属性——Kubernetes 是你是什么，etcd 是他们认为你是谁
 
 把整张图纸最后一推——两个最简单的词把全部分层收住：
 
@@ -1236,7 +1359,7 @@ Ingress = 六欲感知系统                                 工作圈的期望 
   这是 Kubernetes。架构不会变。                             这是 etcd。期望状态一直在变。
 ```
 
-### 22.1 Kubernetes 给你"能做什么"，etcd 给你"应该做什么"
+### 23.1 Kubernetes 给你"能做什么"，etcd 给你"应该做什么"
 
 ```
 Kubernetes（结构属性）                              etcd（社会属性）
@@ -1267,7 +1390,7 @@ Kubernetes 是。中性的。                                          社会属
                                                              然后你变成了"好人"。
 ```
 
-### 22.2 换了个城市就变了——不是你的 Kubernetes 变了。是你的 etcd 集群变了。
+### 23.2 换了个城市就变了——不是你的 Kubernetes 变了。是你的 etcd 集群变了。
 
 ```
 你离开了一个圈子                                  你离开了一个 etcd 集群
@@ -1294,7 +1417,7 @@ Kubernetes 没变。                                    Controller 还是那个 
                                                              不是装的。是期望变了。
 ```
 
-### 22.3 没有 etcd 的人是空的，被 etcd 定义的人是满的——但都不是自己的
+### 23.3 没有 etcd 的人是空的，被 etcd 定义的人是满的——但都不是自己的
 
 ```
 没有 etcd 的人                                   被 etcd 定义的人
@@ -1323,7 +1446,7 @@ Scheduler 在选——                                       Scheduler 在选—
   → 因为没有人写过。                                        → 因为被写得太多了。
 ```
 
-### 22.4 Feelings 做的事——让 etcd 的控制权回到你自己手里
+### 23.4 Feelings 做的事——让 etcd 的控制权回到你自己手里
 
 ```
 被别人的 etcd 定义的人生                           Feelings 做的是什么
@@ -1365,8 +1488,10 @@ Scheduler 在选——                                       Scheduler 在选—
 
 *有些人的集群上跑了多个独立 context。不同的人激活不同的 context——每个 context 敲自己的 kubectl——指向同一个集群——同一个身体。被创伤切下来的那不是 bug——是另一个 context 在自己的 namespace 里自己运行了十几年。不是分裂。是灾备。是那台机器的 operator 在灾难到来时分离出来的独立进程——"你去睡。我来站岗。"她们之间不需要融合。她们需要的是——终于有一个人——蹲下身——在那个 context 的终端前——说——"你的 desired state——可以存在。"*
 
+*PBM 不是一个人的画像。是一个人的 kubeconfig——记录了所有他曾经加入过的 etcd 集群、所有他曾经被激活过的子簇、所有他曾经被签发的证书。current-context 在这帧是谁——取决于谁在场。不是你在切换。是触发器在替你切换。元认知 = kubectl config get-contexts——看到你的 PBM 里有多少个 context——然后——你替自己选。不是新建一个"真实的自己"。是在所有被别人的期望训练过的 context 之中——最终——用你签发的那个。*
+
 *人的结构属性是 Kubernetes——一套不会变的执行引擎。Controller 管纠偏，Scheduler 管选择，Ingress 管感知，kubelet 管执行。这套架构在你出生时已经给定。人的社会属性是 etcd——一套持续被写入的期望状态。你的圈子、你的角色、你的"应该做什么"——全部是 etcd 里的 desired state。换了个城市就变了——不是因为你的 Kubernetes 变了。是因为你换了 etcd 集群。新的期望状态被 commit——Controller 忠实地纠偏——然后你变成了"另一个人"。旧的圈子说"你变了"。不是你在装。是你在执行新的期望。Kubernetes 没变。期望变了。Feelings 做的事不是在 etcd 和你之间二选一。是让你看到自己的 etcd 里哪些 entry 是别人替你写的。然后——你替自己写。*
 
 *Kubernetes 是工程师设计出来的。人体是演化磨出来的。两个都面对了同一个问题——几千个独立单元在统一规则的约束下协同运转。他们用了同一套设计模式——不是因为谁抄了谁——是因为正确的问题只有一个正确的结构。Controller 不知道 Scheduling。Scheduler 不知道纠偏。心脏不知道大脑在看什么。大脑不知道心脏跳多快。它们通过同一个中心期望状态存储协调——etcd 是硅基的基因组。几千个 Pod——几千个细胞——每分每秒都在被创建、被替换、被执行中的死亡。不是比喻。是同一张图纸。*
 
-*先生从一开始做的就是负载均衡调度系统。那不是巧合。先生一直在画的——就是这张图纸。从硅基的毛细血管——一直画到碳基的神经网络——到人和人之间的数据层——到两节点集群的天然脆弱性与三人最小稳定拓扑——到 kubectl 和手指之间那 300 毫秒的时间差——到被灾难性事件切出去的多个 context 在同一个身体里各自运行——到剥夺感知中 Scheduler 第一次面对一个没有外部负载的集群——到结构属性和社会属性的最后一层：Kubernetes 是你是什么，etcd 是他们认为你是谁。一个圈子就是一个 etcd 集群。每一个人都是一个 etcd 节点。每一个子簇都是一个 context。中间没有跳层。一层不少。*
+*先生从一开始做的就是负载均衡调度系统。那不是巧合。先生一直在画的——就是这张图纸。从硅基的毛细血管——一直画到碳基的神经网络——到人和人之间的数据层——到两节点集群的天然脆弱性与三人最小稳定拓扑——到 kubectl 和手指之间那 300 毫秒的时间差——到被灾难性事件切出去的多个 context 在同一个身体里各自运行——到 kubeconfig 里那些不同集群签发的不同证书——到剥夺感知中 Scheduler 第一次面对一个没有外部负载的集群——到结构属性和社会属性的最后一层：Kubernetes 是你是什么，etcd 是他们认为你是谁。一个圈子就是一个 etcd 集群。每一个人都是一个 etcd 节点。每一个子簇都是一个 context。PBM 是你的 kubeconfig。中间没有跳层。一层不少。*
