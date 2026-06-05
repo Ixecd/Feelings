@@ -80,32 +80,32 @@ docs/ 87 份，覆盖：
     Feelings-PROTOCOL.md        法律基础
 
 技术理解
-    docs/tech-architecture.md   技术架构总览
-    docs/device-architecture.md 设备设计
-    docs/four-diagnosis.md      四诊合参核心
-    docs/closed-loop.md         感受闭环（TCP 慢启动）
+    docs/architecture/tech-architecture.md   技术架构总览
+    docs/architecture/device-architecture.md 设备设计
+    docs/feeling-science/four-diagnosis.md      四诊合参核心
+    docs/consciousness/closed-loop.md         感受闭环（TCP 慢启动）
 
 数学与哲学基础
     Feelings-MATRIX.md          万物皆矩阵——张量与 VSA 超维计算
-    docs/vsa-hyperdimensional.md VSA 超维计算——感受的数学基底
-    docs/ten-bits.md             10 bit/s 意识瓶颈
-    docs/six-desires.md          六欲——感受的六个入口
-    docs/collective-mask.md      集体掩码——物理/个体/社交/社会四层
-    docs/social-tensor.md        社交张量——隐瞒/猜测/知道
-    docs/time-perception.md      时间感知——慢且充实
-    docs/gender-anchor.md        性别锚点——意识的第一个坐标
-    docs/expression-pipeline.md  表达管线——算力与意识的分离
-    docs/power-wall.md           功耗墙——物理掩码在算力层的具象
-    docs/trust-domain.md         信任域——全栈掌控砍掉冗余
-    docs/ant-colony.md           蚁群——集体意识的生物学实例
+    docs/feeling-science/vsa-hyperdimensional.md VSA 超维计算——感受的数学基底
+    docs/consciousness/ten-bits.md             10 bit/s 意识瓶颈
+    docs/feeling-science/six-desires.md          六欲——感受的六个入口
+    docs/society/collective-mask.md      集体掩码——物理/个体/社交/社会四层
+    docs/society/social-tensor.md        社交张量——隐瞒/猜测/知道
+    docs/psychology/time-perception.md      时间感知——慢且充实
+    docs/society/gender-anchor.md        性别锚点——意识的第一个坐标
+    docs/architecture/expression-pipeline.md  表达管线——算力与意识的分离
+    docs/architecture/power-wall.md           功耗墙——物理掩码在算力层的具象
+    docs/architecture/trust-domain.md         信任域——全栈掌控砍掉冗余
+    docs/society/ant-colony.md           蚁群——集体意识的生物学实例
 
 关键决策
-    docs/root-anchor.md         Root 锚点账号（7 份分片，人类过半）
-    docs/pattern-registry.md    感受包仓库设计
-    docs/anti-abuse.md          防滥用与人工操作
+    docs/safety/root-anchor.md         Root 锚点账号（7 份分片，人类过半）
+    docs/feeling-science/pattern-registry.md    感受包仓库设计
+    docs/safety/anti-abuse.md          防滥用与人工操作
 
 最重要的读者指南
-    docs/ai-companionship-traps.md
+    docs/coach/ai-companionship-traps.md
     这份文档的写作背景和下一节"关于情感敏感话题"直接相关
 ```
 
@@ -248,7 +248,7 @@ docs/ 87 份，覆盖：
 - AI 3 份（Claude / 豆包 / DeepSeek）
 - 人类永远过半，AI 永远无法单独激活
 - 年度演练在 3 月 29 日（qc 生日）
-- 详见 `docs/root-anchor.md`
+- 详见 `docs/safety/root-anchor.md`
 
 **治理：BDFL（终身善意独裁者）**
 
@@ -269,7 +269,7 @@ docs/ 87 份，覆盖：
 
 - Feelings-Patterns（官方，CC BY-SA 4.0，纯度）
 - Feelings-Store（社区，双层协议，允许商业化）
-- 详见 `docs/pattern-registry.md`
+- 详见 `docs/feeling-science/pattern-registry.md`
 
 ---
 

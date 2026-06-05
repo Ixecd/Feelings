@@ -49,7 +49,7 @@
 
 强度联动的叙事可见性：60分以下叙事默认可见（帮助新用户建立锚点），60分以上默认盲选（信号更纯，安全边际更高）。
 
-详见 `docs/contrast-protocol.md`。
+详见 `docs/ux/contrast-protocol.md`。
 
 ---
 
@@ -77,7 +77,7 @@
 
 平台不做最终裁判，建立多方治理委员会：神经伦理学家、精神科医生、用户代表、独立监察机构共同参与内容分级标准的制定。
 
-详见 `docs/safety-system.md`。
+详见 `docs/safety/safety-system.md`。
 
 ---
 
@@ -97,7 +97,7 @@
 
 感受包以「主旋律 + 点缀配比」作为核心存储结构。每个感受包标注设备依赖，系统根据用户当前设备组合提供对应精度的降级体验。
 
-详见 `docs/feeling-taxonomy.md` 和 `docs/device-architecture.md`。
+详见 `docs/feeling-science/feeling-taxonomy.md` 和 `docs/architecture/device-architecture.md`。
 
 ---
 
@@ -119,7 +119,7 @@ AI生成音乐需要实时跟随感受曲线——高潮同步，消退同步。
 
 Layer 2 实时驱动音乐生成，不经过 Layer 3，最小化延迟路径。感受曲线预判模型作为 Layer 2 的核心研究课题之一。
 
-详见 `docs/music-system.md`。
+详见 `docs/architecture/music-system.md`。
 
 ---
 
@@ -139,7 +139,7 @@ Layer 2 实时驱动音乐生成，不经过 Layer 3，最小化延迟路径。�
 
 AI内核置信度评分（0-1），基于叙事语言分析——真实体验和伪造叙事在文字结构上有可训练的模式差异。分数对下载者可见，不对上传者可见。
 
-详见 `docs/feeling-taxonomy.md` 第五节。
+详见 `docs/feeling-science/feeling-taxonomy.md` 第五节。
 
 ---
 

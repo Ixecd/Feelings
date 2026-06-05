@@ -47,29 +47,29 @@ Feelings 需要二十二层，是因为 Feelings 的终点不是 JSON，是神�
  5      固件与实时系统      汇编/裸机编程、C/Rust 硬件抽象层    驱动层，传感器接口，数模转换
                            RTOS 任务调度与中断管理            安全调度域与感受调度域物理隔离（自研特性）
  6      设备硬件            工业设计，材料，供应链              耳后/后颈/腕部/颞部/飞行体/纺织物/薄膜
-                           设备贴片定位的物理载体              见 docs/device-architecture.md
+                           设备贴片定位的物理载体              见 docs/architecture/device-architecture.md
  7      信号处理            FIR/IIR/FFT，自适应滤波            Layer 2 核心——神经信号解码
-                           可跨 FPGA/固件/云端多层执行         见 docs/engine-design.md
+                           可跨 FPGA/固件/云端多层执行         见 docs/architecture/engine-design.md
  8      交织管线            Token→AST→IR→CodeGen              animi 八 Pass 双流水线架构
                            .anim源码→FSIR→PSIR→DSIR→ESIR      见 Feelings-LANGUAGE.md
  9      类型系统            感受类型推导，安全约束检查            双层感受原子体系（核心+沙盒）
                            交织期安全验证                       见 Feelings-LANGUAGE.md 第三章
 10      数据架构            流式存储，时间序列                   PostgreSQL + NATS + Redis + MinIO
-                           感受 session 数据的本地与云端分层     见 docs/closed-loop.md
+                           感受 session 数据的本地与云端分层     见 docs/consciousness/closed-loop.md
 11      网络协议            流优先 UDP/QUIC，0-RTT 重连          设备间同步，云端交互
-                           不干扰本地信号闭环                    见 docs/network-protocol.md
+                           不干扰本地信号闭环                    见 docs/architecture/network-protocol.md
 12      应用服务            API/SDK/业务逻辑                    Feelings-Server（Go），gRPC 双向流
 13      AI/ML              多模态融合推理                      AI 教练，四诊合参融合矩阵
-                                                              见 docs/ai-coach.md,
-                                                                 docs/four-diagnosis.md
+                                                              见 docs/coach/ai-coach.md,
+                                                                 docs/feeling-science/four-diagnosis.md
 14      客户端              UI/UX，移动端/桌面端                状态面板，感受地图，自省界面
-                                                              见 docs/ui-design.md,
-                                                                 docs/status-panel-design.md
+                                                              见 docs/ux/ui-design.md,
+                                                                 docs/ux/status-panel-design.md
 15      安全体系            加密，认证，审计                     TEE+生物特征+双调度域+审计日志
-                                                              见 docs/security-design.md,
-                                                                 docs/access-control.md
+                                                              见 docs/safety/security-design.md,
+                                                                 docs/safety/access-control.md
 16      合规认证            电磁兼容，生物安全，医疗合规           近人体设备硬性准入门槛
-                           各国本地化认证                      见 docs/compliance.md
+                           各国本地化认证                      见 docs/safety/compliance.md
 17      设备运维            状态监控，固件升级，故障排查           全链路稳定运行保障
                            设备的持续生命周期管理
 18      治理经济            协议，分成，账本                     BDFL + SPL（主账本）+ 存储池
@@ -77,12 +77,12 @@ Feelings 需要二十二层，是因为 Feelings 的终点不是 JSON，是神�
                                                               见 Feelings-PROTOCOL.md,
                                                                  Feelings-LEDGER.md
 19      解剖锚点            耳朵（迷走神经耳支唯一体表暴露点）      设备贴片定位的解剖依据
-                           皮肤（最大感受接口，CT纤维通路）       见 docs/ear-as-anchor.md,
-                                                                 docs/skin-as-interface.md
+                           皮肤（最大感受接口，CT纤维通路）       见 docs/architecture/ear-as-anchor.md,
+                                                                 docs/architecture/skin-as-interface.md
 20      神经生理            迷走神经耳支，CT纤维，岛叶，EEG        设备→神经→脑→感受闭环
-                           10⁹→10⁰ bit/s 压缩瓶颈              见 docs/ten-bits.md
+                           10⁹→10⁰ bit/s 压缩瓶颈              见 docs/consciousness/ten-bits.md
 21      感受                主观体验本身                         深睡时长验证，身体信了
-                           验证标准：身体比语言先确认             见 docs/achievement-system.md
+                           验证标准：身体比语言先确认             见 docs/ux/achievement-system.md
 ```
 
 **二十二层。从硅里的电子，到人里的感受。**
