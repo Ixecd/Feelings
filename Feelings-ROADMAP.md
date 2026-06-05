@@ -228,11 +228,27 @@
 
 ### 零.12 当前待办
 
-- [ ] `docs/pattern-registry.md` 第三章——感受原子入 registry 流程正式定稿
-- [ ] `Feelings-LANGUAGE.md` animi v0.1 实现启动——Pass 0（LexParse）
-- [ ] 非侵入式 EEG + 迷走神经刺激的联合可行性验证
-- [ ] 第一版四诊合参传感器融合的硬件选型方案
-- [ ] AI 教练训练数据集构建——人类优秀教师的对话样本收集
+**已完成（2026-06-05 更新）**
+
+- [x] `docs/pattern-registry.md` 第三章——感受原子标识体系（来源/质量/技术参数/版本）已完整
+- [x] `Feelings-LANGUAGE.md` animi v0.1 Pass 0-5 已实现——[Anim](https://github.com/Ixecd/Anim) 仓库 `src/` 包含 lexer/parser/typeck/fsir/guard 完整代码，输出 FSIR JSON
+- [x] 心理学框架完整——6 篇 Scheduler/Controller/Weight Modifier 案例 + metacognition + brain-scheduler-heart-controller 总基座
+  - `docs/praise-backfire.md` — 夸赞反效果
+  - `docs/poor-generous-rich-stingy.md` — 穷大方富抠门
+  - `docs/love-brain-shutdown.md` — 恋爱智商归零
+  - `docs/procrastination.md` — 拖延不是懒
+  - `docs/trauma-fork.md` — 创伤分叉（温柔vs刻薄）
+  - `docs/nagging-backfire.md` — 催越急越磨蹭
+  - `docs/benign-vs-toxic-competition.md` — 良性vs恶性竞争
+  - `docs/metacognition.md` — 元认知
+  - `docs/brain-scheduler-heart-controller.md` — 总基座（Scheduler/Controller/Weight Modifier/DampingMatrix）
+- [x] `Feelings-Core/VALUES-TO-CODE.md` — 价值观→代码桥接地图。三大类文档（红线/心理学框架/架构）→Core 模块映射+实现优先级矩阵。**价值观文档体系 === Core 的需求文档。**
+
+**待办（已移至阶段一硬件研究）**
+
+- [ ] 非侵入式 EEG + 迷走神经刺激的联合可行性验证 → 阶段一.1.1
+- [ ] 第一版四诊合参传感器融合的硬件选型方案 → 阶段一.1.1
+- [ ] AI 教练训练数据集构建——人类优秀教师的对话样本收集 → 阶段一.1.2
 
 ---
 
@@ -254,6 +270,8 @@
         1ms 帧级多设备时钟同步（当前 BLE 最小连接间隔 7.5ms）
         可穿戴散热——皮肤接触面温度 < 40°C
         消费级生物相容性——长时间佩戴不引发接触性皮炎
+        非侵入式 EEG + 迷走神经刺激的联合可行性验证
+        第一版四诊合参传感器融合的硬件选型方案
 
 路径二（储备）：半侵入 · 医疗级（5 年+）
     硬膜外贴片   不开颅、不碰脑组织，无线供能
@@ -283,6 +301,10 @@ animi v0.1（Rust 实现）
     四维差异化系数：内脏 0.75 / 情绪 0.40 / 触觉 0.80 / 听觉 0.85
     非线性 sigmoidal 查表——低强度线性、中强度趋缓、高强度饱和
     收敛速度：触觉 ~3 次、内脏 ~5 次、听觉 ~5 次、情绪 ~20 次
+
+AI 教练训练数据集
+    AI 教练训练数据集构建——人类优秀教师的对话样本收集
+    四诊合参驱动的 push/pull 决策逻辑——训练数据覆盖所有三档强度
 ```
 
 ### 1.3 第一个可复现的感受模式
