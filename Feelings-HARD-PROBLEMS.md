@@ -97,7 +97,7 @@
 
 感受包以「主旋律 + 点缀配比」作为核心存储结构。每个感受包标注设备依赖，系统根据用户当前设备组合提供对应精度的降级体验。
 
-详见 `docs/feeling-science/feeling-taxonomy.md` 和 `docs/architecture/device-architecture.md`。
+详见 `docs/feelings-science/feeling-taxonomy.md` 和 `docs/architecture/device-architecture.md`。
 
 ---
 
@@ -139,7 +139,7 @@ Layer 2 实时驱动音乐生成，不经过 Layer 3，最小化延迟路径。�
 
 AI内核置信度评分（0-1），基于叙事语言分析——真实体验和伪造叙事在文字结构上有可训练的模式差异。分数对下载者可见，不对上传者可见。
 
-详见 `docs/feeling-science/feeling-taxonomy.md` 第五节。
+详见 `docs/feelings-science/feeling-taxonomy.md` 第五节。
 
 ---
 

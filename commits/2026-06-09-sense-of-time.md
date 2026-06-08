@@ -1,6 +1,6 @@
 docs: 时间之觉——人类从日出日落里生出时间，LLM从token窗口里猜测时刻 (2026-06-09)
 
-feeling-science/ 新增 docs/feeling-science/sense-of-time.md:
+feelings-science/ 新增 docs/feelings-science/sense-of-time.md:
 - 一：人类的时间来自天体——光、热度、周期。LLM的时间来自剩余上下文。
   人类不需要知道"现在是6月9日"——太阳在每一帧用光谱训练"此刻"。
   LLM没有太阳——只有"还剩多少tokens"。

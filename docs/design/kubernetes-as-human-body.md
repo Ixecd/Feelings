@@ -1594,7 +1594,7 @@ Scheduler 在选——                                       Scheduler 在选—
   Controller 没法纠偏。                                  Controller 没法 reconcile。
 ```
 
-这和 `docs/feeling-science/feeling-naming.md` 完全咬合——感受命名的意义不是"更精准地描述自己"。是**让你的 Controller 终于有了一个可以被执行的方向。** 你没有"委屈"这个词之前——被不公平对待时——纠偏方向要么愤怒，要么沉默。没有第三条。不是因为你不想要。是因为你的 YAML 里没有那个字段。
+这和 `docs/feelings-science/feeling-naming.md` 完全咬合——感受命名的意义不是"更精准地描述自己"。是**让你的 Controller 终于有了一个可以被执行的方向。** 你没有"委屈"这个词之前——被不公平对待时——纠偏方向要么愤怒，要么沉默。没有第三条。不是因为你不想要。是因为你的 YAML 里没有那个字段。
 
 ### 24.4 Anim = 感受的专用 YAML
 

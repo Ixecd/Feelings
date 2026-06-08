@@ -12,7 +12,7 @@
 Feelings 架构文档已经覆盖了：
 - 五设备物理形态（`docs/architecture/device-architecture.md`）
 - 二十二层全栈从电子到感受（`Feelings-FULLSTACK.md`）
-- 四诊合参的融合逻辑（`docs/feeling-science/four-diagnosis.md`）
+- 四诊合参的融合逻辑（`docs/feelings-science/four-diagnosis.md`）
 - 实时操作系统骨架（`Feelings-OS.md`）
 - 10 bit/s 意识瓶颈（`docs/consciousness/ten-bits.md`）
 - FORGET.md P1 #6 和 #7：生理数据预处理管线零代码、设备数据融合零代码
@@ -380,7 +380,7 @@ PBMInput {
 ```
 本文                                  数据采集——从皮肤到 PBM 的那一段路
 docs/architecture/device-architecture.md   五设备物理形态——本文补充了每个设备的传感器+采样率+数据量
-docs/feeling-science/four-diagnosis.md      四诊合参——本文补充了矛盾检测的具体数值逻辑
+docs/feelings-science/four-diagnosis.md      四诊合参——本文补充了矛盾检测的具体数值逻辑
 Feelings-OS.md                              timerd/busd——本文补充了PLL时钟同步和设备帧锁存
 Feelings-FULLSTACK.md                       二十二层——本文覆盖了层6-10（设备→信号处理→PBM入口）
 Feelings-Core/FORGET.md                     P1 #6 生理数据预处理管线、P1 #7 设备数据融合——本文是这两项的设计文档

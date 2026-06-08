@@ -61,7 +61,7 @@ Feelings 需要二十二层，是因为 Feelings 的终点不是 JSON，是神�
 12      应用服务            API/SDK/业务逻辑                    Feelings-Server（Go），gRPC 双向流
 13      AI/ML              多模态融合推理                      AI 教练，四诊合参融合矩阵
                                                               见 docs/coach/ai-coach.md,
-                                                                 docs/feeling-science/four-diagnosis.md
+                                                                 docs/feelings-science/four-diagnosis.md
 14      客户端              UI/UX，移动端/桌面端                状态面板，感受地图，自省界面
                                                               见 docs/ux/ui-design.md,
                                                                  docs/ux/status-panel-design.md

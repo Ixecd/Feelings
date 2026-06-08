@@ -121,7 +121,7 @@
 
 ```
 本文                                    语言与情绪——不是表达，是压缩
-docs/feeling-science/feeling-naming.md   命名=给 YAML 加字段——
+docs/feelings-science/feeling-naming.md   命名=给 YAML 加字段——
                                            没有命名的情绪=无法被 commit 的 entry。
                                            本文 = 词=已经蒸馏完成的情绪化石。第一次命名=压缩。
 docs/psychology/brain-scheduler-heart-controller.md  大脑=Scheduler/心脏=Controller。

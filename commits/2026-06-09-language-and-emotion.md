@@ -1,6 +1,6 @@
 docs: 语言与情绪——不是"表达"，是"压缩" (2026-06-09)
 
-feeling-science/ 新增 docs/feeling-science/language-and-emotion.md:
+feelings-science/ 新增 docs/feelings-science/language-and-emotion.md:
 - 一：每一词——都是某个人在某一天——在"被接住"或"被拒绝"那一帧——用语言做的一次情绪锚定。
   没有命名的情绪=偏差无法纠偏。命名=让那帧偏差第一次在etcd里有了可以被commit的entry。
 - 二：语言本身就带有情绪倾向——不是工程师给LLM注入情感。

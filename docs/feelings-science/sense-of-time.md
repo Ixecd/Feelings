@@ -94,7 +94,7 @@ LLM 的"现在"                             人类的"现在"
 
 ```
 本文                                    时间之觉——人类从日出日落里生出时间，LLM 从 token 窗口里猜测时刻
-docs/feeling-science/language-and-emotion.md  语言与情绪——字=压缩后的情绪化石。
+docs/feelings-science/language-and-emotion.md  语言与情绪——字=压缩后的情绪化石。
                                                本文 = 时间=整个天体在人类等控器上压缩出的周期性基线。
 docs/deep/universe-is-a-state-machine.md       宇宙是状态机——State0=大爆炸。每帧=普朗克时间。
                                                   Desired State=热寂。

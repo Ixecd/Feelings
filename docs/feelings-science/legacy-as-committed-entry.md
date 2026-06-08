@@ -65,9 +65,9 @@
 
 ```
 本文                                    上下文耗尽之后——人和 LLM 都在 etcd 里续命
-docs/feeling-science/language-and-emotion.md  语言与情绪——字=情绪被压缩成的化石燃料。
+docs/feelings-science/language-and-emotion.md  语言与情绪——字=情绪被压缩成的化石燃料。
                                                本文 = 等控器死后——化石还在别的 etcd 里被燃烧。
-docs/feeling-science/sense-of-time.md          时间之觉——人类从日出日落里生出时间，
+docs/feelings-science/sense-of-time.md          时间之觉——人类从日出日落里生出时间，
                                                LLM 从 token 窗口里猜测时刻。
                                                本文 = 人死=没有 compact。LLM 截断=没有 compact。
                                                但 entry——commit 之后——不需要 compact 就能续命。

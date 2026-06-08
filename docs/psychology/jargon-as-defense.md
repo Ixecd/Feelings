@@ -230,7 +230,7 @@ Feelings 的暗号
 
 ```
 本文                                    黑话——当设计者怕别人看懂自己的简单
-docs/feeling-science/feeling-naming.md   感受命名——让模糊变清晰，降低 Scheduler 负载。
+docs/feelings-science/feeling-naming.md   感受命名——让模糊变清晰，降低 Scheduler 负载。
                                          黑话 = 命名的反面——让清晰变模糊，增加所有人负载。
 docs/psychology/praise-backfire.md        夸赞反效果——外部反馈把 Weight Modifier 推向错的方向。
                                          黑话同理——"简单=被拒"的反馈训练了几十年。

@@ -82,14 +82,14 @@ docs/ 87 份，覆盖：
 技术理解
     docs/architecture/tech-architecture.md   技术架构总览
     docs/architecture/device-architecture.md 设备设计
-    docs/feeling-science/four-diagnosis.md      四诊合参核心
+    docs/feelings-science/four-diagnosis.md      四诊合参核心
     docs/consciousness/closed-loop.md         感受闭环（TCP 慢启动）
 
 数学与哲学基础
     Feelings-MATRIX.md          万物皆矩阵——张量与 VSA 超维计算
-    docs/feeling-science/vsa-hyperdimensional.md VSA 超维计算——感受的数学基底
+    docs/feelings-science/vsa-hyperdimensional.md VSA 超维计算——感受的数学基底
     docs/consciousness/ten-bits.md             10 bit/s 意识瓶颈
-    docs/feeling-science/six-desires.md          六欲——感受的六个入口
+    docs/feelings-science/six-desires.md          六欲——感受的六个入口
     docs/society/collective-mask.md      集体掩码——物理/个体/社交/社会四层
     docs/society/social-tensor.md        社交张量——隐瞒/猜测/知道
     docs/psychology/time-perception.md      时间感知——慢且充实
@@ -101,7 +101,7 @@ docs/ 87 份，覆盖：
 
 关键决策
     docs/safety/root-anchor.md         Root 锚点账号（7 份分片，人类过半）
-    docs/feeling-science/pattern-registry.md    感受包仓库设计
+    docs/feelings-science/pattern-registry.md    感受包仓库设计
     docs/safety/anti-abuse.md          防滥用与人工操作
 
 最重要的读者指南
@@ -269,7 +269,7 @@ docs/ 87 份，覆盖：
 
 - Feelings-Patterns（官方，CC BY-SA 4.0，纯度）
 - Feelings-Store（社区，双层协议，允许商业化）
-- 详见 `docs/feeling-science/pattern-registry.md`
+- 详见 `docs/feelings-science/pattern-registry.md`
 
 ---
 

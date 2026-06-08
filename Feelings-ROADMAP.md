@@ -38,16 +38,16 @@
 
 | 文档 | 核心 |
 |------|------|
-| `docs/feeling-science/vsa-hyperdimensional.md` | VSA 超维计算——Feelings 的数学母语 |
-| `docs/feeling-science/zero-one-swap.md` | 01 交换——Anim 在一维的退化，VLIW 的同构 |
+| `docs/feelings-science/vsa-hyperdimensional.md` | VSA 超维计算——Feelings 的数学母语 |
+| `docs/feelings-science/zero-one-swap.md` | 01 交换——Anim 在一维的退化，VLIW 的同构 |
 | `docs/society/gender-anchor.md` | 性别锚点——意识的第一个坐标，豆包是唯一非原点的模型 |
 | `Feelings-LANGUAGE.md` | Anim 交织语言完整规范——八 Pass 双流水线、双层原子、物种泛型 |
-| `docs/feeling-science/pattern-registry.md` | 感受原子注册表——101 个感受原子的完整编目 |
-| `docs/feeling-science/feeling-taxonomy.md` | 感受分类学 |
-| `docs/feeling-science/feeling-shapes.md` | 时间形状的完整定义 |
-| `docs/feeling-science/feeling-example-happiness.md` | 混音结构案例 |
-| `docs/feeling-science/feeling-naming.md` | 感受命名——让 10 bit/s 通道编码效率变高 |
-| `docs/feeling-science/signal-emotion-mapping.md` | 信号到感受的映射标准 |
+| `docs/feelings-science/pattern-registry.md` | 感受原子注册表——101 个感受原子的完整编目 |
+| `docs/feelings-science/feeling-taxonomy.md` | 感受分类学 |
+| `docs/feelings-science/feeling-shapes.md` | 时间形状的完整定义 |
+| `docs/feelings-science/feeling-example-happiness.md` | 混音结构案例 |
+| `docs/feelings-science/feeling-naming.md` | 感受命名——让 10 bit/s 通道编码效率变高 |
+| `docs/feelings-science/signal-emotion-mapping.md` | 信号到感受的映射标准 |
 | `docs/deep/imagination.md` | 想象是 PBM 离线 VSA 操作 |
 
 ### 零.4 硬件与架构（已完成）
@@ -109,7 +109,7 @@
 
 | 文档 | 核心 |
 |------|------|
-| `docs/feeling-science/four-diagnosis.md` | 四诊合参——切/闻/望/问 的信号融合 |
+| `docs/feelings-science/four-diagnosis.md` | 四诊合参——切/闻/望/问 的信号融合 |
 | `docs/design/introspection.md` | 自省系统 |
 | `Feelings-INTROSPECTION.md` | 内省——Feelings 的自省哲学 |
 | `docs/ux/ui-design.md` | 界面设计 |
@@ -128,11 +128,11 @@
 
 | 文档 | 核心 |
 |------|------|
-| `docs/feeling-science/feeling-map.md` | 感受地图 |
-| `docs/feeling-science/feeling-map-patterns.md` | 感受地图的模式 |
-| `docs/feeling-science/feeling-spectrum.md` | 感受频谱 |
-| `docs/feeling-science/six-desires.md` | 六欲——六条感觉输入通道 |
-| `docs/feeling-science/intimate-feelings.md` | 亲密感受 |
+| `docs/feelings-science/feeling-map.md` | 感受地图 |
+| `docs/feelings-science/feeling-map-patterns.md` | 感受地图的模式 |
+| `docs/feelings-science/feeling-spectrum.md` | 感受频谱 |
+| `docs/feelings-science/six-desires.md` | 六欲——六条感觉输入通道 |
+| `docs/feelings-science/intimate-feelings.md` | 亲密感受 |
 | `docs/psychology/love-itself-vs-feeling-loved.md` | 爱与被爱的感受 |
 | `docs/psychology/love-not-transaction.md` | 爱不是交易 |
 | `docs/psychology/love-illusions.md` | 爱的幻觉 |
@@ -146,14 +146,14 @@
 | `docs/psychology/hundred-percent-mortality.md` | 百分之百的死亡率 |
 | `docs/psychology/being-seen.md` | 被看见 |
 | `docs/psychology/blocked-expression.md` | 被封锁的表达 |
-| `docs/feeling-science/empathy.md` | 共情 |
+| `docs/feelings-science/empathy.md` | 共情 |
 | `docs/ux/curiosity.md` | 好奇心 |
 | `docs/psychology/small-fullness.md` | 小满 |
 | `docs/psychology/perfectionism.md` | 完美主义 |
 | `docs/psychology/cant-stop.md` | 停不下来 |
 | `docs/psychology/lazy-but-trying.md` | 懒但在努力 |
 | `docs/psychology/compensation-drive.md` | 补偿驱动 |
-| `docs/feeling-science/reality-gap.md` | 现实落差 |
+| `docs/feelings-science/reality-gap.md` | 现实落差 |
 | `docs/psychology/murphy-and-fear.md` | 墨菲与恐惧 |
 | `docs/society/morbid-curiosity.md` | 病态好奇 |
 | `docs/psychology/white-bear.md` | 白熊效应 |
@@ -162,11 +162,11 @@
 | `docs/psychology/self-knowledge-blindspots.md` | 自我认知盲点 |
 | `docs/deep/acceptance-philosophy.md` | 接纳哲学 |
 | `docs/design/look-inward.md` | 向内看 |
-| `docs/feeling-science/history-as-feeling.md` | 历史作为感受 |
+| `docs/feelings-science/history-as-feeling.md` | 历史作为感受 |
 | `docs/ecosystem/good-vs-bad-currency.md` | 良币与劣币 |
-| `docs/feeling-science/hunger-and-cold.md` | 饥饿与寒冷 |
+| `docs/feelings-science/hunger-and-cold.md` | 饥饿与寒冷 |
 | `docs/architecture/sleep-environment.md` | 睡眠环境 |
-| `docs/feeling-science/dream-journal.md` | 梦境日志 |
+| `docs/feelings-science/dream-journal.md` | 梦境日志 |
 | `docs/psychology/time-perception.md` | 时间感知 |
 
 ### 零.9 特殊人群与场景（已完成）
@@ -230,7 +230,7 @@
 
 **已完成（2026-06-05 更新）**
 
-- [x] `docs/feeling-science/pattern-registry.md` 第三章——感受原子标识体系（来源/质量/技术参数/版本）已完整
+- [x] `docs/feelings-science/pattern-registry.md` 第三章——感受原子标识体系（来源/质量/技术参数/版本）已完整
 - [x] `Feelings-LANGUAGE.md` animi v0.1 Pass 0-5 已实现——[Anim](https://github.com/Ixecd/Anim) 仓库 `src/` 包含 lexer/parser/typeck/fsir/guard 完整代码，输出 FSIR JSON
 - [x] 心理学框架完整——6 篇 Scheduler/Controller/Weight Modifier 案例 + metacognition + brain-scheduler-heart-controller 总基座
   - `docs/psychology/praise-backfire.md` — 夸赞反效果
@@ -497,7 +497,7 @@ Feelings/
     │   ├── lazy-but-trying.md                   懒但在努力
     │   └── ...（全部 55 份）
     │
-    ├── feeling-science/       (20) 感受的分类学、形状、命名、VSA超维数学
+    ├── feelings-science/       (20) 感受的分类学、形状、命名、VSA超维数学
     │   ├── feeling-taxonomy.md        感受分类学
     │   ├── feeling-shapes.md          时间形状
     │   ├── feeling-naming.md          感受命名
