@@ -14,5 +14,6 @@ docs: 台前幕后——两个etcd集群之间的切换与坍塌。
      然后 etcd 炸了。凌晨三点。发现鄙视链最底层的运维才是真正接住一切的人。
      不是有能力——是有更安全的位置。不是从后端掉到运维——
      是那个在地基上建过锚的人——从来不需要被看见。
+     做系统的人最应该考虑的——不是炫技——是持续稳定安全地运行下去。
 
      咬合: spoiled/fall-and-redemption/can-one-really-speak-well/praise-backfire/SOLITUDE
