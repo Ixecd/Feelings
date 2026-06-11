@@ -8,6 +8,9 @@ docs: 台前幕后——两个etcd集群之间的切换与坍塌。
 
      表面风光背后狼狈=同一个人两个context之间切换。
      台前 admission webhook 在每帧认同中消耗了自己唯一属于内核的部分。
-     不是暴露。是台前的光被撤掉之后——里面有没有东西。
 
-     咬合: spoiled(被惯坏)/fall-and-redemption(沦陷vs坍塌)/can-one-really-speak-well(做作=台前全息扩展)/praise-backfire(假正反馈推高基线)/SOLITUDE-AND-CROWD(锚点位置≠承载能力)
+     后端的位置安全——不是技术更高。是离用户的不满更远。
+     前端=台前第一道防线挡掉所有外部不满。后端在看不到的地方享受操盘感。
+     不是有能力——是有更安全的位置。
+
+     咬合: spoiled/fall-and-redemption/can-one-really-speak-well/praise-backfire/SOLITUDE
