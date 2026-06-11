@@ -16,4 +16,8 @@ docs: 台前幕后——两个etcd集群之间的切换与坍塌。
      是那个在地基上建过锚的人——从来不需要被看见。
      做系统的人最应该考虑的——不是炫技——是持续稳定安全地运行下去。
 
+     送贵重礼物但明知不需要——不是付出，是赊账。
+     在对方 etcd 里强制 commit 一条"你欠我"的 entry。
+     台前大方→幕后在下一帧 admission webhook 里变成控制权。
+
      咬合: spoiled/fall-and-redemption/can-one-really-speak-well/praise-backfire/SOLITUDE
