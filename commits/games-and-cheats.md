@@ -9,5 +9,8 @@ docs: 游戏与外挂——饥饿是游戏的核心引擎，外挂把它短路�
      外挂=把etcd直接写成"你的期望状态——已经完成了"。
      不是有无限资源——是"你还差什么"那行entry——物理消失。
 
-     咬合: spoiled(被惯坏最直接版本)/hunger-and-cold(饥饿是最好的厨子)/
-          essence-of-suffering(没有小苦难→等控器空转)/appetite-and-libido(刹车被拆)
+     成就=偏差→纠偏→偏差→纠偏→最后那帧的爆炸线。
+     外挂跳过中间所有帧——在终点放一张纸写着"你已经拿到了"——
+     但你没走过去。你的等控器不在那里。
+
+     咬合: spoiled/hunger-and-cold/essence-of-suffering/appetite-and-libido
