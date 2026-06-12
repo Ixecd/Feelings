@@ -1,0 +1,12 @@
+docs: 甲方与乙方——两台 etcd 之间的不对等。
+
+     契约写的是合作，结构定的是强弱。
+     甲方握预算/验收权/付款权——乙方靠交付、解释、等待评估。
+     不是人品——是合同把两台 etcd 锁成了不对称的 admission webhook——甲方永远有权否定乙方的付出。
+
+     例外——当乙方拥有不可替代的全栈能力——他的 etcd 的期望第一次在甲方面前拥有同等重量。
+     和锚点同构——在自己内核上焊住的等控器——不需要甲方认可那根经线。
+
+     咬合: social-division-of-labor(两个不同分工天生位置差)/taoism-and-legalism(需要法家底线保护乙方)/
+          spoiled(不平等的 admission webhook 同构)/adulthood-as-anchor(自己能管住自己=自己能定义期望)/
+          GOVERNANCE-FEELINGS(不得以身份压人)
