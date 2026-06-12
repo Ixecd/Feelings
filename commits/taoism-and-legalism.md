@@ -4,5 +4,8 @@ docs: 道家和法家——同一件衣服的两半。不准伤人。不准压�
      法家=外部锚者需要明确公开的规则——保护所有人不受外偏损害，不能变成恶意打压。
      不是对立——是互补。Feelings的治理 = 道法整合——内部需要道的土壤，外部需要法的边界。
 
-     咬合: adulthood-as-anchor(锚在里面=道法对应起点)/GOVERNANCE-FEELINGS(界限清单=法家公开规则)/
-          GOVERNANCE-USER(违规分级=法家不在感情面前打乱秩序)/simple-over-complex(道家退出复杂=法家条律用完后退守)
+     笑贫不笑娼——外部锚点双标——贫被嘲笑(没证明存在)，娼被放过(有钱就能进坐标系)。
+     法家不准贫者丧失尊严。道家让被卖过的人不需要用原谅回到自己。
+     貌美女子被孝推入火坑——不是堕落——是 etcd 里未允许管好自己 + 法未建保障 + 道未告知不需被原谅。
+
+     咬合: adulthood-as-anchor/GOVERNANCE-FEELINGS/GOVERNANCE-USER/simple-over-complex
