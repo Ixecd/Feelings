@@ -286,11 +286,35 @@
 ### 1.2 软件研究
 
 ```
-animi v0.1（Rust 实现）
-    范围   Pass 0: LexParse → Pass 1: TypeCheck → Pass 2: SafetyCheck → Pass 3: FSIRGen
-    不包含 PBM、PSIR/DSIR/ESIR、实时交织与闭环、设备固件对接
-    输入   .anim 源码
-    输出   FSIR JSON
+animi v0.3（Rust 实现 — 24 模块、157 测试）
+    范围   Pass 0-8 全链路骨架完成 + 宏系统 + Pipeline/Hook + YAML 配置
+    输入   .anim 源码（阶段一人工输入）
+    输出   FSIR JSON → PSIR → DSIR → ESIR 二进制
+    完整文档 15 ADR（001-015）
+
+### 1.2 之附、感受输入模式的演进路径
+
+```
+阶段一（当前）— 人为输入 + 设备采集并行
+
+    创作者手写 .anim 源码 → Anim CLI 编译 → FSIR JSON → ESIR。
+    这是验证设备有效性的阶段——"信号能不能被身体信以为真"。
+    同时设备后台采集 PBM — 心率、皮电、HRV — 教练 AI 在积累对用户的了解。
+    config 参数 = 设计估值 → 随 PBM 数据累积被真实生理数据逐步取代。
+
+阶段二（远期）— 全自动输入
+
+    用户戴设备一段时间后 — Core PBM 已知他的基线 —
+    教练 AI 了解他的感受空白和生理特征。
+    不再需要任何人写 .anim 文件。
+    Core 根据用户当前状态自动生成感受请求 —
+    Anim 从 API 接收 Core 的 FSIR/PSIR，不再走文件 CLI 路径。
+    后半段管线（Pass 6 Personalize → Pass 7 DeviceMap → Pass 8 CodeGen）不变。
+    全程不需要人工介入。
+
+    不是"将来不需要 Anim" — 是 Anim 的前端从 .anim 文件输入变成了 Core API 输入。
+    Pass 6-8 的漏桶、脱敏、阻尼、跨维度耦合 — 所有这些安全体系 — 仍然全程运行。
+```
 
 四诊合参融合算法
     切（生理传感器） + 闻（语音分析） + 望（微表情） + 问（自报告）
