@@ -172,6 +172,7 @@ Scheduler 不是在真空中算的。它在对比——这一边是她，另一�
 本文                                              诽谤与诋毁——公共 etcd 的两种攻击方式
 docs/society/lying-and-silence.md                    说谎与沉默——沉默被"毁掉"升级为诽谤
 docs/society/wealth-doesnt-last-three-generations.md  富不过三代——外部计分器的篡改
+docs/deep/story-narrative-fairytale-gossip-rumor.md   信息五层——叙事与故事的区别就是攻击者的工具链
 GOVERNANCE-FEELINGS.md §零                           身份分层+不是人生作弊器——信息主权
 ```
 
