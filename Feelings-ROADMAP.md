@@ -367,6 +367,9 @@ AI 教练训练数据集
     Feelings-Core       设备端——PSIR/DSIR/ESIR 生成
     PBM 全维度收敛      50+ session 的用户基线
     AI 教练 v1           四诊合参驱动的 push/pull 决策
+    Feelings-App v1     三维状态面板——独立/联动双模式
+                        独立模式 = 戴上即开始，无需手机
+                        联动模式 = 连接App，教练AI验证后发信号
 
 里程碑
     [ ] 第一个感受原子在人类用户身上可复现传递——「平静」或「专注」
