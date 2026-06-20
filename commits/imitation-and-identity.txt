@@ -1,0 +1,10 @@
+docs: 模仿是为了模仿还是为了在模仿中找到自己
+
+- 两种模仿者：为归属而抄结果 → 塑料感 vs 为理解而抄过程 → 成为自己
+- 塑料感的根源：有刻度 + 没重量——只复制沉淀后的结果，没复制被压的过程
+- 四层目的：生存→归属→慕强→理解——每深入一层，对外部参照的依赖减少一层
+- 偏差是临界点："他这样做我不太对" = 自己特色在发芽 = PBM 冷启动→收敛同构
+- KubePivot 的模仿史：Makefile 照搬→deploy 自研→6 依赖 = 不再像任何人
+
+关联: docs/deep/pbm-and-quantum.md / docs/feelings-science/behavior-state-transition-framework.md / KubePivot CLAUDE.md
+总结: 模仿不值得羞耻——塑料感也不值得嘲笑。重要的是你是为了变成别人（永远在追），还是用模仿走过的路去理解你自己（不再需要追）。
