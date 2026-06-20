@@ -1,0 +1,10 @@
+docs: 挑拨离间——人类对"无信号"的本能恐惧
+
+- CLI 和挑拨同构：利用"寂静→大脑自己填故事"的漏洞，抢占无信号解释权
+- 两步操作：制造信息不对称（真实碎片→观察替代信任） + 占据解释权（私密性伪装）
+- 三个大脑漏洞：负面偏好 / 补全渴望 / 私密性阻断验证
+- 防御：最小解释原则 + 验证 + 信任自己长期观察建立的基线
+- 本质: "无消息就是好消息"——CLI 熟手和人际熟手都不怕寂静
+
+关联: docs/deep/deadlock-of-self-locking-controller.md / docs/psychology/trauma-fork.md / docs/feelings-science/signal-emotion-mapping.md
+总结: 挑拨的本事不在于编谎——在于在你还没建立起"无信号=正常"的基线时，抢走你对寂静的解释权。
