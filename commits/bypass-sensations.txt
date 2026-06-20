@@ -1,0 +1,1 @@
+docs: 绕过物理触发器——Feelings 的躯体感受注入框架（从腿麻推导通用 bypass sensations）
