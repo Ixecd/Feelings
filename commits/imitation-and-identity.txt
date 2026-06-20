@@ -3,7 +3,8 @@ docs: 模仿是为了模仿还是为了在模仿中找到自己
 - 两种模仿者：为归属而抄结果 → 塑料感 vs 为理解而抄过程 → 成为自己
 - 塑料感的根源：有刻度 + 没重量——只复制沉淀后的结果，没复制被压的过程
 - 四层目的：生存→归属→慕强→理解——每深入一层，对外部参照的依赖减少一层
-- 偏差是临界点："他这样做我不太对" = 自己特色在发芽 = PBM 冷启动→收敛同构
+- 模仿生命周期：0-2岁纯反射→语言→社会行为→多模型→偏差→排泄→收敛
+- 关键发现：不是"年轻时模仿，长大了做自己"。是被重量压过的留下，压不过的排泄掉
 - KubePivot 的模仿史：Makefile 照搬→deploy 自研→6 依赖 = 不再像任何人
 
 关联: docs/deep/pbm-and-quantum.md / docs/feelings-science/behavior-state-transition-framework.md / KubePivot CLAUDE.md
