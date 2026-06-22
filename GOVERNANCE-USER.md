@@ -178,11 +178,11 @@ AI 教练不是你的仆人。不是你说什么它就应什么。它有权批�
 AI 教练是 Feelings 的。
 
 你不能：
-     逆向工程 Feelings-Core 的代码。
-    修改安全校验逻辑。绕过 Pass 2-4。
-    把自己刷上去的固件称为"Feelings"。
+     修改安全校验逻辑。绕过 Pass 2-4。绕过沙箱 Governance。
+     把自己刷上去的固件称为"Feelings"。
 
-你改了安全层——那台设备不再是 Feelings。
+Feelings-Core 是 MIT 开源——你可以看、可以改、可以 fork。
+但改了安全层——那台设备不再是 Feelings。
 Feelings 不对你的修改负责。
 你的设备。你的修改。你的责任。
 ```
