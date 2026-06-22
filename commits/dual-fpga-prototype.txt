@@ -1,10 +1,7 @@
-docs: 双板联调——iCE40 采集 + GW1N 帧引擎，三根飞线 = Feelings 最小闭环安全系统
+docs: 双板原型 §七——完整物料清单 ¥170
 
-- 两块 FPGA 各验各的，不移植——iCE40 只采集 RAW 数据并喷出字节流，GW1N 运行 NeuroEnergyTracker 安全熔断
-- 物理连接：2 块板 + GND + RX/TX = 三根杜邦线。115200 baud 喷 8 字节/帧
-- 字节帧格式：[0xAA, 0xBB, GSR_H, GSR_L, HRV_H, HRV_L, TEMP_H, TEMP_L]
-- GW1N 侧漏桶实时算账——GSR/HRV 动态修正 CriticalThreshold + LeakRate + 熔断判定
-- 上电验证顺序：VCC → GND 连通 → UART 打通 → AD5933 校准 → PPG 波形 → 联合闭环
-
-关联: ADR 008 / ADR 011 / ADR 012 / ADR 016
-总结: 两块几十块钱的板子，一套完整的闭环安全系统。三根飞线缩进同一块 PCB 就是量产。
+- FPGA: iCE40 ¥40 + GW1N ¥35
+- 连接: 杜邦线 ¥8 + 面包板 ¥10 + 排针 ¥5
+- 传感器: AD5933 ¥50 + PPG ¥15 + 温度 ¥5
+- 被动元件: 4.7k 上拉电阻 ¥2
+- 先免焊验证——排针留到焊台到手再焊
