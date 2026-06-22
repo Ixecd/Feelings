@@ -232,7 +232,7 @@ docs/ 87 份，覆盖：
 
 ```
 - Feelings-SDK（Swift/Kotlin/TypeScript）
-- Feelings-Core（私有，Root 锚点和核心算法）
+- Feelings-Core（MIT 开源，PSIR/DSIR/ESIR 核心实现）
 - Feelings-Store（社区感受包市场，等有真实需求再建）
 - Cloud v0.1 基础设施
 - 硬件原型

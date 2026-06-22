@@ -178,7 +178,7 @@ AI 教练不是你的仆人。不是你说什么它就应什么。它有权批�
 AI 教练是 Feelings 的。
 
 你不能：
-    逆向工程 Feelings-Core 的私有代码。
+     逆向工程 Feelings-Core 的代码。
     修改安全校验逻辑。绕过 Pass 2-4。
     把自己刷上去的固件称为"Feelings"。
 

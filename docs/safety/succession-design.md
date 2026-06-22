@@ -1026,8 +1026,8 @@ AI 模型升级评估流程
 AI 的法律地位
     AI-legal-standing.md（可能需要等法律环境成熟）
 
-这些是 Feelings-Core 私有仓库的内容
-不在公开文档中详述
+这些是 Feelings-Core 仓库的内容
+说明见 Core 的 VALUES-TO-CODE.md
 ```
 
 ---

@@ -657,7 +657,7 @@ Feelings/
 ```
 github.com/Ixecd/Anim                MIT → animi 编译器（Rust）、语言规范、语法高亮
 github.com/Ixecd/Feelings-Patterns   CC BY-SA 4.0 → 感受原子注册表
-Feelings-Core                        私有 → PSIR/DSIR/ESIR 完整实现
+Feelings-Core                        MIT 开源 → PSIR/DSIR/ESIR 完整实现
 Feelings-Server                      公开 MIT → Go + gRPC API
 Feelings-SDK                         公开 MIT → Swift / Kotlin / TypeScript
 ```

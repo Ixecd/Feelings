@@ -1301,7 +1301,7 @@ Feelings-Server（公开层，Go + gRPC）
 Feelings-SDK（Swift / Kotlin / TypeScript）
     │  获取 .anim 文件 → 本地交织
     ▼
-Feelings-Core（设备端，私有实现）
+Feelings-Core（设备端，MIT 开源实现）
     │  animi 完整交织管线：
     │  .anim → FSIR → PSIR → DSIR → ESIR → 固件信号
     │
@@ -1684,7 +1684,7 @@ github.com/Ixecd/Anim
 与 Feelings 其他仓库的关系
     Anim（本仓库）          公开，MIT
     Feelings-Patterns       公开，CC BY-SA 4.0
-    Feelings-Core           私有，包含 PSIR/DSIR/ESIR 完整实现
+    Feelings-Core           MIT 开源，包含 PSIR/DSIR/ESIR 完整实现
 ```
 
 ### 13.2 v0.1 的实施路线
