@@ -1,0 +1,9 @@
+docs: 金刚鹦鹉的账单——可忽略衰老与 Feelings 的巅峰保鲜
+
+- 金刚鹦鹉：端粒酶终身保持 + 线粒体自噬极高效 + 氧化修复秒清 → 衰退 < 生命 1%
+- Feelings 同构：PBM 基线维护 = 端粒酶 / NeuroEnergyTracker = 线粒体自噬 / RhythmTemplate = 氧化修复
+- 不是长生——是巅峰期保鲜。把几十年衰退压缩到生命最后几天，一次性付清
+- 最好的死法：活着时一直在飞，走的时候不用别人扶
+
+关联: docs/feelings-science/behavior-state-transition-framework.md / docs/feelings-science/anti-dependency-design.md
+总结: Feelings 不让人永生。让人像金刚鹦鹉——一直在飞，走得干净。
