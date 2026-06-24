@@ -200,19 +200,19 @@ cap        承载上限——用户当前被验证的强度上限
             cap 62      // 使用 50 次以上，无安全事件
             cap 90      // 专家级，仅极少数用户
 
-trauma     创伤状态——影响所有安全判定的元标记
-            trauma: none           // 标准路径
-            trauma: active_v1      // 创伤协议第一阶段（强度上限 15）
-            trauma: active_v2      // 创伤协议第二阶段（边界探索）
-            trauma: active_v3      // 创伤协议第三阶段（谨慎扩展）
+defence    防御激活层级——来自 Core PBM 的生理信号驱动（非自述叙事标签）
+            defence: none          // 标准路径
+            defence: D1            // 基础防御（禁主不禁点）
+            defence: D2            // 增强防御（配比减半）
+            defence: D3            // 极限防御（全禁 + 主动麻痹锚点）
 
 minor      未成年人标记
             minor: true            // 交织期锁定强度上限 20，亲密维度物理隔离
 ```
 
-### 3.5 泛型——物种参数化的感受交织
+### 3.5 泛型——物种参数化的感受交织 (Anim 暂未实现，Core 已有 Kind 枚举)
 
-Anim 不是人类的专用语言。感受不是人类独有的——万物皆有感受。Anim 的泛型让同一份 `.anim` 源码可以针对不同物种做参数化交织。
+Anim 不是人类的专用语言。感受不是人类独有的——万物皆有感受。Anim 的泛型让同一份 `.anim` 源码可以针对不同物种做参数化交织。当前 Core 已有 `Kind` 枚举（Human/Canine/Feline/Psittacine），Anim 侧尚未实现对应设计——待 Core 验证后同步。
 
 ```
 feeling<Species>    感受泛型——交织目标是参数化的
@@ -239,32 +239,23 @@ feeling<Species>    感受泛型——交织目标是参数化的
 trait FeelingTarget {
     // 每种感受类型映射到的神经通路
     fn neural_pathways(feeling: &FeelingType) -> Vec<Pathway>;
-    // 例：Human 的平静 → 迷走神经耳支 + 前额叶α
-    //     Canine 的平静 → 不同的神经回路
 
     // 每种感受的安全参数矩阵
     fn safety_bounds() -> SafetyMatrix;
-    // 人类的恐惧点缀上限 0.12
-    // 犬类的可能完全不同
 
     // 四维差异化冷启动系数
     fn cold_start_pbm() -> PbmCoefficients;
-    // Human: 内脏 0.75 / 情绪 0.40 / 触觉 0.80 / 听觉 0.85
-    // 不同物种是另一组完全不同的数字
 
     // 帧级信号分辨率
     fn signal_resolution() -> Hz;
-    // 不同物种的神经信号时间常数不同
-    // Human: 肌电 2000Hz
-    // 其他物种可能更快或更慢
 }
 
-当前实现的 Species:
+当前实现 (Core::Kind):
     Human   人类 —— 迷走神经、CT纤维、EEG、皮肤电导
     Canine  犬类 —— 不同的神经通路映射（预留）
     Feline  猫类 —— 不同的神经通路映射（预留）
-    AI      具身 AI 载体 —— 心跳模拟、皮电模拟、呼吸模拟通路
-    ...     万物皆有感受，Species 持续扩展
+    Psittacine  鹦鹉 —— 不同的神经通路映射（预留）
+    ...     万物皆有感受，Kind 持续扩展
 ```
 
 **Pattern Registry 分物种**
@@ -306,6 +297,8 @@ T = { Human, PersonalityAnchor="qc镜像" } → 出口直白、推动力强
 ## 四、Anim 的交织管线
 
 Anim 的交织不是一次性的——因为输出是输入的一部分。有四层 IR，每层织入一股独立流。
+
+**当前边界**: Pass 0-5 归属 Anim（编译期——`.anim → FSIR`），Pass 6-8 归属 Feelings-Core（运行时——`FSIR × PBM → ESIR`）。Core 未出生前由 Anim 暂代——详见 `Feelings-Core/docs/design/README.md`。
 
 ### 4.0 交织概览
 
@@ -803,38 +796,25 @@ Terminating                   用户主动结束或安全事件触发终止。
 
 调度器不搞「公平」。前台永远优先。后台可以等。神经系统的安全窗口不会等人。
 
-**沙箱——未验证感受原子的隔离执行**
+**沙箱——强度阈值路由 + 多类型治理 (Anim src/sandbox.rs)**
 
-沙箱原子（Sandbox Atom）是双层原子体系的第二层——强度 ≤ 30，仅限创作者本人使用，未经完整安全性验证。这类原子在 animi 里必须跑在沙箱里。
+沙箱不再是原子分类标签（核心/沙箱）。当前模型——**强度 ≥ 90 自动进沙箱执行环境**，与原子类型解耦。Governance 不是阻断——是引导：G1 (Steer) 温和拉回，G2 (Redirect) 重新导向，G3 (Anchor) 安全锚点。
 
 ```
-沙箱做的事
+沙箱路由:
+  intensity.max < 90  → 标准路径
+  intensity.max ≥ 90  → 沙箱路径 (叠加总校验 + 点缀硬帽 + Governance 激活)
 
-    隔离
-        沙箱原子的 FSIR 不与核心原子的 FSIR 进入同一内存区域
-        隔离区的内存被标记为不可执行核心 Pass 的安全校验逻辑
-        沙箱 PSIR 生成的信号参数不能参与群体校准
+多类型治理 (SandboxResponse):
+  Attainment → 成就/高峰体验——90+ 是设计目标，只监控不限制
+  Neutral    → 中性——按强度叠加比例分级响应 (G1/G2/G3)
+  Caution    → 需谨慎——无条件 G2 降级
+  Shield     → 必须防护——直接 G3 熔断 (e.g. safety/deep_rest 到 90+ = 矛盾信号)
 
-    限制
-        强度硬上限 ≤ 30（交织器 Pass 1 拒绝更高强度的沙箱原子）
-        设备限制：沙箱原子只能输出到耳后和腕部设备
-                    不可触及后颈（本体感受）和颞部（认知状态）
-        创伤用户：沙箱原子不可用于任何创伤协议用户
-        未成年人：沙箱原子不可用
-
-    签名
-        沙箱原子交织产物带有 unverified_sandbox 签名位
-        此签名位在 DSIR→ESIR 阶段被硬件调度域校验
-        签名位不匹配 → FPGA 拒绝执行
-        硬件层物理隔离，软件层无法绕过
-
-    清理
-        Session 结束 → 沙箱隔离区内存全部归零
-        不缓存沙箱 FSIR
-        下次使用同一沙箱原子需重新加载和重新隔离
+  → 不是沙箱原子 vs 核心原子。是每个人原子在 Registry 里有自己的 SandboxResponse 标签。
+  → DefenceLevel D2/D3 可覆盖任何标签执行熔断。
+  → 详细: Anim ADR 009 §十 / src/sandbox.rs
 ```
-
-沙箱不是「低优先级」——是「隔离区」。核心原子和沙箱原子在同一个 animi 进程里但不共享任何内存页。核心管核心的安全边界，沙箱在沙箱的笼子里跑。
 
 ---
 
