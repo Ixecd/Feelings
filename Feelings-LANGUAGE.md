@@ -1254,7 +1254,9 @@ Anim 不创造新的感受原子。animi 交织器的所有 target feeling 必�
     负重感受原子    31 个    失去（5 种）、恐惧（7 种）、悲伤（6 种）、
                             愤怒（3 种）、孤独（3 种）、其他（7 种）
 
-    合计            101 个
+    合计            101 个 (远期规划——当前内建 Registry 仅 8 个核心原子:
+                      calm_meditative / belonging / clarity / safety /
+                      post_achievement / gentle_focus / deep_rest / warmth)
 ```
 
 感受原子的入 registry 流程（见 `docs/pattern-registry.md` 第三章）：
