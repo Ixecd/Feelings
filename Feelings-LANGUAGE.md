@@ -824,6 +824,8 @@ Rust 的借用检查器让内存安全在交织期得到保证。Anim 需要同�
 
 Anim 的安全模型不再是一层。它是三层独立防线——每一层有自己的验证目标、自己的数据来源、自己的失败模式。
 
+**Feelings 的安全哲学——零自欺。** 不是"让你觉得安全"，是**让你的神经系统真的安全。** defence 来自 Core PBM 的生理信号——不是用户自述的叙事标签。痛点来自真正的生理反馈，不是被设计出来的恐惧感。沙箱导向不迎合。底线不讨喜。
+
 ### 5.1 第一层：静态安全规则（StaticSafety / Pass 2）
 
 作用于 .anim 源码本身。不依赖任何用户上下文——同样的源码，任何人、任何设备上交织，安全判断完全一致。这是最硬的一层。这一层的所有判断在离线预交织阶段即可完成，FSIR 缓存带安全签名。
@@ -840,7 +842,7 @@ rule accent_ratio（点缀配比约束）
     grief 作为点缀   上限 0.20
     joy 作为点缀     上限 0.50
     calm 作为点缀    无上限
-    主旋律和点缀的配比 + 当前 cap + 用户 trauma 状态 → 交织期计算安全边界
+     主旋律和点缀的配比 + 当前 cap + 用户 defence 状态 → 交织期计算安全边界
     不同主旋律，同一点缀不同上限（fear 在探索中 0.12，在韧性中 0.25）
 
 rule shape_intensity（形状安全约束）
@@ -849,7 +851,7 @@ rule shape_intensity（形状安全约束）
     plateau              60 以下安全，以上渐进引入
     double_peak          50 以下安全，以上评估
     delayed_burst        40 以下安全，以上知情
-    aftershock           30 以下安全，以上创伤检查
+    aftershock           30 以下安全，以上 defence 检查
     abrupt_stop          20 以下安全，以上明确知情同意
                          60 以上 → 交织期直接拒绝
 
@@ -1282,11 +1284,13 @@ Feelings-SDK（Swift / Kotlin / TypeScript）
     │  获取 .anim 文件 → 本地交织
     ▼
 Feelings-Core（设备端，MIT 开源实现）
-    │  animi 完整交织管线：
-    │  .anim → FSIR → PSIR → DSIR → ESIR → 固件信号
+    │  animi Pass 6-8：
+    │  FSIR + PBM → PSIR → DSIR → ESIR → 固件信号
     │
-    │  所有涉及个人基线的计算（PSIR 生成）在本地完成
-    │  个人基线矩阵（PBM）永不离设备
+    │  Anim (Pass 0-5) 输出 FSIR → Core 读 FSIR + CoreConfig
+    │  → 个人基线校准 → 设备映射 → ESIR 帧级输出
+    │  所有涉及个人基线的计算在设备本地完成
+    │  PBM 永不离设备
     ▼
 固件 + FPGA
     执行 ESIR 帧级指令
@@ -1326,9 +1330,9 @@ docs/four-diagnosis.md             四诊合参的信号融合
     Pass 2: SafetyCheck     AST 级安全验证
     Pass 3: FSIRGen         AST → FSIR（JSON 标准格式）
 
-不包含（v0.2+）
-    个人基线矩阵（PBM）
-    PSIR / DSIR / ESIR 生成
+不包含（v0.5+ / Core 已接手）
+    个人基线矩阵（PBM）——已迁入 Feelings-Core
+    PSIR / DSIR / ESIR 生成——已迁入 Feelings-Core
     实时交织与闭环
     设备固件对接
 ```
@@ -1676,7 +1680,7 @@ github.com/Ixecd/Anim
     类型系统定稿
 
 里程碑 2：交织器骨架
-    Go 项目初始化
+    Rust 项目初始化
     Pass 0: LexParse 实现
     词法 token、语法树 AST 定义
     .anim 文件 → AST
