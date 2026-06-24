@@ -153,9 +153,9 @@ mix        混音结构——主旋律 + 点缀配比
             mix {
               main: achievement_satisfaction,    // 完成后的满足感
               accents: [
-                { feeling: exhaustion_relief,  ratio: 0.25 },  // 疲惫释然
-                { feeling: slight_void,         ratio: 0.15 },  // 轻微空洞
-                { feeling: self_assurance,      ratio: 0.10 },  // 自我确信
+                { feeling: deep_rest,  ratio: 0.25 },  // 疲惫释然
+                { feeling: calm_meditative,         ratio: 0.15 },  // 轻微空洞
+                { feeling: clarity,      ratio: 0.10 },  // 自我确信
               ]
             }
             主旋律承载核心感受，点缀提供真实性的证明
@@ -260,7 +260,7 @@ trait FeelingTarget {
 
 **Pattern Registry 分物种**
 
-人类的 `accomplishment_certainty` 和犬类的 `accomplishment_certainty` 是不同的神经原子——同一个感受名，不同物种有不同的底层通路和不同的安全参数。Pattern Registry 按 Species 维度分区存储。
+人类的 `post_achievement` 和犬类的 `post_achievement` 是不同的神经原子——同一个感受名，不同物种有不同的底层通路和不同的安全参数。Pattern Registry 按 Species 维度分区存储。
 
 **和 Feelings 哲学咬合**
 
@@ -463,7 +463,7 @@ Pass 1: TypeCheck
     设备依赖前置告警：mandatory/optimal 设备当前未连接
         → 交织警告告知创作者「XX 维度将降级为 outline」
     主旋律+点缀组合情绪对冲检测
-        → accomplishment_certainty + slight_void 类组合
+        → post_achievement + calm_meditative 类组合
         → 交织警告：「检测到情绪对冲，请确认这是设计意图」
         → 创作者确认 → 放行。不拦截，只提醒。
 
@@ -495,7 +495,7 @@ Pass 4: RuntimeSafetyGuard（运行期安全插桩生成——交织期预埋，
         主情绪有自己的插桩
         每个点缀按配比折算独立的插桩
             fear 点缀 ratio 0.12 → 恐惧类插桩阈值 × 0.12 倍灵敏度
-            slight_void 点缀 ratio 0.15 → 空洞类插桩阈值 × 0.15 倍灵敏度
+            calm_meditative 点缀 ratio 0.15 → 空洞类插桩阈值 × 0.15 倍灵敏度
             点缀引起的生理波动有独立风控兜底
     嵌入安全停止帧（每 N 帧插入安全校验点）
     嵌入紧急停止帧（硬件 kill 信号的软件镜像）
@@ -519,7 +519,7 @@ Pass 6: Personalize（FSIR → PSIR）
         通用参数 0.5mA → PBM 查表 → 此人实际参数 0.38mA
         （不是 0.5 × 0.7 = 0.35 的固定乘子）
     PBM 自动微调配比 —— 有硬上下限锁
-        exhaustion_relief 被动从 0.25 上调至 0.30
+        deep_rest 被动从 0.25 上调至 0.30
         → 上限锁 = min(静态 max_ratio=0.30, 个人历史 max=0.32)
         → 此次微调 ≤ 0.30 时放行，≥ 0.31 时拒绝
         → 长期迭代不会数值溢出越界
@@ -1051,7 +1051,7 @@ feeling achievement_satisfaction {
 
     // 主旋律
     main: {
-        type: accomplishment_certainty,
+        type: post_achievement,
         // 不是快乐，不是骄傲，是「我做到了」的底层确信
         ratio: 0.50,
     }
@@ -1059,21 +1059,21 @@ feeling achievement_satisfaction {
     // 点缀——不完美是真实性的证明
     accents: [
         {
-            type: exhaustion_relief,    // 疲惫后的释然
+            type: deep_rest,    // 疲惫后的释然
             ratio: 0.25,
             // 疲惫的释然不是「终于可以休息了」
             // 是「扛过去了」的神经放松
             max_ratio: 0.30,            // 此点缀的安全上限声明
         },
         {
-            type: slight_void,          // 完成后轻微的空洞感
+            type: calm_meditative,      // 完成后轻微的空洞感——平静承接
             ratio: 0.15,
             // 「现在怎么办」——几乎每次大完成后都会出现
             // 不是负面，是完成本身的一部分
             max_ratio: 0.20,
         },
         {
-            type: self_assurance,       // 对自己的微小确信
+            type: clarity,             // 对自己的微小确信——清醒清晰
             ratio: 0.10,
             // 「我行」——不是喊出来的，是经历完了之后沉淀下来的
             max_ratio: 0.20,
@@ -1133,13 +1133,13 @@ feeling adaptive_comfort {
     }
     accents: [
         {
-            type: exhaustion_relief,
+            type: deep_rest,
             ratio: @bind(skin_conductance_trend, range(0.05, 0.30)),
             // 皮电下降趋势越明显 → 疲惫释然的点缀配比越高
             // 下限 0.05（几乎无释然感），上限 0.30（深度放松）
         },
         {
-            type: slight_void,
+            type: calm_meditative,
             ratio: @bind(heart_rate_stability, range(0.05, 0.15)),
             // 心率越平稳 → 空洞感的点缀越低
             // 心率如果始终不稳 → 空洞感出现在放松底层里（到上限 0.15）
@@ -1214,12 +1214,12 @@ Anim 不内嵌 if/for 流程控制——保持源码可全量静态审计。所�
 
 ### 7.5 感受引用的语义
 
-Anim 源码中引用的每个 `type`——`accomplishment_certainty`、`exhaustion_relief`、`slight_void`、`self_assurance`——必须在 **Feelings Pattern Registry**（`docs/pattern-registry.md`）中有注册。
+Anim 源码中引用的每个 `type`——`post_achievement`、`deep_rest`、`calm_meditative`、`clarity`——必须在 **Feelings Pattern Registry**（`docs/pattern-registry.md`）中有注册。
 
 ```
 Registry 条目结构
 
-accomplishment_certainty
+post_achievement
     分类         成就与满足 > 完成后确信
     神经基底      前额叶 + 伏隔核共激活模式
                 多巴胺平稳释放（非脉冲）
@@ -1354,13 +1354,13 @@ docs/four-diagnosis.md             四诊合参的信号融合
     },
     "feeling": {
         "main": {
-            "type": "accomplishment_certainty",
+            "type": "post_achievement",
             "ratio": 0.50
         },
         "accents": [
-            {"type": "exhaustion_relief", "ratio": 0.25, "max_ratio": 0.30},
-            {"type": "slight_void",       "ratio": 0.15, "max_ratio": 0.20},
-            {"type": "self_assurance",    "ratio": 0.10, "max_ratio": 0.20}
+            {"type": "deep_rest", "ratio": 0.25, "max_ratio": 0.30},
+            {"type": "calm_meditative",       "ratio": 0.15, "max_ratio": 0.20},
+            {"type": "clarity",    "ratio": 0.10, "max_ratio": 0.20}
         ]
     },
     "shape": {
