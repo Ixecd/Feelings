@@ -1,0 +1,16 @@
+docs: iCE40 + GW1N 双板调通——bring-up session log
+
+iCE40（ICESugar HX1K-VQ100）：
+- 拖拽烧录验证通过（/Volumes/iCELink/ MSD 写入 .bin → @cdone:1）
+- UART 引脚确认：TX=4, RX=3（VQ100）
+- 根因确认：iCELink CDC 口单向——只输出不输入，非 FPGA 引脚问题
+- 等 CH340 USB-UART 模块到货做 loopback 终验
+
+GW1N（GW1N-LV4LQ144）：
+- JTAG 10 针脚序已确认（TMS/TDO/TDI/TCK 标注）
+- 开源工具链 macOS 全通：yosys synth_gowin → nextpnr-himbaechel → gowin_pack → .fs
+- nextpnr-himbaechel 从源码编译，设备名需带 speed grade：GW1N-LV4LQ144C6/I5
+- openFPGALoader 源码编译开启 CMSIS-DAP + GWU2X
+- 板载 CH340 不在 openFPGALoader 支持列表，等 CH340 模块做 JTAG bit-bang
+
+工具链安装记录 + CST 格式 + 合成验证命令已归档在文档中。
