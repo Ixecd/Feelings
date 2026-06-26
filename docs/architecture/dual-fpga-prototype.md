@@ -4,6 +4,44 @@
 > 日期：2026-06-22
 > 核心：两块几十块钱的 FPGA 开发板，三根飞线，一套完整的闭环生物安全系统。不是等两板合流——是各验各的，中间只接三根线。
 
+## 〇、硬件盘点（2026-06-25）
+
+### 已到手
+
+| 设备 | 型号 | 状态 |
+|---|---|---|
+| FPGA | iCE40 HX1K-VQ100 (ICESugar) | ✅ 烧录验证、LED 引脚确认、UART 引脚确认(TX=4/RX=3) |
+| FPGA | GW1N-LV4LQ144 | ✅ JTAG 脚序确认、开源工具链全通 |
+| MCU | STM32F407VET6 主控板 | ⏳ 带 AD5933/DAC8552/HX711/液晶屏，缺 ST-Link |
+| BLE | nRF52832 (青风电子) | ⏳ BLE 5.0 SoC，缺 T 口线 |
+| 传感器 | AD5933 阻抗子模块 ×2 | ⏳ I2C，自带 4 脚 VCC/GND/SCL/SDA |
+| 传感器 | AD1256 24Bit ADC | ⏳ SPI，SCK/CS/DIN/DOUT/DRDY |
+| 仪器 | 信号发生器 | ⏳ 电压/电流/电阻输出 |
+| 工具 | 万用表 | ✅ |
+| 工具 | 面包板 + 公公/公母线 | ✅ |
+
+### 在途（预计 6/27）
+
+| 设备 | 用途 |
+|---|---|
+| CH340 USB-UART | iCE40 loopback + GW1N JTAG bit-bang |
+| ST-Link V2 | STM32F407 编程 + AD5933 I2C 引脚扫描 |
+| T 口线 (Mini USB) | nRF52832 供电 |
+
+### 待买（信号注入端）
+
+| 设备 | 用途 | 价格 |
+|---|---|---|
+| 压电陶瓷驱动模块 | GW1N PWM→触觉刺激 (后颈/腕部) | ¥3 |
+| 骨传导耳机模块 | GW1N I2S→迷走神经耳支 | ¥15 |
+| tDCS 电流源模块 | GW1N GPIO→经颅微电流 | ¥20 |
+
+### 硬件调试日志
+
+每个调试 session 的详细记录 → `Feelings-Core/docs/hardware/` 目录。
+
+最近: `Feelings/docs/architecture/dual-fpga-bringup-2026-06-24.md`
+
 ---
 
 ## 一、为什么两块板
