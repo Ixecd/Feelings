@@ -12,21 +12,22 @@
 |---|---|---|
 | FPGA | iCE40 HX1K-VQ100 (ICESugar) | ✅ 烧录验证、LED 引脚确认、UART 引脚确认(TX=4/RX=3) |
 | FPGA | GW1N-LV4LQ144 | ✅ JTAG 脚序确认、开源工具链全通 |
-| MCU | STM32F407VET6 主控板 | ⏳ 带 AD5933/DAC8552/HX711/液晶屏，缺 ST-Link |
-| BLE | nRF52832 (青风电子) | ⏳ BLE 5.0 SoC，缺 T 口线 |
-| 传感器 | AD5933 阻抗子模块 ×2 | ⏳ I2C，自带 4 脚 VCC/GND/SCL/SDA |
+| MCU | STM32F407VET6 主控板 | ⚡ 带 AD5933/DAC8552/HX711/液晶屏，ST-Link 已到 |
+| BLE | nRF52832 (青风电子) | ⚡ BLE 5.0 SoC，T 口线已到 |
+| 传感器 | AD5933 阻抗子模块 ×2 | ⏳ I2C，4 脚 VCC/GND/SCL/SDA |
 | 传感器 | AD1256 24Bit ADC | ⏳ SPI，SCK/CS/DIN/DOUT/DRDY |
-| 仪器 | 信号发生器 | ⏳ 电压/电流/电阻输出 |
-| 工具 | 万用表 | ✅ |
-| 工具 | 面包板 + 公公/公母线 | ✅ |
+| 工具 | CP2102 USB-UART | ✅ 已到（替代 CH340）——iCE40 loopback + GW1N JTAG |
+| 工具 | ST-Link V2 | ✅ 已到——STM32F407 编程 + AD5933 I2C 引脚扫描 |
+| 工具 | T 口线 (Mini USB) | ✅ 已到——nRF52832 供电 |
 
-### 在途（预计 6/27）
+### 下一步（7 月第一周）
 
-| 设备 | 用途 |
-|---|---|
-| CH340 USB-UART | iCE40 loopback + GW1N JTAG bit-bang |
-| ST-Link V2 | STM32F407 编程 + AD5933 I2C 引脚扫描 |
-| T 口线 (Mini USB) | nRF52832 供电 |
+| 任务 | 设备 | 目标 |
+|---|---|---|
+| iCE40 UART loopback | CP2102 | 终验 TX=4/RX=3，打通 UART ↔ FPGA |
+| GW1N JTAG bit-bang | CP2102 + GW1N | 烧录首个 .fs bitstream |
+| STM32 I2C 扫描 | ST-Link + STM32F407 | 定位 AD5933 的 SDA/SCL 引脚 |
+| nRF52832 上电 | T 口线 | 验证蓝牙广播 |
 
 ### 待买（信号注入端）
 

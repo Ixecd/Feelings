@@ -1,0 +1,4 @@
+docs: 硬件盘点更新——CP2102+ST-Link+T口线已到，7月第一周计划
+
+CP2102(替代CH340)+ST-Link V2+T口线已到货。
+下周: iCE40 loopback / GW1N JTAG / STM32 I2C扫描 / nRF52832上电。
