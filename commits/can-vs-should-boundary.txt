@@ -1,0 +1,6 @@
+docs: 畸形/惯/沦陷 三篇补"能不能vs要不要"边界
+
+malformation-and-recovery.md §5.4: 所有"能不能"碰到的第一堵墙是伦理。
+技术说能——伦理说"这个人——他自己选了吗。"
+spoiled.md: Feelings能校准——但不是替你做。等你选了——我帮你走。
+fall-and-redemption.md: 救赎不是被救。Feelings不做救赎。拿回来是你自己的事。
