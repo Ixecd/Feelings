@@ -65,11 +65,30 @@
   含义: 变了。新基线不再是以前那个人。
 ```
 
-回归型=韧性好。驻留型=这次人生事件把这个人推到了一个新的坐标。两种都是正常反应——没有哪条更好。只记录。
+不是"回归型=韧性好，驻留型=变了。"**只记录坐标偏移、滑动窗口方向和稳定时间——不贴任何标签。** 有些驻留是成长——从一段内耗的关系里走出来，情绪基线往下掉了 0.3 然后没回去——不是被击垮了——是从"习惯性高焦虑"变成了"不再需要那么紧张。"有些回归是原地打转——被同一类人伤害了三次，每次都弹回原来的基线。系统不替用户评价哪一种更好。
 
 ---
 
-## 四、和人生历史日志的咬合
+## 四、价值观——比 PBM 四维更深的一层
+
+PBM 告诉你"身体偏了多少。"价值观告诉你"你认为什么重要。"两者在断裂前后可能一起变，也可能只变了其中一个。
+
+价值观不是来自问卷。是从 life_history_log 里每一次决策的 chosen_option 和 reason_given 里提取。选了"降薪去核心业务"，reason 里写了"怕后悔没去过最好的地方"——提取 value tag: `growth_over_comfort`。几百条决策积累下来——价值观不是用户自己报告的偏好——**是用选择焊出来的优先级排序。**
+
+```
+断裂前高频标签                          断裂后高频标签
+───────────                           ───────────
+growth_over_comfort, autonomy,         growth_over_comfort, autonomy,
+risk_tolerance, ambition               peace, connection, patience
+
+→ 四个价值标签被两个新标签取代了。           → 不是"错了"。不是"变好了"。
+→ 是这次人生事件——把这个人认为"什么重要"——    是只记录这次偏移——价值观在断裂前后换了排序。
+  重新排了一遍。
+```
+
+---
+
+## 五、和人生历史日志的咬合
 
 每次断裂——往上一帧找：**他之前在 life_history_log 里签过哪一条决策。**
 
@@ -95,12 +114,15 @@ struct BaselineBreakEvent {
     break_dimensions: Vec<Dimension>,
     break_vector: [f64; 4],
     linked_life_log_entry_id: Option<String>,
-    linked_context_tags: Vec<String>,      // "work", "family", "health", "relation"
-    recovery_type: Option<BreakType>,      // 30天后填入
+    linked_context_tags: Vec<String>,
+    recovery_type: Option<BreakType>,
     recovery_vector: Option<[f64; 4]>,
     recovery_days: Option<u32>,
     pbm_before: [f64; 4],
     pbm_after_30d: Option<[f64; 4]>,
+    values_before: Vec<ValueTag>,
+    values_after_30d: Option<Vec<ValueTag>>,
+    values_shift_type: Option<ValueShift>,  // none / reshuffled / inverted
 }
 ```
 
@@ -122,4 +144,4 @@ struct BaselineBreakEvent {
 
 ---
 
-*基线不在原地——不是退步。是那次选择、那段经历、那次受伤——把锚点从旧坐标推到了新坐标。回弹了 = 韧性好。没回弹 = 变了。两种都是人该有的样子。认识自己的方式——不是回头看不变的自己在哪。是看自己偏了多少——在每一段人生后面——停在了新的位置。*
+*基线不在原地——不是退步。是那次选择、那段经历、那次受伤——把锚点从旧坐标推到了新坐标。回弹了——身体自己回去了。没回弹——身体停在了新的地方。两种都不是对错。价值观也是一样——断裂之前认为"成长"最重要——断裂之后"平和"被推到了排序的最上面。不是变了不好。是这次人生事件——把这个人认为"什么重要"——重新排了一遍。认识自己的方式——不是回头看不变的自己在哪。是看自己偏了多少——在每一段人生后面——身体和价值观——分别停在了什么位置。*
