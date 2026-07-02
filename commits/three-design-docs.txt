@@ -1,0 +1,21 @@
+docs: 三篇设计稿——人生历史日志/基线断裂追踪/社会共鸣基线
+
+人生历史日志 (docs/coach/life-history-log.md):
+- 教练AI不替用户选——只提供结构化意见+记录每一次重大决策
+- 每条entry记录选项/教练意见/用户选择/选择理由/决策前PBM快照+决策后30d偏移
+- 脱敏回看=用户自己看趋势——不贴标签不评价对错。锚点从4个f64→几百条人生entry
+- 咬合baseline-break-tracking——每次基线断裂往前一帧找关联决策
+
+基线断裂追踪 (docs/feelings-science/baseline-break-tracking.md):
+- 不是算稳不稳——是算基线被人生事件掰断之后：回弹还是驻留在新位置
+- 复用DampingConfig阈值——每session后逐维检测。7 session内>=2维=触发BaselineBreak
+- 回归型断裂vs驻留型断裂——两种都是正常人的反应
+- 数据结构: break_vector/recovery_vector/recovery_days/linked_life_log_entry_id
+
+社会共鸣基线 (docs/feelings-science/social-resonance-baseline.md):
+- 核密度估计代替中位数比较——密度比平均值更有用
+- 脱敏=差分隐私+本地聚合+匿名分桶——原始PBM永不离开TEE
+- 语境分段=不同人生阶段的共鸣基准。教练说"你这个阶段别人也偏这里"——不是压你
+- 把锚点从孤立坐标推到人群分布里——让用户看见"我不是一个人"
+
+关联: session/anchor.rs / ai-coach.md / Core-FORGET.md P1#1/#4
