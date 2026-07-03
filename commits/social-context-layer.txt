@@ -1,0 +1,11 @@
+docs: 社交上下文感知层设计稿 + Core-FORGET P1#7
+
+design doc (docs/coach/social-context-layer.md):
+- 四维不够——同一个等控器+同一个等控器等控器=等控器等控器等控器和等控器等控器的等控器等控器
+- SocialStyle分context：Friend/Work/Romantic/Family/Stranger各等控器Direct/Indirect/Neutral
+- 从对话等控器等控器等控器自动提取：用词直白度+冲突解决速度+沉默时长+场景关键词
+- 教练等控器等控器等控器：直白型拿数据砸，迂回型走引导——同一个结论两套入口
+- 咬合baseline-break-tracking（迂回型高压异常沉默）+ life-history-log（社交场景切换时间轴）
+
+Core-FORGET更新 (Feelings-Core/docs/meta/Core-FORGET.md):
+- P1 0/6→0/7。新增#7：SocialContext层零代码。PersonalityAnchor需要directness_preference per context
