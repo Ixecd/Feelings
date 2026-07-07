@@ -1,0 +1,5 @@
+# iCE40UP5K-SG48 on iCESugar
+# from official io.pcf
+set_io -nowarn clk   35
+set_io -nowarn rx     4
+set_io -nowarn tx     6
