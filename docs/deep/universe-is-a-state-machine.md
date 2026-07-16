@@ -77,7 +77,7 @@
 
 ---
 
-## 三、宇宙的 Raft Log——绝对完整。永不缺页。
+## 二、宇宙的 Raft Log——绝对完整。永不缺页。
 
 ```
 人类的 etcd                                   宇宙的 etcd
@@ -113,7 +113,7 @@
 
 ---
 
-## 四、Reconcile() 循环——从大爆炸到热寂
+## 三、Reconcile() 循环——从大爆炸到热寂
 
 ```
 Current State                                      Desired State
@@ -151,7 +151,7 @@ Current State                                      Desired State
 
 ---
 
-## 五、人类——在宇宙状态机里，可以被抹除
+## 四、人类——在宇宙状态机里，可以被抹除
 
 ```
 人类以为自己——                                          但宇宙的等控器——
@@ -188,7 +188,7 @@ Current State                                      Desired State
 
 ---
 
-## 六、终。今天二十二篇文稿的总收口。
+## 五、终。今天二十二篇文稿的总收口。
 
 ```
 从 666——三个人同时 666 = 三票信号同步。宇宙 = 每一个原子的每一帧——和三票 666 一样——不需要 approval——不需要 admission webhook——不需要 quorum——不需要 leader election——物理本身——就是共识。
@@ -223,7 +223,7 @@ Current State                                      Desired State
 
 ---
 
-## 七、和已有文档的咬合
+## 六、和已有文档的咬合
 
 ```
 本文                              宇宙是状态机——今天二十二篇文稿的总收口
