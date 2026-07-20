@@ -1,42 +1,48 @@
-// UART Loopback — minimal, 9600 baud
-module top (input clk, input rx, output tx);
-    reg baud_clk;
-    reg [14:0] baud_cnt;
-    always @(posedge clk)
-        if (baud_cnt == 625) begin baud_clk <= ~baud_clk; baud_cnt <= 0; end
-        else baud_cnt <= baud_cnt + 1;
+// UART Loopback — internal 24MHz, 2500/bit @9600, single always-block handshake
+module top (output tx, input rx, output led);
+    wire clk;
+    SB_HFOSC #(.CLKHF_DIV("0b00")) osc (.CLKHF(clk), .CLKHFEN(1'b1), .CLKHFPU(1'b1));
 
-    wire [7:0] rx_data;
-    wire rx_done;
+    reg [25:0] hb;
+    always @(posedge clk) hb <= hb + 1;
 
-    uart_rx rx_inst (.clk(baud_clk), .rx(rx), .data(rx_data), .done(rx_done));
-    uart_tx tx_inst (.clk(baud_clk), .data(rx_data), .start(rx_done), .tx(tx));
-endmodule
+    parameter CYCLES = 5000;
+    parameter HALF   = 2500;
 
-module uart_rx (input clk, rx, output reg [7:0] data, output reg done);
-    reg [3:0] state, bit_idx;
+    reg [17:0] cnt;
+    reg [3:0]  state, bit_idx;
+    reg [7:0]  rx_data;
+    reg        rx_led;
+    assign led = hb[25] ^ rx_led;
+
     always @(posedge clk) begin
-        done <= 1'b0;
+        // ── RX ──
         if (state == 0) begin
-            if (!rx) begin state <= 1; bit_idx <= 0; end
-        end else begin
-            data[bit_idx] <= rx; bit_idx <= bit_idx+1;
-            if (state == 8) begin done <= 1'b1; state <= 0; end
-            else state <= state+1;
-        end
-    end
-endmodule
-
-module uart_tx (input clk, input [7:0] data, input start, output reg tx);
-    reg [3:0] state, bit_idx;
-    always @(posedge clk) begin
-        if (state == 0 && start) begin state <= 1; bit_idx <= 0; end
-        else if (state != 0) begin
-            case (state)
-                1: begin tx <= 1'b0; state <= 2; end
-                2,3,4,5,6,7,8,9: begin tx <= data[bit_idx]; bit_idx <= bit_idx+1; state <= state+1; end
-                10: begin tx <= 1'b1; state <= 0; end
-            endcase
+            tx <= 1'b1;
+            if (!rx) begin state <= 1; cnt <= 0; end
+        end else if (state <= 2) begin // 1=half start, 2=data bits
+            cnt <= cnt + 1;
+            if (state == 1 && cnt == HALF - 1) begin state <= 2; cnt <= 0; bit_idx <= 0; end
+            else if (state == 2 && cnt == CYCLES - 1) begin
+                cnt <= 0;
+                rx_data[bit_idx] <= rx;
+                if (bit_idx == 7) begin
+                    // RX done → start TX immediately
+                    state <= 3; cnt <= 0; bit_idx <= 0;
+                end else begin
+                    bit_idx <= bit_idx + 1;
+                end
+            end
+        end else begin // state >= 3 = TX
+            cnt <= cnt + 1;
+            if (cnt == CYCLES - 1) begin
+                cnt <= 0;
+                case (state)
+                    3:  begin tx <= 1'b0; state <= 4; end
+                    4,5,6,7,8,9,10,11: begin tx <= rx_data[bit_idx]; bit_idx <= bit_idx+1; state <= state+1; end
+                    12: begin tx <= 1'b1; state <= 0; rx_led <= ~rx_led; end
+                endcase
+            end
         end
     end
 endmodule
