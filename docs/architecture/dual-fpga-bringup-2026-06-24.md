@@ -108,3 +108,41 @@ python3 -c "import sys; sys.argv=['gowin_pack','-d','GW1N-4','-o','top.fs','pnr.
 - iCE40 烧了 ~8 版 bitstream 才反推出正确的 LED/UART 引脚
 - 最大坑：iCELink CDC 只输出不输入——不是任何人的错，是硬件设计边界
 - 开源 Gowin 工具链在 macOS 上完全可跑，但需从源码编 nextpnr-himbaechel
+
+---
+
+## 四、2026-07-20 iCE40 回环重跑（内部48MHz HFOSC）
+
+之前外部12MHz MCO时钟不可靠，长时间不通。切到内部SB_HFOSC 48MHz后完全稳定。
+
+**最终方案：**
+- 时钟：SB_HFOSC 48MHz（CLKHF_DIV="0b00"）
+- 波特率：9600，48M/5000=9600周期/bit
+- 架构：单always块状态机，RX收完直切TX
+- 引脚：RX=FPGA ball 2，TX=FPGA ball 6，LED=39
+- 使用率：128/5280 LC（2%）
+- 接线：CP2102 TXD→PMOD P1_11，RXD→PMOD P1_2，GND→GND
+- 终端：`screen /dev/tty.usbserial-0001 9600`
+
+详见 `hardware/ice40-uart-pitfalls-2026-07-07.md` 坑6-8 + `hardware/FORGET.md`
+
+## 五、2026-07-21 GW1N bitstream 生成 ✅ 等烧录器
+
+重新确认 GW1N 工具链全通——LED闪烁器 blink.fs 已生成（1.1MB）。
+
+```
+yosys -p "synth_gowin -top top -json blink.json" blink.v ✅
+nextpnr-himbaechel --device GW1N-LV4LQ144C6/I5 --json blink.json --write pnr.json --vopt cst=pin.cst ✅
+gowin_pack -d GW1N-4 -o blink.fs pnr.json ✅
+```
+
+CST 暂用常见引脚（clk=52, l1=10, l2=11），实际引脚需等烧录后验证。
+
+JTAG 烧录：
+- 板载 CH340 不能被 openFPGALoader 识别
+- CP2102 无流控脚无法 bit-bang
+- iCESugar SWD 口未引出
+- **方案**：FT2232HL 模块（~¥15），USB→JTAG 直连 GW1N 十针排针
+  - TCK→pin5, TMS→pin1, TDI→pin4, TDO←pin3, GND→pin6
+  - openFPGALoader `-c digilent_hs2 blink.fs`
+- 状态：FT2232HL 已下单，等收货
