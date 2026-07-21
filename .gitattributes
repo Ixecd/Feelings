@@ -1,0 +1,2 @@
+# GW1N FPGA bitstream files (not F# source)
+*.fs linguist-vendored
