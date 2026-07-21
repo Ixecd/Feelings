@@ -146,3 +146,12 @@ JTAG 烧录：
   - TCK→pin5, TMS→pin1, TDI→pin4, TDO←pin3, GND→pin6
   - openFPGALoader `-c digilent_hs2 blink.fs`
 - 状态：FT2232HL 已下单，等收货
+
+**2026-07-21 补充——UART ISP 零成本方案（先行验证，不等 FT2232）：**
+- GW1N 内置 Boot ROM 支持 UART ISP 烧录外挂 SPI Flash，不需要 JTAG
+- 板载 CH340 只供电无数据——改用 CP2102 直连 FPGA ball
+- CP2102 RXD 插 ball 25 时 RXD 灯亮——ball 25 确认为 UART0_TX（FPGA→CP2102方向）
+- UART0_RX 待验证（ball 24 或 26）
+- 接线：CP2102 TXD→UART0_RX, RXD→ball 25, GND→GND（只需三根，不接3V3）
+- 烧录流程：GW1N 断电→PC 端点烧录→GW1N 上电→自动进 ISP→烧完灯闪
+- 进度：已定位 UART0_TX，RX 未验证——下午继续
