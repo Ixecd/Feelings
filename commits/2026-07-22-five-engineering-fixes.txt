@@ -1,0 +1,17 @@
+docs: device-architecture补五工程项——设备内外总线/高频容性泄漏/双频阻抗/瞬时RR/Flow模式
+
+- 通信拓扑拆分Intra-device(排线)与Inter-device(Nordic ESB私有TDMA <1.5ms)
+  跨肢体不再挂物理线缆，不BLE不WiFi不云端
+- VCCS隔离补高频容性泄漏约束：PCB寄生电容<5pF+驱动屏蔽环
+  AD5933 100kHz扫描时隔离电容仅~160kΩ，高频旁路必须堵
+- 咀嚼伪影从二元暂停升级为双频阻抗拆解：1kHz+50kHz同时激励
+  同步等比跳变=物理位移→降额注入；相位差=生理响应→照推
+  吃一顿饭不打折20分钟，只那一秒少推一点
+- 密集点校准从RMSSD改为瞬时R-R间期延长+PPG舒张斜率
+  1-3个心跳周期收敛，比RMSSD快2-3倍，避开呼吸RSA干扰
+- 赛前注入包从Deep Rest改为Performance Flow模式
+  高HRV+适度交感张力=专注流态(Focused Calm)，不压制皮质醇到散
+
+关联: docs/architecture/device-architecture.md
+
+总结: 线不拖、高频不漏、咬不误停、密集点不慢赛、赛前不散
