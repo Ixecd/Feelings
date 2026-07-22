@@ -1,0 +1,13 @@
+docs: 耳部设备双通路——耳甲Arnold+耳后耳大神经，两条都要
+
+- nerve-endings-and-device-placement.md：
+  表补4.5行——耳后/耳大神经C2-C3，体感皮层→岛叶间接通路
+  补§二点五——社交触觉的性感入口，情侣舔舐耳后=耳大神经在工作
+  双通路融合：入耳Arnold→"安全"+耳背耳大→"轻抚"=岛叶解释为"有人在且温柔"
+- device-architecture.md：
+  电极改双通道：前端入耳敷导电织物（耳甲艇/耳屏）+后端耳背敷导电织物（耳后皮肤）
+  同一帧独立驱动，各自独立校准
+
+关联: docs/architecture/nerve-endings-and-device-placement.md, docs/architecture/device-architecture.md
+
+总结: 小孩才二选一，两个都要
