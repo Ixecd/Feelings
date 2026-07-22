@@ -1,0 +1,16 @@
+docs: 解剖学修正——迷走神经耳支靶点从耳后纠正为耳甲/耳屏
+
+- nerve-endings-and-device-placement.md §二完全重写：
+  耳后乳突区由耳大神经C2-C3支配，非迷走神经
+  Arnold神经分布于外耳道/耳甲艇/耳屏，电极须入耳接触
+  补Aβ/Aδ必然激活→体感皮层，刺麻感不可避免
+  补taVNS fMRI证实NTS/LC/岛叶通路，CE医疗认证参考
+- device-architecture.md：
+  设备位置从"耳后乳突区域"纠正为"耳甲艇/耳屏，入耳或半入耳"
+  电极固定从"耳后弹力臂压紧"改为"入耳延伸段端面敷导电织物"
+  校准区域/安全边界同步修正
+- ROADMAP.md：tDCS补双相对称方波输出，防直流极化灼伤皮肤
+
+关联: hardware/ROADMAP.md, docs/architecture/nerve-endings-and-device-placement.md, docs/architecture/device-architecture.md
+
+总结: 生理通路校到正确靶点，工程设计同步修正，不抱幻想的实事求是
