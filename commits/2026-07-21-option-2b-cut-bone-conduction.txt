@@ -1,0 +1,15 @@
+docs: CT纤维激励纠正+设备形态切Option 2B——砍骨传导振子，留耳挂
+
+- nerve-endings-and-device-placement.md：
+  CT纤维最优刺激纠正为慢速移动轻抚(1-10cm/s)，非静态微压
+  后颈激活方式改为多点行波相位延时，模拟轻抚轨迹
+- device-architecture.md：
+  设备形态从骨传导一体机切为结构耳挂+动圈入耳(Option 2B)
+  砍掉骨传导振子→重量~18g→~13-14g，腔体释放PCB面积翻倍
+  音频走入耳动圈单元，低频比骨传导纯净，振动不再污染AFE阻抗读数
+  耳挂退化为钛丝+硅胶电极支架，双通路(Arnold+耳大神经)完整保留
+  结构描述/职责/双侧刺激/语音通道全部同步更新
+
+关联: docs/architecture/device-architecture.md, docs/architecture/nerve-endings-and-device-placement.md
+
+总结: 两条通路一个都没丢，三个肉身指标全松了
