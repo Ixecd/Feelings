@@ -1,0 +1,14 @@
+docs: device-architecture补四工程项——LVDS总线/咀嚼伪影/TrueDepth暗区/双侧相位
+
+- 总线物理层LVDS差分——柔性排线高频弯折时差分共模抑制时钟抖动
+  链路层每帧CRC重传，替代方案(WiFi/BLE/云端)同步从正文移除
+- 咀嚼/说话→耳道变形→接触阻抗阶跃→入耳AFE实时In-band Impedance Monitoring
+  阻抗变化速率超生理阈值→该帧暂停注入，不等滤波
+- TrueDepth结构光在耳甲腔暗影区点云缺失→非刚性ICP+解剖先验拓扑补全
+  不靠网格硬插值，靠"已知人类耳甲腔不该长成这样"
+- 双侧迷走不对称：右→窦房结SA/左→房室结AV
+  双侧VCCS独立相位offset微调，防止NTS冲动相位抵消
+
+关联: docs/architecture/device-architecture.md
+
+总结: 线不断、咬不误推、建模不瞎补、左右不撞相位
