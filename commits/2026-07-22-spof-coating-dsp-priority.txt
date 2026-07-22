@@ -1,0 +1,11 @@
+docs: device-architecture补SPoF降级/波形防潮/DSP残余/三项优先
+
+- 主设备SPoF软着陆：耳部接触不良→从设备降级维持采集，注入暂停但采集不停
+  耳部恢复→自检密集点→恢复全栈/重新扫。掉线≠全黑
+- VCCS隔离补Conformal Coating防潮防盐雾，汗液盐分结晶=电解质桥破坏<5pF边界
+- 振动隔离补DSP实时自适应滤波，μA级阻抗测量残余EMG/微滑噪声不入PBM
+- 近期优先：Option 2B PoC + Performance Flow赛前包 + 柔性PCB隔离区涂覆
+
+关联: docs/architecture/device-architecture.md
+
+总结: 掉线不黑、汗不穿墙、震后洗帧、三步先走
