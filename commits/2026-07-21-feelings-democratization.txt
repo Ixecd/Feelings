@@ -1,0 +1,16 @@
+docs: 感受民主化——Feelings不是单点刺激器，是多模态闭环内感受系统
+
+- §零：外界误读——把Feelings简化成taVNS助眠耳机，实际是四路融合+PBM闭环
+- §一：岛叶多模态融合——四路信号在同一帧汇聚，给岛叶提供不可否认的安全证据链
+  内感受预测编码：大脑对多模态输入做最佳概率解释
+- §二：前额叶离线时的硬件安全模式——Top-down掉线时不讲道理，Bottom-up生理承托兜底
+  Polyvagal理论+Hypofrontality，身体稳住→前额叶供血恢复→逻辑重新挂载
+- §三：闭环与神经可塑性——PBM动态调参+赫布学习，辅助轮不是轮椅
+  闭环对抗耐受，焊好归零经线后摘设备
+- §四：偏差信号的前置纠偏——在主观意识到焦虑之前，系统已经完成归零
+  "不知道自己快崩了"的窗口期介入
+- §五：收束表——六种误会 vs 六个事实
+
+关联: docs/architecture/nerve-endings-and-device-placement.md, docs/architecture/device-architecture.md, hardware/ROADMAP.md
+
+总结: 不是民主化了感受，是民主化了偏差归零的介入时机
