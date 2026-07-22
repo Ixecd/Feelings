@@ -1,0 +1,10 @@
+docs: feelings-democratization.md补PBM双重含义注释
+
+- PBM对外=Physiological/Biometric Mapping（硬件层生理映射→偏差→纠偏）
+- PBM对内=Personal Basic Matrix（框架层个人基体——PBM_slow+PBM_mid+PBM_fast）
+- 含义不同因读者不同：拆信号的 vs 来访的
+- 引用Feelings-MATRIX.md和Feelings-GENETICS.md §八
+
+关联: docs/feelings-science/feelings-democratization.md
+
+总结: 不是笔误，是两个维度的同一声明
