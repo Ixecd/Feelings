@@ -1,0 +1,9 @@
+docs: 耳后双通路脱敏——改工程语气，去私密描述
+
+- 摘"情侣舔舐/酥软/性感入口"→改"体感皮层表征面积/近距接触感知阈限"
+- 摘"小孩才二选一/有人在且温柔"→改"各自独立校准/用户可单独开关任意一侧"
+- device-architecture.md同步脱敏
+
+关联: docs/architecture/nerve-endings-and-device-placement.md, docs/architecture/device-architecture.md
+
+总结: 一样的双通路，干净的工程文
