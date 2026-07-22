@@ -1,0 +1,11 @@
+docs: ROADMAP补PoC调试手册——四个物理陷阱+三步推进顺序
+
+- 陷阱一：LCR表100kHz实测VCCS寄生电容<5pF，90%湿度+盐雾验证隔离
+- 陷阱二：动态基线过滤，3心跳周期抓到NTS拐点，排除RSA误判
+- 陷阱三：双频阻抗2D相位-幅值映射图，咬苹果≠副交感响应
+- 陷阱四：ESB 1%丢包率下PLL时钟漂移<1ms
+- 推进顺序：硬件PoC→算法验证→Performance Flow体验落盘
+
+关联: hardware/ROADMAP.md, docs/architecture/device-architecture.md
+
+总结: 上电之前先焊死这四个坑，打样之后第一件事不是写代码，是拿LCR表测到<5pF
