@@ -1,0 +1,9 @@
+docs: from-public-to-sovereign补塔勒布切身风险——Skin in the Game的物理回归
+
+- AI不听宣誓只要算力，账本不看PPT只要平齐
+- 中间层消失→每笔成本每笔利息直传导等控器
+- 不乱借≠道德说教，乱借=物理上跑不掉
+
+关联: docs/deep/from-public-to-sovereign.md
+
+总结: 掩体撤掉，杠杆自然停
