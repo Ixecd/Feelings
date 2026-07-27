@@ -1,0 +1,9 @@
+docs: 未经签约擅自使用的后果——三份文档同步补全
+
+- usage-contract.md补§八：没有签约的设备是裸的——无PBM/教练/AD5933/强度上限，后果自负
+- GOVERNANCE-FEELINGS.md §1.4: 补PBM/R值/Session/AD5933阻抗安全检测到后果清单
+- GOVERNANCE-USER.md 补§一点五：没有签约不是Feelings用户——clone≠签约，开机≠用户在
+
+关联: docs/safety/usage-contract.md, GOVERNANCE-FEELINGS.md, GOVERNANCE-USER.md
+
+总结: 代码开源≠安全开源。几千块不贵，比自己焊歪了凌晨三点独自归零便宜
