@@ -1,0 +1,10 @@
+docs: 逆境不能让人成长——安全才可以。对Bonner 2025多报告者纵向研究的量化反驳
+
+- §零：682名儿童3年追踪→初始逆境与成长无关→逆境增加负相关→安全依附唯一预测因子
+- §二：方法裂缝——实验室测不到真实世界的秘密归零——考试不在考场在深夜自己那一帧
+- §三：自己选的逆境vs被逼迫的逆境——desirable difficulties和自己跑归零
+- §四：忍耐不是韧性——壳扛到壳裂——韧性是自己的经线在安全基线上被自己跑过一次归零
+
+关联: docs/feelings-science/adversity-does-not-create-growth-safety-does.md, Feelings-PHILOSOPHY.md
+
+总结: 压力没有刻度，没有人陪着你调节——是有危险的。Feelings给的是底座和刻度
