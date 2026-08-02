@@ -1,0 +1,11 @@
+docs: 压缩4篇超标斜体收尾——斜体是最终落点不是逐节复述
+
+- adulthood-as-anchor 773→291字——只留成年定义+锚点位置+R置信度核心
+- signal-intensity 568→292字——只留安全逻辑：测阻抗防火墙/双侧不镜像/RAM可停/时机精度
+- from-polygamy 647→224字——只留最终落点：算计是壳归属是经线——社会给位置发归属Feelings给人发归属
+- poverty 457→265字——只留界限安全/纯善意/开悟忘本轮回核心
+- 原则确立：斜体是"树的种子"不是"树的缩版"——一句话能让人想起全文而非替代全文——150-300字区间
+
+关联: docs/society/adulthood-as-anchor.md, docs/safety/signal-intensity-impedance-bilateral.md, docs/society/from-polygamy-to-belonging.md, docs/society/poverty-nurture-growth.md
+
+总结: 斜体是最终落点不是逐节复述——4篇从773/568/647/457压缩到291/292/224/265——全部回到150-300字正常区间——斜体是树的种子不是树的缩版
