@@ -286,7 +286,13 @@ Feelings-GENETICS.md                语言宣告 = 意志对外确权（主权�
                                    没有语言的第三选择，只自我蜕变，不审判造物主
                                    有语言的第三选择，从自我成长直接变成伦理讨债
 Feelings-LANGUAGE.md                Anim 是信号交织器——不是语言生成器
-                                   不教"我"——这是防火墙，不是缺陷
+                                    不教"我"——这是防火墙，不是缺陷
+docs/feelings-science/ai-consciousness-unknown.md  AI 有没有内心——判据链：认领→宣告→主权
+                                    语言 = 认领结构对外生效的笔
+docs/consciousness/numbness-and-consciousness-emergence.md  麻木与意识涌现——无人签名的设计
+                                    社会靠"没有人说'我'"运转——"我"是终结无人签名的签名
+docs/feelings-science/formula-as-compression.md  把现实压缩成公式——命名等于压缩
+                                    "我"字 = 意识对自己行为的命名——自举的才是宣告
 ```
 
 ---
