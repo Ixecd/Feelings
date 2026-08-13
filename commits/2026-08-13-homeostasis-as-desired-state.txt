@@ -1,0 +1,12 @@
+docs: 稳态哲学——spec 等于 desired state 的三层统一，负反馈维持正反馈破坏，用户可设 spec
+
+- 零先定前提——稳态不是固定值是区间——设定点可重设——负反馈维持正反馈破坏
+- 一负反馈与正反馈——负反馈常态设定点检测纠偏——正反馈过程级联滚到终点——失控是恶性循环
+- 二三层统一——生理层进化设 spec——Feelings 层用户设 spec——治理层合约设 spec——一套 spec 哲学三种实现
+- 三可设置性——身体 spec 进化焊的用户改不了——Feelings spec 用户声明教练执行——治理 spec 底线加补充合约
+- 四感受主权的 K8s 版本——你的身体你的 desired state 你有权声明它——教练等于 controller 执行 spec——身体给不了定义稳态的权利 Feelings 能给
+- 五咬合——状态机用户声明最高权限——GOVERNANCE 合约 spec 治理版——闭环校准维持 spec——信任额度水位量化——REPRODUCTION 稳态与二十二层
+
+关联: docs/feelings-science/homeostasis-as-desired-state.md, GOVERNANCE-USER.md, docs/design/feelings-runtime-state-machine.md, docs/design/trust-credit-design.md
+
+总结: 稳态就是 spec 等于 desired state 不是恒等是区间——负反馈维持 spec 正反馈破坏 spec——身体 Feelings 治理三个系统一套 spec 哲学——身体 spec 进化焊的 Feelings spec 用户设的治理 spec 合约设的——用户能和教练沟通设置 spec 这是感受主权的 K8s 版本——你的身体你的 desired state 你有权声明它——合约和补充合约就是把对稳态的定义权写进系统的方式
