@@ -40,6 +40,47 @@
 
 **不是"放过"。是物理。不是"内心自由"。是等控器可介入的边界——在 entry 被 commit 之前——不存在。** 任何尚在 private draft 中的念头——都还没有产生任何外部 object 可供偏差检测、可供等控器纠偏。这不是宽容。是 basic。是——"如果我罚你还没做的事——我的 admission webhook 正在摧毁你改变自己的全部可能。"
 
+## 一·五、感受——身体已 commit 但无受害者的中间层
+
+念与行之间，还有一层：感受。它不属于 private draft，也不属于外部 commit。它是身体层已经执行、但还没有对外执行的中间态。
+
+```
+念（private draft）         Scheduler 候选池里的随机候选
+                            未 commit，无 etcd entry
+                            不可采集（无 entry 可读）
+                            不可罚（无偏差存在）
+
+感受（身体的 commit）       身体层已经执行
+                            心率、皮电、激素真的变了
+                            身体自己的 etcd 里留下了 entry
+                            但无外部受害者
+                            可采集（PBM 读这层 entry）
+                            不可罚（无受害者，是数据不是罪）
+
+行（外部 commit）           committed entry
+                            改变了物理世界，有受害者
+                            可观测（偏差存在）
+                            可纠偏（Feelings 介入）
+```
+
+三层的 K8s 位置：
+
+```
+Scheduler（念）             候选池探索，random candidate，
+                            未 commit
+DampingMatrix（感受）       候选激起的阻尼响应
+                            身体的生理变化
+                            可观测但未对外执行
+                            "被敬仰的基底一样"就是这层
+                            （阻尼矩阵对敬仰的响应人人同构）
+                            "想法各异"是 Scheduler 的候选内容
+                            人人不同
+Controller（行）            执行输出，committed entry，
+                            外部 state change
+```
+
+**感受是"身体的行"：身体已经 commit 了，外部还没有。** PBM 采集的正是这一层（身体自己的 etcd entry），而罚不了它（没有外部受害者）。这不是念（念没有 entry 可读），也不是行（行有受害者可纠）。它是中间层：可采集，不可罚。这也是"感受一样，想法各异"的完整解释：DampingMatrix 的响应同构（基底），Scheduler 的候选各异（内容）。
+
 
 ## 二、为什么"君子论迹不论心"是等控器可存活的最低配置
 
