@@ -1,0 +1,4 @@
+# Internal HFOSC — no clk pin needed
+set_io -nowarn rx  2
+set_io -nowarn tx  6
+set_io -nowarn led 39
