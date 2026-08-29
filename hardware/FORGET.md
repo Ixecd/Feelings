@@ -60,6 +60,37 @@ iCESugar 和 CP2102 **各自独立 USB 供电**——不要共用一根 USB 线�
 ```
 CST 引脚约束文件格式和 PCF 不同——需对着板子丝印或原理图反推。
 
+### GW1N 烧录（2026-08-29 验证到一半）
+```
+FT2232HL（CJMCU-2232HL）A 通道 → FG202 J1 JTAG 排针：
+  AD0(TCK) → J1-1, AD1(TDI) → J1-3, AD2(TDO) → J1-5, AD3(TMS) → J1-7, GND → GND
+FPGA 引脚：TMS=13, TCK=14, TDI=16, TDO=18（J1 各经 22R）
+detect: openFPGALoader -c ft2232 --ftdi-channel 0 --fpga-part GW1N --detect  → idcode 0x100381b
+SRAM 烧: openFPGALoader -c ft2232 --ftdi-channel 0 --fpga-part GW1N [-r] blink.fs
+```
+已确认：
+- 硬件链路全通——导线短接 27→GND，L1 亮（LED=D3V3→R1(1K)→LED→IO27，拉低点亮）
+- 外部 W25Q32 里烧的就是 blink.fs（前 64KB 100% 匹配）→ `-f` 烧 Flash 实际成功，openFPGALoader 的 "CRC FAIL" 是读回校验 bug
+- 核心问题：FG202 从内置 Flash autoboot（MODE≈000，MODE0/1 引脚实测 0.96V 中间态），外部 W25Q32 配置不参与启动；所有 IO 实测 3.23V = FPGA 未进用户模式，SRAM 配置后 Done Final 置位但 IO 不动
+- MODE0=IO144、MODE1=IO143（各 10K 分压，实测 0.96V）
+- bitstream 约束：IO_LOC "l1" 27 等，l1→X0Y12/IOBA=IOL13A=IO27，gowin_unpack 反解 OBUF 在 R13C1/R15C1（IOL13A/B、IOL15A/B）✓
+
+未解：
+- 为什么 SRAM 配置 Done Final 但 FPGA 不进用户模式（怀疑 openFPGALoader 对 GW1N-4 的 SRAM 流程缺唤醒/RELOAD 步骤，或 MODE 中间态干扰）
+- 下一步：换能传数据的 USB 线（FT2232HL 电源灯红但 USB 不枚举=D+/D- 不通），连上后试 SRAM+`-r` reset，再验证内置 Flash
+
+### 傻鸟设计吐槽（FG202 + CJMCU-2232HL）
+```
+- 板子全是洞、没标引脚——对丝印反推引脚跟猜谜一样
+- MODE0/1 引脚做 10K 分压搞出 0.96V 中间态——既不高也不低，纯恶心人
+- 外部 W25Q32 烧了配置根本不参与启动（从内置 Flash autoboot）——白烧
+- 官方例程 cst 约束的 cell 名（R13C1_OBUF_A）和实际设计名（l1_OBUF_O）对不上——openFPGALoader 直接跳过约束
+- CJMCU-2232HL 电源灯红但不枚举——D+/D- 不通，Micro-USB 座虚焊/线只供电
+- openFPGALoader 的 Gowin 烧 Flash 报 "CRC FAIL" 但数据其实写进去了——误导排查方向
+- SRAM 配置 Done Final 置位但 IO 全高阻——配置"成功"了个寂寞
+```
+
+
 ### 双板 UART 帧协议
 ```
 10 字节帧：8 字节数据 + 1 字节帧序号 (0-255 循环) + 1 字节 CRC-8-CCITT

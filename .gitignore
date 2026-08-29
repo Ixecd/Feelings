@@ -6,3 +6,9 @@
 .reasonix/
 .codegraph/
 reasonix.toml
+
+hardware/gw1n-bringup/*.bin
+hardware/gw1n-bringup/*.txt
+hardware/gw1n-bringup/pnr2.json
+hardware/gw1n-bringup/pnr_hi.json
+hardware/gw1n-bringup/unpacked.json

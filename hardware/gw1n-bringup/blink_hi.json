@@ -6518,6 +6518,7 @@
     "GND": {
       "attributes": {
         "blackbox": "00000000000000000000000000000001",
+        "cells_not_processed": "00000000000000000000000000000001",
         "src": "/opt/homebrew/bin/../share/yosys/gowin/cells_sim.v:644.1-646.10"
       },
       "ports": {
@@ -17188,7 +17189,6 @@
     "VCC": {
       "attributes": {
         "blackbox": "00000000000000000000000000000001",
-        "cells_not_processed": "00000000000000000000000000000001",
         "src": "/opt/homebrew/bin/../share/yosys/gowin/cells_sim.v:640.1-642.10"
       },
       "ports": {
@@ -18876,7 +18876,7 @@
     "top": {
       "attributes": {
         "top": "00000000000000000000000000000001",
-        "src": "blink.v:1.1-6.10"
+        "src": "blink_hi.v:1.1-6.10"
       },
       "ports": {
         "l1": {
@@ -18914,18 +18914,18 @@
             "O": [ 2 ]
           }
         },
-        "l1_OBUF_O_I_GND_G": {
+        "l1_OBUF_O_I_VCC_V": {
           "hide_name": 0,
-          "type": "GND",
+          "type": "VCC",
           "parameters": {
           },
           "attributes": {
           },
           "port_directions": {
-            "G": "output"
+            "V": "output"
           },
           "connections": {
-            "G": [ 6 ]
+            "V": [ 6 ]
           }
         },
         "l2_OBUF_O": {
@@ -18985,7 +18985,7 @@
           "hide_name": 0,
           "bits": [ 2 ],
           "attributes": {
-            "src": "blink.v:1.19-1.21"
+            "src": "blink_hi.v:1.19-1.21"
           }
         },
         "l1_OBUF_O_I": {
@@ -18998,21 +18998,21 @@
           "hide_name": 0,
           "bits": [ 3 ],
           "attributes": {
-            "src": "blink.v:1.30-1.32"
+            "src": "blink_hi.v:1.30-1.32"
           }
         },
         "l3": {
           "hide_name": 0,
           "bits": [ 4 ],
           "attributes": {
-            "src": "blink.v:1.41-1.43"
+            "src": "blink_hi.v:1.41-1.43"
           }
         },
         "l4": {
           "hide_name": 0,
           "bits": [ 5 ],
           "attributes": {
-            "src": "blink.v:1.52-1.54"
+            "src": "blink_hi.v:1.52-1.54"
           }
         }
       }
