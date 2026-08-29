@@ -79,6 +79,17 @@ SRAM 烧: openFPGALoader -c ft2232 --ftdi-channel 0 --fpga-part GW1N [-r] blink.
 - 为什么 SRAM 配置 Done Final 但 FPGA 不进用户模式（怀疑 openFPGALoader 对 GW1N-4 的 SRAM 流程缺唤醒/RELOAD 步骤，或 MODE 中间态干扰）
 - 下一步：换能传数据的 USB 线（FT2232HL 电源灯红但 USB 不枚举=D+/D- 不通），连上后试 SRAM+`-r` reset，再验证内置 Flash
 
+### ST-Link V2 备用方案（2026-08-29）
+```
+备选烧录器：ST-Link V2 刷 CMSIS-DAP 固件
+- 原厂固件 VID:PID = 0x0483:0x3748（ST-LINK 协议，openFPGALoader 不认）
+- 刷 CMSIS-DAP 固件后 VID:PID = 0x0d28:0x0204 → openFPGALoader -c cmsisdap 直接用
+- 优势：内部 MCU 处理协议，USB 枚举稳定，不被 macOS 系统驱动抢占（绕开 FT2232HL 最大坑）
+- 烧录：openFPGALoader -c cmsisdap --fpga-part GW1N [-r] blink.fs
+- 接线：用 ST-Link 的 JTAG 口（TMS/TCK/TDI/TDO + GND）→ FG202 J1（1=TCK 3=TDI 5=TDO 7=TMS）
+- 优先级：先换数据线修好 FT2232HL（最简单）；不行再刷 ST-Link
+```
+
 ### 傻鸟设计吐槽（FG202 + CJMCU-2232HL）
 ```
 - 板子全是洞、没标引脚——对丝印反推引脚跟猜谜一样
