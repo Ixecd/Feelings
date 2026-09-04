@@ -12,3 +12,6 @@ hardware/gw1n-bringup/*.txt
 hardware/gw1n-bringup/pnr2.json
 hardware/gw1n-bringup/pnr_hi.json
 hardware/gw1n-bringup/unpacked.json
+hardware/gw1n-sim/*.vcd
+hardware/gw1n-sim/*.vvp
+hardware/gw1n-sim/synth/*.json

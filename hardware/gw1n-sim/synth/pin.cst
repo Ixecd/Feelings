@@ -1,0 +1,16 @@
+// FG202 (GW1N-LV4LQ144) UART 回环引脚约束
+// tx → CH340 RXD (IO15)：FPGA 发到电脑
+// rx ← CH340 TXD (IO12)：FPGA 从电脑收
+// clk ← 50MHz 晶振 (IO98)
+// led → L1 (IO27) 心跳灯
+// err → L2 (IO28) 诊断灯
+IO_LOC "tx" 15;
+IO_PORT "tx" IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC "rx" 12;
+IO_PORT "rx" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "clk" 98;
+IO_PORT "clk" IO_TYPE=LVCMOS33;
+IO_LOC "led" 27;
+IO_PORT "led" IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC "err" 28;
+IO_PORT "err" IO_TYPE=LVCMOS33 DRIVE=8;
