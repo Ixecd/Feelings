@@ -15,3 +15,5 @@ hardware/gw1n-bringup/unpacked.json
 hardware/gw1n-sim/*.vcd
 hardware/gw1n-sim/*.vvp
 hardware/gw1n-sim/synth/*.json
+hardware/gw1n-sim/sim/*.out
+hardware/gw1n-sim/sim/synth_*.v

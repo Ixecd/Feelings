@@ -49,6 +49,30 @@ make wave     # + Surfer 看波形
 
 **注意**：Makefile TOP 默认值从 counter 改成 uart_loopback。
 
+## 三、门级网表仿真 gatesim（验证综合没改坏逻辑）
+
+iCESugar 教训：RTL 仿真对、综合后网表可能挂（yosys FSM 提取改坏 default）。
+所以综合后必须跑门级仿真——用 Gowin 单元库 + 综合网表验证逻辑没被改坏。
+
+```bash
+make gatesim   # 一条命令：综合 → 网表 → 门级仿真
+```
+
+流程（Makefile gatesim 目标）：
+```
+① yosys: read_verilog .v → synth_gowin → write_verilog 网表(sim/synth_uart.v)
+② iverilog: Gowin cells_sim.v + synth网表 + tb_gate.v → gate.out
+③ 跑 gate.out → 验证回环
+```
+
+验证通过（Gowin 单元库，带真实门模型）：
+```
+0x55 → 0x55 ✓
+0xAA → 0xAA ✓
+"你好"UTF-8 → 全部原样回发 ✓
+→ 综合没改坏逻辑，RTL行为 = 门级行为 = 上板前信心
+```
+
 ## 三、综合流程（yosys → nextpnr → gowin_pack）
 
 ### ① yosys 综合：.v → json
@@ -108,6 +132,7 @@ synth_gowin -nobram 后 RAM16SDP4 还在（它是分布式 RAM，不是 BRAM）
 
 - [x] 仿真验证（单字节 + 中文 UTF-8 连续回显）
 - [x] yosys 综合（无锁存器）
+- [x] 门级网表仿真 gatesim（综合没改坏逻辑）
 - [x] nextpnr 布局（时序收敛）
 - [x] gowin_pack 生成 .fs
 - [ ] 烧录到 FG202（等 ST-Link CMSIS-DAP / 新 2232HL）
