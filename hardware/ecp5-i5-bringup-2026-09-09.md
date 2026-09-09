@@ -85,12 +85,28 @@ ECP5 对比：开源链成熟(prjtrellis/nextpnr-trellis)、免 license、Mac �
 → 主路切 ECP5。GW1N/FG202 降级为焊接练习板（license 到了也不投入）。
 ```
 
+## 4.5 追加成果（2026-09-09 同日晚，全部通过）
+
+```
+✅ uart_loopback 串口回环（Feelings 帧桥传输层验证）
+   串口链路：FPGA J17(TX)/H18(RX) → STM32F103(DAPLink UART2) → USB CDC
+   串口设备：/dev/cu.usbmodem31402（一根 USB 线 = JTAG + 串口）
+   验证：发 9 字节 55 AA 5A + "你好"(UTF-8) → 原样回显 ✓
+   文件：hardware/ecp5-i5/uart_loopback/{uart_loopback.v, uart_loopback.lpf, ul.bit}
+   注意：ECP5 版 CYCLES=2604（25MHz/9600，GW1N 是 50MHz/5208）
+
+✅ blinky 烧 flash 上电自启（断电重启自动跑，不需烧录）
+   i5 flash 实测是 Winbond W25Q32（非 GD25Q16）
+   坑：flash 有块保护 → 烧 flash 要加 --unprotect-flash
+   命令：openFPGALoader -c cmsisdap --unprotect-flash -f blinky.bit
+   验证：拔 USB 重插 → LED D2 自己闪 ✓
+```
+
 ## 5. 待办 / 下一步
 
 ```
-- [ ] ECP5 上跑 uart_loopback（同 Verilog，换 Lattice 约束）→ 串口回环
-      （i5 串口：底板 DAPLink 带 CDC 串口，或用 UART 引脚 + 外接）
-- [ ] blinky 烧 SPI flash（上电自启）——注意 GD25Q16 锁定问题（wuxx 仓库有解法）
+- [x] ECP5 上跑 uart_loopback（串口回环，DAPLink CDC）——2026-09-09 通
+- [x] blinky 烧 SPI flash（上电自启）——2026-09-09 通（--unprotect-flash）
 - [ ] 接 Feelings 执行端逻辑（ESIR 漏桶/看门狗在 ECP5 上）
 - [ ] 音频 I2S 链（MAX98357A → 入耳）
 - [ ] 双板联调（iCESugar iCE40 采集 ↔ i5 ECP5 执行）：先 UART/SPI 点对点，不上 CAN
