@@ -24,3 +24,9 @@ hardware/ecp5-i5/**/*.config
 hardware/ice40-max30102/*.asc
 hardware/ice40-max30102/*.bin
 hardware/ice40-max30102/*.json
+hardware/ice40-max30102/*.csv
+ppg_capture.csv
+hardware/ice40-max30102/sim/*.vcd
+hardware/ice40-max30102/sim/*.vvp
+hardware/ice40-max30102/**/__pycache__/
+hardware/ice40-max30102/**/*.pyc

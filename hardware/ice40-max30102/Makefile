@@ -2,7 +2,8 @@
 # 依赖 oss-cad-suite (yosys / nextpnr-ice40 / icepack)
 # 用法: make    → 生成 max30102_test.bin，拖到 iCESugar 的 iCELink U 盘烧录
 
-TOP    = max30102_test
+TOP    = max30102_ppg
+SRCS   = $(TOP).v i2c_master.v uart_tx.v
 DEVICE = up5k
 PACKAGE= sg48
 
@@ -13,8 +14,8 @@ ICEPACK = $(OSS)/icepack
 
 all: $(TOP).bin
 
-$(TOP).json: $(TOP).v
-	$(YOSYS) -p "synth_ice40 -top $(TOP) -json $@" $(TOP).v
+$(TOP).json: $(SRCS)
+	$(YOSYS) -p "synth_ice40 -top $(TOP) -json $@" $(SRCS)
 
 $(TOP).asc: $(TOP).json $(TOP).pcf
 	$(NEXTPNR) --$(DEVICE) --package $(PACKAGE) --json $< --pcf $(TOP).pcf --asc $@
