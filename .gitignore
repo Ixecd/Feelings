@@ -30,3 +30,6 @@ hardware/ice40-max30102/sim/*.vcd
 hardware/ice40-max30102/sim/*.vvp
 hardware/ice40-max30102/**/__pycache__/
 hardware/ice40-max30102/**/*.pyc
+
+hardware/nrf52/build/
+hardware/nrf52/build-nosd/
