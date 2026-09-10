@@ -4,6 +4,31 @@
 
 ---
 
+## 下一步待办（2026-09-10 记，明天做）
+
+> 现状：iCE40 已能**板上实时算心率**（`max30102_hr.v` + `hr_estimator.v`），实测稳定 ~67 BPM。
+> 原始值链路 + HR 都通了（见 max30102-ppg-bringup / max30102-hr 文档）。以下四件按重要性排：
+
+**1. 提采样率（100 → 200~400sps）——为 HRV 铺垫**
+现在 ~100sps → 拍间隔分辨率 10ms，而 RMSSD 典型才 20~50ms，量化误差太大。
+改：MAX3010x 的 SPO2_CONFIG(0x0A) 采样率档位 + 顶层读 FIFO 的 `GAP_CY` 调小。
+
+**2. HRV 算法框架（基准点 + 间期序列 + RMSSD/SDNN）**
+基准点用**谷底/上升沿斜率最大点**（比峰值稳）；先做低频指标（SDNN/RMSSD），HF 频段往后放。
+PPG-HRV ≠ ECG-HRV（脉搏传导时间 PTT 影响），建基线够用。
+
+**3. 按帧协议打包**
+把 ASCII 的 `HR=NN` 换成 `docs/architecture/frame-protocol.md` 的 **`0x10` 耳后帧**（二进制 HR/HRV/温度/accel）。
+原始数据不出设备 → 只发结果帧。
+
+**4. 接下一路传感器**
+MPU6050（accel，做运动伪迹校正）或 DS18B20（皮温）。对应帧协议 0x10 帧的信号集（HR/HRV/温度/accel）。
+
+> 另：绿光 **MAX30105** 支持已加好（`make GREEN=1`，multi-LED 仅绿光），到手即用。
+> 别忘了 ★ **P44/P46 接线**（弯排针极易看反，见下 P0）。
+
+---
+
 ## P0
 
 ### iCE40 时钟源
@@ -19,6 +44,15 @@ PMOD 物理孔 → FPGA ball（已验证）
   GND: 任一 GND 孔
 ```
 **不要假设丝印 P4/P6 = FPGA ball 4/6。** 丝印 Px 是 PMOD 序号——不是 FPGA ball。
+
+### MAX30102/30105 接线（PMOD2，2026-09-10 血泪）
+```
+SCL → P46（ball46）   SDA → P44（ball44）   VIN → 3V3   GND → GND
+UART: tx → ball6（P6），接外接 CP2102 的 RXD
+```
+**PMOD2 丝印就是 ball 号**（P46=ball46, P44=ball44）。但**弯排针左右/前后镜像，极易看反**——
+曾把 SCL/SDA 接到 P45/P43 上，白调半天。**接线后务必逐孔量电压确认**
+（程序把某脚设成低电平时，对应孔应量到 0V）。
 
 ### UART 设计
 **起步写法：单 always 块——单周期脉冲握手会漏。**
