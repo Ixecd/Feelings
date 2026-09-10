@@ -1,7 +1,18 @@
-// max30102_hr.v — 板上实时心率：配置 MAX30102 → ~100sps 读 FIFO → hr_estimator → UART 输出
+// max30102_hr.v — 板上实时心率：配置 MAX3010x → 读 FIFO → hr_estimator → UART 输出
 //   每检测到一次心跳，往串口发一行 "HR=NN\r\n"（ASCII，直接可读）
 //   UART: 9600 8N1, tx=ball6 | I2C: SCL=ball46, SDA=ball44 | LED=ball39 心跳
+//
+//   传感器选择（编译开关）：
+//     默认            → MAX30102：SpO2 模式(RED+IR)，FIFO 6 字节/样本，用 RED 估心率
+//     -DUSE_GREEN     → MAX30105：multi-LED 模式(仅绿光 LED3)，FIFO 3 字节/样本，用绿光
+//   两者寄存器映射相同，只改配置表 + FIFO 字节数 + 采样通道，算法不变。
 `default_nettype none
+
+`ifdef USE_GREEN
+`define GREEN_MODE 1'b1
+`else
+`define GREEN_MODE 1'b0
+`endif
 
 module max30102_hr (
     output wire scl,
@@ -9,7 +20,9 @@ module max30102_hr (
     output wire tx,
     output wire led
 );
-    // ---------- 内部 24MHz 振荡器 ----------
+    localparam GREEN = `GREEN_MODE;
+
+    // ---------- 内部 12MHz 振荡器（24MHz 时序不收敛）----------
     wire clk;
     SB_HFOSC #(.CLKHF_DIV("0b10")) osc (
         .CLKHFPU(1'b1), .CLKHFEN(1'b1), .CLKHF(clk)
@@ -46,29 +59,48 @@ module max30102_hr (
     );
 
     // ---------- 配置表 ----------
-    localparam NCFG = 9;
+    localparam NCFG = GREEN ? 4'd10 : 4'd9;   // 绿光模式多一条 LED3/槽位配置
+    localparam NB   = GREEN ? 8'd3  : 8'd6;   // 每样本字节数：单通道 3，双通道 6
     reg [3:0] cfg_idx;
     reg [7:0] cfg_reg, cfg_dat;
     always @(*) begin
-        case (cfg_idx)
-            4'd0: begin cfg_reg = 8'h09; cfg_dat = 8'h40; end // RESET
-            4'd1: begin cfg_reg = 8'h04; cfg_dat = 8'h00; end
-            4'd2: begin cfg_reg = 8'h05; cfg_dat = 8'h00; end
-            4'd3: begin cfg_reg = 8'h06; cfg_dat = 8'h00; end
-            4'd4: begin cfg_reg = 8'h08; cfg_dat = 8'h10; end // 无平均 + rollover
-            4'd5: begin cfg_reg = 8'h09; cfg_dat = 8'h03; end // SpO2
-            4'd6: begin cfg_reg = 8'h0A; cfg_dat = 8'h27; end // 100sps/411us
-            4'd7: begin cfg_reg = 8'h0C; cfg_dat = 8'h24; end
-            4'd8: begin cfg_reg = 8'h0D; cfg_dat = 8'h24; end
-            default: begin cfg_reg = 8'h00; cfg_dat = 8'h00; end
-        endcase
+        if (GREEN) begin
+            // MAX30105：multi-LED 模式，只开 slot1 = 绿光
+            case (cfg_idx)
+                4'd0: begin cfg_reg = 8'h09; cfg_dat = 8'h40; end // RESET
+                4'd1: begin cfg_reg = 8'h04; cfg_dat = 8'h00; end // FIFO_WR_PTR
+                4'd2: begin cfg_reg = 8'h05; cfg_dat = 8'h00; end // OVF
+                4'd3: begin cfg_reg = 8'h06; cfg_dat = 8'h00; end // FIFO_RD_PTR
+                4'd4: begin cfg_reg = 8'h08; cfg_dat = 8'h10; end // 无平均 + rollover
+                4'd5: begin cfg_reg = 8'h09; cfg_dat = 8'h07; end // MODE: multi-LED
+                4'd6: begin cfg_reg = 8'h0A; cfg_dat = 8'h27; end // 4096nA/100sps/411us
+                4'd7: begin cfg_reg = 8'h0E; cfg_dat = 8'h24; end // LED3_PA (绿) ~7.2mA
+                4'd8: begin cfg_reg = 8'h11; cfg_dat = 8'h03; end // MULTI_LED1: slot1=绿
+                4'd9: begin cfg_reg = 8'h12; cfg_dat = 8'h00; end // MULTI_LED2: slot2-4=none
+                default: begin cfg_reg = 8'h00; cfg_dat = 8'h00; end
+            endcase
+        end else begin
+            // MAX30102：SpO2 模式(RED+IR)
+            case (cfg_idx)
+                4'd0: begin cfg_reg = 8'h09; cfg_dat = 8'h40; end
+                4'd1: begin cfg_reg = 8'h04; cfg_dat = 8'h00; end
+                4'd2: begin cfg_reg = 8'h05; cfg_dat = 8'h00; end
+                4'd3: begin cfg_reg = 8'h06; cfg_dat = 8'h00; end
+                4'd4: begin cfg_reg = 8'h08; cfg_dat = 8'h10; end // 无平均 + rollover
+                4'd5: begin cfg_reg = 8'h09; cfg_dat = 8'h03; end // MODE: SpO2
+                4'd6: begin cfg_reg = 8'h0A; cfg_dat = 8'h27; end // 100sps/411us
+                4'd7: begin cfg_reg = 8'h0C; cfg_dat = 8'h24; end // LED1_RED
+                4'd8: begin cfg_reg = 8'h0D; cfg_dat = 8'h24; end // LED2_IR
+                default: begin cfg_reg = 8'h00; cfg_dat = 8'h00; end
+            endcase
+        end
     end
 
-    // ---------- 读回字节 & RED ----------
+    // ---------- 读回字节 & 采样通道（始终取第 1 通道）----------
     reg [2:0]  rx_idx;
     reg [7:0]  rxbuf [0:5];
     reg [7:0]  wr_ptr;
-    wire [17:0] red = {rxbuf[0][1:0], rxbuf[1], rxbuf[2]};
+    wire [17:0] chan0 = {rxbuf[0][1:0], rxbuf[1], rxbuf[2]};
 
     // ---------- 心率估计器 ----------
     reg         sample_pulse;
@@ -77,7 +109,7 @@ module max30102_hr (
     wire [15:0] hr_ibi;
     wire [2:0]  hr_q;
     hr_estimator #(.CLK_HZ(12_000_000), .REFRACT_MS(300)) u_hr (
-        .clk(clk), .rst(rst), .sample_valid(sample_pulse), .sample(red),
+        .clk(clk), .rst(rst), .sample_valid(sample_pulse), .sample(chan0),
         .bpm(hr_bpm), .beat(hr_beat), .ibi_out(hr_ibi), .quality(hr_q)
     );
 
@@ -88,9 +120,9 @@ module max30102_hr (
         S_RDP_SET = 4'd8, S_RDP_GO = 4'd9, S_RDP_WAIT = 4'd10,
         S_FIFO_SET = 4'd11, S_FIFO_GO = 4'd12, S_FIFO_WAIT = 4'd13, S_GAP = 4'd14;
 
-    localparam PWR_CY = 32'd480_000;   // 20ms
-    localparam RST_CY = 32'd240_000;   // 10ms
-    localparam CFG_CY = 32'd24_000;    // 1ms
+    localparam PWR_CY = 32'd240_000;   // 20ms @12MHz
+    localparam RST_CY = 32'd120_000;   // 10ms
+    localparam CFG_CY = 32'd12_000;    // 1ms
     localparam GAP_CY = 32'd101_000;   // ~8.4ms (+事务~1.6ms → 周期≈10ms → ~100sps)
 
     reg [3:0]  state;
@@ -140,7 +172,7 @@ module max30102_hr (
             S_RDP_WAIT: if (i2c_done) state <= S_FIFO_SET;
 
             S_FIFO_SET: begin rx_idx <= 0;
-                i2c_rw <= 1; i2c_reg <= 8'h07; i2c_len <= 8'd6;
+                i2c_rw <= 1; i2c_reg <= 8'h07; i2c_len <= NB;   // 绿光 3 字节 / 红+IR 6 字节
                 i2c_start <= 1; state <= S_FIFO_GO;
             end
             S_FIFO_GO: if (i2c_busy) begin i2c_start <= 0; state <= S_FIFO_WAIT; end
@@ -154,8 +186,8 @@ module max30102_hr (
             default: state <= S_PWR;
             endcase
 
-            // 读回字节捕获
-            if (i2c_rvalid && !rv_d && rx_idx < 3'd6) begin
+            // 读回字节捕获（存满 NB 个即可）
+            if (i2c_rvalid && !rv_d && rx_idx < NB) begin
                 rxbuf[rx_idx] <= i2c_rdata;
                 rx_idx       <= rx_idx + 3'd1;
             end
