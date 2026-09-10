@@ -209,9 +209,10 @@ AD5933 默认 16.777MHz MCLK 下最低激励频率约 1kHz。10kHz 测的是角�
 ICS-43434 I2S 数字麦克风接入 iCE40 时，利用内置 8 个 DSP 块（16×16 MAC）做 I2S 接收与下采样滤波，不要用普通 LUT 拼乘法器。iCE40UP5K 的 5280 LUT 做音频 DSP 资源紧张，MAC 硬核是关键。
 
 ```
-5.1  ✅ MAX30102 PPG — iCE40 软 I2C master 读 FIFO 原始值，UART 上传 PC，
-     带通+FFT 分析出 68 BPM（2026-09-10，见 max30102-ppg-bringup-2026-09-10.md）
-     ⬜ 待办：心率估计做进 FPGA（板上实时 BPM）；示波器验证红外 LED 驱动波形/PD 输出波形
+5.1  ✅ MAX30102 PPG — iCE40 软 I2C master 读 FIFO 原始值，UART 上传 PC，PC 分析 68 BPM
+     ✅ 心率估计做进 FPGA — 板上实时 HR（带通+迟滞峰检测+IBI 平滑），实测稳定 ~67 BPM
+        （2026-09-10，见 max30102-ppg-bringup / max30102-hr 文档）
+     ⬜ 待办：示波器验证红外 LED 驱动波形/PD 输出波形；HRV；按帧协议打包
 5.2  DS18B20 温度 — 1-Wire 读温度值（bit-bang）
 5.3  AD1256 — SPI 读 24-bit ADC 原始值
 5.4  ICS-43434 I2S — iCE40 DSP MAC 做 I2S 接收 + 下采样
