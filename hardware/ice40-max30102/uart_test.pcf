@@ -1,0 +1,3 @@
+# uart_test.pcf — iCESugar 纯 UART 自测
+set_io -nowarn tx  6
+set_io -nowarn led 39

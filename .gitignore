@@ -20,3 +20,7 @@ hardware/gw1n-sim/sim/synth_*.v
 
 hardware/ecp5-i5/**/*.json
 hardware/ecp5-i5/**/*.config
+
+hardware/ice40-max30102/*.asc
+hardware/ice40-max30102/*.bin
+hardware/ice40-max30102/*.json

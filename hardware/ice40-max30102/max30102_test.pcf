@@ -1,0 +1,8 @@
+# max30102_test.pcf — iCESugar (iCE40UP5K-SG48)
+# I2C 走 PMOD2（干净，不碰 USB/UART/LED）：SCL=ball46, SDA=ball44
+set_io -nowarn scl 46
+set_io -nowarn sda 44
+# UART（现有的）：tx=ball6
+set_io -nowarn tx  6
+# LED：ball39（绿/蓝，低电平亮）
+set_io -nowarn led 39

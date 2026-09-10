@@ -1,0 +1,5 @@
+# pin_test.pcf — iCESugar (iCE40UP5K-SG48)
+set_io p6  6
+set_io p46 46
+set_io p44 44
+set_io led 39
