@@ -53,10 +53,10 @@ module max30102_stream (
             4'd1: begin cfg_reg = 8'h04; cfg_dat = 8'h00; end // FIFO_WR_PTR
             4'd2: begin cfg_reg = 8'h05; cfg_dat = 8'h00; end // OVF
             4'd3: begin cfg_reg = 8'h06; cfg_dat = 8'h00; end // FIFO_RD_PTR
-            4'd4: begin cfg_reg = 8'h08; cfg_dat = 8'h10; end // 无平均 + rollover
+            4'd4: begin cfg_reg = 8'h08; cfg_dat = 8'h10; end // 无平均 + rollover (100sps)
             4'd5: begin cfg_reg = 8'h09; cfg_dat = 8'h02; end // MODE: HR-only (RED)
             4'd6: begin cfg_reg = 8'h0A; cfg_dat = 8'h27; end // 100sps / 411us
-            4'd7: begin cfg_reg = 8'h0C; cfg_dat = 8'h12; end // LED1_PA (RED)
+            4'd7: begin cfg_reg = 8'h0C; cfg_dat = 8'h24; end // LED1_PA (RED)
             default: begin cfg_reg = 8'h00; cfg_dat = 8'h00; end
         endcase
     end

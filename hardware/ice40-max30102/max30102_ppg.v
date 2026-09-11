@@ -62,7 +62,7 @@ module max30102_ppg (
             4'd4: begin cfg_reg = 8'h08; cfg_dat = 8'h10; end // FIFO_CONFIG: 无平均, rollover
             4'd5: begin cfg_reg = 8'h09; cfg_dat = 8'h03; end // MODE: SpO2 (RED+IR)
             4'd6: begin cfg_reg = 8'h0A; cfg_dat = 8'h27; end // SPO2: 4096nA,100sps,411us
-            4'd7: begin cfg_reg = 8'h0C; cfg_dat = 8'h12; end // LED1_PA (RED) 7.2mA
+            4'd7: begin cfg_reg = 8'h0C; cfg_dat = 8'h24; end // LED1_PA (RED) 7.2mA
             4'd8: begin cfg_reg = 8'h0D; cfg_dat = 8'h12; end // LED2_PA (IR)  7.2mA
             default: begin cfg_reg = 8'h00; cfg_dat = 8'h00; end
         endcase
