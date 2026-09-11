@@ -1,0 +1,2 @@
+set_io -nowarn tx  6
+set_io -nowarn led 39
