@@ -56,6 +56,28 @@ def _clean(win):
     good = [b for b in win if 0.70 * med <= b <= 1.30 * med]
     return good, len(win) - len(good)
 
+FSR = 4.0   # 频域 HRV 重采样率(Hz)
+
+def freq_hrv(pairs, fs):
+    """频域 HRV：tachogram → 4Hz 重采样 → 去趋势 → FFT → LF/HF。pairs=[(idx,ibi_samples)]"""
+    if len(pairs) < 60:
+        return None
+    t = np.array([i for (i, b) in pairs], float) / fs
+    rr = np.array([b for (i, b) in pairs], float) / fs * 1000.0
+    if t[-1] - t[0] < 120:      # 至少 2 分钟
+        return None
+    tu = np.arange(t[0], t[-1], 1.0 / FSR)
+    rru = np.interp(tu, t, rr); rru = rru - rru.mean()
+    x = np.arange(len(rru)); c = np.polyfit(x, rru, 1); rru = rru - (c[0] * x + c[1])  # 去线性趋势
+    w = np.hanning(len(rru)); X = np.fft.rfft(rru * w); f = np.fft.rfftfreq(len(rru), 1.0 / FSR)
+    P = np.abs(X) ** 2
+    def band(lo, hi):
+        m = (f >= lo) & (f < hi); return float(P[m].sum())
+    lf = band(0.04, 0.15); hf = band(0.15, 0.40)
+    if hf <= 0 or (lf + hf) <= 0:
+        return None
+    return lf, hf, lf / hf
+
 def report(now):
     global last_report
     fs = fs_actual()
@@ -74,16 +96,30 @@ def report(now):
     if not raw_beats or len(sm_hist) < int(fs * 15):
         print(f"[{now-t_start:6.0f}s] 样本{n_samp} ({fs:.1f}/s)  DC={dcs:.0f} 幅度={sig_amp:.0f}  HR(自相关)={ach}  等待…{hint}")
         last_report = now; return
-    hr_win = [b for (i, b) in raw_beats if i >= idx - int(HR_WIN_S * fs)]
-    sd_win = [b for (i, b) in raw_beats if i >= idx - int(SDNN_WIN_S * fs)]
-    hr_good, hr_rej = _clean(hr_win)
+    hr_win = [(i, b) for (i, b) in raw_beats if i >= idx - int(HR_WIN_S * fs)]
+    sd_win = [(i, b) for (i, b) in raw_beats if i >= idx - int(SDNN_WIN_S * fs)]
+    hr_good, hr_rej = _clean([b for (i, b) in hr_win])
     hr = 60000.0 / (float(np.mean(hr_good)) / fs * 1000.0) if len(hr_good) >= 3 else float('nan')
-    sd_good, _ = _clean(sd_win)
+    sd_vals = [b for (i, b) in sd_win]
+    sd_good, _ = _clean(sd_vals)
     sdnn = (np.array(sd_good, float) / fs * 1000.0).std(ddof=1) if len(sd_good) > 2 else 0.0
+    # 频域 HRV（用清洗后的拍）
+    if len(sd_vals) >= 3:
+        meds = float(np.median(sd_vals))
+        sd_pairs = [(i, b) for (i, b) in sd_win if 0.70 * meds <= b <= 1.30 * meds]
+    else:
+        sd_pairs = []
+    fhr = freq_hrv(sd_pairs, fs)
+    if fhr:
+        lf, hf, ratio = fhr; lfnu = lf / (lf + hf) * 100.0
+        fstr = f"LF/HF={ratio:.2f}  LFnu={lfnu:.0f} HFnu={100-lfnu:.0f}"
+    else:
+        fstr = "LF/HF=-- (需≥2min有效拍)"
     q = "好" if (hr_rej < len(hr_win) * 0.25) else ("中" if hr_rej < len(hr_win) * 0.45 else "差")
     hpk = f"{hr:5.1f}" if hr == hr else "  -- "
     print(f"[{now-t_start:6.0f}s] HR(峰)={hpk}  HR(自相关)={ach}  SDNN(5min)={sdnn:4.0f}  "
           f"HR有效{len(hr_good):3d}/{len(hr_win):3d}  采样{fs:5.1f}/s  DC={dcs:6.0f} 幅度={sig_amp:6.0f}  质量={q}{hint}")
+    print(f"          频域HRV: {fstr}   (拍/5min={len(sd_pairs)})")
     last_report = now
 
 def process(red):
