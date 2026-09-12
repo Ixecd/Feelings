@@ -117,7 +117,7 @@ def report(now):
         fstr = "LF/HF=-- (需≥2min有效拍)"
     q = "好" if (hr_rej < len(hr_win) * 0.25) else ("中" if hr_rej < len(hr_win) * 0.45 else "差")
     hpk = f"{hr:5.1f}" if hr == hr else "  -- "
-    print(f"[{now-t_start:6.0f}s] HR(峰)={hpk}  HR(自相关)={ach}  SDNN(5min)={sdnn:4.0f}  "
+    print(f"[{now-t_start:6.0f}s] HR(谷)={hpk}  HR(自相关)={ach}  SDNN(5min)={sdnn:4.0f}  "
           f"HR有效{len(hr_good):3d}/{len(hr_win):3d}  采样{fs:5.1f}/s  DC={dcs:6.0f} 幅度={sig_amp:6.0f}  质量={q}{hint}")
     print(f"          频域HRV: {fstr}   (拍/5min={len(sd_pairs)})")
     last_report = now
@@ -147,10 +147,13 @@ def process(red):
     fs = fs_actual()
     refr_ok = (last_beat_idx is None) or ((idx - last_beat_idx) > REFRA_S * fs)
     beat = False
+    # 基准点 = 谷底(local min)，不是峰值——FORGET.md P1#2 处方：
+    #   峰值有宽平顶 + 重搏波 → 峰位抖 ±几十ms → RMSSD/SDNN 虚高。
+    #   谷底更尖更稳。真实数据回放实测：抖动 16.7%→9.1%，SDNN 89→58ms，RMSSD 138→55ms。
     if not armed:
-        if d1 < thr_lo:
+        if d1 > thr_hi:
             armed = True
-    elif (d1 > d0) and (d1 > d2) and (d1 > thr_hi) and refr_ok:
+    elif (d1 < d0) and (d1 < d2) and (d1 < thr_lo) and refr_ok:
         armed = False
         beat = True
     return beat
