@@ -21,6 +21,7 @@ module i2c_slave_model #(
     reg       after_start;
     reg       rw;
     reg       ptr_set;
+    reg       selected;   // 本事务是否寻址到本从机（共总线多从机时必须，否则会误吞别家流量）
     reg [7:0] ptr;
     integer   i;
 
@@ -32,12 +33,12 @@ module i2c_slave_model #(
         mem[8'h07] = 8'hA1; mem[8'h08] = 8'hB2; mem[8'h09] = 8'hC3;
         mem[8'h0A] = 8'hD4; mem[8'h0B] = 8'hE5; mem[8'h0C] = 8'hF6;
         n = 0; recv = 1; ack_needed = 0; after_start = 1; rw = 0;
-        ptr_set = 0; ptr = 0; sda_oe = 0; sda_out = 0; byte_sh = 0;
+        ptr_set = 0; ptr = 0; sda_oe = 0; sda_out = 0; byte_sh = 0; selected = 0;
     end
 
     // START: SCL 高时 SDA 下降
     always @(negedge sda) if (scl) begin
-        n = 0; recv = 1; ack_needed = 0; after_start = 1; ptr_set = 0; byte_sh = 0;
+        n = 0; recv = 1; ack_needed = 0; after_start = 1; ptr_set = 0; byte_sh = 0; selected = 0;
         $display("      [slave] START");
     end
     // STOP: SCL 高时 SDA 上升
@@ -53,6 +54,7 @@ module i2c_slave_model #(
                 if (byte_sh[7:1] == ADDR) begin
                     rw = byte_sh[0];
                     ack_needed = 1;
+                    selected = 1;
                     if (rw) begin
                         recv = 1;          // 先 ACK 地址
                         $display("      [slave] addr R, ptr=%02x -> data %02x", ptr, mem[ptr]);
@@ -61,9 +63,10 @@ module i2c_slave_model #(
                         $display("      [slave] addr W");
                     end
                 end else begin
+                    selected = 0; ack_needed = 0;
                     $display("      [slave] addr mismatch %02x", byte_sh);
                 end
-            end else if (!rw) begin
+            end else if (!rw && selected) begin
                 if (!ptr_set) begin ptr = byte_sh; ptr_set = 1; $display("      [slave] ptr=%02x", ptr); end
                 else begin mem[ptr] = byte_sh; $display("      [slave] mem[%02x]=%02x", ptr, byte_sh); ptr = ptr + 1; end
                 ack_needed = 1;
@@ -73,7 +76,8 @@ module i2c_slave_model #(
 
     // SCL 下降沿：准备输出
     always @(negedge scl) begin
-        if (recv) begin
+        if (!selected) sda_oe = 0;                 // 未寻址 → 绝不驱动（共总线防争用）
+        else if (recv) begin
             if (ack_needed) begin sda_oe = 1; sda_out = 0; end
             else sda_oe = 0;
         end else begin

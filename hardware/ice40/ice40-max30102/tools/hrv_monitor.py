@@ -87,6 +87,11 @@ idx = 0
 n_samp = 0
 sig_amp = 0.0
 
+# MPU6050 加速度（FE E2）
+acc_ax = acc_ay = acc_az = 0
+acc_n = 0; acc_bad = 0          # 偏离 1g 超 0.1g 的样本数 → 运动占比
+who_seen = None; who_printed = False
+
 REFRA_S = quality_gate.REFR_S   # 不应期：引用质量门口径（现 0.40s），避免"采集端 vs 验收端"不一致
 HR_WIN_S = 60.0     # HR 窗口
 SDNN_WIN_S = 300.0  # SDNN 长窗
@@ -193,8 +198,9 @@ def report(now):
     # 旧版把这误标成"质量=差"，会骗人。窗未满就不显示；权威验收看末尾 quality_gate。
     q = "--(预热)" if len(hr_win) < 30 else f"{hr_rej / len(hr_win) * 100:.0f}%"
     hpk = f"{hr:5.1f}" if hr == hr else "  -- "
+    accstr = f"  ACC=({acc_ax:6d},{acc_ay:6d},{acc_az:6d})" if acc_n else "  ACC=--(无MPU)"
     print(f"[{now-t_start:6.0f}s] HR(谷)={hpk}  HR(自相关)={ach}  SDNN(5min)={sdnn:4.0f}  "
-          f"HR有效{len(hr_good):3d}/{len(hr_win):3d}  采样{fs:5.1f}/s  DC={dcs:6.0f} 幅度={sig_amp:6.0f}  窗剔除={q}{hint}")
+          f"HR有效{len(hr_good):3d}/{len(hr_win):3d}  采样{fs:5.1f}/s  DC={dcs:6.0f} 幅度={sig_amp:6.0f}  窗剔除={q}{hint}{accstr}")
     print(f"          频域HRV: {fstr}   (拍/5min={len(sd_pairs)})")
     last_report = now
 
@@ -246,8 +252,8 @@ try:
             chunk = b""
         if chunk:
             buf.extend(chunk)
-            while len(buf) >= 5:
-                if buf[0] == 0xFE and buf[1] == 0xE1:
+            while len(buf) >= 3:
+                if buf[0] == 0xFE and buf[1] == 0xE1 and len(buf) >= 5:
                     r = ((buf[2] & 0x03) << 16) | (buf[3] << 8) | buf[4]
                     del buf[:5]
                     idx += 1
@@ -265,6 +271,21 @@ try:
                     ibi_ms = ibi_samples / fs_actual() * 1000.0 if ibi_samples else 0.0
                     csv.write(f"{now:.3f},{idx},{r},{1 if beat else 0},"
                               f"{ibi_samples},{ibi_ms:.1f}\n")
+                elif buf[0] == 0xFE and buf[1] == 0xE2 and len(buf) >= 8:
+                    ax = (buf[2] << 8) | buf[3]; ax -= 65536 if ax >= 32768 else 0   # 大端(i16)
+                    ay = (buf[4] << 8) | buf[5]; ay -= 65536 if ay >= 32768 else 0
+                    az = (buf[6] << 8) | buf[7]; az -= 65536 if az >= 32768 else 0
+                    del buf[:8]
+                    acc_ax, acc_ay, acc_az = ax, ay, az
+                    mag = math.sqrt(ax*ax + ay*ay + az*az)
+                    acc_n += 1
+                    if abs(mag - 16384.0) > 1638.0: acc_bad += 1   # ±2g: 16384 LSB/g；偏离 1g >0.1g
+                elif buf[0] == 0xFE and buf[1] == 0xE3 and len(buf) >= 3:
+                    who_seen = buf[2]; del buf[:3]
+                    if not who_printed:
+                        who_printed = True
+                        print(f"  [MPU] WHO_AM_I = 0x{who_seen:02x}  " +
+                              ("OK" if who_seen == 0x68 else "**异常：检查 MPU 接线 / AD0 是否接 GND**"))
                 else:
                     del buf[:1]
         else:
@@ -314,7 +335,7 @@ if META_ARG is not None:
             "checks": ({n: l for n, l, _, _ in gate_dict["checks"]} if gate_dict else None),
             "dc_mean": round(dc, 0) if dc is not None else None,
             "fs_measured": round(fs_actual(), 1),
-            "motion_pct": None,   # 待 MPU6050 接入后填
+            "motion_pct": round(acc_bad / acc_n * 100.0, 1) if acc_n else None,
         },
         "derived": {
             "hr": round(hr_final, 2) if hr_final else None,

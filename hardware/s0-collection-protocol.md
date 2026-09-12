@@ -144,7 +144,7 @@ baseline.json                         聚合结果（后续改为读 meta 判条
 | 会话元数据 sidecar（§3） | ✅ `--meta` 已实现 |
 | 纳入规则（§4） | ⬜ 待定 |
 | 跨天采集（独立性） | ⬜ 待做 |
-| MPU6050（accel → 运动抑制） | 🟡 硬件已到，未接入 |
+| MPU6050（accel → 运动抑制） | ✅ 已接入：流固件发 `FE E2`(accel)+`FE E3`(WHO)；PC 出 `motion_pct`（见 mpu6050-bringup） |
 | 硬件时基 / 长时环形存储 | ⬜ 路线图后续（见 ROADMAP） |
 
 ---
