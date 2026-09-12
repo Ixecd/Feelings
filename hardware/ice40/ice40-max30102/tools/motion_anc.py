@@ -18,16 +18,24 @@ ORDER = 48      # 滤波器阶数（@100Hz → 覆盖 ~0.5s 的延迟/混响）
 MU    = 0.05    # NLMS 步长（归一化后 0<mu<2 稳定；0.05 实测收敛且不过冲——0.5 会抖、0.01 太慢）
 
 
-def nlms_anc(ppg, ref, order=ORDER, mu=MU, eps=1e-6):
-    """ref: (N,K) 参考通道（如 ax,ay,az）；返回 cleaned = ppg - ŷ。"""
+def nlms_anc(ppg, ref, order=ORDER, mu=MU, eps=1e-6, gate=None):
+    """ref: (N,K) 参考通道；gate: (N,) bool——**只在"有运动"(参考有能量)时更新权重**。
+    静止时参考≈0，NLMS 归一化分母趋零 → 权重发散 → 会把脉搏也消掉（实测静止会话被搞坏）。"""
     n = len(ppg); k = ref.shape[1]
     w = np.zeros((order, k)); buf = np.zeros((order, k)); out = np.empty(n)
     for i in range(n):
         buf[1:] = buf[:-1]; buf[0] = ref[i]
         e = ppg[i] - float(np.sum(w * buf))
-        w += (mu * e / (float(np.sum(buf * buf)) + eps)) * buf
+        if gate is None or gate[i]:
+            w += (mu * e / (float(np.sum(buf * buf)) + eps)) * buf
         out[i] = e
     return out
+
+
+def motion_gate(acc, g=0.05):
+    """参考是否"在动"：accel 向量相对会话均值的偏离 > g·1g（0.05g=819）。"""
+    ref = acc - acc.mean(axis=0)
+    return np.linalg.norm(ref, axis=1) > g * 16384.0
 
 
 def load9(path):
@@ -73,7 +81,7 @@ def selftest():
     acc = np.column_stack([mo, 0.5 * mo, np.full(len(t), 16384.0)])
     ppg_raw = 110000 + pulse + mo + rng.normal(0, 30, len(t))
     ref = acc - acc.mean(axis=0)                     # 参考去均值
-    cleaned = nlms_anc(ppg_raw - ppg_raw.mean(), ref) + ppg_raw.mean()
+    cleaned = nlms_anc(ppg_raw - ppg_raw.mean(), ref, gate=motion_gate(acc)) + ppg_raw.mean()
     ts = 1e9 + t
     b_true = beats(110000 + pulse, ts)               # 只有脉搏（理想）
     b_raw = beats(ppg_raw, ts)                        # 原始（脉搏+伪迹）
@@ -95,13 +103,23 @@ def main():
         print(__doc__); return
     if a[0] == "--selftest":
         sys.exit(selftest())
-    ts, ppg, acc = load9(a[0])
+    path = a[0]
+    if path.endswith(".meta.json"):          # 顺手：传了 meta 就自动切到同名 csv
+        path = path[:-len(".meta.json")] + ".csv"
+        print(f"(检测到 meta，改用 {os.path.basename(path)})")
+    ts, ppg, acc = load9(path)
     if len(ppg) < 200 or acc is None or len(acc) != len(ppg):
         print("需要 9 列 CSV（含 ax,ay,az）；样本不足或没有 accel 列"); return
     ref = acc - acc.mean(axis=0)
-    cleaned = nlms_anc(ppg - ppg.mean(), ref) + ppg.mean()
+    gate = motion_gate(acc)
+    if gate.mean() < 0.05:
+        print(f"=== ANC: {os.path.basename(path)} ===")
+        print(f"  运动门 {gate.mean()*100:.0f}% —— 无显著运动，跳过 ANC（避免把干净数据搞坏）")
+        return
+    cleaned = nlms_anc(ppg - ppg.mean(), ref, gate=gate) + ppg.mean()
     b0, b1 = beats(ppg, ts), beats(cleaned, ts)
-    print(f"=== ANC: {os.path.basename(a[0])} ===")
+    print(f"=== ANC: {os.path.basename(path)} ===")
+    print(f"  运动门: {gate.mean()*100:.0f}% 样本判为'在动'（只在这些样本上自适应权重）")
     print(f"  原始  HR={b0['hr']:.1f}  SDNN={b0['sdnn']:.0f}ms  拍={b0['n']}")
     print(f"  ANC后 HR={b1['hr']:.1f}  SDNN={b1['sdnn']:.0f}ms  拍={b1['n']}")
     fs = len(ppg) / (ts[-1] - ts[0])
