@@ -31,6 +31,19 @@ MPU6050（accel，做运动伪迹校正）或 DS18B20（皮温）。对应帧协
 
 ## P0
 
+### 零数据 = 先怀疑固件丢了（2026-09-12 踩）
+```
+现象    hrv_monitor 跑起来「样本0 (0.0/s) DC=0」，传感器 MAX30102 红灯灭，
+        串口设备时间戳显示 USB 刚重新枚举过（板子被重置）。
+根因    拖拽烧录的 bitstream 在 SRAM——上电/重插即丢 → FPGA 空跑（不是接触问题）。
+处置    重烧 max30102_stream.bin（拖到 iCELink 盘）→ 立即恢复。
+排查顺序 ① 看 iCESugar 的 ball39 灯（不闪 = FPGA 没配置）
+         ② 重烧 stream.bin
+         ③ 换串口（重枚举后可能变成 usbmodem*）
+         ④ 烧 uart_ping.bin 隔离 UART vs I2C
+```
+> hrv_monitor 已内置「8 秒零样本告警」，会直接提示这条，不用记。
+
 ### iCE40 时钟源
 **永远用内部 SB_HFOSC，别碰外部 STM32 MCO。**
 内部振荡器 48MHz，稳定可靠——外部 MCO 烧录后可能不跑、可能频率不对。
