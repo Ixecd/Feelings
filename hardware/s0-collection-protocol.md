@@ -58,20 +58,20 @@ session_id · gate 总评 · 是否纳入基线
 
 ## 二、样本字段（CSV 每行）
 
-现状（6 列，够跑）：
+现状（**9 列**——已并入 accel）：
 
 ```
-t, idx, red, beat, ibi_samples, ibi_ms
+t, idx, red, beat, ibi_samples, ibi_ms, ax, ay, az
 ```
 
 **追加字段（向后兼容——解析只读 t/red，加列不破坏）：**
 
 | 字段 | 何时加 | 含义 |
 |---|---|---|
+| `ax,ay,az` | ✅ 已落 CSV | 三轴加速度（i16，±2g，16384 LSB/g）→ 质量门"运动窗"用它 |
 | `cnt` | 硬件时基落地后 | 设备样本计数器（IBI = Δcnt / fs） |
 | `dc` | 可随时 | 运行中 DC（接触监测；现在只在 report 里，不落盘） |
-| `ax,ay,az` | MPU6050 接入后 | 三轴加速度（0x10 帧已定义 accel Tag） |
-| `motion` | 运动抑制落地后 | 运动标记 |
+| `motion` | 运动抑制落地后 | 逐窗运动标记（现由 accel 在门里实时算） |
 | `sq` | 可选 | 逐拍质量(SQI) |
 
 ---

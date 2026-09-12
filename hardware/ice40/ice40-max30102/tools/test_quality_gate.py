@@ -10,7 +10,7 @@
 
 用法: python3.14 test_quality_gate.py
 """
-import os, sys, tempfile
+import os, sys, tempfile, math
 import numpy as np
 import quality_gate as qg
 
@@ -53,8 +53,28 @@ def main():
         r = qg.gate(*qg.load_csv(_csv(reds, tag)))
         got = r["overall"]; ok = ok_fn(got)
         fails += (not ok)
-        bad = [n for n, l, _, _ in r["checks"] if l != "PASS"]
+        bad = [n for n, l, _, _ in r["checks"] if l not in ("PASS", "N/A")]
         print(f"  [{'✓' if ok else '✗'}] {tag:8s} 实得{got:4s}  ({why})  触发:{bad}")
+    # 运动窗（9 列 CSV：带 ax,ay,az）
+    def _csv_acc(reds, acc_fn, tag):
+        ts = 1e9 + t
+        p = os.path.join(tempfile.gettempdir(), f"qgtest_{tag}.csv")
+        with open(p, "w") as f:
+            f.write("t,idx,red,beat,ibi_samples,ibi_ms,ax,ay,az\n")
+            for i, r in enumerate(reds):
+                ax, ay, az = acc_fn(i)
+                f.write(f"{ts[i]:.3f},{i},{int(r)},0,0,0,{ax},{ay},{az}\n")
+        return p
+    clean = DC + PULSE + rng.normal(0, 10, len(t))
+    r_s = qg.gate(*qg.load_csv(_csv_acc(clean, lambda i: (0, 0, 16384), "accs")))
+    r_m = qg.gate(*qg.load_csv(_csv_acc(clean, lambda i: (int(12000*math.sin(2*math.pi*1.5*t[i])),
+                                                         int(8000*math.sin(2*math.pi*1.5*t[i])), 16384), "accm")))
+    ms = [c for c in r_s["checks"] if c[0] == "运动"][0]
+    mm = [c for c in r_m["checks"] if c[0] == "运动"][0]
+    ok_acc = (ms[1] == "PASS") and (mm[1] == "FAIL")
+    print(f"  [{'✓' if ok_acc else '✗'}] 运动窗    静止={ms[1]}  晃动={mm[1]}  ({ms[2]}/{mm[2]})")
+    fails += (not ok_acc)
+
     # 有真实数据就顺便看一眼（不硬断言）
     real = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../hrv_log.csv")
     if os.path.exists(real) and os.path.getsize(real) > 1000:

@@ -67,7 +67,7 @@ t_start = time.time()
 last_report = t_start
 warned_no_data = False   # 零数据告警只报一次
 csv = open(OUT, "w")
-csv.write("t,idx,red,beat,ibi_samples,ibi_ms\n")
+csv.write("t,idx,red,beat,ibi_samples,ibi_ms,ax,ay,az\n")
 
 # ---------- 按采样率算滤波系数 ----------
 A_HP = 1 - math.exp(-2 * math.pi * 0.5 / FS)     # 高通 0.5Hz
@@ -272,7 +272,8 @@ try:
                         last_beat_idx = idx
                     ibi_ms = ibi_samples / fs_actual() * 1000.0 if ibi_samples else 0.0
                     csv.write(f"{now:.3f},{idx},{r},{1 if beat else 0},"
-                              f"{ibi_samples},{ibi_ms:.1f}\n")
+                              f"{ibi_samples},{ibi_ms:.1f},"
+                              f"{acc_ax},{acc_ay},{acc_az}\n")
                 elif buf[0] == 0xFE and buf[1] == 0xE2:
                     if len(buf) < 8: break
                     ax = (buf[2] << 8) | buf[3]; ax -= 65536 if ax >= 32768 else 0   # 大端(i16)

@@ -15,6 +15,7 @@
   5. 检测率    >= 85%                （好:92 / 噪:91 / 坏:69）
   6. SDNN 跨清洗口径漂移 <= 10ms      （绝对量,不是比值——比值在低变异性信号上分母趋零误报）
   7. 节律强度 >= 0.50              （各 30s 窗自相关峰 r 的中位数；防短窗谐波误锁）
+  8. 运动窗占比 <= 10%             （逐 30s 窗 |a| 偏离 1g 算运动；需 CSV 带 ax,ay,az，否则 N/A）
 
 用法：
   python3.14 quality_gate.py hrv_log.csv
@@ -35,7 +36,7 @@ TH = dict(
 
 
 def load_csv(path):
-    ts, reds = [], []
+    ts, reds, acc = [], [], []
     with open(path) as f:
         f.readline()
         for ln in f:
@@ -43,9 +44,13 @@ def load_csv(path):
             if len(p) >= 6:
                 try:
                     ts.append(float(p[0])); reds.append(float(p[2]))
+                    if len(p) >= 9:
+                        acc.append((float(p[6]), float(p[7]), float(p[8])))
                 except ValueError:
                     pass
-    return np.array(ts), np.array(reds)
+    if len(acc) == len(ts) and len(acc) > 0:
+        return np.array(ts), np.array(reds), np.array(acc)
+    return np.array(ts), np.array(reds), None
 
 
 REFR_S = 0.40   # 谷底不应期(秒)。检测器的唯一可调参数——hrv_monitor 直接引用它，
@@ -100,7 +105,7 @@ def _band(P, f, lo, hi):
     return float(P[m].sum())
 
 
-def gate(ts, reds):
+def gate(ts, reds, acc=None):
     """返回 dict：metrics + checks[(名, 级别, 值串, 说明)] + overall。级别 PASS/WARN/FAIL。"""
     n = len(reds)
     if n < 200:
@@ -166,6 +171,20 @@ def gate(ts, reds):
             return "WARN"
         return "FAIL"
 
+    # 运动窗：逐 30s 窗算"运动样本占比"（|a| 偏离 1g >0.1g）。需 CSV 带 ax,ay,az 列，否则 N/A。
+    motion_frac = None; motion_win_max = None
+    if acc is not None and len(acc) == len(reds) and len(reds) > 0:
+        mag = np.sqrt((np.asarray(acc, float) ** 2).sum(axis=1))
+        moving = np.abs(mag - 16384.0) > 1638.0
+        wins = []; s0 = float(ts[0])
+        while s0 + 30.0 <= float(ts[-1]):
+            m = (ts >= s0) & (ts < s0 + 30.0)
+            if m.sum() > 0: wins.append(float(moving[m].mean()))
+            s0 += 30.0
+        if wins:
+            motion_win_max = max(wins)
+            motion_frac = float(np.mean([w > 0.2 for w in wins]))
+
     checks = [
         ("帧率", lvl(fs, TH["fs_lo"], TH["fs_hi"], TH["fs_warn"], 1e9), f"{fs:.1f}Hz", "固件应 100Hz"),
         ("接触DC", lvl(dc, TH["dc_lo"], TH["dc_hi"], TH["dc_warn_lo"], TH["dc_warn_hi"]), f"{dc:.0f}", "8-21万=耦合好"),
@@ -174,24 +193,27 @@ def gate(ts, reds):
         ("检测率", "PASS" if det >= TH["det_pass"] else ("WARN" if det >= TH["det_warn"] else "FAIL"), f"{det*100:.0f}%", ">=85%"),
         ("SDNN稳定", "PASS" if sd_spread <= TH["sdnn_pass"] else ("WARN" if sd_spread <= TH["sdnn_warn"] else "FAIL"), f"{sd_spread:.0f}ms", "跨清洗口径漂移,越小越好"),
         ("节律强度", "PASS" if rhythm >= TH["rhythm_pass"] else ("WARN" if rhythm >= TH["rhythm_warn"] else "FAIL"), f"{rhythm:.2f}", "各窗自相关峰r中位(>0.5清晰)"),
+        ("运动", ("N/A" if motion_frac is None else ("PASS" if motion_frac <= 0.1 else ("WARN" if motion_frac <= 0.3 else "FAIL"))),
+         (f"{motion_frac*100:.0f}%" if motion_frac is not None else "--"), "运动窗占比(逐30s,>0.2算运动)"),
     ]
-    order = {"PASS": 0, "WARN": 1, "FAIL": 2}
+    order = {"N/A": -1, "PASS": 0, "WARN": 1, "FAIL": 2}
     overall = max((c[1] for c in checks), key=lambda l: order[l])
     metrics = dict(fs=fs, dc=dc, drift=drift, pulse=pulse, dp=dp, main_hz=main_hz,
                    main_ratio=main_ratio, hr=hr, det=det, sdnn_lo=sd_lo, sdnn_hi=sd_hi,
-                   sd_spread=sd_spread, rhythm=rhythm, n_beat=len(ibis))
+                   sd_spread=sd_spread, rhythm=rhythm, n_beat=len(ibis),
+                   motion_frac=motion_frac, motion_win_max=motion_win_max)
     return dict(overall=overall, checks=checks, metrics=metrics)
 
 
-ICON = {"PASS": "OK  ", "WARN": "WARN", "FAIL": "FAIL"}
+ICON = {"PASS": "OK  ", "WARN": "WARN", "FAIL": "FAIL", "N/A": " -- "}
 
 
 def print_gate(path):
     if not os.path.exists(path):
         print(f"\n找不到文件：{path}（检查路径；或先 python3.14 hrv_monitor.py 采集）")
         return "FAIL"
-    ts, reds = load_csv(path)
-    r = gate(ts, reds)
+    ts, reds, acc = load_csv(path)
+    r = gate(ts, reds, acc)
     m = r.get("metrics", {})
     print(f"\n=== 质量门: {os.path.basename(path)} ===")
     for name, lvl, val, note in r["checks"]:
