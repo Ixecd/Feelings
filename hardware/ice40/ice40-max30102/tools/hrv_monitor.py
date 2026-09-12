@@ -324,6 +324,18 @@ except Exception as e:
 
 # 会话元数据 sidecar（--meta）：协议参数 + 验收 + 派生量 —— 供 baseline 判断"两次会话是否同条件"
 if META_ARG is not None:
+    # 主观自评（多模态的一路——出汗/冷热/心跳/呼吸本来就主观可感）；交互时才问
+    self_report = None
+    if sys.stdin.isatty():
+        try:
+            r = input("\n主观自评 1-10（1=紧张/不适 10=放松/舒适，回车跳过）: ").strip()
+            if r:
+                self_report = {"calm_1_10": int(r)}
+                note = input("备注（回车跳过）: ").strip()
+                if note:
+                    self_report["note"] = note
+        except (EOFError, ValueError, KeyboardInterrupt):
+            pass
     meta = {
         "session_id": time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime(t_start)),
         "csv": os.path.basename(OUT),
@@ -341,6 +353,7 @@ if META_ARG is not None:
             "fs_measured": round(fs_actual(), 1),
             "motion_pct": round(acc_bad / acc_n * 100.0, 1) if acc_n else None,
         },
+        "self_report": self_report,
         "derived": {
             "hr": round(hr_final, 2) if hr_final else None,
             "sdnn": round(sdnn_final, 2) if sdnn_final is not None else None,
