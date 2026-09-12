@@ -97,6 +97,12 @@ def selftest():
     return 0 if ok else 1
 
 
+def _sev(g):
+    """门结果 → (overall 严重度, 各检查严重度和)，越小越好。"""
+    order = {"N/A": -1, "PASS": 0, "WARN": 1, "FAIL": 2}
+    return (order[g["overall"]], sum(order[c[1]] for c in g["checks"]))
+
+
 def main():
     a = sys.argv[1:]
     if not a:
@@ -110,20 +116,33 @@ def main():
     ts, ppg, acc = load9(path)
     if len(ppg) < 200 or acc is None or len(acc) != len(ppg):
         print("需要 9 列 CSV（含 ax,ay,az）；样本不足或没有 accel 列"); return
+
+    raw = qg.gate(ts, ppg, acc)
+    print(f"=== ANC: {os.path.basename(path)} ===")
+    print(f"  raw 门: {raw['overall']}")
+    # 触发①：raw 已 PASS → 数据本来就干净，不修（避免把干净数据搞坏）
+    if raw["overall"] == "PASS":
+        print("  raw 已是 PASS —— 跳过 ANC（无需修）"); return
+    # 触发②：accel 无显著运动 → 不是运动问题，ANC 帮不上
     ref = acc - acc.mean(axis=0)
     gate = motion_gate(acc)
     if gate.mean() < 0.05:
-        print(f"=== ANC: {os.path.basename(path)} ===")
-        print(f"  运动门 {gate.mean()*100:.0f}% —— 无显著运动，跳过 ANC（避免把干净数据搞坏）")
-        return
+        print(f"  运动门 {gate.mean()*100:.0f}% —— raw 非 PASS 但无显著运动，跳过 ANC"); return
+
     cleaned = nlms_anc(ppg - ppg.mean(), ref, gate=gate) + ppg.mean()
+    cl = qg.gate(ts, cleaned, acc)
     b0, b1 = beats(ppg, ts), beats(cleaned, ts)
-    print(f"=== ANC: {os.path.basename(path)} ===")
-    print(f"  运动门: {gate.mean()*100:.0f}% 样本判为'在动'（只在这些样本上自适应权重）")
-    print(f"  原始  HR={b0['hr']:.1f}  SDNN={b0['sdnn']:.0f}ms  拍={b0['n']}")
-    print(f"  ANC后 HR={b1['hr']:.1f}  SDNN={b1['sdnn']:.0f}ms  拍={b1['n']}")
+    print(f"  运动门 {gate.mean()*100:.0f}%（只在这些样本上自适应权重）")
+    print(f"  原始   HR={b0['hr']:.1f}  SDNN={b0['sdnn']:.0f}ms  拍={b0['n']}   门={raw['overall']}(分级和 {_sev(raw)[1]})")
+    print(f"  ANC后  HR={b1['hr']:.1f}  SDNN={b1['sdnn']:.0f}ms  拍={b1['n']}   门={cl['overall']}(分级和 {_sev(cl)[1]})")
     fs = len(ppg) / (ts[-1] - ts[0])
     print(f"  伪迹带(1.0-2.0Hz): 原始={bandpow(ppg,fs,1.0,2.0):.3e}  ANC后={bandpow(cleaned,fs,1.0,2.0):.3e}")
+    dr = {n: l for n, l, _, _ in raw["checks"]}
+    dc = {n: l for n, l, _, _ in cl["checks"]}
+    chg = [f"{n}:{dr[n]}→{dc[n]}" for n in dr if dr[n] != dc[n]]
+    print("  门变化: " + ("  ".join(chg) if chg else "无"))
+    # 触发③：ANC 后用门复评，更差就丢弃
+    print("  → ANC 后更好，采纳" if _sev(cl) < _sev(raw) else "  → ANC 后不更好，丢弃（保持 raw）")
 
 
 if __name__ == "__main__":
