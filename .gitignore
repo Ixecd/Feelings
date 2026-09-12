@@ -4,6 +4,8 @@
 
 .vscode
 .reasonix/
+.rivet/
+.rivet.md
 .codegraph/
 reasonix.toml
 
@@ -25,6 +27,8 @@ hardware/ice40-max30102/*.asc
 hardware/ice40-max30102/*.bin
 hardware/ice40-max30102/*.json
 hardware/ice40-max30102/*.csv
+hardware/ice40-max30102/tools/*.csv
+hardware/ice40-max30102/tools/*.json
 ppg_capture.csv
 hardware/ice40-max30102/sim/*.vcd
 hardware/ice40-max30102/sim/*.vvp
