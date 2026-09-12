@@ -46,7 +46,7 @@ module max30102_stream (
     );
 
     // ---------- 配置表：MAX30102(0x57) + MPU6050(0x68) ----------
-    localparam NCFG = 12;
+    localparam NCFG = 13;
     reg [3:0] cfg_idx;
     reg [6:0] cfg_dev;
     reg [7:0] cfg_reg, cfg_dat;
@@ -60,10 +60,11 @@ module max30102_stream (
             4'd5:  begin cfg_dev=7'h57; cfg_reg=8'h09; cfg_dat=8'h02; end // MODE: HR-only
             4'd6:  begin cfg_dev=7'h57; cfg_reg=8'h0A; cfg_dat=8'h27; end // 100sps
             4'd7:  begin cfg_dev=7'h57; cfg_reg=8'h0C; cfg_dat=8'h24; end // LED1_PA
-            4'd8:  begin cfg_dev=7'h68; cfg_reg=8'h6B; cfg_dat=8'h00; end // MPU PWR_MGMT_1: 唤醒
-            4'd9:  begin cfg_dev=7'h68; cfg_reg=8'h19; cfg_dat=8'h09; end // SMPLRT_DIV=9 → 100Hz
-            4'd10: begin cfg_dev=7'h68; cfg_reg=8'h1A; cfg_dat=8'h03; end // CONFIG: DLPF 44Hz
-            4'd11: begin cfg_dev=7'h68; cfg_reg=8'h1C; cfg_dat=8'h00; end // ACCEL_CONFIG: ±2g
+            4'd8:  begin cfg_dev=7'h68; cfg_reg=8'h6B; cfg_dat=8'h80; end // MPU 复位(等 100ms)
+            4'd9:  begin cfg_dev=7'h68; cfg_reg=8'h6B; cfg_dat=8'h00; end // MPU 唤醒(等 50ms)
+            4'd10: begin cfg_dev=7'h68; cfg_reg=8'h19; cfg_dat=8'h09; end // SMPLRT_DIV=9 → 100Hz
+            4'd11: begin cfg_dev=7'h68; cfg_reg=8'h1A; cfg_dat=8'h03; end // CONFIG: DLPF 44Hz
+            4'd12: begin cfg_dev=7'h68; cfg_reg=8'h1C; cfg_dat=8'h00; end // ACCEL_CONFIG: ±2g
             default: begin cfg_dev=7'h57; cfg_reg=8'h00; cfg_dat=8'h00; end
         endcase
     end
@@ -81,7 +82,9 @@ module max30102_stream (
     localparam PWR_CY=32'd240_000;   // 20ms
     localparam RST_CY=32'd120_000;   // 10ms
     localparam CFG_CY=32'd12_000;    // 1ms
-    localparam MPU_CY=32'd600_000;   // 50ms（MPU 唤醒后等）
+    localparam PRE_MPU_CY=32'd1_200_000;  // 100ms（MAX 配完，等 MPU 模块 LDO/上电就绪）
+    localparam MPU_RST_CY=32'd1_200_000;  // 100ms（MPU 复位后）
+    localparam MPU_CY=32'd600_000;        // 50ms（MPU 唤醒后）
     localparam POLL_CY=32'd6_000;    // 0.5ms
     localparam ACCEL_EVERY = 8'd10;  // 每 10 个 PPG 样本读一次 accel → ≈10Hz
 
@@ -114,8 +117,10 @@ module max30102_stream (
             end
             S_CFG_GO: if (i2c_busy) begin i2c_start <= 0; state <= S_CFG_WAIT; end
             S_CFG_WAIT: if (i2c_done) begin
-                if (cfg_idx == 4'd0) dly_target <= RST_CY;
-                else if (cfg_idx == 4'd8) dly_target <= MPU_CY;
+                if (cfg_idx == 4'd0) dly_target <= RST_CY;            // MAX 复位后 10ms
+                else if (cfg_idx == 4'd7) dly_target <= PRE_MPU_CY;   // MAX 配完 → 等 MPU 就绪 100ms
+                else if (cfg_idx == 4'd8) dly_target <= MPU_RST_CY;   // MPU 复位后 100ms
+                else if (cfg_idx == 4'd9) dly_target <= MPU_CY;       // MPU 唤醒后 50ms
                 else dly_target <= CFG_CY;
                 dly <= 0; state <= S_DELAY;
             end

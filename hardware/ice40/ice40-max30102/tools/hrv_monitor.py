@@ -139,6 +139,7 @@ def report(now):
     global last_report, warned_no_data, stall_warned, fs_warned
     fs = fs_actual()
     dcs = dc if dc is not None else 0.0
+    accstr = f"  ACC=({acc_ax:6d},{acc_ay:6d},{acc_az:6d})" if acc_n else "  ACC=--(无MPU)"
     # 失联告警：中途掉串口/板子停——不能只在"从没收到过"时报（那会静默录空到 dur 结束）
     if n_samp > 0 and (now - last_samp_t) > STALL_S and not stall_warned:
         stall_warned = True
@@ -167,7 +168,7 @@ def report(now):
     ach = f"{ac_hr:4.0f}(r{ac_r:.2f})" if ac_hr == ac_hr else f"  --(r{ac_r:.2f})"
     hint = "  ⚠ DC偏低=接触弱" if dcs < 80000 else ("  ⚠ DC近饱和" if dcs > 210000 else "")
     if not raw_beats or len(sm_hist) < int(fs * 15):
-        print(f"[{now-t_start:6.0f}s] 样本{n_samp} ({fs:.1f}/s)  DC={dcs:.0f} 幅度={sig_amp:.0f}  HR(自相关)={ach}  等待…{hint}")
+        print(f"[{now-t_start:6.0f}s] 样本{n_samp} ({fs:.1f}/s)  DC={dcs:.0f} 幅度={sig_amp:.0f}  HR(自相关)={ach}  等待…{hint}{accstr}")
         # 零数据告警：板子/固件没起来时别傻等——直接给诊断（2026-09-12 丢固件那次踩的坑）
         if n_samp == 0 and (now - t_start) > 8 and not warned_no_data:
             warned_no_data = True
@@ -253,7 +254,8 @@ try:
         if chunk:
             buf.extend(chunk)
             while len(buf) >= 3:
-                if buf[0] == 0xFE and buf[1] == 0xE1 and len(buf) >= 5:
+                if buf[0] == 0xFE and buf[1] == 0xE1:
+                    if len(buf) < 5: break          # 半帧 → 等下一批，绝不能删（删了会丢帧/错位）
                     r = ((buf[2] & 0x03) << 16) | (buf[3] << 8) | buf[4]
                     del buf[:5]
                     idx += 1
@@ -271,7 +273,8 @@ try:
                     ibi_ms = ibi_samples / fs_actual() * 1000.0 if ibi_samples else 0.0
                     csv.write(f"{now:.3f},{idx},{r},{1 if beat else 0},"
                               f"{ibi_samples},{ibi_ms:.1f}\n")
-                elif buf[0] == 0xFE and buf[1] == 0xE2 and len(buf) >= 8:
+                elif buf[0] == 0xFE and buf[1] == 0xE2:
+                    if len(buf) < 8: break
                     ax = (buf[2] << 8) | buf[3]; ax -= 65536 if ax >= 32768 else 0   # 大端(i16)
                     ay = (buf[4] << 8) | buf[5]; ay -= 65536 if ay >= 32768 else 0
                     az = (buf[6] << 8) | buf[7]; az -= 65536 if az >= 32768 else 0
@@ -280,7 +283,7 @@ try:
                     mag = math.sqrt(ax*ax + ay*ay + az*az)
                     acc_n += 1
                     if abs(mag - 16384.0) > 1638.0: acc_bad += 1   # ±2g: 16384 LSB/g；偏离 1g >0.1g
-                elif buf[0] == 0xFE and buf[1] == 0xE3 and len(buf) >= 3:
+                elif buf[0] == 0xFE and buf[1] == 0xE3:
                     who_seen = buf[2]; del buf[:3]
                     if not who_printed:
                         who_printed = True

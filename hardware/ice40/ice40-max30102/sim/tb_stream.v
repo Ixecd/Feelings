@@ -19,7 +19,7 @@ module tb_stream;
         mpu.mem[8'h3B] = 8'h01; mpu.mem[8'h3C] = 8'h02;             // AX = 0x0102
         mpu.mem[8'h3D] = 8'h03; mpu.mem[8'h3E] = 8'h04;             // AY = 0x0304
         mpu.mem[8'h3F] = 8'h05; mpu.mem[8'h40] = 8'h06;             // AZ = 0x0506
-        #95_000_000;                       // 复位 + 上电 + 配置(含 MPU 唤醒 50ms) + WHO 自检
+        #320_000_000;                      // 复位 + 上电 + 配置(含 MPU 复位/唤醒各 100/50ms) + WHO 自检
         for (k = 1; k <= 12; k = k + 1) begin
             slave.mem[8'h04] = k[7:0];     // 新样本
             slave.mem[8'h07] = 8'h10 + k;
