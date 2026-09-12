@@ -205,3 +205,10 @@ if raw_beats:
     g = np.array(good, float)
     print(f"总样本 {n_samp}, 检出拍 {len(raw_beats)}, 有效 {len(g)}, "
           f"HR {60000/g.mean():.1f}, SDNN {g.std(ddof=1):.0f}ms")
+
+# 采集质量门：判断这份数据能不能进 S0 基线（不合格就别拿去建基线）
+try:
+    import quality_gate
+    quality_gate.print_gate("hrv_log.csv")
+except Exception as e:
+    print(f"(质量门跳过: {e}；可单独跑 python3.14 quality_gate.py hrv_log.csv)")
