@@ -186,7 +186,7 @@ def print_gate(path):
     for name, lvl, val, note in r["checks"]:
         print(f"  [{ICON[lvl]}] {name:10s} {val:>8s}   ({note})")
     if m:
-        print(f"  ---- HR={m['hr']:.1f}  SDNN={m['sdnn_lo']:.0f}ms(±20%)/{m['sdnn_hi']:.0f}ms(±50%)  拍{m['n_beat']}")
+        print(f"  ---- HR={m['hr']:.1f}  SDNN={m['sdnn_lo']:.0f}ms(±30%)/{m['sdnn_hi']:.0f}ms(±50%)  拍{m['n_beat']}")
     verdict = {"PASS": "✅ 可用——这份可以进基线",
                "WARN": "⚠️ 勉强——能用但会稀释基线，最好重采",
                "FAIL": "❌ 不可用——别进基线，重采"}[r["overall"]]
