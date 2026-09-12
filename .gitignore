@@ -9,31 +9,24 @@
 .codegraph/
 reasonix.toml
 
-hardware/gw1n-bringup/*.bin
-hardware/gw1n-bringup/*.txt
-hardware/gw1n-bringup/pnr2.json
-hardware/gw1n-bringup/pnr_hi.json
-hardware/gw1n-bringup/unpacked.json
-hardware/gw1n-sim/*.vcd
-hardware/gw1n-sim/*.vvp
-hardware/gw1n-sim/synth/*.json
-hardware/gw1n-sim/sim/*.out
-hardware/gw1n-sim/sim/synth_*.v
-
-hardware/ecp5-i5/**/*.json
-hardware/ecp5-i5/**/*.config
-
-hardware/ice40-max30102/*.asc
-hardware/ice40-max30102/*.bin
-hardware/ice40-max30102/*.json
-hardware/ice40-max30102/*.csv
-hardware/ice40-max30102/tools/*.csv
-hardware/ice40-max30102/tools/*.json
+# ===== hardware：运行数据 / 构建 / 仿真产物（路径无关，重构后仍生效）=====
+# 运行数据 / 日志（PC 侧抓取）——含仓库根/目录根的散落数据文件
+hardware/**/hrv_log*.csv
+hardware/**/tools/baseline*.json
 ppg_capture.csv
-hardware/ice40-max30102/sim/*.vcd
-hardware/ice40-max30102/sim/*.vvp
-hardware/ice40-max30102/**/__pycache__/
-hardware/ice40-max30102/**/*.pyc
-
-hardware/nrf52/build/
-hardware/nrf52/build-nosd/
+# Python
+hardware/**/*.pyc
+__pycache__/
+# 位流 / 网表 / 仿真产物
+hardware/**/*.bin
+hardware/**/*.asc
+hardware/**/*.fs
+hardware/**/*.json
+hardware/**/*.vcd
+hardware/**/*.vvp
+hardware/**/*.config
+hardware/**/*.out
+hardware/**/synth_*.v
+hardware/**/unpack*.txt
+hardware/**/build/
+hardware/**/build-nosd/
