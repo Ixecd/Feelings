@@ -124,7 +124,7 @@ python3 -c "import sys; sys.argv=['gowin_pack','-d','GW1N-4','-o','top.fs','pnr.
 - 接线：CP2102 TXD→PMOD P1_11，RXD→PMOD P1_2，GND→GND
 - 终端：`screen /dev/tty.usbserial-0001 9600`
 
-详见 `hardware/ice40-uart-pitfalls-2026-07-07.md` 坑6-8 + `hardware/FORGET.md`
+详见 `hardware/ice40/ice40-uart-pitfalls-2026-07-07.md` 坑6-8 + `hardware/FORGET.md`
 
 ## 五、2026-07-21 GW1N bitstream 生成 ✅ 等烧录器
 

@@ -299,9 +299,9 @@ apycula 版本线：0.32(2026-04-07) → gowin_pack 重写(2026-08-11) → 0.33(
 
 ### 关键文件位置
 ```
-/Users/qc/Feelings/hardware/gw1n-sim/uart_loopback.v          # 目标设计
-/Users/qc/Feelings/hardware/gw1n-sim/synth/uart_loopback.fs   # apycula 产物（无效）
-/Users/qc/Feelings/hardware/gw1n-sim/synth/pin.cst            # apycula 引脚约束
+/Users/qc/Feelings/hardware/gw1n/gw1n-sim/uart_loopback.v          # 目标设计
+/Users/qc/Feelings/hardware/gw1n/gw1n-sim/synth/uart_loopback.fs   # apycula 产物（无效）
+/Users/qc/Feelings/hardware/gw1n/gw1n-sim/synth/pin.cst            # apycula 引脚约束
 /tmp/fg202_ex/02_LED_Flash/impl/pnr/02_LED_Flash.fs           # 官方可用 fs（流水灯）
 /tmp/fg202_ex/01_LED_Run/impl/pnr/LED_Run.fs                  # 官方可用 fs
 /tmp/io_test/io_test.fs / io_test_v33.fs                      # apycula 诊断（无效）

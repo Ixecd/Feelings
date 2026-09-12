@@ -13,7 +13,7 @@
 > 2026-09-10 更新：执行端从 GW1N 换成 **ECP5-25F (Colorlight i5)**。
 > 原因：GW1N 开源链 apycula 对其 -4B 打包有 bug + 官方 IDE 要 license，走不通；
 > ECP5 开源链成熟（yosys/nextpnr-trellis），到手当天全通。详见
-> `ecp5-i5-bringup-2026-09-09.md`。
+> `ecp5-i5/ecp5-i5-bringup-2026-09-09.md`。
 
 ```
 iCE40UP5K    传感器采集（I2C/SPI 主控，读 PPG/EDA/Temp/AD1256）
@@ -128,7 +128,7 @@ docs/architecture/ = 目标态（应该长成什么样）
 **目标（已达成）：执行端独立跑通，串口与 PC 对话。**
 
 > 历史：原计划在 GW1N 上做，GW1N 走不通后换 ECP5 i5，2026-09-09 达成
-> （blinky + uart 回环 + flash 自启，见 `ecp5-i5-bringup-2026-09-09.md`）。以下为原始步骤留档。
+> （blinky + uart 回环 + flash 自启，见 `ecp5-i5/ecp5-i5-bringup-2026-09-09.md`）。以下为原始步骤留档。
 
 ```
 1.1  FT2232HL 到货 → JTAG 直烧 blink.fs → LED 闪烁 → 工具链全通确认

@@ -245,7 +245,7 @@ ball 39/40 已验证。绿+红同时亮 = 黄色。
 
 ### build 命令
 ```bash
-cd hardware/ice40-uart-loopback
+cd hardware/ice40/ice40-uart-loopback
 rm -f top.bin top.json top.asc
 make top.bin   # yosys → nextpnr → icepack
 # 拖 top.bin 到 iCESugar U 盘 → 弹出 → 烧录完成

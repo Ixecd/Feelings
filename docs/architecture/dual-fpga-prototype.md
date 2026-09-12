@@ -7,7 +7,7 @@
 > ⚠️ 2026-09-10 状态注记：执行端已从 **GW1N** 换为 **ECP5-25F (Colorlight i5)**。
 > 原因：GW1N 开源链 apycula 对 -4B 打包有 bug + 官方 IDE 要 license，走不通。
 > 本文中 GW1N 相关的选型/引脚/功耗论证视为**历史方案**，以
-> `../../hardware/ROADMAP.md` 与 `../../hardware/ecp5-i5-bringup-2026-09-09.md` 为准。
+> `../../hardware/ROADMAP.md` 与 `../../hardware/ecp5-i5/ecp5-i5-bringup-2026-09-09.md` 为准。
 > **帧协议细节（字节数/帧率/校验）尚待统一，暂以 ROADMAP §二 为准。**
 
 ## 〇、硬件盘点（2026-06-25）

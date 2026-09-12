@@ -7,7 +7,7 @@
 
 > ⚠️ 2026-09-10：执行端已从 GW1N-4（本文功耗/热预算的基准）换为 **ECP5-25F (i5)**。
 > 本文 GW1N/ECP5 相关的功耗与热论证为历史，ECP5-25F 的实际热预算待评估。
-> 见 `../../hardware/ROADMAP.md` 与 `../../hardware/ecp5-i5-bringup-2026-09-09.md`。
+> 见 `../../hardware/ROADMAP.md` 与 `../../hardware/ecp5-i5/ecp5-i5-bringup-2026-09-09.md`。
 
 ---
 
