@@ -49,6 +49,11 @@ REFRA_S = quality_gate.REFR_S   # 不应期：引用质量门口径（现 0.40s�
 HR_WIN_S = 60.0     # HR 窗口
 SDNN_WIN_S = 300.0  # SDNN 长窗
 DC_GATE = 20000
+STALL_S = 3.0        # 连续无新样本阈值(秒)：中途拔串口/板子停了要报警（不能静默录空到结束）
+last_samp_t = t_start
+first_samp_t = None
+stall_warned = False
+fs_warned = False
 
 def fs_actual():
     el = time.time() - t_start
@@ -84,9 +89,25 @@ def freq_hrv(pairs, fs):
     return lf, hf, lf / hf
 
 def report(now):
-    global last_report, warned_no_data
+    global last_report, warned_no_data, stall_warned, fs_warned
     fs = fs_actual()
     dcs = dc if dc is not None else 0.0
+    # 失联告警：中途掉串口/板子停——不能只在"从没收到过"时报（那会静默录空到 dur 结束）
+    if n_samp > 0 and (now - last_samp_t) > STALL_S and not stall_warned:
+        stall_warned = True
+        print(f"  ⚠⚠ 已 {now - last_samp_t:.0f}s 没有新样本——串口断了/板子停了？"
+              f"建议 Ctrl-C 存盘退出，检查后再采")
+    # 帧率漂移告警：滤波系数/IBI 换算是启动时按 FS 一次性算的；实测漂太多则实时结果不可信。
+    # 用「首末样本跨度」估帧率（排除启动空窗），且样本够了才判，避免开机瞬间误报。
+    span = (last_samp_t - first_samp_t) if first_samp_t is not None else 0.0
+    if span > 5.0 and n_samp > 300:
+        fs_span = (n_samp - 1) / span
+        if abs(fs_span - FS) / FS > 0.05:
+            if not fs_warned:
+                fs_warned = True
+                print(f"  ⚠ 实测帧率 {fs_span:.1f}/s 与假定 {FS:.0f}/s 偏差 >5%——时基可疑，实时结果别信")
+        else:
+            fs_warned = False
     # 自相关出 HR + 质量 r（稳健）
     ac_hr = float('nan'); ac_r = 0.0
     if len(sm_hist) > int(fs * 15):
@@ -189,6 +210,9 @@ try:
                     del buf[:5]
                     idx += 1
                     n_samp += 1
+                    last_samp_t = now      # 有新样本 → 重置失联计时
+                    if first_samp_t is None: first_samp_t = now
+                    stall_warned = False
                     beat = process(r)
                     ibi_samples = 0
                     if beat:

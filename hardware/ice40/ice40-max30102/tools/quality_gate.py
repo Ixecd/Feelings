@@ -187,6 +187,9 @@ ICON = {"PASS": "OK  ", "WARN": "WARN", "FAIL": "FAIL"}
 
 
 def print_gate(path):
+    if not os.path.exists(path):
+        print(f"\n找不到文件：{path}（检查路径；或先 python3.14 hrv_monitor.py 采集）")
+        return "FAIL"
     ts, reds = load_csv(path)
     r = gate(ts, reds)
     m = r.get("metrics", {})

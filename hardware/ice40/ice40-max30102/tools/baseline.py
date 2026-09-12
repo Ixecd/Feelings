@@ -49,6 +49,8 @@ def load_beats(path):
     纪律：**不读 CSV 里存的 beat/ibi 列**——那是采集时哪个版本的检测器写的就是哪个，
     跨检测器版本的会话会因此不可比（SDNN 差异来自代码而非生理）。
     必须从 red 重来，与 quality_gate 同一口径。"""
+    if not os.path.exists(path):
+        return []
     ts, reds = [], []
     with open(path) as f:
         for ln in f:
@@ -193,6 +195,9 @@ def main():
               "  ".join(f"N={nn}→±{hh:.0f}" for nn, hh in _trajectory(base["sdnn"]["sd"])))
         print(f"  → 已存 {out}")
     elif a[0] == "check":
+        if len(a) < 3 or not os.path.exists(a[1]) or not os.path.exists(a[2]):
+            print("用法: python3.14 baseline.py check <baseline.json> <新会话.csv>（两文件都要存在）")
+            return
         check(json.load(open(a[1])), a[2])
     else:
         print(__doc__)
