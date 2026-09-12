@@ -10,7 +10,7 @@
 判据（阈值从真实会话标定，不是拍脑袋）：
   1. 帧率      95-105Hz              （固件输出 100Hz）
   2. 接触 DC   8万-21万              （FORGET.md: 10-15万好 / <8万太松 / ~26万饱和）
-  3. 漂移/脉搏 < 6                   （好:4.2 / 噪:5.9 / 坏:60）
+  3. 漂移/脉搏 < 10                  （实数据标定：好 3.6/4.2/6.3，坏 18.7）
   4. 主峰落位  0.9-1.8Hz             （真实心率应在脉搏带）
   5. 检测率    >= 85%                （好:92 / 噪:91 / 坏:69）
   6. SDNN 跨清洗口径漂移 <= 10ms      （绝对量,不是比值——比值在低变异性信号上分母趋零误报）
@@ -26,7 +26,7 @@ import numpy as np
 TH = dict(
     fs_lo=95, fs_hi=105, fs_warn=90,
     dc_lo=80000, dc_hi=210000, dc_warn_lo=60000, dc_warn_hi=240000,
-    dp_pass=6.0, dp_warn=12.0,
+    dp_pass=10.0, dp_warn=15.0,   # 依实数据标定(2026-09-12)：好会话 3.6/4.2/6.3，坏会话 18.7
     peak_lo=0.9, peak_hi=1.8,
     det_pass=0.85, det_warn=0.70,
     sdnn_pass=10.0, sdnn_warn=30.0,   # ms（跨清洗口径的绝对漂移）
@@ -158,7 +158,7 @@ def gate(ts, reds):
     checks = [
         ("帧率", lvl(fs, TH["fs_lo"], TH["fs_hi"], TH["fs_warn"], 1e9), f"{fs:.1f}Hz", "固件应 100Hz"),
         ("接触DC", lvl(dc, TH["dc_lo"], TH["dc_hi"], TH["dc_warn_lo"], TH["dc_warn_hi"]), f"{dc:.0f}", "8-21万=耦合好"),
-        ("漂移/脉搏", "PASS" if dp <= TH["dp_pass"] else ("WARN" if dp <= TH["dp_warn"] else "FAIL"), f"{dp:.1f}", "越小越好(<6)"),
+        ("漂移/脉搏", "PASS" if dp <= TH["dp_pass"] else ("WARN" if dp <= TH["dp_warn"] else "FAIL"), f"{dp:.1f}", "越小越好(<10)"),
         ("主峰落位", "PASS" if TH["peak_lo"] <= main_hz <= TH["peak_hi"] else "WARN", f"{main_hz*60:.0f}BPM", "应在脉搏带"),
         ("检测率", "PASS" if det >= TH["det_pass"] else ("WARN" if det >= TH["det_warn"] else "FAIL"), f"{det*100:.0f}%", ">=85%"),
         ("SDNN稳定", "PASS" if sd_spread <= TH["sdnn_pass"] else ("WARN" if sd_spread <= TH["sdnn_warn"] else "FAIL"), f"{sd_spread:.0f}ms", "跨清洗口径漂移,越小越好"),
