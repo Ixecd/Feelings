@@ -30,7 +30,7 @@ TH = dict(
     peak_lo=0.9, peak_hi=1.8,
     det_pass=0.85, det_warn=0.70,
     sdnn_pass=10.0, sdnn_warn=30.0,   # ms（跨清洗口径的绝对漂移）
-    ac_pass=0.70, ac_warn=0.50,
+    rhythm_pass=0.50, rhythm_warn=0.30,  # 各30s窗自相关峰r的中位数
 )
 
 
@@ -133,11 +133,11 @@ def gate(ts, reds):
     sd_lo = sdnn(0.30); sd_hi = sdnn(0.50)   # ±30% = hrv_monitor/baseline 的 0.7~1.3 口径，三处必须一致
     sd_spread = max(_sds) - min(_sds)   # ms：跨清洗口径 SDNN 的绝对漂移
 
-    # 自相关一致性：30s 分段 HR 落在全窗 HR ±15% 的比例
-    F = np.fft.rfft(y * np.hanning(n), 2 * n); rr = np.fft.irfft(F * np.conj(F))[:n]; rr /= rr[0] + 1e-9
-    lo, hi = int(0.5 * fs), int(1.7 * fs)
-    full_hr = 60.0 / ((lo + int(np.argmax(rr[lo:hi]))) / fs)
-    good = tot_seg = 0
+    # 节律强度 = 各 30s 窗自相关峰 r 的中位数（衡量"脉搏周期是否清晰"）。
+    # 2026-09-12 修正：原用"各窗 HR vs 全窗 HR 一致率"，但**全窗自相关在 HR 随时间变化时
+    # 会失去内部峰**（argmax 落到搜索边界 = 纯伪影）——该指标会把"HR 正常波动"误判成
+    # "估计不可靠"，误杀好数据（实测一份窗剔除0%、r≈0.99 的好数据被判 FAIL 33%）。
+    rs = []
     for s in range(0, int(dur), 30):
         a = int(s * fs); b2 = int((s + 30) * fs)
         if b2 - a < 100 or b2 > n:
@@ -145,11 +145,8 @@ def gate(ts, reds):
         seg = y[a:b2]; mm = len(seg)
         Fs = np.fft.rfft(seg * np.hanning(mm), 2 * mm); r2 = np.fft.irfft(Fs * np.conj(Fs))[:mm]; r2 /= r2[0] + 1e-9
         l2 = int(0.5 * fs) + int(np.argmax(r2[int(0.5 * fs):int(1.7 * fs)]))
-        seg_hr = 60.0 / (l2 / fs)
-        tot_seg += 1
-        if abs(seg_hr - full_hr) / full_hr <= 0.15:
-            good += 1
-    ac = good / tot_seg if tot_seg else 0.0
+        rs.append(float(r2[l2]))
+    rhythm = float(np.median(rs)) if rs else 0.0
 
     def lvl(v, lo_, hi_, wlo, whi):
         if lo_ <= v <= hi_:
@@ -165,13 +162,13 @@ def gate(ts, reds):
         ("主峰落位", "PASS" if TH["peak_lo"] <= main_hz <= TH["peak_hi"] else "WARN", f"{main_hz*60:.0f}BPM", "应在脉搏带"),
         ("检测率", "PASS" if det >= TH["det_pass"] else ("WARN" if det >= TH["det_warn"] else "FAIL"), f"{det*100:.0f}%", ">=85%"),
         ("SDNN稳定", "PASS" if sd_spread <= TH["sdnn_pass"] else ("WARN" if sd_spread <= TH["sdnn_warn"] else "FAIL"), f"{sd_spread:.0f}ms", "跨清洗口径漂移,越小越好"),
-        ("自相关一致", "PASS" if ac >= TH["ac_pass"] else ("WARN" if ac >= TH["ac_warn"] else "FAIL"), f"{ac*100:.0f}%", "短窗与全窗一致"),
+        ("节律强度", "PASS" if rhythm >= TH["rhythm_pass"] else ("WARN" if rhythm >= TH["rhythm_warn"] else "FAIL"), f"{rhythm:.2f}", "各窗自相关峰r中位(>0.5清晰)"),
     ]
     order = {"PASS": 0, "WARN": 1, "FAIL": 2}
     overall = max((c[1] for c in checks), key=lambda l: order[l])
     metrics = dict(fs=fs, dc=dc, drift=drift, pulse=pulse, dp=dp, main_hz=main_hz,
                    main_ratio=main_ratio, hr=hr, det=det, sdnn_lo=sd_lo, sdnn_hi=sd_hi,
-                   sd_spread=sd_spread, ac=ac, n_beat=len(ibis))
+                   sd_spread=sd_spread, rhythm=rhythm, n_beat=len(ibis))
     return dict(overall=overall, checks=checks, metrics=metrics)
 
 
