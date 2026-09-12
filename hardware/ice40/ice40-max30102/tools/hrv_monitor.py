@@ -3,17 +3,59 @@
 #   帧: FE E1 R0 R1 R2  (每帧=1个新样本)
 #   IBI = 两拍之间的样本数 / 实测采样率 （数样本时基）
 #   滤波系数按采样率自动算（SMP_AVE=4 时 fs≈25）
-# 用法: python3.14 hrv_monitor.py [设备] [秒数] [采样率Hz] [输出文件]
+# 用法: python3.14 hrv_monitor.py [设备] [秒数] [采样率Hz] [输出文件] [--meta "k=v,k=v"]
 #   输出默认带时间戳 hrv_log_<日期>-<时间>.csv（每次会话一个文件，不覆盖）
-import sys, os, time, subprocess, math
+#   --meta 写会话元数据 sidecar hrv_log_<…>.meta.json（协议参数/验收/派生量，见 s0-collection-protocol.md）
+import sys, os, time, subprocess, math, json
 import numpy as np
 import quality_gate   # 复用同一检测器口径（不应期等），保证"采集端实时看到的" = "验收端事后存下的"
 
-dev = sys.argv[1] if len(sys.argv) > 1 else "/dev/cu.usbserial-0001"
-dur = float(sys.argv[2]) if len(sys.argv) > 2 else 600.0
-FS  = float(sys.argv[3]) if len(sys.argv) > 3 else 25.0     # 采样率(SMP_AVE=4→25; 无平均→100)
+
+def _auto(v):
+    s = v.strip(); low = s.lower()
+    if low in ("true", "yes"):  return True
+    if low in ("false", "no"):  return False
+    for cast in (int, float):
+        try: return cast(s)
+        except ValueError: pass
+    return s
+
+
+def parse_meta(s):
+    """--meta 的值：'k=v,k=v'（自动转 int/float/bool）；或 '@file.json' 读入。"""
+    if not s:
+        return {}
+    if s.startswith("@"):
+        with open(s[1:]) as f:
+            return json.load(f)
+    d = {}
+    for kv in s.replace(";", ",").split(","):
+        if "=" in kv:
+            k, v = kv.split("=", 1)
+            d[k.strip()] = _auto(v)
+    return d
+
+
+# 位置参数 [设备] [秒数] [采样率Hz] [输出文件] + 可选 --meta（顺序无关）
+_argv = sys.argv[1:]
+META_ARG, _pos = None, []
+_i = 0
+while _i < len(_argv):
+    a = _argv[_i]
+    if a == "--meta":
+        _i += 1; META_ARG = _argv[_i] if _i < len(_argv) else ""
+    elif a.startswith("--meta="):
+        META_ARG = a.split("=", 1)[1]
+    else:
+        _pos.append(a)
+    _i += 1
+
+dev = _pos[0] if len(_pos) > 0 else "/dev/cu.usbserial-0001"
+dur = float(_pos[1]) if len(_pos) > 1 else 600.0
+FS  = float(_pos[2]) if len(_pos) > 2 else 25.0     # 采样率(SMP_AVE=4→25; 无平均→100)
 # 输出文件名：默认带时间戳——攒 S0 基线要保留每次会话，绝不能互相覆盖
-OUT = sys.argv[4] if len(sys.argv) > 4 else time.strftime("hrv_log_%Y%m%d-%H%M%S.csv")
+OUT = _pos[3] if len(_pos) > 3 else time.strftime("hrv_log_%Y%m%d-%H%M%S.csv")
+user_meta = parse_meta(META_ARG)
 
 subprocess.run(["stty", "-f", dev, "9600", "raw"], check=False)
 print(f"打开 {dev} @9600，假定采样率 {FS:.0f}Hz，记录 {dur:.0f}s …（传感器贴稳，别使劲、别动）")
@@ -235,17 +277,52 @@ finally:
 
 report(time.time())
 print(f"\n已存 {OUT}")
+
+hr_final = sdnn_final = None
 if raw_beats:
     fs = fs_actual()
     all_ibi = np.array([b for (_, b) in raw_beats], float) * 1000.0 / fs
     good, _ = _clean(list(all_ibi))
     g = np.array(good, float)
+    hr_final, sdnn_final = 60000.0 / g.mean(), float(g.std(ddof=1))
     print(f"总样本 {n_samp}, 检出拍 {len(raw_beats)}, 有效 {len(g)}, "
-          f"HR {60000/g.mean():.1f}, SDNN {g.std(ddof=1):.0f}ms")
+          f"HR {hr_final:.1f}, SDNN {sdnn_final:.0f}ms")
 
 # 采集质量门：判断这份数据能不能进 S0 基线（不合格就别拿去建基线）
+verdict, gate_dict = None, None
 try:
     import quality_gate
-    quality_gate.print_gate(OUT)
+    verdict = quality_gate.print_gate(OUT)
+    gate_dict = quality_gate.gate(*quality_gate.load_csv(OUT))
 except Exception as e:
     print(f"(质量门跳过: {e}；可单独跑 python3.14 quality_gate.py {OUT})")
+
+# 会话元数据 sidecar（--meta）：协议参数 + 验收 + 派生量 —— 供 baseline 判断"两次会话是否同条件"
+if META_ARG is not None:
+    meta = {
+        "session_id": time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime(t_start)),
+        "csv": os.path.basename(OUT),
+        "protocol": {
+            "device": "iCESugar+MAX30102", "fw": "max30102_stream.bin",
+            "fs_nominal": FS, "baud": 9600, "led_ma": 7.2,
+            "site": "finger", "fixation": "tape", "light_blocked": True,
+            "posture": None, "dur_s": dur,
+            **user_meta,          # --meta 覆盖/补充（如 posture=sitting,since_meal_min=120）
+        },
+        "quality": {
+            "gate": verdict,
+            "checks": ({n: l for n, l, _, _ in gate_dict["checks"]} if gate_dict else None),
+            "dc_mean": round(dc, 0) if dc is not None else None,
+            "fs_measured": round(fs_actual(), 1),
+            "motion_pct": None,   # 待 MPU6050 接入后填
+        },
+        "derived": {
+            "hr": round(hr_final, 2) if hr_final else None,
+            "sdnn": round(sdnn_final, 2) if sdnn_final is not None else None,
+            "n_beat": len(raw_beats), "n_samp": n_samp,
+        },
+    }
+    mp = os.path.splitext(OUT)[0] + ".meta.json"
+    with open(mp, "w") as f:
+        json.dump(meta, f, ensure_ascii=False, indent=2)
+    print(f"已存元数据 {mp}")
