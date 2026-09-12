@@ -115,10 +115,12 @@ def report(now):
         fstr = f"LF/HF={ratio:.2f}  LFnu={lfnu:.0f} HFnu={100-lfnu:.0f}"
     else:
         fstr = "LF/HF=-- (需≥2min有效拍)"
-    q = "好" if (hr_rej < len(hr_win) * 0.25) else ("中" if hr_rej < len(hr_win) * 0.45 else "差")
+    # 窗口剔除率（忠实名）。开场窗未满时它天然偏高（中位不稳+启动瞬态）= 预热假象——
+    # 旧版把这误标成"质量=差"，会骗人。窗未满就不显示；权威验收看末尾 quality_gate。
+    q = "--(预热)" if len(hr_win) < 30 else f"{hr_rej / len(hr_win) * 100:.0f}%"
     hpk = f"{hr:5.1f}" if hr == hr else "  -- "
     print(f"[{now-t_start:6.0f}s] HR(谷)={hpk}  HR(自相关)={ach}  SDNN(5min)={sdnn:4.0f}  "
-          f"HR有效{len(hr_good):3d}/{len(hr_win):3d}  采样{fs:5.1f}/s  DC={dcs:6.0f} 幅度={sig_amp:6.0f}  质量={q}{hint}")
+          f"HR有效{len(hr_good):3d}/{len(hr_win):3d}  采样{fs:5.1f}/s  DC={dcs:6.0f} 幅度={sig_amp:6.0f}  窗剔除={q}{hint}")
     print(f"          频域HRV: {fstr}   (拍/5min={len(sd_pairs)})")
     last_report = now
 
@@ -158,7 +160,7 @@ def process(red):
         beat = True
     return beat
 
-print(f"{'时间':>7}  HR     SDNN(5min)  HR有效/总     采样率     DC     幅度     质量")
+print(f"{'时间':>7}  HR     SDNN(5min)  HR有效/总     采样率     DC     幅度    窗剔除")
 try:
     while True:
         now = time.time()
