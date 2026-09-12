@@ -10,11 +10,11 @@
 判据（阈值从真实会话标定，不是拍脑袋）：
   1. 帧率      95-105Hz              （固件输出 100Hz）
   2. 接触 DC   8万-21万              （FORGET.md: 10-15万好 / <8万太松 / ~26万饱和）
-  3. 漂移/脉搏 < 10                  （实数据标定：好 3.6/4.2/6.3，坏 18.7）
+  3. 漂移/脉搏 < 10                  （实数据标定：好 3.6/4.2/6.3，坏 18.7；脉搏带随实测 HR 自适应）
   4. 主峰落位  0.9-1.8Hz             （真实心率应在脉搏带）
   5. 检测率    >= 85%                （好:92 / 噪:91 / 坏:69）
   6. SDNN 跨清洗口径漂移 <= 10ms      （绝对量,不是比值——比值在低变异性信号上分母趋零误报）
-  7. 自相关一致 >= 70% 段落在全窗±15%（防短窗谐波误锁）
+  7. 节律强度 >= 0.50              （各 30s 窗自相关峰 r 的中位数；防短窗谐波误锁）
 
 用法：
   python3.14 quality_gate.py hrv_log.csv
@@ -48,7 +48,11 @@ def load_csv(path):
     return np.array(ts), np.array(reds)
 
 
-def trough_ibis(sm, fs, refr_s=0.40):
+REFR_S = 0.40   # 谷底不应期(秒)。检测器的唯一可调参数——hrv_monitor 直接引用它，
+                # 保证「采集端实时看到的」与「验收端事后存下的」同口径（曾 0.50 vs 0.40 不一致）。
+
+
+def trough_ibis(sm, fs, refr_s=REFR_S):
     """谷底基准点检测（与 hrv_monitor.py process() 同逻辑）。返回 IBI(ms) 数组。"""
     emax = emin = d0 = d1 = d2 = 0.0
     DEC = math.exp(-1.0 / (1.3 * fs))
@@ -109,22 +113,29 @@ def gate(ts, reds):
     P = np.abs(np.fft.rfft(y * w)) ** 2
     f = np.fft.rfftfreq(n, 1.0 / fs)
     tot = _band(P, f, 0.05, 4.0) or 1e-9
-    drift = _band(P, f, 0.05, 0.6) / tot
-    pulse = _band(P, f, 1.0, 1.5) / tot
-    dp = drift / max(pulse, 1e-9)
+
+    # 预处理 + 谷底检测（从 red 重来，不信 CSV 存的 beat 列）
+    # 先检测，才能让下面「脉搏带」跟着实际 HR 走，而不是写死 1.0–1.5Hz(60–90bpm)。
+    ibis = detect_from_red(x, fs)
+    dur = float(ts[-1] - ts[0])
+    med = float(np.median(ibis)) if len(ibis) else 0.0
+    gic = ibis[(ibis >= 0.70 * med) & (ibis <= 1.30 * med)] if med else np.array([])
+    hr = 60000.0 / float(np.mean(gic)) if len(gic) else 0.0   # 与 hrv_monitor/baseline 同口径：0.7~1.3 清洗后取均值（勿再用 median）
+    expected = dur * 1000.0 / med if med else 1e9
+    det = len(ibis) / expected if expected else 0.0
+
     b = (f >= 0.6) & (f <= 3.5)
     bf = f[b]; bs = np.abs(np.fft.rfft(y * w))[b]
     o = np.argsort(bs)[::-1]
     main_hz = float(bf[o[0]]); main_ratio = float(bs[o[0]] / bs[o[1]]) if len(bs) > 1 else 0.0
 
-    # 预处理 + 谷底检测（从 red 重来，不信 CSV 存的 beat 列）
-    ibis = detect_from_red(x, fs)
-
-    dur = float(ts[-1] - ts[0])
-    med = float(np.median(ibis)) if len(ibis) else 0.0
-    hr = 60000.0 / med if med else 0.0
-    expected = dur * 1000.0 / med if med else 1e9
-    det = len(ibis) / expected if expected else 0.0
+    # 「漂移/脉搏」的脉搏带 = max(0.6, 0.8·f_hr) ~ 1.2·f_hr，随实测 HR 自适应(±20%)。
+    # 写死 1.0–1.5Hz 时，HR<60 或 >90 → 脉搏带能量塌陷 → dp 爆表(≈7.5e4) → 好数据被误判 FAIL。
+    f_hr = (1000.0 / med) if med > 0 else main_hz
+    pulse_lo, pulse_hi = max(0.6, 0.8 * f_hr), 1.2 * f_hr
+    pulse = _band(P, f, pulse_lo, pulse_hi) / tot if pulse_hi > pulse_lo else 0.0
+    drift = _band(P, f, 0.05, 0.6) / tot
+    dp = drift / max(pulse, 1e-9)
 
     def sdnn(thr):
         g = ibis[(ibis >= (1 - thr) * med) & (ibis <= (1 + thr) * med)]

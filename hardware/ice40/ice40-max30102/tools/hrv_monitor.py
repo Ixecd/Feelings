@@ -7,6 +7,7 @@
 #   输出默认带时间戳 hrv_log_<日期>-<时间>.csv（每次会话一个文件，不覆盖）
 import sys, os, time, subprocess, math
 import numpy as np
+import quality_gate   # 复用同一检测器口径（不应期等），保证"采集端实时看到的" = "验收端事后存下的"
 
 dev = sys.argv[1] if len(sys.argv) > 1 else "/dev/cu.usbserial-0001"
 dur = float(sys.argv[2]) if len(sys.argv) > 2 else 600.0
@@ -44,7 +45,7 @@ idx = 0
 n_samp = 0
 sig_amp = 0.0
 
-REFRA_S = 0.50      # 不应期 500ms
+REFRA_S = quality_gate.REFR_S   # 不应期：引用质量门口径（现 0.40s），避免"采集端 vs 验收端"不一致
 HR_WIN_S = 60.0     # HR 窗口
 SDNN_WIN_S = 300.0  # SDNN 长窗
 DC_GATE = 20000
@@ -103,7 +104,7 @@ def report(now):
         if n_samp == 0 and (now - t_start) > 8 and not warned_no_data:
             warned_no_data = True
             print("  ⚠⚠ 8 秒零样本——FPGA 很可能丢了固件（上电/重插会清掉 SRAM 配置）")
-            print("     处置：把 hardware/ice40-max30102/max30102_stream.bin 拖到 iCELink 盘重烧")
+            print("     处置：把 hardware/ice40/ice40-max30102/max30102_stream.bin 拖到 iCELink 盘重烧")
             print("     佐证：传感器红灯灭 = I2C 没跑；重烧仍无数据 → 换串口（usbmodem*）试")
         last_report = now; return
     hr_win = [(i, b) for (i, b) in raw_beats if i >= idx - int(HR_WIN_S * fs)]
