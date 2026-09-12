@@ -73,6 +73,24 @@ def trough_ibis(sm, fs, refr_s=0.40):
     return np.array(ibis)
 
 
+def detect_from_red(reds, fs):
+    """从原始 red 序列检测拍间期（谷底基准点，与 hrv_monitor.process 同逻辑）。
+
+    关键纪律：baseline / quality_gate 都必须走这里重新检测——
+    绝不能信 CSV 里存的 beat/ibi 列：那是采集时哪个版本的检测器写的就是哪个，
+    跨检测器版本的会话会因此不可比（SDNN 的差异来自代码而非生理）。"""
+    A_HP = 1 - math.exp(-2 * math.pi * 0.5 / fs)
+    A_LP = 1 - math.exp(-2 * math.pi * 4.0 / fs)
+    dcv = None; sm = 0.0; S = np.empty(len(reds))
+    for i, xi in enumerate(reds):
+        if dcv is None:
+            dcv = xi
+        ac = xi - dcv; dcv += ac * A_HP
+        sm += (ac - sm) * A_LP
+        S[i] = sm
+    return trough_ibis(S, fs)
+
+
 def _band(P, f, lo, hi):
     m = (f >= lo) & (f < hi)
     return float(P[m].sum())
@@ -99,17 +117,8 @@ def gate(ts, reds):
     o = np.argsort(bs)[::-1]
     main_hz = float(bf[o[0]]); main_ratio = float(bs[o[0]] / bs[o[1]]) if len(bs) > 1 else 0.0
 
-    # 预处理（同 hrv_monitor）
-    A_HP = 1 - math.exp(-2 * math.pi * 0.5 / fs)
-    A_LP = 1 - math.exp(-2 * math.pi * 4.0 / fs)
-    dcv = None; sm = 0.0; S = np.empty(n)
-    for i, xi in enumerate(x):
-        if dcv is None:
-            dcv = xi
-        ac = xi - dcv; dcv += (ac) * A_HP
-        sm += (ac - sm) * A_LP
-        S[i] = sm
-    ibis = trough_ibis(S, fs)
+    # 预处理 + 谷底检测（从 red 重来，不信 CSV 存的 beat 列）
+    ibis = detect_from_red(x, fs)
 
     dur = float(ts[-1] - ts[0])
     med = float(np.median(ibis)) if len(ibis) else 0.0
@@ -121,7 +130,7 @@ def gate(ts, reds):
         g = ibis[(ibis >= (1 - thr) * med) & (ibis <= (1 + thr) * med)]
         return float(g.std(ddof=1)) if len(g) > 2 else 0.0
     _sds = [sdnn(z) for z in (0.15, 0.20, 0.25, 0.30, 0.40, 0.50)]
-    sd_lo = sdnn(0.20); sd_hi = sdnn(0.50)
+    sd_lo = sdnn(0.30); sd_hi = sdnn(0.50)   # ±30% = hrv_monitor/baseline 的 0.7~1.3 口径，三处必须一致
     sd_spread = max(_sds) - min(_sds)   # ms：跨清洗口径 SDNN 的绝对漂移
 
     # 自相关一致性：30s 分段 HR 落在全窗 HR ±15% 的比例

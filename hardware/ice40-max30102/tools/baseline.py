@@ -21,6 +21,7 @@
 """
 import sys, os, json, math
 import numpy as np
+import quality_gate   # 复用同一套谷底检测，保证 baseline 与质量门口径一致
 
 WIN_S = 300.0   # SDNN 窗（5min），对齐 hrv_monitor
 CONVERGE_N = 10  # 认为"够用"的会话数下限
@@ -43,23 +44,28 @@ def t95(df):
 
 
 def load_beats(path):
-    """从 hrv_log.csv 取拍间期(ms)。列: t,idx,red,beat,ibi_samples,ibi_ms"""
-    ibi = []
+    """读 hrv_log.csv 的原始 red 序列，用当前检测器重新检测拍间期(ms)。
+
+    纪律：**不读 CSV 里存的 beat/ibi 列**——那是采集时哪个版本的检测器写的就是哪个，
+    跨检测器版本的会话会因此不可比（SDNN 差异来自代码而非生理）。
+    必须从 red 重来，与 quality_gate 同一口径。"""
+    ts, reds = [], []
     with open(path) as f:
         for ln in f:
             ln = ln.strip()
             if not ln or ln.startswith("t,"):
                 continue
             p = ln.split(",")
-            if len(p) < 6:
+            if len(p) < 3:
                 continue
             try:
-                beat = int(p[3]); ib = float(p[5])
+                ts.append(float(p[0])); reds.append(float(p[2]))
             except ValueError:
                 continue
-            if beat == 1 and ib > 0:
-                ibi.append(ib)
-    return ibi
+    if len(reds) < 200 or ts[-1] <= ts[0]:
+        return []
+    fs = len(reds) / (ts[-1] - ts[0])
+    return list(quality_gate.detect_from_red(np.asarray(reds, float), fs))
 
 
 def clean(a):
