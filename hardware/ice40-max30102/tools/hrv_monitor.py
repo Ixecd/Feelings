@@ -3,13 +3,16 @@
 #   帧: FE E1 R0 R1 R2  (每帧=1个新样本)
 #   IBI = 两拍之间的样本数 / 实测采样率 （数样本时基）
 #   滤波系数按采样率自动算（SMP_AVE=4 时 fs≈25）
-# 用法: python3 hrv_monitor.py [设备] [秒数] [采样率Hz]
+# 用法: python3.14 hrv_monitor.py [设备] [秒数] [采样率Hz] [输出文件]
+#   输出默认带时间戳 hrv_log_<日期>-<时间>.csv（每次会话一个文件，不覆盖）
 import sys, os, time, subprocess, math
 import numpy as np
 
 dev = sys.argv[1] if len(sys.argv) > 1 else "/dev/cu.usbserial-0001"
 dur = float(sys.argv[2]) if len(sys.argv) > 2 else 600.0
 FS  = float(sys.argv[3]) if len(sys.argv) > 3 else 25.0     # 采样率(SMP_AVE=4→25; 无平均→100)
+# 输出文件名：默认带时间戳——攒 S0 基线要保留每次会话，绝不能互相覆盖
+OUT = sys.argv[4] if len(sys.argv) > 4 else time.strftime("hrv_log_%Y%m%d-%H%M%S.csv")
 
 subprocess.run(["stty", "-f", dev, "9600", "raw"], check=False)
 print(f"打开 {dev} @9600，假定采样率 {FS:.0f}Hz，记录 {dur:.0f}s …（传感器贴稳，别使劲、别动）")
@@ -20,7 +23,7 @@ buf = bytearray()
 t_start = time.time()
 last_report = t_start
 warned_no_data = False   # 零数据告警只报一次
-csv = open("hrv_log.csv", "w")
+csv = open(OUT, "w")
 csv.write("t,idx,red,beat,ibi_samples,ibi_ms\n")
 
 # ---------- 按采样率算滤波系数 ----------
@@ -206,7 +209,7 @@ finally:
     csv.close()
 
 report(time.time())
-print("\n已存 hrv_log.csv")
+print(f"\n已存 {OUT}")
 if raw_beats:
     fs = fs_actual()
     all_ibi = np.array([b for (_, b) in raw_beats], float) * 1000.0 / fs
@@ -218,6 +221,6 @@ if raw_beats:
 # 采集质量门：判断这份数据能不能进 S0 基线（不合格就别拿去建基线）
 try:
     import quality_gate
-    quality_gate.print_gate("hrv_log.csv")
+    quality_gate.print_gate(OUT)
 except Exception as e:
-    print(f"(质量门跳过: {e}；可单独跑 python3.14 quality_gate.py hrv_log.csv)")
+    print(f"(质量门跳过: {e}；可单独跑 python3.14 quality_gate.py {OUT})")
