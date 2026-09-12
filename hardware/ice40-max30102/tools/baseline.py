@@ -6,17 +6,40 @@
 口径（必须与 hrv_monitor.py 一致，否则数不可比）：
   · 只用 beat==1 且 ibi_ms>0 的拍
   · 中位数 0.7~1.3 清洗异常（同 hrv_monitor._clean）
-  · SDNN 用 5min 窗（临床标准，同 hrv_monitor 的 5min SDNN）——不是整段标准差
+  · SDNN 用 5min 窗（临床标准）——不是整段标准差
   · 不用 RMSSD 作判据（FORGET.md：指尖 PPG 峰位 ±100ms 抖 → RMSSD 虚高）
+
+基线区间的行为（关键设计）：用 95% 预测区间，不是 mean±1σ——
+      half = t(0.975, N-1) · σ · √(1 + 1/N)
+  N 小 → t 大 + σ 不可靠 → 区间宽；N 大 → t→1.96、σ 收敛 → 区间收窄后**基本不变**。
+  这是"穿戴设备有误差、基线先宽后窄最后稳定"的正确数学形状（不会收成零）。
+  这也天然防小样本假警报：3 次就报"超出"是过度自信。
 
 用法（用 python3.14——系统 python3 是 3.9、无 numpy）:
   python3.14 baseline.py build  hrv_log_d1a.csv hrv_log_d1b.csv ...  [-o baseline.json]
   python3.14 baseline.py check  baseline.json  new_session.csv
 """
-import sys, os, json
+import sys, os, json, math
 import numpy as np
 
 WIN_S = 300.0   # SDNN 窗（5min），对齐 hrv_monitor
+CONVERGE_N = 10  # 认为"够用"的会话数下限
+
+# t 分布 0.975 分位（df=N-1），小样本用查表，大样本趋近 1.96
+_T95 = {1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571, 6: 2.447, 7: 2.365, 8: 2.306,
+        9: 2.262, 10: 2.228, 11: 2.201, 12: 2.179, 13: 2.160, 14: 2.145, 15: 2.131,
+        16: 2.120, 17: 2.110, 18: 2.101, 19: 2.093, 20: 2.086, 21: 2.080, 22: 2.074,
+        23: 2.069, 24: 2.064, 25: 2.060, 26: 2.056, 27: 2.052, 28: 2.048, 29: 2.045, 30: 2.042}
+
+
+def t95(df):
+    if df <= 0:
+        return float("inf")
+    if df in _T95:
+        return _T95[df]
+    if df <= 30:
+        return _T95[30]
+    return 2.042 - (2.042 - 1.960) * min(1.0, (df - 30) / 90.0)   # 30→120 线性逼近到 1.96
 
 
 def load_beats(path):
@@ -50,7 +73,7 @@ def clean(a):
 
 def sdnn_5min(g):
     """按拍时刻切 5min 窗，逐窗 SDNN，取均值。不足一窗则整段 SDNN。"""
-    t = np.cumsum(g) / 1000.0            # 拍时刻(s)，从 0 起
+    t = np.cumsum(g) / 1000.0
     if t[-1] <= WIN_S:
         return float(g.std(ddof=1)), 1
     sds, start = [], 0.0
@@ -79,10 +102,18 @@ def session_stats(ibi):
 
 
 def _agg(vals):
+    """95% 预测区间（新单次观测）：half = t(.975,N-1)·σ·√(1+1/N)"""
     v = np.asarray(vals, float)
+    n = len(v)
     m = float(v.mean())
-    s = float(v.std(ddof=1)) if len(v) > 1 else 0.0
-    return dict(mean=m, sd=s, lo=m - s, hi=m + s)
+    s = float(v.std(ddof=1)) if n > 1 else 0.0
+    half = (t95(n - 1) * s * math.sqrt(1.0 + 1.0 / n)) if n > 1 else float("inf")
+    return dict(n=n, mean=m, sd=s, half=half, lo=m - half, hi=m + half)
+
+
+def _trajectory(sd, ns=(5, 10, 30, 60)):
+    """若 σ 保持不变，攒到 N 次时区间半宽会收窄到多少（N 小→大）"""
+    return [(n, t95(n - 1) * sd * math.sqrt(1.0 + 1.0 / n)) for n in ns]
 
 
 def build(paths):
@@ -96,14 +127,18 @@ def build(paths):
         per.append(st)
     if not per:
         return None
-    if len(per) < 5:
-        print(f"\n⚠ 只有 {len(per)} 次会话——基线需要 ≥5（S0 建议：≥5 天 × 每天 2 次 = ≥10 次）")
-    return dict(
-        n_sessions=len(per),
-        hr=_agg([s["hr"] for s in per]),
-        sdnn=_agg([s["sdnn"] for s in per]),
-        sessions=per,
-    )
+    if len(per) < CONVERGE_N:
+        print(f"\n⚠ 只有 {len(per)} 次会话——区间会很宽（正常，先宽后窄）。S0 建议 ≥{CONVERGE_N} 次")
+    agg_hr = _agg([s["hr"] for s in per])
+    agg_sd = _agg([s["sdnn"] for s in per])
+    return dict(n_sessions=len(per), converge_n=CONVERGE_N, hr=agg_hr, sdnn=agg_sd, sessions=per)
+
+
+def _fmt(d, unit):
+    if math.isinf(d["half"]):
+        return f"{d['mean']:.1f} {unit}  (只有 1 次会话，区间未成形)"
+    return (f"{d['mean']:.1f} ± {d['half']:.1f} {unit}   [{d['lo']:.1f} ~ {d['hi']:.1f}]   "
+            f"(σ={d['sd']:.1f}, N={d['n']})")
 
 
 def check(base, path):
@@ -113,12 +148,13 @@ def check(base, path):
         return
 
     def judge(v, d):
-        m, s = d["mean"], d["sd"]
-        if s == 0:
-            return f"{v:.1f} (基线 {m:.1f}±0，σ=0——基线未成形)"
-        z = (v - m) / s
-        tag = "在 ±1σ 内（正常）" if abs(z) <= 1 else ("超出 ±1σ" if abs(z) <= 2 else "超出 ±2σ ⚠")
-        return f"{v:.1f}  基线 {m:.1f}±{s:.1f}  z={z:+.2f}  →  {tag}"
+        if math.isinf(d["half"]):
+            return f"{v:.1f}  (基线未成形，只有 1 次会话)"
+        z = (v - d["mean"]) / (d["sd"] if d["sd"] else 1e-9)
+        inb = d["lo"] <= v <= d["hi"]
+        tag = "在基线区间内（正常）" if inb else "**超出区间** ⚠（可疑，但 N 小先别下结论）"
+        return (f"{v:.1f}   基线 {d['mean']:.1f}±{d['half']:.1f} [{d['lo']:.1f}~{d['hi']:.1f}]"
+                f"   z≈{z:+.2f}   →  {tag}")
 
     print(f"会话 {os.path.basename(path)}: {st['n_beat']} 有效拍 / {st['dur_s']:.0f}s")
     print(f"  HR   : {judge(st['hr'], base['hr'])}")
@@ -142,11 +178,13 @@ def main():
             return
         with open(out, "w") as f:
             json.dump(base, f, ensure_ascii=False, indent=2)
-        print(f"\n=== 个体基线（{base['n_sessions']} 次会话）===")
-        print(f"  HR  : {base['hr']['mean']:.1f} ± {base['hr']['sd']:.1f} bpm   "
-              f"区间 {base['hr']['lo']:.1f}~{base['hr']['hi']:.1f}")
-        print(f"  SDNN: {base['sdnn']['mean']:.0f} ± {base['sdnn']['sd']:.0f} ms    "
-              f"区间 {base['sdnn']['lo']:.0f}~{base['sdnn']['hi']:.0f}")
+        n = base["n_sessions"]
+        print(f"\n=== 个体基线（{n} 次会话，95% 预测区间）===")
+        print(f"  HR  : {_fmt(base['hr'], 'bpm')}")
+        print(f"  SDNN: {_fmt(base['sdnn'], 'ms')}")
+        print(f"  状态: {'已收敛(N≥'+str(base['converge_n'])+')' if n >= base['converge_n'] else '暂定(N<'+str(base['converge_n'])+')——区间会随后续数据收窄'}")
+        print("  收窄轨迹（若 σ 不变）:  " +
+              "  ".join(f"N={nn}→±{hh:.0f}" for nn, hh in _trajectory(base["sdnn"]["sd"])))
         print(f"  → 已存 {out}")
     elif a[0] == "check":
         check(json.load(open(a[1])), a[2])
