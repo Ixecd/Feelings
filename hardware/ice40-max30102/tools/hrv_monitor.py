@@ -19,6 +19,7 @@ fd = os.open(dev, os.O_RDONLY | os.O_NONBLOCK)
 buf = bytearray()
 t_start = time.time()
 last_report = t_start
+warned_no_data = False   # 零数据告警只报一次
 csv = open("hrv_log.csv", "w")
 csv.write("t,idx,red,beat,ibi_samples,ibi_ms\n")
 
@@ -79,7 +80,7 @@ def freq_hrv(pairs, fs):
     return lf, hf, lf / hf
 
 def report(now):
-    global last_report
+    global last_report, warned_no_data
     fs = fs_actual()
     dcs = dc if dc is not None else 0.0
     # 自相关出 HR + 质量 r（稳健）
@@ -95,6 +96,12 @@ def report(now):
     hint = "  ⚠ DC偏低=接触弱" if dcs < 80000 else ("  ⚠ DC近饱和" if dcs > 210000 else "")
     if not raw_beats or len(sm_hist) < int(fs * 15):
         print(f"[{now-t_start:6.0f}s] 样本{n_samp} ({fs:.1f}/s)  DC={dcs:.0f} 幅度={sig_amp:.0f}  HR(自相关)={ach}  等待…{hint}")
+        # 零数据告警：板子/固件没起来时别傻等——直接给诊断（2026-09-12 丢固件那次踩的坑）
+        if n_samp == 0 and (now - t_start) > 8 and not warned_no_data:
+            warned_no_data = True
+            print("  ⚠⚠ 8 秒零样本——FPGA 很可能丢了固件（上电/重插会清掉 SRAM 配置）")
+            print("     处置：把 hardware/ice40-max30102/max30102_stream.bin 拖到 iCELink 盘重烧")
+            print("     佐证：传感器红灯灭 = I2C 没跑；重烧仍无数据 → 换串口（usbmodem*）试")
         last_report = now; return
     hr_win = [(i, b) for (i, b) in raw_beats if i >= idx - int(HR_WIN_S * fs)]
     sd_win = [(i, b) for (i, b) in raw_beats if i >= idx - int(SDNN_WIN_S * fs)]
