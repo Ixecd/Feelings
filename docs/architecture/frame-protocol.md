@@ -241,14 +241,34 @@ bit5-7          保留
 tVNS 刺激事件独立成帧——它是 ERP 切片的**唯一时间锚点**（持续帧的 seq 不做 ERP 时间计算）。
 
 ```
-payload = [absolute_tick(4B), stimulus_param(2B), multimode_mask(1B)] = 7B
-帧长 = 2(头) + 1(类型) + 7 + 1(CRC) = 11B
+payload = [absolute_tick(4B), stimulus_param(2B), multimode_mask(1B), i_actual(1B), z_load(2B)] = 10B
+帧长 = 2(头) + 1(类型) + 10 + 1(CRC) = 14B
 
 absolute_tick   uint32   FPGA 本地 1ms 时基；刺激上升沿对齐该 tick
                          = ERP epoch 零点；4B → 49.7 天 @1ms（无回绕）
-stimulus_param  uint16   高8位=电流编码 | 低8位=脉宽编码
+stimulus_param  uint16   高8位=电流编码 | 低8位=脉宽编码   ← 【命令：想给多少】
 multimode_mask  uint8    多模态参与位掩码
+i_actual        uint8    实测电流编码（同 stimulus_param 高8位口径）  ← 【事实：给了多少】
+z_load          uint16   实测负载阻抗（Ω）—— 电极对之间的 V/I
 ```
+
+**★ 命令 vs 实测（剂量验证）**：
+```
+stimulus_param = 意图（下发了什么）
+i_actual + z_load = 事实（实际给了什么、负载多少）
+→ 二者成对出现，一帧内即可验证剂量；缺实测则协议只记了"想给多少"，不是"给了多少"
+→ 安全：i_actual/z_load 异常 → 触发 0x3X 安全帧 → 硬件熔断（一份数据两个去处）
+```
+
+**实测编码（沿用 12.3 统一编码表，写死）**：
+```
+i_actual  实际电流(mA) = code × 0.01    u8    0–2.55
+z_load    阻抗(Ω)      = code × 1        u16   0–65535
+          （若需省字节可改 u8 × 0.1kΩ → 0–25.5kΩ；耳部阻抗约 1–10kΩ，够用）
+```
+
+> 连续趋势（整段阻抗漂移 / 电极干湿 / 移位）不挤进本帧——另开偶发遥测帧（见 §六 偶发帧模式，暂定 0x27）。
+> 0x26 记「逐次刺激」，遥测帧记「慢速趋势」。
 
 **stimulus_param 编码：**
 ```
@@ -400,7 +420,7 @@ Feelings 的信号按"时间特性"分两类，对应两种帧：
 腕部设备   EDA / PPG
 后颈设备   EMG / 运动 / 体温
 颞部设备   EEG
-皮肤阻抗   独立模块（AD5933）
+皮肤阻抗   电极对 V/I 实测（刺激侧），实测值进 0x26 帧（命令 vs 事实）
 呼吸       藏在 HRV-HF（RSA），不用另加传感器
 ```
 
@@ -467,6 +487,8 @@ HRV-LF/HF    实际值 = Raw / 100              u16     0~655.35      —
 accel        i16 有符号原始值                 i16     按量程         —
 电流(高8位)   实际值(mA) = centi_ma × 0.01    u8      0~2.55        治疗≤1.5 / 熔断1.8
 脉宽(低8位)   实际值(μs) = Raw                u8      0~255         50~200
+电流-实测     实际值(mA) = code × 0.01        u8      0~2.55        命令 vs 事实
+阻抗-负载     实际值(Ω)  = code × 1           u16     0~65535       耳部 1–10kΩ
 
 所有偏移、比例系数写死——杜绝两端解析不一致。
 （内部一律整数运算，设备侧零浮点：电流用 0.01mA 整数，脉宽用 1μs 整数）
