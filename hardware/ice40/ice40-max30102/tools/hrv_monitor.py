@@ -67,7 +67,7 @@ t_start = time.time()
 last_report = t_start
 warned_no_data = False   # 零数据告警只报一次
 csv = open(OUT, "w")
-csv.write("t,idx,red,beat,ibi_samples,ibi_ms,ax,ay,az\n")
+csv.write("t,idx,red,beat,ibi_samples,ibi_ms,ax,ay,az,temp_c\n")
 
 # ---------- 按采样率算滤波系数 ----------
 A_HP = 1 - math.exp(-2 * math.pi * 0.5 / FS)     # 高通 0.5Hz
@@ -91,6 +91,11 @@ sig_amp = 0.0
 acc_ax = acc_ay = acc_az = 0
 acc_n = 0; acc_bad = 0          # 偏离 1g 超 0.1g 的样本数 → 运动占比
 who_seen = None; who_printed = False
+
+# TMP117 皮温（FE E4 温度 / FE E5 器件ID）
+tmp_c = None            # 最新温度 °C（i16 × 0.0078125）
+tmp_n = 0               # 收到的温度帧数
+tmp_id_seen = None; tmp_id_printed = False
 
 REFRA_S = quality_gate.REFR_S   # 不应期：引用质量门口径（现 0.40s），避免"采集端 vs 验收端"不一致
 HR_WIN_S = 60.0     # HR 窗口
@@ -200,8 +205,9 @@ def report(now):
     q = "--(预热)" if len(hr_win) < 30 else f"{hr_rej / len(hr_win) * 100:.0f}%"
     hpk = f"{hr:5.1f}" if hr == hr else "  -- "
     accstr = f"  ACC=({acc_ax:6d},{acc_ay:6d},{acc_az:6d})" if acc_n else "  ACC=--(无MPU)"
+    tstr = f"  皮温={tmp_c:5.2f}°C" if tmp_c is not None else "  皮温=--(无TMP117)"
     print(f"[{now-t_start:6.0f}s] HR(谷)={hpk}  HR(自相关)={ach}  SDNN(5min)={sdnn:4.0f}  "
-          f"HR有效{len(hr_good):3d}/{len(hr_win):3d}  采样{fs:5.1f}/s  DC={dcs:6.0f} 幅度={sig_amp:6.0f}  窗剔除={q}{hint}{accstr}")
+          f"HR有效{len(hr_good):3d}/{len(hr_win):3d}  采样{fs:5.1f}/s  DC={dcs:6.0f} 幅度={sig_amp:6.0f}  窗剔除={q}{hint}{accstr}{tstr}")
     print(f"          频域HRV: {fstr}   (拍/5min={len(sd_pairs)})")
     last_report = now
 
@@ -271,9 +277,10 @@ try:
                             raw_beats.append((idx, ibi_samples))
                         last_beat_idx = idx
                     ibi_ms = ibi_samples / fs_actual() * 1000.0 if ibi_samples else 0.0
+                    tstr = f"{tmp_c:.3f}" if tmp_c is not None else ""
                     csv.write(f"{now:.3f},{idx},{r},{1 if beat else 0},"
                               f"{ibi_samples},{ibi_ms:.1f},"
-                              f"{acc_ax},{acc_ay},{acc_az}\n")
+                              f"{acc_ax},{acc_ay},{acc_az},{tstr}\n")
                 elif buf[0] == 0xFE and buf[1] == 0xE2:
                     if len(buf) < 8: break
                     ax = (buf[2] << 8) | buf[3]; ax -= 65536 if ax >= 32768 else 0   # 大端(i16)
@@ -290,6 +297,20 @@ try:
                         who_printed = True
                         print(f"  [MPU] WHO_AM_I = 0x{who_seen:02x}  " +
                               ("OK" if who_seen == 0x68 else "**异常：检查 MPU 接线 / AD0 是否接 GND**"))
+                elif buf[0] == 0xFE and buf[1] == 0xE5:
+                    if len(buf) < 4: break
+                    tmp_id_seen = (buf[2] << 8) | buf[3]; del buf[:4]
+                    if not tmp_id_printed:
+                        tmp_id_printed = True
+                        print(f"  [TMP117] DeviceID = 0x{tmp_id_seen:04x}  " +
+                              ("OK" if tmp_id_seen == 0x0117 else "**异常：检查 TMP117 接线 / ADD0 是否接 GND**"))
+                elif buf[0] == 0xFE and buf[1] == 0xE4:
+                    if len(buf) < 4: break
+                    raw = (buf[2] << 8) | buf[3]
+                    if raw >= 32768: raw -= 65536          # 大端 i16
+                    tmp_c = raw * 0.0078125
+                    tmp_n += 1
+                    del buf[:4]
                 else:
                     del buf[:1]
         else:
@@ -358,6 +379,7 @@ if META_ARG is not None:
             "hr": round(hr_final, 2) if hr_final else None,
             "sdnn": round(sdnn_final, 2) if sdnn_final is not None else None,
             "n_beat": len(raw_beats), "n_samp": n_samp,
+            "temp_c": round(tmp_c, 3) if tmp_c is not None else None, "temp_n": tmp_n,
         },
     }
     mp = os.path.splitext(OUT)[0] + ".meta.json"

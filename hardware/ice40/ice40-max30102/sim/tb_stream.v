@@ -1,4 +1,4 @@
-// tb_stream.v — 验证 max30102_stream v2：PPG(FE E1) + WHO(FE E3) + 加速度(FE E2)
+// tb_stream.v — 验证 max30102_stream v3：PPG(FE E1) + WHO(FE E3) + 加速度(FE E2) + TMPID(FE E5) + 温度(FE E4)
 `timescale 1ns/1ps
 `default_nettype none
 
@@ -10,6 +10,7 @@ module tb_stream;
     max30102_stream dut (.scl(scl), .sda(sda), .tx(tx), .led(led));
     i2c_slave_model #(.ADDR(7'h57)) slave (.scl(scl), .sda(sda));   // MAX30102
     i2c_slave_model #(.ADDR(7'h68)) mpu   (.scl(scl), .sda(sda));   // MPU6050
+    i2c_slave_model #(.ADDR(7'h48)) tmp   (.scl(scl), .sda(sda));   // TMP117
     pullup(sda);
 
     integer k;
@@ -19,13 +20,15 @@ module tb_stream;
         mpu.mem[8'h3B] = 8'h01; mpu.mem[8'h3C] = 8'h02;             // AX = 0x0102
         mpu.mem[8'h3D] = 8'h03; mpu.mem[8'h3E] = 8'h04;             // AY = 0x0304
         mpu.mem[8'h3F] = 8'h05; mpu.mem[8'h40] = 8'h06;             // AZ = 0x0506
-        #320_000_000;                      // 复位 + 上电 + 配置(含 MPU 复位/唤醒各 100/50ms) + WHO 自检
-        for (k = 1; k <= 12; k = k + 1) begin
+        tmp.mem[8'h0F] = 8'h01; tmp.mem[8'h10] = 8'h17;             // TMP117 Device ID = 0x0117
+        tmp.mem[8'h00] = 8'h12; tmp.mem[8'h01] = 8'h80;             // TEMP = 0x1280 → 37.0°C
+        #320_000_000;                      // 复位 + 上电 + 配置(含 MPU 复位/唤醒各 100/50ms) + WHO/TMPID 自检
+        for (k = 1; k <= 120; k = k + 1) begin
             slave.mem[8'h04] = k[7:0];     // 新样本
             slave.mem[8'h07] = 8'h10 + k;
             slave.mem[8'h08] = 8'h20 + k;
             slave.mem[8'h09] = 8'h30 + k;
-            #8_000_000;
+            #10_000_000;
         end
         $display("=== 仿真结束 ===");
         $finish;
@@ -46,6 +49,8 @@ module tb_stream;
                 if      (by == 8'hE1) begin dn = 0; fst = 4'd2; end
                 else if (by == 8'hE3) begin dn = 0; fst = 4'd3; end
                 else if (by == 8'hE2) begin dn = 0; fst = 4'd4; end
+                else if (by == 8'hE5) begin dn = 0; fst = 4'd5; end
+                else if (by == 8'hE4) begin dn = 0; fst = 4'd6; end
                 else fst = 4'd0;
             end
             4'd2: begin data[dn]=by; dn=dn+1; if (dn==3) begin
@@ -55,6 +60,12 @@ module tb_stream;
             4'd4: begin data[dn]=by; dn=dn+1; if (dn==6) begin
                     $display("  [FRAME] E2 ACC = AX=%02x%02x AY=%02x%02x AZ=%02x%02x",
                              data[0],data[1],data[2],data[3],data[4],data[5]); fst=4'd0; end end
+            4'd5: begin data[dn]=by; dn=dn+1; if (dn==2) begin
+                    $display("  [FRAME] E5 TMPID = %02x%02x  %s", data[0],data[1],
+                             (data[0]==8'h01 && data[1]==8'h17)?"OK(0x0117)":"**FAIL**"); fst=4'd0; end end
+            4'd6: begin data[dn]=by; dn=dn+1; if (dn==2) begin
+                    $display("  [FRAME] E4 TEMP = %02x%02x  (%.3f C)", data[0],data[1],
+                             $signed({data[0],data[1]}) * 0.0078125); fst=4'd0; end end
             default: fst = 4'd0;
             endcase
         end

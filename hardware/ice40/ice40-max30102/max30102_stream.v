@@ -1,9 +1,11 @@
-// max30102_stream.v — 连续流固件 v2：PPG(RED) + MPU6050 加速度
+// max30102_stream.v — 连续流固件 v3：PPG(RED) + MPU6050 加速度 + TMP117 皮温
 //   PPG : FE E1 + RED 3 字节（HR-only 模式，100sps）
 //   ACC : FE E2 + AX,AY,AZ 各 2 字节（大端 i16，±2g）—— 每 10 个 PPG 样本读一次(≈10Hz)
 //   WHO : FE E3 + WHO_AM_I 1 字节（上电读一次，期望 0x68 —— 接线自检）
-//   I2C: MAX30102@0x57 + MPU6050@0x68 共总线 | SCL=ball46 SDA=ball44 | UART tx=ball6 @9600 | LED=ball39
-//   AD0 接 GND → MPU 地址 0x68
+//   TID : FE E5 + TMP117 器件ID 2 字节（上电读一次，期望 0x0117 —— 接线自检）
+//   TMP : FE E4 + 温度 2 字节（大端 i16，0.0078125°C/LSB）—— 每 100 个 PPG 样本读一次(≈1Hz)
+//   I2C: MAX30102@0x57 + MPU6050@0x68 + TMP117@0x48 共总线 | SCL=ball46 SDA=ball44 | UART tx=ball6 @9600 | LED=ball39
+//   AD0 接 GND → MPU 地址 0x68；TMP117 ADD0 接 GND → 地址 0x48
 `default_nettype none
 
 module max30102_stream (
@@ -77,7 +79,9 @@ module max30102_stream (
         S_RDP_SET=5'd11, S_RDP_GO=5'd12, S_RDP_WAIT=5'd13,
         S_FIFO_SET=5'd14, S_FIFO_GO=5'd15, S_FIFO_WAIT=5'd16,
         S_ACC_SET=5'd17, S_ACC_GO=5'd18, S_ACC_WAIT=5'd19,
-        S_TX_SET=5'd20, S_TX_GO=5'd21, S_TX_WAIT=5'd22, S_GAP=5'd23;
+        S_TX_SET=5'd20, S_TX_GO=5'd21, S_TX_WAIT=5'd22, S_GAP=5'd23,
+        S_TMPID_SET=5'd24, S_TMPID_GO=5'd25, S_TMPID_WAIT=5'd26,
+        S_TMP_SET=5'd27, S_TMP_GO=5'd28, S_TMP_WAIT=5'd29;
 
     localparam PWR_CY=32'd240_000;   // 20ms
     localparam RST_CY=32'd120_000;   // 10ms
@@ -87,23 +91,24 @@ module max30102_stream (
     localparam MPU_CY=32'd600_000;        // 50ms（MPU 唤醒后）
     localparam POLL_CY=32'd6_000;    // 0.5ms
     localparam ACCEL_EVERY = 8'd10;  // 每 10 个 PPG 样本读一次 accel → ≈10Hz
+    localparam TEMP_EVERY  = 8'd100; // 每 100 个 PPG 样本读一次 TMP117 → ≈1Hz
 
     reg [4:0]  state;
     reg [31:0] dly, dly_target;
-    reg [7:0]  wr, last_wr, acc_ctr, who;
+    reg [7:0]  wr, last_wr, acc_ctr, tmp_ctr, who;
     reg [3:0]  rx_idx;
     reg [7:0]  rxbuf [0:7];
     reg        rv_d;
     reg [3:0]  tx_idx, tx_len;
     reg [7:0]  tx_buf [0:7];
-    reg [1:0]  tx_kind;      // 0=red, 1=who, 2=accel
+    reg [2:0]  tx_kind;      // 0=red, 1=who(MPU), 2=accel, 3=temp(TMP117), 4=tmpid(TMP117)
 
     always @(posedge clk) begin
         uart_send <= 1'b0;
         rv_d <= i2c_rvalid;
         if (rst) begin
             state <= S_PWR; dly <= 0; dly_target <= PWR_CY;
-            cfg_idx <= 0; rx_idx <= 0; wr <= 0; last_wr <= 8'hFF; acc_ctr <= 0; who <= 0;
+            cfg_idx <= 0; rx_idx <= 0; wr <= 0; last_wr <= 8'hFF; acc_ctr <= 0; tmp_ctr <= 0; who <= 0;
             i2c_start <= 0; i2c_rw <= 0; i2c_dev <= 7'h57; i2c_reg <= 0; i2c_wdata <= 0; i2c_len <= 0;
             tx_idx <= 0; tx_len <= 0; tx_kind <= 0;
         end else begin
@@ -139,7 +144,19 @@ module max30102_stream (
             S_WHO_WAIT: if (i2c_done) begin
                 who <= rxbuf[0];
                 tx_buf[0] <= 8'hFE; tx_buf[1] <= 8'hE3; tx_buf[2] <= rxbuf[0];
-                tx_len <= 4'd3; tx_kind <= 2'd1; tx_idx <= 0; state <= S_TX_SET;
+                tx_len <= 4'd3; tx_kind <= 3'd1; tx_idx <= 0; state <= S_TX_SET;
+            end
+
+            // ---- 上电自检：读 TMP117 器件ID(0x0F, 期望 0x0117) ----
+            S_TMPID_SET: begin
+                rx_idx <= 0; i2c_dev <= 7'h48; i2c_rw <= 1; i2c_reg <= 8'h0F; i2c_len <= 2;
+                i2c_start <= 1; state <= S_TMPID_GO;
+            end
+            S_TMPID_GO: if (i2c_busy) begin i2c_start <= 0; state <= S_TMPID_WAIT; end
+            S_TMPID_WAIT: if (i2c_done) begin
+                tx_buf[0] <= 8'hFE; tx_buf[1] <= 8'hE5;
+                tx_buf[2] <= rxbuf[0]; tx_buf[3] <= rxbuf[1];
+                tx_len <= 4'd4; tx_kind <= 3'd4; tx_idx <= 0; state <= S_TX_SET;
             end
 
             // ---- 轮询 MAX FIFO_WR_PTR ----
@@ -168,9 +185,10 @@ module max30102_stream (
             S_FIFO_WAIT: if (i2c_done) begin
                 last_wr <= wr;
                 if (acc_ctr != 8'hFF) acc_ctr <= acc_ctr + 8'd1;
+                if (tmp_ctr != 8'hFF) tmp_ctr <= tmp_ctr + 8'd1;
                 tx_buf[0] <= 8'hFE; tx_buf[1] <= 8'hE1; tx_buf[2] <= rxbuf[0] & 8'h03;
                 tx_buf[3] <= rxbuf[1]; tx_buf[4] <= rxbuf[2];
-                tx_len <= 4'd5; tx_kind <= 2'd0; tx_idx <= 0; state <= S_TX_SET;
+                tx_len <= 4'd5; tx_kind <= 3'd0; tx_idx <= 0; state <= S_TX_SET;
             end
 
             // ---- 读 MPU 加速度 ACCEL_XOUT_H(0x3B) 6 字节 ----
@@ -184,7 +202,19 @@ module max30102_stream (
                 tx_buf[2] <= rxbuf[0]; tx_buf[3] <= rxbuf[1];
                 tx_buf[4] <= rxbuf[2]; tx_buf[5] <= rxbuf[3];
                 tx_buf[6] <= rxbuf[4]; tx_buf[7] <= rxbuf[5];
-                tx_len <= 4'd8; tx_kind <= 2'd2; tx_idx <= 0; state <= S_TX_SET;
+                tx_len <= 4'd8; tx_kind <= 3'd2; tx_idx <= 0; state <= S_TX_SET;
+            end
+
+            // ---- 读 TMP117 温度 TEMP_RESULT(0x00) 2 字节 ----
+            S_TMP_SET: begin
+                rx_idx <= 0; i2c_dev <= 7'h48; i2c_rw <= 1; i2c_reg <= 8'h00; i2c_len <= 2;
+                i2c_start <= 1; state <= S_TMP_GO;
+            end
+            S_TMP_GO: if (i2c_busy) begin i2c_start <= 0; state <= S_TMP_WAIT; end
+            S_TMP_WAIT: if (i2c_done) begin
+                tx_buf[0] <= 8'hFE; tx_buf[1] <= 8'hE4;
+                tx_buf[2] <= rxbuf[0]; tx_buf[3] <= rxbuf[1];
+                tx_len <= 4'd4; tx_kind <= 3'd3; tx_idx <= 0; state <= S_TX_SET;
             end
 
             // ---- 通用发送 ----
@@ -193,9 +223,14 @@ module max30102_stream (
             S_TX_WAIT: if (!uart_busy) begin
                 if (tx_idx == tx_len - 4'd1) begin
                     case (tx_kind)
-                        2'd0: if (acc_ctr >= ACCEL_EVERY) begin acc_ctr <= 0; state <= S_ACC_SET; end
+                        3'd0: if (acc_ctr >= ACCEL_EVERY) begin acc_ctr <= 0; state <= S_ACC_SET; end
+                              else if (tmp_ctr >= TEMP_EVERY) begin tmp_ctr <= 0; state <= S_TMP_SET; end
                               else begin dly <= 0; dly_target <= POLL_CY; state <= S_GAP; end
-                        2'd1: state <= S_WR_SET;                       // WHO 发完 → 进主循环
+                        3'd1: state <= S_TMPID_SET;                    // MPU WHO 发完 → TMP117 自检
+                        3'd2: if (tmp_ctr >= TEMP_EVERY) begin tmp_ctr <= 0; state <= S_TMP_SET; end
+                              else begin dly <= 0; dly_target <= POLL_CY; state <= S_GAP; end
+                        3'd3: begin dly <= 0; dly_target <= POLL_CY; state <= S_GAP; end  // 温度发完
+                        3'd4: state <= S_WR_SET;                       // TMP117 自检发完 → 进主循环
                         default: begin dly <= 0; dly_target <= POLL_CY; state <= S_GAP; end
                     endcase
                 end else begin tx_idx <= tx_idx + 4'd1; state <= S_TX_SET; end
