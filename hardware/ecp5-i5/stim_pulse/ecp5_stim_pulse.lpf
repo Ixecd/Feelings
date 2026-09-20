@@ -4,8 +4,11 @@ LOCATE COMP "clk" SITE "P3";
 IOBUF PORT "clk" IO_TYPE=LVCMOS33 PULLMODE=NONE;
 FREQUENCY PORT "clk" 25 MHz;
 
-// ★ IN1/IN2 引脚：P5 排针（与 UART J17/H18 同一排）。若与实际接线不符，改这里。
-//   L293D EN1 接隔离侧 VCC(常使能)；2 线方案不需要 EN
+// ★ EN/IN1/IN2 引脚：P5 排针（含 UART J17/H18 那一排）。若与实际接线不符，改这里。
+//   已按 wuxx 官方 i5 引脚图核对：P5 含 D16/D17；EN 取邻近的 E17（接线后务必逐孔量电压确认）。
+//   贴人侧接法: EN1 = EN(经隔离) AND 硬件安全比较器_safe；EN=0 → H 桥硬关。
+LOCATE COMP "en"  SITE "E17";
+IOBUF PORT "en"  IO_TYPE=LVCMOS33 DRIVE=8;
 LOCATE COMP "in1" SITE "D16";
 IOBUF PORT "in1" IO_TYPE=LVCMOS33 DRIVE=8;
 LOCATE COMP "in2" SITE "D17";
