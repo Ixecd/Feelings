@@ -4,7 +4,7 @@
 > 日期：2026-09-14
 > 性质：安全设计原则——从"耳朵不疼"到"深部反射"，一条被消费级设备忽略的红线
 > 核心：**皮肤痛觉阈值 ≠ 内脏反射阈值。耳朵适应了（不疼），不代表深部迷走反射不会突然跳阈值。安全绝不能依赖用户的痛觉反馈，必须独立于用户感受地卡住。**
-> 关联：`mvp-vagus-loop-2026-09-11.md`（安全红线）、`hardware/ecp5-i5/tvns-stim-circuit-v0-2026-09-13.md`（安全链）、`regulation-not-stimulation.md`
+> 关联：`mvp-vagus-loop-2026-09-11.md`（安全红线）、`hardware/ecp5-i5/tvns-stim-topology-v1-2026-10-03.md`（保护链 §6）、`regulation-not-stimulation.md`
 
 ---
 

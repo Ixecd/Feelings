@@ -2,8 +2,8 @@
 
 > 日期：2026-09-23 ~ 09-24
 > 性质：动手记录（面包板搭建第 1~4 步的过程、踩坑、当前状态）
-> 关联：`ecp5-i5/tvns-stim-breadboard-manual-2026-09-20.md`（施工手册）、
-> `ecp5-i5/tvns-stim-build-plan-2026-09-20.md`（计划）、`BOM.md`、`FORGET.md`。
+> 关联：`ecp5-i5/tvns-stim-topology-v1-2026-10-03.md`（设计 v1.2）、
+> `ecp5-i5/tvns-stim-t1-build-manual-2026-10-03.md`（T1 施工手册）、`BOM.md`、`FORGET.md`。
 > 一句话：**bench 第 1~7 步全部走通**——隔离电源✅ / 恒流✅(LM358P) / H桥✅(DRV8833含电流馈) / 保护✅ / 关断✅ / **信号隔离✅（CA-IS3762 模块，2026-10-03）**。
 
 ---
@@ -342,10 +342,10 @@ pin1(OUT) → DRV8833 VM   ★ 不再接隔离5V！
 ## 十一、关联文件
 
 ```
-ecp5-i5/tvns-stim-breadboard-manual-2026-09-20.md   施工手册（含 LM334 双封装脚位）
-ecp5-i5/tvns-stim-build-plan-2026-09-20.md          计划/决策/判据
-ecp5-i5/tvns-stim-circuit-v0-2026-09-13.md          电路设计 v0
-FORGET.md                                           踩坑清单（今天新增 2 条）
+ecp5-i5/tvns-stim-topology-v1-2026-10-03.md         设计 v1.2（T1）
+ecp5-i5/tvns-stim-t1-build-manual-2026-10-03.md     T1 施工手册
+ecp5-i5/tvns-stim-build-plan-2026-09-20.md          计划/安全层模型（部分过时）
+FORGET.md                                           踩坑清单
 BOM.md                                              一次买齐清单
 ```
 

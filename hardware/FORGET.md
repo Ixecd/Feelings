@@ -110,7 +110,7 @@ FF 模型 E 罩 R（E=0 时 R 被忽略）——手写模型别搞错优先级�
 iCESugar 和 CP2102 **各自独立 USB 供电**——不要共用一根 USB 线——CP2102 对供电质量敏感。
 
 ### 微小电流控制 + 人体内阻测量（tVNS 刺激侧，2026-09-14 记）
-> 关联：`hardware/ecp5-i5/tvns-stim-circuit-v0-2026-09-13.md`（刺激电路）、`docs/feelings-science/tolerance-is-not-safety.md`（耐受≠安全）、`docs/architecture/frame-protocol.md` §5.7（0x26）
+> 关联：`hardware/ecp5-i5/tvns-stim-topology-v1-2026-10-03.md`（刺激前端 v1.2）、`docs/feelings-science/tolerance-is-not-safety.md`（耐受≠安全）、`docs/architecture/frame-protocol.md` §5.7（0x26）
 
 **A. mA 级微小电流怎么控**
 ```

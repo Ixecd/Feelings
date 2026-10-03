@@ -2,10 +2,14 @@
 
 > 日期：2026-09-20
 > 性质：动手清单，不是架构文档。对着焊、对着量、每步有判据。
-> 前置：`tvns-stim-circuit-v0-2026-09-13.md`（电路框图/连接表）、`hardware/BOM.md`（物料）、
-> `docs/feelings-science/tolerance-is-not-safety.md`（安全公理）、`hardware/mvp-vagus-loop-2026-09-11.md`（参数/红线）。
-> ★ 铁律：**先假负载，再贴人；先手动(LM334)，再闭环(DAC)；一步不跳。**
+> 前置：`hardware/BOM.md`（物料）、`docs/feelings-science/tolerance-is-not-safety.md`（安全公理）、
+> `hardware/mvp-vagus-loop-2026-09-11.md`（参数/红线）。
+> ★ 铁律：**先假负载，再贴人；一步不跳。**
 > ★ 本计划只到 Phase C 结束——Phase D（人体）必须等安全层就位且全部判据通过。
+
+> ⚠️ **部分过时（2026-10-03）**：Phase A–D 的**器件/接线部分**（ISO7721 / L293D / 5V 轨 / LM334）
+> 已被 `tvns-stim-topology-v1-2026-10-03.md`（T1）+ `tvns-stim-t1-build-manual-2026-10-03.md` 取代。
+> **但 §二"安全层模型 Layer 0–5 + 三条公理 + 电流三层上限"仍然有效**，是系统的安全框架——保留本节。
 
 ---
 
@@ -15,7 +19,7 @@
 |---|---|---|---|
 | D1 | compliance 隔离轨 | **先维持 5V 跑通通路** | 高阻推不满是已知限制，留到贴人前解决 |
 | D2 | 安全比较器 | **必加**（LM393/LM339 + 基准 + SR 锁存） | ⚠️ BOM 现无比较器，需补购 |
-| D3 | MCP4725 放哪侧 | 主板侧（I2C 直连 ECP5） | 见 `tvns-stim-circuit-v0:162` |
+| D3 | MCP4725 放哪侧 | 主板侧（I2C 直连 ECP5） | （v0 文档已删） |
 | D4 | 谁出波形 | **ECP5**（RTL 已仿真综合） | `stim_pulse/ecp5_stim_pulse.v`；MVP 文档写的 iCE40 作废 |
 | D5 | OVP 值 | **~5.1V / 6.2V 稳压管** | 随 5V 隔离轨，**不用 1N4742A 12V** |
 | D6 | Rsense / Rset | Rsense=1kΩ；Rset≈47Ω(1.5mA)/677Ω(0.1mA) | 10kΩ 电位器有效行程仅 ~6% |
@@ -29,7 +33,7 @@
 ```
 5V 隔离轨上，1N4742A（12V）永远不导通 → 开路打火无钳位。
 → 换 BOM 里那包 1W 直插中的 5.1V 或 6.2V 稳压管。
-（tvns-stim-circuit-v0:116 原本就写"选 ~5.1/6.2V 更配隔离 5V"）
+（v0 文档已删；原写"选 ~5.1/6.2V 更配隔离 5V"）
 ```
 
 ### ② 假负载必须低阻（5V 的物理上限）

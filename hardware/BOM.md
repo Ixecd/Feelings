@@ -112,8 +112,9 @@
 热风枪（走直插版不需要）
 ```
 
-> → 进度：第 1~4 步已过（隔离✅/恒流✅/H桥✅含 DRV8833 电流馈）；下一步【第 5 步保护】。
-> 搭建记录见 `tvns-stim-bringup-2026-09-23.md`；施工手册见 `ecp5-i5/tvns-stim-breadboard-manual-2026-09-20.md`。
+> → 进度：第 1~9 步已过；下一步 T1 重建（见 `ecp5-i5/README.md` 索引）。
+> 搭建记录见 `tvns-stim-bringup-2026-09-23.md`；设计见 `ecp5-i5/tvns-stim-topology-v1-2026-10-03.md`；
+> 施工见 `ecp5-i5/tvns-stim-t1-build-manual-2026-10-03.md`。
 
 ## 待购（ROADMAP 里排的）
 
