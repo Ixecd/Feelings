@@ -115,7 +115,8 @@ v1: DRV8833(MOSFET)，恒流喂 VM → 被【芯片自身耗电】饿死
 ```
 I = Vref / Rsense
 op-amp(LM358):
-   IN+  ← Vref（电位器，对本域 GND）
+   V+   → +VS(9V)  ★ 不用 5V（非轨到轨，5V 输出上限 ~3.5V，会顶死大电流）
+   IN+  ← Vref（经 10kΩ 到电位器滑片，对本域 GND）
    IN−  ← Rsense 上端（= sink MOS 的源极）
    OUT  → sink N-MOS 栅极
 sink N-MOS: 漏极接 B，源极经 Rsense 接 GND
@@ -155,10 +156,18 @@ sink N-MOS: 漏极接 B，源极经 Rsense 接 GND
       把 sink N-MOS 开到全通。
 后果：下一相 H 桥导通的瞬间，sink 是全开 → 负载上出现【大尖峰电流(Zap)】，
       直到运放把它拉回稳态。在 tVNS 上 = 强烈刺痛。
-修复：死区期间【关掉恒流源】。三选一（最简）：
-  · 用 !en 驱动一个 N-MOS/NPN，把 LM358 的 IN+(Vref) 对地短路；或
-  · 用 !en 把 sink N-MOS 的栅极下拉到地(sink 关断)。
-  → 这样每相开始时 sink 从【关】开始，由运放平滑爬升到设定值，不 zap。
+修复：死区期间用 !en 把 LM358 的【IN+(Vref) 拉低】，而不是拉 sink 栅极。
+
+★ 为什么拉 IN+ 而不是拉栅极（关键）：
+  · 拉栅极：sink 关 → IN−=0，而 IN+ 仍是 Vref → 运放【正饱和】OUT 冲高；
+    !en 释放瞬间栅极被饱满的运放充满 → sink 全开 → 照样 Zap。
+  · 拉 IN+：死区【开始时】sink 还在导通（IN−=Vref）→ 拉低 IN+ 产生【负误差】
+    → 运放主动把 OUT 拉低 → 关断后停在 OUT 低位、保持闭环不满 →
+    !en 释放时 sink 从【关】平滑爬升，不 zap。
+
+接法：电位器滑片 ──10kΩ──► IN+(pin3)；
+      QD(2N3904) C→IN+、E→隔离GND、B←10kΩ←!en。
+      （10kΩ 限流，拉低时形成分压，保护电位器不被直接短路。）
 （时序上让 sink 的使能比桥稍早/稍晚留裕量，确保"先关后换"。）
 ```
 
