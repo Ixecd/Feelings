@@ -1,12 +1,12 @@
-# tVNS 刺激前端 T1 · 元件选型 + 接线手册 **v1.1**
+# tVNS 刺激前端 T1 · 元件选型 + 接线手册 **v1.2（冻结）**
 
 > 日期：2026-10-03
 > 状态：**v1.1 已按第 5 轮 review 修订**（v1.0 不可照接）。
 > 关联：`tvns-stim-topology-v1-2026-10-03.md`(v1.1)、`FORGET.md`、`RETROSPECTIVE.md`。
 > 纪律：**直插优先，绝不手工焊贴片；一步一验；全假负载；不贴人。**
-> v1.1 修订：`en` 硬门控(a1/a2 而非 in1/in2) · Vref 硬件上限 ~1V · Step1 纯电阻假负载 ·
-> 示波器地夹≠隔离验证 · 市电摆放要求 · LS 是 compliance 限制（不是"正常现象"）·
-> IC 去耦 · LM358 第二通道固定 · 型号要锁厂家/验 pinout · OVP 型号待实测。
+> **v1.2 修订（第 6 轮）**：① 74HC08 用满 4 门做 **a1·a2=0 硬件互锁** ② **sink 栅 100k 下拉** +
+> **3×NPN base 100k 下拉** ③ LM358 型号统一（锁 LM358B；现有 P 按保守参数）④ B0505S 非稳压→
+> nominal+实测 ⑤ **deadtime 50→…→10µs 待实测** ⑥ Step3 限流 1k→**10kΩ** ⑦ 10µF 加 C_eff/V_rating。
 
 ---
 
@@ -31,7 +31,7 @@ i5 ─► CA-IS3762(default-low) ─► 逻辑(74HC08+74HC04): a1=en·in1 / a2=e
 | 电平移位/下拉 | 2N3904 (NPN) | TO-92 | 同上 |
 | 逻辑译码 | **74HC08**(四与门)+**74HC04**(六反相) | DIP-14 | a1/a2/!en；**单颗 74HC00 只有 4 NAND（需 5 gate）不够** |
 | 锁存(安全层) | 74HC00 | DIP-14 | 闲置输入接 GND/VCC，别悬空 |
-| 运放 | LM358P | DIP-8 | 第 1 通道做 sink；第 2 通道固定接法（见 §4） |
+| 运放 | **LM358B**（设计锁）；现有 LM358P 可用但按保守参数 | DIP-8 | 第 1 通道做 sink；第 2 通道固定（见 §4） |
 | 安全比较器 | LM393N | DIP-8 | 后续安全层 |
 | Rsense | **390Ω** | 直插 | I=Vref/390 |
 | Vref 上限分压 | **39kΩ + 10kΩ** | 直插 | 把 Vref 硬件限到 ~1V（见 §3） |
@@ -82,14 +82,16 @@ LM358  (DIP-8)  1=OUT1 2=IN1- 3=IN1+ 4=GND | 5=IN2+ 6=IN2- 7=OUT2 8=V+
 ## 3. ★ 逻辑与信号定义（本版锁死）
 
 ```
-a1 = en · in1        a2 = en · in2        !en = NOT(en)
+n1=en·in1  n2=en·in2  !in1/!in2  （74HC08 用满 4 门 + 74HC04）
+a1 = n1 · !in2       a2 = n2 · !in1      !en = NOT(en)
 a1 → HS1 + LS2       a2 → HS2 + LS1      !en → 把 IN+(Vref) 拉低（关 sink）
+★ in1=in2=1 → a1=a2=0：**"11=全关"是【硬件保证】**（不靠 RTL）
 
 真值表：
   en=1, in1=1, in2=0 → a1=1, a2=0 → HS1+LS2（正相）
-  en=0, in1=0, in2=0 → a1=0, a2=0 → 全桥 OFF（死区/停）
+  en=0, *,   *       → a1=0, a2=0 → 全桥 OFF（死区/停）+ !en 关 sink
   en=1, in1=0, in2=1 → a1=0, a2=1 → HS2+LS1（负相）
-  a1=1 且 a2=1        → 【非法】，硬件层不允许出现
+  en=1, in1=1, in2=1 → a1=0, a2=0 → 全关（非法态自动安全，硬件互锁）
 
 ★ 正式 Step3/4 【必须用 a1/a2】，不能用裸 in1/in2。
    "用裸 in1/in2 + en 可选加强" = 错，会让 en=0 时桥仍可能导通。
@@ -104,7 +106,8 @@ a1 → HS1 + LS2       a2 → HS2 + LS1      !en → 把 IN+(Vref) 拉低（关 
                            │
                           GND
 （QD 2N3904: C→IN+, E→隔离GND, B←10k←!en）
-→ 电位器拧到底也只有 ~1.0V → Imax ≈ 2.56mA，不会跳到 5V/12.8mA。
+→ nominal（Vlogic=5.00V）：Vref_limit≈1.02V → Imax≈2.62mA，不会跳到 5V/12.8mA。
+★ B0505S 非稳压 → Vlogic 是 nominal 5V → 上面是 nominal；实际以【实测 Vlogic+电阻容差】为准。
 ```
 
 ---
@@ -113,15 +116,16 @@ a1 → HS1 + LS2       a2 → HS2 + LS1      !en → 把 IN+(Vref) 拉低（关 
 
 ```
 【LM358 第 2 通道固定】
-  pin5 (IN2+) → 隔离GND
-  pin6 (IN2−) ↔ pin7 (OUT2)     ← 0V 跟随器，输入别悬空
+  pin5 (IN2+) → 隔离GND ; pin6 (IN2−) ↔ pin7 (OUT2)     ← 0V 跟随器
 
-【IC 本地去耦】
-  LM358:        pin8 ──100nF── pin4
-  74HC08/04/00: pin14 ──100nF── pin7
-  CA-IS3762:    侧B VDDb ──100nF── GNDB
-【电源入口储能】
-  隔离5V: 10µF ; +VS: 10µF
+【★ 失效态下拉（power-up / 掉电 / 输出不定时都保证 OFF）】
+  sink 栅 →100k→ GND             ← 本版补（LM358 未上电/高阻时保证 QS=OFF）
+  LH1/LH2/QD base →100k→ E       ← 本版补（逻辑/隔离器未定态时保证 OFF）
+  （CA-IS3762 default-low 只是 first line，不能代替这些硬件下拉）
+
+【IC 本地去耦】每 IC 100nF：LM358 pin8-4 / 74HC08·04·00 pin14-7 / CA-IS3762 侧B VDDb-GNDB
+【电源入口储能】隔离5V 10µF ; +VS 10µF
+【未用逻辑输入】74HC08/74HC04/74HC00 全部接 GND 或 VCC，别悬空
 ```
 
 ---
@@ -145,7 +149,7 @@ a1 → HS1 + LS2       a2 → HS2 + LS1      !en → 把 IN+(Vref) 拉低（关 
 ### 6.1 接线
 
 ```
-【运放 LM358】
+【运放 LM358】★ 设计锁 LM358B；现有 LM358P 可用但按 0.7MHz/0.3V/µs/7mV 保守
   pin8 (V+)  → 隔离 +VS(9V)     ← 不用 5V（非轨到轨，输出上限 ≈Vcc−1.5V）
   pin4 (GND) → 隔离GND
   pin3 (IN+) → 见 §3 的 Vref_limit（经 10k）
@@ -153,7 +157,7 @@ a1 → HS1 + LS2       a2 → HS2 + LS1      !en → 把 IN+(Vref) 拉低（关 
   pin1 (OUT) → 1kΩ → sink 栅极
   （第 2 通道按 §4 固定）
 
-【sink QS = 2N7000】 D→B ; S→Rsense(390Ω)上端 ; G←1k←pin1
+【sink QS = 2N7000】 D→B ; S→Rsense(390Ω)上端 ; G←1k←pin1 ; G→100k→GND ★栅下拉
 【Rsense 390Ω】 sink 源极 → 隔离GND
 【负载】隔离 +VS(9V) → 假负载【纯电阻 1k/2k/5k/10k】→ B
         ★ 本步【不要 100nF】（τ=100µs 会污染 200µs 脉冲的电流读数）
@@ -177,6 +181,7 @@ Vref(pin3) / pin2 / 负载压差 / Rsense 压差
 ```
 接线：QD 2N3904: C→IN+ ; E→隔离GND ; B←10k←!en
 测试：方波开关 en；示波器看 Rsense（地夹夹隔离GND）
+★ deadtime 先用【50µs】，再 30→20→10 逐级缩；每级以 Rsense 真实波形为判据
 [ ] en=0 → a1=a2=0 → IN+=0 → sink 关（OUT 被拉低）
 [ ] en=1 → 桥导通、电流【平滑建立】，无过冲尖峰
 [ ] 若有过冲 → 查 QD 是否真拉 IN+、!en 极性
@@ -192,11 +197,12 @@ Vref(pin3) / pin2 / 负载压差 / Rsense 压差
 
 ```
 【★ +VS 与桥之间串限流电阻】
-  +VS ──[1kΩ]── 桥的 +VS 节点
-  （先只给桥几百 µA~1mA；确认 4 条路径后再去掉）
+  +VS ──[10kΩ]── 桥的 +VS 节点      ← 本版改 10k（1k 时直通可达 9mA，太大）
+  假负载也用 10kΩ 纯电阻：正常 I≈0.45mA、直通 I≈0.9mA（真正"几百µA~1mA"）
+  确认 4 条路径全对之后，再去掉这个电阻。
 
 【高边 P-MOS HS1/HS2】
-  S→限流后的+VS ; D→mid1/mid2 ; G→10k上拉+VS + 栅↔源47~100k + NPN 集电极
+  S→限流后的+VS ; D→mid1/mid2 ; G→10k上拉+VS + 栅↔源100k + NPN 集电极
 【高边电平移位 LH1/LH2 (2N3904)】
   C→P-MOS栅 ; E→隔离GND ; B←10k←a1(LH1)/a2(LH2)   ★基极必串限流
 【低边 N-MOS LS1/LS2】
