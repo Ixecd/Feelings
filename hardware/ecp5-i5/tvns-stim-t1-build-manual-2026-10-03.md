@@ -193,11 +193,13 @@ Rsense 压差 = pin2 → I = pin2 / 390
   C → P-MOS 栅极
   E → 隔离GND            ← ★ 发射极接 GND，不接 B（上拉电流不经过 Rsense）
   B ← 10kΩ ← in1（LH1）/ in2（LH2）
+  ★★ 基极【必串 10kΩ】：74HC00 输出直怼 B-E 结 = 短路 → 会烧 74HC00 或 NPN
 
-【低边 N-MOS：LS1、LS2】
+【低边 N-MOS：LS1、LS2】（对角线：a1→HS1&LS2, a2→HS2&LS1）
   D(漏) → LS1:mid1 / LS2:mid2
   S(源) → B（本步先直接接隔离GND，旁路 sink）
-  G(栅) ← in2（LS1）/ in1（LS2）；并接下拉 10kΩ 到隔离GND
+  G(栅) ← in2（LS1）/ in1（LS2）  ← 直驱(MOS 栅电容性、无直流)
+  并接下拉 10kΩ 到隔离GND          ← 防上电瞬间误导通
 
 【负载】mid1 ── 假负载 ── mid2
 【本步】B → 隔离GND（跳过 sink）
