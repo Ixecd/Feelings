@@ -128,6 +128,33 @@ URES = {}
 for _c in COMPS:
     URES[_c[0]] = _c[4] if _c[4] is not None else list(UNITS[_c[0]])
 
+# ---- block-based re-layout (big spacing so the PCB drop is spread out) ----
+BLOCKS = {
+ "bridge": ["Q5","Q1","Q3","Q6","Q2","Q4","R3","R5","R1","D1","R4","R6","R2","D2"],
+ "protect":["C2","D3","D4","J2"],
+ "sink":   ["U3","Q7","Q8","Q9","R9","R7","R8","R10","R11","R12","C1","RV1","R13","R14","R15"],
+ "logic":  ["U1","U2"],
+ "safety": ["U4","U5","U6","U7","R16","R17","R18","R19","R20"],
+ "io":     ["J1"],
+ "decoup": ["C3","C4","C5","C6","C7","C8"],
+}
+BLOCK_POS = {"bridge":(80,80),"protect":(80,400),"sink":(480,80),"logic":(880,80),
+             "safety":(880,400),"io":(1200,80),"decoup":(1200,300)}
+_NC, _DX, _DY = 5, 50, 50
+def relayout():
+    out = {}
+    for b, (ox, oy) in BLOCK_POS.items():
+        col = row = 0
+        for ref in BLOCKS[b]:
+            us = [u for u, _, _ in URES[ref]]; span = max(1, len(us))
+            if col + span > _NC: col, row = 0, row + 1
+            for i, uu in enumerate(us):
+                out.setdefault(ref, []).append((uu, ox + (col + i) * _DX, oy + row * _DY))
+            col += span
+            if col >= _NC: col, row = 0, row + 1
+    return out
+LAYOUT = relayout()
+
 FP = {
  "Q1":"Package_TO_SOT_THT:TO-92_Inline","Q2":"Package_TO_SOT_THT:TO-92_Inline",
  "Q3":"Package_TO_SOT_THT:TO-92_Inline","Q4":"Package_TO_SOT_THT:TO-92_Inline",
@@ -208,7 +235,7 @@ def build(path):
     coord = {}; conf = []; pincoord = {}
     for ref, lib, nm, val, _ignore in COMPS:
         common, pu = pins_units(lib, nm)
-        units = list(URES[ref])
+        units = list(LAYOUT[ref])
         maxu = max(pu.keys())
         if maxu not in {u for u, _, _ in units}:
             units = units + [(maxu, units[0][1], units[0][2] + 35)]
@@ -234,7 +261,7 @@ def build(path):
 \t(generator "eeschema")
 \t(generator_version "10.0")
 \t(uuid "{U_(1)}")
-\t(paper "A2")
+\t(paper "A0")
 \t(lib_symbols
 {libtxt}
 \t)
