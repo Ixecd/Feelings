@@ -1,0 +1,31 @@
+High-side P-MOS drive turn-off timing @30V
+Vvs vs 0 DC 30
+Va1 a1 0 PULSE(0 5 0 0.1u 0.1u 200u 1000u)
+
+* level-shift NPN (base<-a1)
+Rb  a1 qb 10k
+Rbp qb 0 100k
+Q1  gate qb 0 0 Q2N3904
+
+* pull-up (swept)
+Rpull vs gate 22k
+
+* 12V gate-source zener clamp
+Dz gate vs DZ
+
+* high-side P-MOS + load  (+ realistic gate caps)
+Cgs gate vs 50p
+Cgd gate mid 10p
+Mhs mid gate vs vs MBS250
+Rld mid 0 1k
+
+.model Q2N3904 NPN(Is=6.7e-15 Bf=200 Vaf=100 Rb=10 Cjc=4p Cje=5p)
+.model MBS250 PMOS(Level=1 Vto=-2.5 Kp=0.05 Lambda=0.01)
+.model DZ D(BV=12 Ibv=1m Rs=1)
+.options reltol=1e-3 vntol=1e-4 abstol=1e-9 gmin=1e-9 itl4=200
+
+.control
+tran 0.02u 400u
+wrdata hs_22k.txt v(gate) v(vs) v(mid)
+.endc
+.end

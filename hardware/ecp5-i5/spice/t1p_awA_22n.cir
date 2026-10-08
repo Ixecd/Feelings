@@ -1,0 +1,46 @@
+T1-P sink @30V Rsense=100 anti-windup Scheme A (raise IN-), realistic op-amp
+Vvs   vs 0 DC 30
+Vvref vrefsrc 0 DC 0.5
+Rvf   vrefsrc vref 10k
+V50   v50 0 DC 0.05
+
+* op-amp with pole + clamped output (NOT ideal source into gate)
+Bop0 out0 0 V = max(0.05, min(10.4, 1.0e4*(V(vref) - V(rs_top))))
+Rop  out0 out 1k
+Cop  out 0 22n
+
+Rg1 out qgate 1k
+Rg2 qgate 0 100k
+Cg  qgate 0 1n
+Mqs B qgate rs_top rs_top M2N7000
+Rrs rs_top 0 100
+Crs rs_top 0 10p
+
+S1 mid1 vs a1 0 SW1
+S2 mid2 B  a1 0 SW1
+S3 mid2 vs a2 0 SW1
+S4 mid1 B  a2 0 SW1
+Rld mid1 mid2 2k
+
+Va1 a1 0 PULSE(0 5 0    0.1u 0.1u 200u 1000u)
+Va2 a2 0 PULSE(0 5 210u 0.1u 0.1u 200u 1000u)
+Ben  en 0 V = max(V(a1), V(a2))
+Benb nen 0 V = (V(en) > 2.5) ? 0 : 5
+
+* Scheme A: during deadtime, raise IN- (rs_top) to ~50mV (> IN+)
+Sa  rs_top v50 nen 0 SW1
+* (QD kept: also pull vref low)
+Rqbs nen qb 10k
+Rqbp qb 0 100k
+Qqd vref qb 0 0 Q2N3904
+
+.model SW1 SW(Ron=2 Roff=1e12 Vt=2.5 Vh=0.3)
+.model M2N7000 NMOS(Level=1 Vto=2.1 Kp=0.07 Lambda=0.01)
+.model Q2N3904 NPN(Is=6.7e-15 Bf=200 Vaf=100 Rb=10 Cjc=4p Cje=5p)
+.options reltol=1e-3 vntol=1e-4 abstol=1e-9 gmin=1e-9 itl4=200
+
+.control
+tran 0.02u 2500u
+wrdata t1p_awA_22n.txt v(rs_top) v(vref) v(qgate) v(out) v(mid1) v(mid2)
+.endc
+.end

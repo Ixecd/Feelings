@@ -1,0 +1,26 @@
+T1-P sink DC check
+* --- supplies ---
+Vvs  vs 0 DC 9
+Vvref vrefsrc 0 DC 0.26
+Rvf  vrefsrc vref 10k
+
+* --- op-amp (ideal, output clamped to LM358-ish range) ---
+Bop  out 0 V = max(0.15, min(7.5, 1.0e5*(V(vref) - V(rs_top))))
+
+* --- sink: QS (2N7000) + Rsense ---
+Rg1  out qgate 1k
+Rg2  qgate 0 100k
+Mqs  B qgate rs_top rs_top M2N7000
+Rrs  rs_top 0 390
+
+* --- load (static, from VS to B) ---
+Rld  vs B 2.2k
+
+.model M2N7000 NMOS(Level=1 Vto=2.1 Kp=0.07 Lambda=0.01 Cgs=50p Cgd=5p)
+
+.control
+op
+print v(vref) v(rs_top) v(qgate) v(out) v(B)
+print i(Rrs) i(Rld)
+.endc
+.end
