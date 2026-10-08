@@ -2031,6 +2031,3397 @@
 				)
 				(embedded_fonts no)
 			)
+		(symbol "74xx:74HC04"
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "U"
+					(at 0 1.27 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "74LS04"
+					(at 0 -1.27 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS04"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "Hex Inverter"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_locked" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "TTL not inv"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_fp_filters" "DIP*W7.62mm* SSOP?14* TSSOP?14*"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "74HC04_1_0"
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -3.81 -3.81) (xy 3.81 0) (xy -3.81 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin input line
+						(at -7.62 0 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC04_2_0"
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -3.81 -3.81) (xy 3.81 0) (xy -3.81 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin input line
+						(at -7.62 0 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "4"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC04_3_0"
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -3.81 -3.81) (xy 3.81 0) (xy -3.81 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin input line
+						(at -7.62 0 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "5"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "6"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC04_4_0"
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -3.81 -3.81) (xy 3.81 0) (xy -3.81 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "8"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 0 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "9"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC04_5_0"
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -3.81 -3.81) (xy 3.81 0) (xy -3.81 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "10"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 0 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "11"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC04_6_0"
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -3.81 -3.81) (xy 3.81 0) (xy -3.81 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "12"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 0 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "13"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC04_7_0"
+					(pin power_in line
+						(at 0 -12.7 90)
+						(length 5.08)
+						(name "GND"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "7"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin power_in line
+						(at 0 12.7 270)
+						(length 5.08)
+						(name "VCC"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "14"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC04_7_1"
+					(rectangle
+						(start -5.08 7.62)
+						(end 5.08 -7.62)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+		(symbol "74xx:74LS08"
+				(body_styles demorgan)
+				(pin_names
+					(offset 1.016)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "U"
+					(at 0 1.27 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "74LS08"
+					(at 0 -1.27 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS08"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "Quad And2"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_locked" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "TTL and2"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_fp_filters" "DIP*W7.62mm*"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "74LS08_1_1"
+					(arc
+						(start 0 3.81)
+						(mid 3.7934 0)
+						(end 0 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0 3.81) (xy -3.81 3.81) (xy -3.81 -3.81) (xy 0 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin input line
+						(at -7.62 2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 -2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output line
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74LS08_1_2"
+					(arc
+						(start -3.81 3.81)
+						(mid -2.589 0)
+						(end -3.81 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -0.635 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 -3.81) (xy -0.635 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start 3.81 0)
+						(mid 2.1855 -2.584)
+						(end -0.6096 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start -0.6096 3.81)
+						(mid 2.1928 2.5924)
+						(end 3.81 0)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -0.635 3.81) (xy -3.81 3.81) (xy -3.81 3.81) (xy -3.556 3.4036) (xy -3.0226 2.2606) (xy -2.6924 1.0414)
+							(xy -2.6162 -0.254) (xy -2.7686 -1.4986) (xy -3.175 -2.7178) (xy -3.81 -3.81) (xy -3.81 -3.81)
+							(xy -0.635 -3.81)
+						)
+						(stroke
+							(width -25.4)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin input inverted
+						(at -7.62 2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input inverted
+						(at -7.62 -2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74LS08_2_1"
+					(arc
+						(start 0 3.81)
+						(mid 3.7934 0)
+						(end 0 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0 3.81) (xy -3.81 3.81) (xy -3.81 -3.81) (xy 0 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin input line
+						(at -7.62 2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "4"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 -2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "5"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output line
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "6"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74LS08_2_2"
+					(arc
+						(start -3.81 3.81)
+						(mid -2.589 0)
+						(end -3.81 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -0.635 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 -3.81) (xy -0.635 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start 3.81 0)
+						(mid 2.1855 -2.584)
+						(end -0.6096 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start -0.6096 3.81)
+						(mid 2.1928 2.5924)
+						(end 3.81 0)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -0.635 3.81) (xy -3.81 3.81) (xy -3.81 3.81) (xy -3.556 3.4036) (xy -3.0226 2.2606) (xy -2.6924 1.0414)
+							(xy -2.6162 -0.254) (xy -2.7686 -1.4986) (xy -3.175 -2.7178) (xy -3.81 -3.81) (xy -3.81 -3.81)
+							(xy -0.635 -3.81)
+						)
+						(stroke
+							(width -25.4)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin input inverted
+						(at -7.62 2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "4"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input inverted
+						(at -7.62 -2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "5"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "6"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74LS08_3_1"
+					(arc
+						(start 0 3.81)
+						(mid 3.7934 0)
+						(end 0 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0 3.81) (xy -3.81 3.81) (xy -3.81 -3.81) (xy 0 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin output line
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "8"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "9"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 -2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "10"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74LS08_3_2"
+					(arc
+						(start -3.81 3.81)
+						(mid -2.589 0)
+						(end -3.81 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -0.635 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 -3.81) (xy -0.635 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start 3.81 0)
+						(mid 2.1855 -2.584)
+						(end -0.6096 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start -0.6096 3.81)
+						(mid 2.1928 2.5924)
+						(end 3.81 0)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -0.635 3.81) (xy -3.81 3.81) (xy -3.81 3.81) (xy -3.556 3.4036) (xy -3.0226 2.2606) (xy -2.6924 1.0414)
+							(xy -2.6162 -0.254) (xy -2.7686 -1.4986) (xy -3.175 -2.7178) (xy -3.81 -3.81) (xy -3.81 -3.81)
+							(xy -0.635 -3.81)
+						)
+						(stroke
+							(width -25.4)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "8"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input inverted
+						(at -7.62 2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "9"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input inverted
+						(at -7.62 -2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "10"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74LS08_4_1"
+					(arc
+						(start 0 3.81)
+						(mid 3.7934 0)
+						(end 0 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0 3.81) (xy -3.81 3.81) (xy -3.81 -3.81) (xy 0 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin output line
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "11"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "12"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 -2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "13"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74LS08_4_2"
+					(arc
+						(start -3.81 3.81)
+						(mid -2.589 0)
+						(end -3.81 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -0.635 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 -3.81) (xy -0.635 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start 3.81 0)
+						(mid 2.1855 -2.584)
+						(end -0.6096 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start -0.6096 3.81)
+						(mid 2.1928 2.5924)
+						(end 3.81 0)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -0.635 3.81) (xy -3.81 3.81) (xy -3.81 3.81) (xy -3.556 3.4036) (xy -3.0226 2.2606) (xy -2.6924 1.0414)
+							(xy -2.6162 -0.254) (xy -2.7686 -1.4986) (xy -3.175 -2.7178) (xy -3.81 -3.81) (xy -3.81 -3.81)
+							(xy -0.635 -3.81)
+						)
+						(stroke
+							(width -25.4)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "11"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input inverted
+						(at -7.62 2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "12"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input inverted
+						(at -7.62 -2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "13"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74LS08_5_0"
+					(pin power_in line
+						(at 0 -12.7 90)
+						(length 5.08)
+						(name "GND"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "7"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin power_in line
+						(at 0 12.7 270)
+						(length 5.08)
+						(name "VCC"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "14"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74LS08_5_1"
+					(rectangle
+						(start -5.08 7.62)
+						(end 5.08 -7.62)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+		(symbol "Comparator:LM393"
+				(pin_names
+					(offset 0.127)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "U"
+					(at 3.81 3.81 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "LM2903"
+					(at 6.35 -3.81 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" "http://www.ti.com/lit/ds/symlink/lm393.pdf"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "Low-Power, Low-Offset Voltage, Dual Comparators, DIP-8/SOIC-8/SOP-8/TSSOP-8/VSSOP-8"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_locked" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "cmp open collector"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_fp_filters" "SOIC*3.9x4.9mm*P1.27mm* DIP*W7.62mm* SOP*5.28x5.23mm*P1.27mm* VSSOP*3x3mm*P0.65mm* TSSOP*4.4x3mm*P0.65mm*"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "LM393_1_1"
+					(polyline
+						(pts
+							(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy 3.302 -0.508) (xy 2.794 -0.508) (xy 3.302 0) (xy 2.794 0.508) (xy 2.286 0) (xy 2.794 -0.508)
+							(xy 2.286 -0.508)
+						)
+						(stroke
+							(width 0.127)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(pin open_collector line
+						(at 7.62 0 180)
+						(length 2.54)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 -2.54 0)
+						(length 2.54)
+						(name "-"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 2.54 0)
+						(length 2.54)
+						(name "+"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "LM393_2_1"
+					(polyline
+						(pts
+							(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy 3.302 -0.508) (xy 2.794 -0.508) (xy 3.302 0) (xy 2.794 0.508) (xy 2.286 0) (xy 2.794 -0.508)
+							(xy 2.286 -0.508)
+						)
+						(stroke
+							(width 0.127)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(pin input line
+						(at -7.62 2.54 0)
+						(length 2.54)
+						(name "+"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "5"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 -2.54 0)
+						(length 2.54)
+						(name "-"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "6"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin open_collector line
+						(at 7.62 0 180)
+						(length 2.54)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "7"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "LM393_3_1"
+					(pin power_in line
+						(at -2.54 -7.62 90)
+						(length 3.81)
+						(name "V-"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "4"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin power_in line
+						(at -2.54 7.62 270)
+						(length 3.81)
+						(name "V+"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "8"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+		(symbol "74xx:74HC00"
+				(body_styles demorgan)
+				(pin_names
+					(offset 1.016)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "U"
+					(at 0 1.27 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "74LS00"
+					(at 0 -1.27 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" "http://www.ti.com/lit/gpn/sn74ls00"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "quad 2-input NAND gate"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_locked" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "TTL nand 2-input"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_fp_filters" "DIP*W7.62mm* SO14*"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "74HC00_1_1"
+					(arc
+						(start 0 3.81)
+						(mid 3.7934 0)
+						(end 0 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0 3.81) (xy -3.81 3.81) (xy -3.81 -3.81) (xy 0 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin input line
+						(at -7.62 2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 -2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC00_1_2"
+					(arc
+						(start -3.81 3.81)
+						(mid -2.589 0)
+						(end -3.81 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -0.635 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 -3.81) (xy -0.635 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start 3.81 0)
+						(mid 2.1855 -2.584)
+						(end -0.6096 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start -0.6096 3.81)
+						(mid 2.1928 2.5924)
+						(end 3.81 0)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -0.635 3.81) (xy -3.81 3.81) (xy -3.81 3.81) (xy -3.556 3.4036) (xy -3.0226 2.2606) (xy -2.6924 1.0414)
+							(xy -2.6162 -0.254) (xy -2.7686 -1.4986) (xy -3.175 -2.7178) (xy -3.81 -3.81) (xy -3.81 -3.81)
+							(xy -0.635 -3.81)
+						)
+						(stroke
+							(width -25.4)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin input inverted
+						(at -7.62 2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input inverted
+						(at -7.62 -2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output line
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC00_2_1"
+					(arc
+						(start 0 3.81)
+						(mid 3.7934 0)
+						(end 0 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0 3.81) (xy -3.81 3.81) (xy -3.81 -3.81) (xy 0 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin input line
+						(at -7.62 2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "4"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 -2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "5"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "6"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC00_2_2"
+					(arc
+						(start -3.81 3.81)
+						(mid -2.589 0)
+						(end -3.81 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -0.635 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 -3.81) (xy -0.635 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start 3.81 0)
+						(mid 2.1855 -2.584)
+						(end -0.6096 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start -0.6096 3.81)
+						(mid 2.1928 2.5924)
+						(end 3.81 0)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -0.635 3.81) (xy -3.81 3.81) (xy -3.81 3.81) (xy -3.556 3.4036) (xy -3.0226 2.2606) (xy -2.6924 1.0414)
+							(xy -2.6162 -0.254) (xy -2.7686 -1.4986) (xy -3.175 -2.7178) (xy -3.81 -3.81) (xy -3.81 -3.81)
+							(xy -0.635 -3.81)
+						)
+						(stroke
+							(width -25.4)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin input inverted
+						(at -7.62 2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "4"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input inverted
+						(at -7.62 -2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "5"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output line
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "6"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC00_3_1"
+					(arc
+						(start 0 3.81)
+						(mid 3.7934 0)
+						(end 0 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0 3.81) (xy -3.81 3.81) (xy -3.81 -3.81) (xy 0 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "8"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "9"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 -2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "10"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC00_3_2"
+					(arc
+						(start -3.81 3.81)
+						(mid -2.589 0)
+						(end -3.81 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -0.635 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 -3.81) (xy -0.635 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start 3.81 0)
+						(mid 2.1855 -2.584)
+						(end -0.6096 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start -0.6096 3.81)
+						(mid 2.1928 2.5924)
+						(end 3.81 0)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -0.635 3.81) (xy -3.81 3.81) (xy -3.81 3.81) (xy -3.556 3.4036) (xy -3.0226 2.2606) (xy -2.6924 1.0414)
+							(xy -2.6162 -0.254) (xy -2.7686 -1.4986) (xy -3.175 -2.7178) (xy -3.81 -3.81) (xy -3.81 -3.81)
+							(xy -0.635 -3.81)
+						)
+						(stroke
+							(width -25.4)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin output line
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "8"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input inverted
+						(at -7.62 2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "9"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input inverted
+						(at -7.62 -2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "10"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC00_4_1"
+					(arc
+						(start 0 3.81)
+						(mid 3.7934 0)
+						(end 0 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0 3.81) (xy -3.81 3.81) (xy -3.81 -3.81) (xy 0 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin output inverted
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "11"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "12"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -7.62 -2.54 0)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "13"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC00_4_2"
+					(arc
+						(start -3.81 3.81)
+						(mid -2.589 0)
+						(end -3.81 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 3.81) (xy -0.635 3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 -3.81) (xy -0.635 -3.81)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start 3.81 0)
+						(mid 2.1855 -2.584)
+						(end -0.6096 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(arc
+						(start -0.6096 3.81)
+						(mid 2.1928 2.5924)
+						(end 3.81 0)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -0.635 3.81) (xy -3.81 3.81) (xy -3.81 3.81) (xy -3.556 3.4036) (xy -3.0226 2.2606) (xy -2.6924 1.0414)
+							(xy -2.6162 -0.254) (xy -2.7686 -1.4986) (xy -3.175 -2.7178) (xy -3.81 -3.81) (xy -3.81 -3.81)
+							(xy -0.635 -3.81)
+						)
+						(stroke
+							(width -25.4)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(pin output line
+						(at 7.62 0 180)
+						(length 3.81)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "11"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input inverted
+						(at -7.62 2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "12"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input inverted
+						(at -7.62 -2.54 0)
+						(length 4.318)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "13"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC00_5_0"
+					(pin power_in line
+						(at 0 -12.7 90)
+						(length 5.08)
+						(name "GND"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "7"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin power_in line
+						(at 0 12.7 270)
+						(length 5.08)
+						(name "VCC"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "14"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "74HC00_5_1"
+					(rectangle
+						(start -5.08 7.62)
+						(end 5.08 -7.62)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+		(symbol "Reference_Voltage:TL431LP"
+				(pin_numbers
+					(hide yes)
+				)
+				(pin_names
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "U"
+					(at -2.54 2.54 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "TL431LP"
+					(at 0 -2.54 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+					(at 0 -4.826 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+							(italic yes)
+						)
+					)
+				)
+				(property "Datasheet" "http://www.ti.com/lit/ds/symlink/tl431.pdf"
+					(at 0.508 -7.112 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+							(italic yes)
+						)
+					)
+				)
+				(property "Description" "Shunt Regulator, TO-92"
+					(at 0 -8.89 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "diode device regulator shunt"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_fp_filters" "TO*92*"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "TL431LP_0_1"
+					(polyline
+						(pts
+							(xy -1.27 0) (xy 0 0) (xy 1.27 0)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -0.762 -0.762) (xy -0.762 0.762) (xy 0.762 0) (xy -0.762 -0.762)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type outline)
+						)
+					)
+					(polyline
+						(pts
+							(xy 0.254 -0.762) (xy 0.762 -0.762) (xy 0.762 0.762) (xy 0.762 0.762)
+						)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+				)
+				(symbol "TL431LP_1_1"
+					(pin passive line
+						(at 0 2.54 270)
+						(length 2.54)
+						(name "REF"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -2.54 0 0)
+						(length 2.54)
+						(name "A"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 2.54 0 180)
+						(length 2.54)
+						(name "K"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+		(symbol "Connector_Generic:Conn_01x08"
+				(pin_names
+					(offset 1.016)
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "J"
+					(at 0 10.16 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "Conn_01x08"
+					(at 0 -12.7 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "connector"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_fp_filters" "Connector*:*_1x??_*"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "Conn_01x08_1_1"
+					(rectangle
+						(start -1.27 8.89)
+						(end 1.27 -11.43)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(rectangle
+						(start -1.27 7.747)
+						(end 0 7.493)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(rectangle
+						(start -1.27 5.207)
+						(end 0 4.953)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(rectangle
+						(start -1.27 2.667)
+						(end 0 2.413)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(rectangle
+						(start -1.27 0.127)
+						(end 0 -0.127)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(rectangle
+						(start -1.27 -2.413)
+						(end 0 -2.667)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(rectangle
+						(start -1.27 -4.953)
+						(end 0 -5.207)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(rectangle
+						(start -1.27 -7.493)
+						(end 0 -7.747)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(rectangle
+						(start -1.27 -10.033)
+						(end 0 -10.287)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(pin passive line
+						(at -5.08 7.62 0)
+						(length 3.81)
+						(name "Pin_1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -5.08 5.08 0)
+						(length 3.81)
+						(name "Pin_2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -5.08 2.54 0)
+						(length 3.81)
+						(name "Pin_3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -5.08 0 0)
+						(length 3.81)
+						(name "Pin_4"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "4"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -5.08 -2.54 0)
+						(length 3.81)
+						(name "Pin_5"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "5"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -5.08 -5.08 0)
+						(length 3.81)
+						(name "Pin_6"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "6"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -5.08 -7.62 0)
+						(length 3.81)
+						(name "Pin_7"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "7"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -5.08 -10.16 0)
+						(length 3.81)
+						(name "Pin_8"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "8"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+		(symbol "Connector_Generic:Conn_01x02"
+				(pin_names
+					(offset 1.016)
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "J"
+					(at 0 2.54 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "Conn_01x02"
+					(at 0 -5.08 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "connector"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_fp_filters" "Connector*:*_1x??_*"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "Conn_01x02_1_1"
+					(rectangle
+						(start -1.27 1.27)
+						(end 1.27 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(rectangle
+						(start -1.27 0.127)
+						(end 0 -0.127)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(rectangle
+						(start -1.27 -2.413)
+						(end 0 -2.667)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(pin passive line
+						(at -5.08 0 0)
+						(length 3.81)
+						(name "Pin_1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -5.08 -2.54 0)
+						(length 3.81)
+						(name "Pin_2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
 	)
 	(symbol
 		(lib_id "Transistor_FET:BS250")
@@ -2038,8 +5429,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000001")
-		(property "Reference" "Q1" (at 60 37.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "BS250" (at 60 42.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "Q1" (at 60 37.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "BS250" (at 60 42.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 60 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 60 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "Q1") (unit 1))))
@@ -2050,8 +5441,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000002")
-		(property "Reference" "Q2" (at 60 67.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "BS250" (at 60 72.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "Q2" (at 60 67.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "BS250" (at 60 72.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 60 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 60 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "Q2") (unit 1))))
@@ -2062,8 +5453,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000003")
-		(property "Reference" "Q3" (at 95 37.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "2N7000" (at 95 42.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "Q3" (at 95 37.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "2N7000" (at 95 42.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 95 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 95 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "Q3") (unit 1))))
@@ -2074,8 +5465,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000004")
-		(property "Reference" "Q4" (at 95 67.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "2N7000" (at 95 72.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "Q4" (at 95 67.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "2N7000" (at 95 72.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 95 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 95 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "Q4") (unit 1))))
@@ -2086,8 +5477,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000005")
-		(property "Reference" "Q5" (at 35 37.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "2N3904" (at 35 42.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "Q5" (at 35 37.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "2N3904" (at 35 42.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 35 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 35 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "Q5") (unit 1))))
@@ -2098,8 +5489,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000006")
-		(property "Reference" "Q6" (at 35 67.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "2N3904" (at 35 72.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "Q6" (at 35 67.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "2N3904" (at 35 72.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 35 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 35 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "Q6") (unit 1))))
@@ -2110,8 +5501,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000007")
-		(property "Reference" "R1" (at 75 17.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "22k" (at 75 22.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "R1" (at 75 17.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "22k" (at 75 22.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 75 20 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 75 20 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R1") (unit 1))))
@@ -2122,8 +5513,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000008")
-		(property "Reference" "R2" (at 75 92.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "22k" (at 75 97.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "R2" (at 75 92.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "22k" (at 75 97.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 75 95 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 75 95 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R2") (unit 1))))
@@ -2134,8 +5525,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000009")
-		(property "Reference" "D1" (at 75 27.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "12V" (at 75 32.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "D1" (at 75 27.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "12V" (at 75 32.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 75 30 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 75 30 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "D1") (unit 1))))
@@ -2146,8 +5537,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000010")
-		(property "Reference" "D2" (at 75 82.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "12V" (at 75 87.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "D2" (at 75 82.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "12V" (at 75 87.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 75 85 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 75 85 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "D2") (unit 1))))
@@ -2158,8 +5549,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000011")
-		(property "Reference" "R3" (at 25 37.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "4.7k" (at 25 42.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "R3" (at 25 37.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "4.7k" (at 25 42.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 25 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 25 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R3") (unit 1))))
@@ -2170,8 +5561,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000012")
-		(property "Reference" "R4" (at 25 67.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "4.7k" (at 25 72.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "R4" (at 25 67.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "4.7k" (at 25 72.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 25 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 25 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R4") (unit 1))))
@@ -2182,8 +5573,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000013")
-		(property "Reference" "R5" (at 35 17.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "100k" (at 35 22.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "R5" (at 35 17.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "100k" (at 35 22.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 35 20 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 35 20 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R5") (unit 1))))
@@ -2194,8 +5585,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000014")
-		(property "Reference" "R6" (at 35 92.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "100k" (at 35 97.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "R6" (at 35 92.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "100k" (at 35 97.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 35 95 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 35 95 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R6") (unit 1))))
@@ -2206,8 +5597,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000015")
-		(property "Reference" "U3" (at 60 127.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "OPA171" (at 60 132.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "U3" (at 60 127.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "OPA171" (at 60 132.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 60 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 60 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U3") (unit 1))))
@@ -2218,8 +5609,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000016")
-		(property "Reference" "Q7" (at 95 127.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "2N7000" (at 95 132.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "Q7" (at 95 127.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "2N7000" (at 95 132.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 95 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 95 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "Q7") (unit 1))))
@@ -2230,8 +5621,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000017")
-		(property "Reference" "Q8" (at 35 127.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "2N3904" (at 35 132.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "Q8" (at 35 127.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "2N3904" (at 35 132.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 35 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 35 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "Q8") (unit 1))))
@@ -2242,8 +5633,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000018")
-		(property "Reference" "Q9" (at 120 112.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "2N7002" (at 120 117.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "Q9" (at 120 112.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "2N7002" (at 120 117.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 120 115 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 120 115 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "Q9") (unit 1))))
@@ -2254,8 +5645,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000019")
-		(property "Reference" "R7" (at 75 112.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "1k" (at 75 117.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "R7" (at 75 112.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "1k" (at 75 117.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 75 115 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 75 115 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R7") (unit 1))))
@@ -2266,8 +5657,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000020")
-		(property "Reference" "R8" (at 110 137.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "100k" (at 110 142.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "R8" (at 110 137.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "100k" (at 110 142.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 110 140 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 110 140 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R8") (unit 1))))
@@ -2278,8 +5669,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000021")
-		(property "Reference" "R9" (at 95 147.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "100R" (at 95 152.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "R9" (at 95 147.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "100R" (at 95 152.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 95 150 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 95 150 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R9") (unit 1))))
@@ -2290,8 +5681,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000022")
-		(property "Reference" "R10" (at 135 102.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "4.7k" (at 135 107.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "R10" (at 135 102.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "4.7k" (at 135 107.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 135 105 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 135 105 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R10") (unit 1))))
@@ -2302,8 +5693,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000023")
-		(property "Reference" "R11" (at 25 127.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "10k" (at 25 132.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "R11" (at 25 127.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "10k" (at 25 132.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 25 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 25 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R11") (unit 1))))
@@ -2314,8 +5705,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000024")
-		(property "Reference" "R12" (at 25 142.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "100k" (at 25 147.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "R12" (at 25 142.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "100k" (at 25 147.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 25 145 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 25 145 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R12") (unit 1))))
@@ -2326,58 +5717,58 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000025")
-		(property "Reference" "C1" (at 50 142.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "0.47n" (at 50 147.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "C1" (at 50 142.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "0.47n" (at 50 147.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 50 145 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 50 145 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "C1") (unit 1))))
 	)
 	(symbol
 		(lib_id "Device:R_Potentiometer")
-		(at 30 165 0)
+		(at 30 175 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000026")
-		(property "Reference" "RV1" (at 30 162.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "1k" (at 30 167.5 0) (effects (font (size 1.27 1.27))))
-		(property "Footprint" "" (at 30 165 0) (effects (font (size 1.27 1.27)) (hide yes)))
-		(property "Datasheet" "~" (at 30 165 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Reference" "RV1" (at 30 172.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "1k" (at 30 177.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 30 175 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 30 175 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "RV1") (unit 1))))
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 45 165 0)
+		(at 45 175 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000027")
-		(property "Reference" "R13" (at 45 162.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "39k" (at 45 167.5 0) (effects (font (size 1.27 1.27))))
-		(property "Footprint" "" (at 45 165 0) (effects (font (size 1.27 1.27)) (hide yes)))
-		(property "Datasheet" "~" (at 45 165 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Reference" "R13" (at 45 172.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "39k" (at 45 177.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 45 175 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 45 175 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R13") (unit 1))))
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 55 165 0)
+		(at 55 175 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000028")
-		(property "Reference" "R14" (at 55 162.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "10k" (at 55 167.5 0) (effects (font (size 1.27 1.27))))
-		(property "Footprint" "" (at 55 165 0) (effects (font (size 1.27 1.27)) (hide yes)))
-		(property "Datasheet" "~" (at 55 165 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Reference" "R14" (at 55 172.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "10k" (at 55 177.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 55 175 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 55 175 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R14") (unit 1))))
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 65 165 0)
+		(at 65 175 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000029")
-		(property "Reference" "R15" (at 65 162.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "10k" (at 65 167.5 0) (effects (font (size 1.27 1.27))))
-		(property "Footprint" "" (at 65 165 0) (effects (font (size 1.27 1.27)) (hide yes)))
-		(property "Datasheet" "~" (at 65 165 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Reference" "R15" (at 65 172.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "10k" (at 65 177.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 65 175 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 65 175 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R15") (unit 1))))
 	)
 	(symbol
@@ -2386,8 +5777,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000030")
-		(property "Reference" "C2" (at 130 37.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "3.3u" (at 130 42.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "C2" (at 130 37.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "3.3u" (at 130 42.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 130 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 130 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "C2") (unit 1))))
@@ -2398,8 +5789,8 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000031")
-		(property "Reference" "D3" (at 145 27.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "36V" (at 145 32.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "D3" (at 145 27.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "36V" (at 145 32.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 145 30 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 145 30 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "D3") (unit 1))))
@@ -2410,11 +5801,479 @@
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000032")
-		(property "Reference" "D4" (at 145 47.5 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "36V" (at 145 52.5 0) (effects (font (size 1.27 1.27))))
+		(property "Reference" "D4" (at 145 47.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "36V" (at 145 52.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "" (at 145 50 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 145 50 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "D4") (unit 1))))
+	)
+	(symbol
+		(lib_id "74xx:74HC04")
+		(at 200 40 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000033")
+		(property "Reference" "U1" (at 200 37.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC04" (at 200 42.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 200 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 200 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U1") (unit 1))))
+	)
+	(symbol
+		(lib_id "74xx:74HC04")
+		(at 200 70 0)
+		(unit 2)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000034")
+		(property "Reference" "U1" (at 200 67.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC04" (at 200 72.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 200 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 200 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U1") (unit 2))))
+	)
+	(symbol
+		(lib_id "74xx:74HC04")
+		(at 200 100 0)
+		(unit 3)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000035")
+		(property "Reference" "U1" (at 200 97.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC04" (at 200 102.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 200 100 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 200 100 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U1") (unit 3))))
+	)
+	(symbol
+		(lib_id "74xx:74HC04")
+		(at 235 40 0)
+		(unit 4)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000036")
+		(property "Reference" "U1" (at 235 37.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC04" (at 235 42.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 235 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 235 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U1") (unit 4))))
+	)
+	(symbol
+		(lib_id "74xx:74HC04")
+		(at 235 70 0)
+		(unit 5)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000037")
+		(property "Reference" "U1" (at 235 67.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC04" (at 235 72.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 235 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 235 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U1") (unit 5))))
+	)
+	(symbol
+		(lib_id "74xx:74HC04")
+		(at 235 100 0)
+		(unit 6)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000038")
+		(property "Reference" "U1" (at 235 97.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC04" (at 235 102.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 235 100 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 235 100 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U1") (unit 6))))
+	)
+	(symbol
+		(lib_id "74xx:74HC04")
+		(at 200 75 0)
+		(unit 7)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000039")
+		(property "Reference" "U1" (at 200 72.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC04" (at 200 77.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 200 75 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 200 75 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U1") (unit 7))))
+	)
+	(symbol
+		(lib_id "74xx:74LS08")
+		(at 200 160 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000040")
+		(property "Reference" "U2" (at 200 157.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC08" (at 200 162.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 200 160 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 200 160 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U2") (unit 1))))
+	)
+	(symbol
+		(lib_id "74xx:74LS08")
+		(at 230 160 0)
+		(unit 2)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000041")
+		(property "Reference" "U2" (at 230 157.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC08" (at 230 162.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 230 160 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 230 160 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U2") (unit 2))))
+	)
+	(symbol
+		(lib_id "74xx:74LS08")
+		(at 200 190 0)
+		(unit 3)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000042")
+		(property "Reference" "U2" (at 200 187.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC08" (at 200 192.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 200 190 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 200 190 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U2") (unit 3))))
+	)
+	(symbol
+		(lib_id "74xx:74LS08")
+		(at 230 190 0)
+		(unit 4)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000043")
+		(property "Reference" "U2" (at 230 187.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC08" (at 230 192.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 230 190 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 230 190 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U2") (unit 4))))
+	)
+	(symbol
+		(lib_id "74xx:74LS08")
+		(at 200 195 0)
+		(unit 5)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000044")
+		(property "Reference" "U2" (at 200 192.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC08" (at 200 197.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 200 195 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 200 195 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U2") (unit 5))))
+	)
+	(symbol
+		(lib_id "Comparator:LM393")
+		(at 470 150 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000045")
+		(property "Reference" "U4" (at 470 147.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "LM393" (at 470 152.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 470 150 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 470 150 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U4") (unit 1))))
+	)
+	(symbol
+		(lib_id "Comparator:LM393")
+		(at 470 200 0)
+		(unit 2)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000046")
+		(property "Reference" "U4" (at 470 197.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "LM393" (at 470 202.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 470 200 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 470 200 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U4") (unit 2))))
+	)
+	(symbol
+		(lib_id "Comparator:LM393")
+		(at 470 185 0)
+		(unit 3)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000047")
+		(property "Reference" "U4" (at 470 182.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "LM393" (at 470 187.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 470 185 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 470 185 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U4") (unit 3))))
+	)
+	(symbol
+		(lib_id "74xx:74HC00")
+		(at 270 40 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000048")
+		(property "Reference" "U5" (at 270 37.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC00" (at 270 42.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 270 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 270 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U5") (unit 1))))
+	)
+	(symbol
+		(lib_id "74xx:74HC00")
+		(at 300 40 0)
+		(unit 2)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000049")
+		(property "Reference" "U5" (at 300 37.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC00" (at 300 42.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 300 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 300 40 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U5") (unit 2))))
+	)
+	(symbol
+		(lib_id "74xx:74HC00")
+		(at 270 70 0)
+		(unit 3)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000050")
+		(property "Reference" "U5" (at 270 67.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC00" (at 270 72.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 270 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 270 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U5") (unit 3))))
+	)
+	(symbol
+		(lib_id "74xx:74HC00")
+		(at 300 70 0)
+		(unit 4)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000051")
+		(property "Reference" "U5" (at 300 67.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC00" (at 300 72.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 300 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 300 70 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U5") (unit 4))))
+	)
+	(symbol
+		(lib_id "74xx:74HC00")
+		(at 270 75 0)
+		(unit 5)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000052")
+		(property "Reference" "U5" (at 270 72.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC00" (at 270 77.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 270 75 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 270 75 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U5") (unit 5))))
+	)
+	(symbol
+		(lib_id "74xx:74LS08")
+		(at 270 160 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000053")
+		(property "Reference" "U6" (at 270 157.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC08" (at 270 162.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 270 160 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 270 160 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U6") (unit 1))))
+	)
+	(symbol
+		(lib_id "74xx:74LS08")
+		(at 300 160 0)
+		(unit 2)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000054")
+		(property "Reference" "U6" (at 300 157.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC08" (at 300 162.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 300 160 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 300 160 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U6") (unit 2))))
+	)
+	(symbol
+		(lib_id "74xx:74LS08")
+		(at 270 190 0)
+		(unit 3)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000055")
+		(property "Reference" "U6" (at 270 187.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC08" (at 270 192.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 270 190 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 270 190 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U6") (unit 3))))
+	)
+	(symbol
+		(lib_id "74xx:74LS08")
+		(at 300 190 0)
+		(unit 4)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000056")
+		(property "Reference" "U6" (at 300 187.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC08" (at 300 192.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 300 190 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 300 190 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U6") (unit 4))))
+	)
+	(symbol
+		(lib_id "74xx:74LS08")
+		(at 270 195 0)
+		(unit 5)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000057")
+		(property "Reference" "U6" (at 270 192.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "SN74HC08" (at 270 197.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 270 195 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 270 195 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U6") (unit 5))))
+	)
+	(symbol
+		(lib_id "Reference_Voltage:TL431LP")
+		(at 270 300 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000058")
+		(property "Reference" "U7" (at 270 297.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "TL431" (at 270 302.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 270 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 270 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U7") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 250 250 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000059")
+		(property "Reference" "R16" (at 250 247.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "10k" (at 250 252.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 250 250 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 250 250 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R16") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 250 320 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000060")
+		(property "Reference" "R17" (at 250 317.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "39k" (at 250 322.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 250 320 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 250 320 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R17") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 265 320 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000061")
+		(property "Reference" "R18" (at 265 317.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "1k" (at 265 322.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 265 320 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 265 320 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R18") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 285 300 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000062")
+		(property "Reference" "R19" (at 285 297.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "10k" (at 285 302.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 285 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 285 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R19") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 250 340 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000063")
+		(property "Reference" "R20" (at 250 337.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "10k" (at 250 342.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 250 340 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 250 340 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R20") (unit 1))))
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x08")
+		(at 360 180 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000064")
+		(property "Reference" "J1" (at 360 177.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "CTRL" (at 360 182.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 360 180 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 360 180 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "J1") (unit 1))))
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 360 300 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000065")
+		(property "Reference" "J2" (at 360 297.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "ELECTRODE" (at 360 302.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 360 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 360 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "J2") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 185 60 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000066")
+		(property "Reference" "C3" (at 185 57.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "100n" (at 185 62.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 185 60 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 185 60 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "C3") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 185 105 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000067")
+		(property "Reference" "C4" (at 185 102.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "100n" (at 185 107.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 185 105 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 185 105 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "C4") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 320 60 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000068")
+		(property "Reference" "C5" (at 320 57.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "100n" (at 320 62.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 320 60 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 320 60 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "C5") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 320 105 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000069")
+		(property "Reference" "C6" (at 320 102.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "100n" (at 320 107.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 320 105 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 320 105 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "C6") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 185 150 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000070")
+		(property "Reference" "C7" (at 185 147.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "100n" (at 185 152.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 185 150 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 185 150 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "C7") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 185 180 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000071")
+		(property "Reference" "C8" (at 185 177.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "100n" (at 185 182.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "" (at 185 180 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 185 180 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "C8") (unit 1))))
 	)
 	(label "VS"
 		(at 62.54 45.08 0)
@@ -2446,360 +6305,810 @@
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700006")
 	)
-	(label "GND"
-		(at 37.54 45.08 0)
+	(label "VS"
+		(at 354.92 172.38 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700007")
 	)
 	(label "GND"
-		(at 37.54 75.08 0)
+		(at 37.54 45.08 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700008")
 	)
 	(label "GND"
-		(at 35.0 23.81 0)
+		(at 37.54 75.08 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700009")
 	)
 	(label "GND"
-		(at 35.0 98.81 0)
+		(at 35.0 23.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700010")
 	)
 	(label "GND"
-		(at 57.46 122.38 0)
+		(at 35.0 98.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700011")
 	)
 	(label "GND"
-		(at 95.0 153.81 0)
+		(at 57.46 122.38 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700012")
 	)
 	(label "GND"
-		(at 110.0 143.81 0)
+		(at 95.0 153.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700013")
 	)
 	(label "GND"
-		(at 37.54 135.08 0)
+		(at 110.0 143.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700014")
 	)
 	(label "GND"
-		(at 25.0 148.81 0)
+		(at 37.54 135.08 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700015")
 	)
 	(label "GND"
-		(at 50.0 148.81 0)
+		(at 25.0 148.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700016")
 	)
 	(label "GND"
-		(at 30.0 161.19 0)
+		(at 50.0 148.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700017")
 	)
 	(label "GND"
-		(at 30.0 168.81 0)
+		(at 30.0 178.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700018")
 	)
 	(label "GND"
-		(at 55.0 168.81 0)
+		(at 55.0 178.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700019")
 	)
-	(label "V12"
-		(at 57.46 137.62 0)
+	(label "GND"
+		(at 200.0 87.7 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700020")
 	)
-	(label "V5"
-		(at 135.0 101.19 0)
+	(label "GND"
+		(at 200.0 207.7 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700021")
+	)
+	(label "GND"
+		(at 227.38 40.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700022")
+	)
+	(label "GND"
+		(at 227.38 70.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700023")
+	)
+	(label "GND"
+		(at 227.38 100.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700024")
+	)
+	(label "GND"
+		(at 270.0 87.7 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700025")
+	)
+	(label "GND"
+		(at 270.0 207.7 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700026")
+	)
+	(label "GND"
+		(at 262.38 67.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700027")
+	)
+	(label "GND"
+		(at 262.38 72.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700028")
+	)
+	(label "GND"
+		(at 292.38 67.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700029")
+	)
+	(label "GND"
+		(at 292.38 72.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700030")
+	)
+	(label "GND"
+		(at 292.38 157.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700031")
+	)
+	(label "GND"
+		(at 292.38 162.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700032")
+	)
+	(label "GND"
+		(at 262.38 187.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700033")
+	)
+	(label "GND"
+		(at 262.38 192.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700034")
+	)
+	(label "GND"
+		(at 292.38 187.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700035")
+	)
+	(label "GND"
+		(at 292.38 192.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700036")
+	)
+	(label "GND"
+		(at 467.46 192.62 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700037")
+	)
+	(label "GND"
+		(at 462.38 197.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700038")
+	)
+	(label "GND"
+		(at 462.38 202.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700039")
+	)
+	(label "GND"
+		(at 267.46 300.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700040")
+	)
+	(label "GND"
+		(at 265.0 323.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700041")
+	)
+	(label "GND"
+		(at 354.92 180.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700042")
+	)
+	(label "GND"
+		(at 185.0 63.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700043")
+	)
+	(label "GND"
+		(at 185.0 108.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700044")
+	)
+	(label "GND"
+		(at 320.0 63.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700045")
+	)
+	(label "GND"
+		(at 320.0 108.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700046")
+	)
+	(label "GND"
+		(at 185.0 153.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700047")
+	)
+	(label "GND"
+		(at 185.0 183.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700048")
+	)
+	(label "+12V"
+		(at 57.46 137.62 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700049")
+	)
+	(label "+12V"
+		(at 354.92 174.92 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700050")
+	)
+	(label "+12V"
+		(at 185.0 176.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700051")
+	)
+	(label "+5V"
+		(at 354.92 177.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700052")
+	)
+	(label "+5V"
+		(at 200.0 62.3 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700053")
+	)
+	(label "+5V"
+		(at 200.0 182.3 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700054")
+	)
+	(label "+5V"
+		(at 270.0 62.3 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700055")
+	)
+	(label "+5V"
+		(at 270.0 182.3 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700056")
+	)
+	(label "+5V"
+		(at 467.46 177.38 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700057")
+	)
+	(label "+5V"
+		(at 250.0 246.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700058")
+	)
+	(label "+5V"
+		(at 285.0 296.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700059")
+	)
+	(label "+5V"
+		(at 250.0 336.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700060")
+	)
+	(label "+5V"
+		(at 30.0 171.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700061")
+	)
+	(label "+5V"
+		(at 185.0 56.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700062")
+	)
+	(label "+5V"
+		(at 185.0 101.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700063")
+	)
+	(label "+5V"
+		(at 320.0 56.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700064")
+	)
+	(label "+5V"
+		(at 320.0 101.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700065")
+	)
+	(label "+5V"
+		(at 185.0 146.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700066")
+	)
+	(label "VDDA"
+		(at 135.0 101.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700067")
+	)
+	(label "A1"
+		(at 207.62 190.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700068")
 	)
 	(label "A1"
 		(at 89.92 70.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700022")
+		(uuid "00000000-0000-0000-0000-000000700069")
 	)
 	(label "A1"
 		(at 25.0 36.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700023")
+		(uuid "00000000-0000-0000-0000-000000700070")
+	)
+	(label "A2"
+		(at 237.62 190.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700071")
 	)
 	(label "A2"
 		(at 89.92 40.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700024")
+		(uuid "00000000-0000-0000-0000-000000700072")
 	)
 	(label "A2"
 		(at 25.0 66.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700025")
+		(uuid "00000000-0000-0000-0000-000000700073")
 	)
 	(label "G1"
 		(at 54.92 40.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700026")
+		(uuid "00000000-0000-0000-0000-000000700074")
 	)
 	(label "G1"
 		(at 75.0 23.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700027")
+		(uuid "00000000-0000-0000-0000-000000700075")
 	)
 	(label "G1"
 		(at 71.19 30.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700028")
+		(uuid "00000000-0000-0000-0000-000000700076")
 	)
 	(label "G1"
 		(at 37.54 34.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700029")
+		(uuid "00000000-0000-0000-0000-000000700077")
 	)
 	(label "G2"
 		(at 54.92 70.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700030")
+		(uuid "00000000-0000-0000-0000-000000700078")
 	)
 	(label "G2"
 		(at 75.0 98.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700031")
+		(uuid "00000000-0000-0000-0000-000000700079")
 	)
 	(label "G2"
 		(at 71.19 85.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700032")
+		(uuid "00000000-0000-0000-0000-000000700080")
 	)
 	(label "G2"
 		(at 37.54 64.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700033")
+		(uuid "00000000-0000-0000-0000-000000700081")
 	)
 	(label "MID1"
 		(at 62.54 34.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700034")
+		(uuid "00000000-0000-0000-0000-000000700082")
 	)
 	(label "MID1"
 		(at 97.54 34.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700035")
+		(uuid "00000000-0000-0000-0000-000000700083")
 	)
 	(label "MID1"
 		(at 130.0 36.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700036")
+		(uuid "00000000-0000-0000-0000-000000700084")
 	)
 	(label "MID2"
 		(at 62.54 64.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700037")
+		(uuid "00000000-0000-0000-0000-000000700085")
 	)
 	(label "MID2"
 		(at 97.54 64.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700038")
+		(uuid "00000000-0000-0000-0000-000000700086")
 	)
 	(label "MID2"
 		(at 148.81 30.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700039")
+		(uuid "00000000-0000-0000-0000-000000700087")
 	)
 	(label "MID2"
 		(at 148.81 50.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700040")
+		(uuid "00000000-0000-0000-0000-000000700088")
+	)
+	(label "MID2"
+		(at 354.92 302.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700089")
 	)
 	(label "B"
 		(at 97.54 45.08 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700041")
+		(uuid "00000000-0000-0000-0000-000000700090")
 	)
 	(label "B"
 		(at 97.54 75.08 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700042")
+		(uuid "00000000-0000-0000-0000-000000700091")
 	)
 	(label "B"
 		(at 97.54 124.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700043")
+		(uuid "00000000-0000-0000-0000-000000700092")
 	)
 	(label "S"
 		(at 97.54 135.08 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700044")
+		(uuid "00000000-0000-0000-0000-000000700093")
 	)
 	(label "S"
 		(at 95.0 146.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700045")
+		(uuid "00000000-0000-0000-0000-000000700094")
 	)
 	(label "S"
 		(at 52.38 132.54 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700046")
+		(uuid "00000000-0000-0000-0000-000000700095")
 	)
 	(label "S"
 		(at 122.54 120.08 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700047")
+		(uuid "00000000-0000-0000-0000-000000700096")
+	)
+	(label "S"
+		(at 462.38 147.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700097")
 	)
 	(label "QG"
 		(at 89.92 130.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700048")
+		(uuid "00000000-0000-0000-0000-000000700098")
 	)
 	(label "QG"
 		(at 75.0 118.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700049")
+		(uuid "00000000-0000-0000-0000-000000700099")
 	)
 	(label "QG"
 		(at 110.0 136.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700050")
+		(uuid "00000000-0000-0000-0000-000000700100")
 	)
 	(label "OUT"
 		(at 67.62 130.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700051")
+		(uuid "00000000-0000-0000-0000-000000700101")
 	)
 	(label "OUT"
 		(at 75.0 111.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700052")
+		(uuid "00000000-0000-0000-0000-000000700102")
 	)
 	(label "INP"
 		(at 52.38 127.46 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700053")
+		(uuid "00000000-0000-0000-0000-000000700103")
 	)
 	(label "INP"
 		(at 37.54 124.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700054")
+		(uuid "00000000-0000-0000-0000-000000700104")
 	)
 	(label "INP"
-		(at 65.0 168.81 0)
+		(at 65.0 178.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700055")
+		(uuid "00000000-0000-0000-0000-000000700105")
 	)
 	(label "INP"
 		(at 50.0 141.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700056")
+		(uuid "00000000-0000-0000-0000-000000700106")
 	)
 	(label "LH1B"
 		(at 25.0 43.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700057")
+		(uuid "00000000-0000-0000-0000-000000700107")
 	)
 	(label "LH1B"
 		(at 29.92 40.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700058")
+		(uuid "00000000-0000-0000-0000-000000700108")
 	)
 	(label "LH1B"
 		(at 35.0 16.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700059")
+		(uuid "00000000-0000-0000-0000-000000700109")
 	)
 	(label "LH2B"
 		(at 25.0 73.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700060")
+		(uuid "00000000-0000-0000-0000-000000700110")
 	)
 	(label "LH2B"
 		(at 29.92 70.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700061")
+		(uuid "00000000-0000-0000-0000-000000700111")
 	)
 	(label "LH2B"
 		(at 35.0 91.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700062")
+		(uuid "00000000-0000-0000-0000-000000700112")
 	)
 	(label "ENB"
 		(at 25.0 126.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700063")
+		(uuid "00000000-0000-0000-0000-000000700113")
 	)
 	(label "ENB"
 		(at 114.92 115.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700064")
+		(uuid "00000000-0000-0000-0000-000000700114")
+	)
+	(label "ENB"
+		(at 207.62 100.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700115")
 	)
 	(label "QDB"
 		(at 29.92 130.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700065")
+		(uuid "00000000-0000-0000-0000-000000700116")
 	)
 	(label "QDB"
 		(at 25.0 133.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700066")
+		(uuid "00000000-0000-0000-0000-000000700117")
 	)
 	(label "QDB"
 		(at 25.0 141.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700067")
+		(uuid "00000000-0000-0000-0000-000000700118")
 	)
 	(label "VN"
-		(at 33.81 165.0 0)
+		(at 33.81 175.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700068")
+		(uuid "00000000-0000-0000-0000-000000700119")
 	)
 	(label "VN"
-		(at 45.0 161.19 0)
+		(at 45.0 171.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700069")
+		(uuid "00000000-0000-0000-0000-000000700120")
 	)
 	(label "VN2"
-		(at 45.0 168.81 0)
+		(at 45.0 178.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700070")
+		(uuid "00000000-0000-0000-0000-000000700121")
 	)
 	(label "VN2"
-		(at 55.0 161.19 0)
+		(at 55.0 171.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700071")
+		(uuid "00000000-0000-0000-0000-000000700122")
 	)
 	(label "VN2"
-		(at 65.0 161.19 0)
+		(at 65.0 171.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700072")
+		(uuid "00000000-0000-0000-0000-000000700123")
 	)
 	(label "EL1"
 		(at 130.0 43.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700073")
+		(uuid "00000000-0000-0000-0000-000000700124")
 	)
 	(label "EL1"
 		(at 141.19 30.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700074")
+		(uuid "00000000-0000-0000-0000-000000700125")
 	)
 	(label "EL1"
 		(at 141.19 50.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700075")
+		(uuid "00000000-0000-0000-0000-000000700126")
+	)
+	(label "EL1"
+		(at 354.92 300.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700127")
 	)
 	(label "AWD"
 		(at 135.0 108.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700076")
+		(uuid "00000000-0000-0000-0000-000000700128")
 	)
 	(label "AWD"
 		(at 122.54 109.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700077")
+		(uuid "00000000-0000-0000-0000-000000700129")
+	)
+	(label "IN1"
+		(at 354.92 182.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700130")
+	)
+	(label "IN1"
+		(at 192.38 40.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700131")
+	)
+	(label "IN1"
+		(at 192.38 162.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700132")
+	)
+	(label "IN2"
+		(at 354.92 185.08 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700133")
+	)
+	(label "IN2"
+		(at 192.38 70.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700134")
+	)
+	(label "IN2"
+		(at 222.38 162.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700135")
+	)
+	(label "IN1B"
+		(at 207.62 40.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700136")
+	)
+	(label "IN1B"
+		(at 222.38 192.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700137")
+	)
+	(label "IN2B"
+		(at 207.62 70.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700138")
+	)
+	(label "IN2B"
+		(at 192.38 192.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700139")
+	)
+	(label "N1"
+		(at 207.62 160.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700140")
+	)
+	(label "N1"
+		(at 192.38 187.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700141")
+	)
+	(label "N2"
+		(at 237.62 160.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700142")
+	)
+	(label "N2"
+		(at 222.38 187.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700143")
+	)
+	(label "EN_MCU"
+		(at 354.92 187.62 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700144")
+	)
+	(label "EN_MCU"
+		(at 262.38 157.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700145")
+	)
+	(label "EN_SAFE"
+		(at 277.62 40.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700146")
+	)
+	(label "EN_SAFE"
+		(at 292.38 37.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700147")
+	)
+	(label "EN_SAFE"
+		(at 262.38 162.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700148")
+	)
+	(label "EN_OUT"
+		(at 277.62 160.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700149")
+	)
+	(label "EN_OUT"
+		(at 192.38 100.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700150")
+	)
+	(label "EN_OUT"
+		(at 192.38 157.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700151")
+	)
+	(label "EN_OUT"
+		(at 222.38 157.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700152")
+	)
+	(label "TRIP_CMP"
+		(at 477.62 150.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700153")
+	)
+	(label "TRIP_CMP"
+		(at 250.0 253.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700154")
+	)
+	(label "TRIP_CMP"
+		(at 262.38 37.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700155")
+	)
+	(label "QLB"
+		(at 307.62 40.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700156")
+	)
+	(label "QLB"
+		(at 262.38 42.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700157")
+	)
+	(label "TRIP_RST"
+		(at 292.38 42.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700158")
+	)
+	(label "TRIP_RST"
+		(at 354.92 190.16 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700159")
+	)
+	(label "TRIP_RST"
+		(at 250.0 343.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700160")
+	)
+	(label "VREF60"
+		(at 462.38 152.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700161")
+	)
+	(label "VREF60"
+		(at 250.0 323.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700162")
+	)
+	(label "VREF60"
+		(at 265.0 316.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700163")
+	)
+	(label "TL_K"
+		(at 270.0 297.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700164")
+	)
+	(label "TL_K"
+		(at 272.54 300.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700165")
+	)
+	(label "TL_K"
+		(at 285.0 303.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700166")
+	)
+	(label "TL_K"
+		(at 250.0 316.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700167")
 	)
 	(sheet_instances
 		(path "/" (page "1"))
