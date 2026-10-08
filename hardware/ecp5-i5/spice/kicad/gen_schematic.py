@@ -138,7 +138,7 @@ FP = {
  "U1":"Package_DIP:DIP-14_W7.62mm","U2":"Package_DIP:DIP-14_W7.62mm",
  "U5":"Package_DIP:DIP-14_W7.62mm","U6":"Package_DIP:DIP-14_W7.62mm",
  "J1":"Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical",
- "J2":"TerminalBlock:TerminalBlock_bornier-2_P5.08mm",
+ "J2":"TerminalBlock:TerminalBlock_MaiXu_MX126-5.0-02P_1x02_P5.00mm",
  "RV1":"Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical",
  "R9":"Resistor_SMD:R_1206_3216Metric",
  "C2":"Capacitor_THT:C_Rect_L7.0mm_W2.5mm_P5.00mm",

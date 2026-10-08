@@ -6199,7 +6199,7 @@
 		(uuid "00000000-0000-0000-0000-000000000065")
 		(property "Reference" "J2" (at 360 297.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "ELECTRODE" (at 360 302.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
-		(property "Footprint" "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" (at 360 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "TerminalBlock:TerminalBlock_MaiXu_MX126-5.0-02P_1x02_P5.00mm" (at 360 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 360 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "J2") (unit 1))))
 	)
