@@ -58,7 +58,7 @@ def pins_units(lib, name):
 
 def U_(n): return "00000000-0000-0000-0000-%012d" % n
 
-def place(n, ref, lib, name, val, unit, x, y):
+def place(n, ref, lib, name, val, unit, x, y, fp):
     return f'''\t(symbol
 \t\t(lib_id "{lib}:{name}")
 \t\t(at {x} {y} 0)
@@ -67,7 +67,7 @@ def place(n, ref, lib, name, val, unit, x, y):
 \t\t(uuid "{U_(n)}")
 \t\t(property "Reference" "{ref}" (at {x} {y-2.5} 0) (effects (font (size 1.27 1.27)) (hide yes)))
 \t\t(property "Value" "{val}" (at {x} {y+2.5} 0) (effects (font (size 1.27 1.27)) (hide yes)))
-\t\t(property "Footprint" "" (at {x} {y} 0) (effects (font (size 1.27 1.27)) (hide yes)))
+\t\t(property "Footprint" "{fp}" (at {x} {y} 0) (effects (font (size 1.27 1.27)) (hide yes)))
 \t\t(property "Datasheet" "~" (at {x} {y} 0) (effects (font (size 1.27 1.27)) (hide yes)))
 \t\t(instances (project "feelings" (path "/{U_(1)}" (reference "{ref}") (unit {unit}))))
 \t)'''
@@ -127,6 +127,29 @@ UNITS = {
 URES = {}
 for _c in COMPS:
     URES[_c[0]] = _c[4] if _c[4] is not None else list(UNITS[_c[0]])
+
+FP = {
+ "Q1":"Package_TO_SOT_THT:TO-92_Inline","Q2":"Package_TO_SOT_THT:TO-92_Inline",
+ "Q3":"Package_TO_SOT_THT:TO-92_Inline","Q4":"Package_TO_SOT_THT:TO-92_Inline",
+ "Q5":"Package_TO_SOT_THT:TO-92_Inline","Q6":"Package_TO_SOT_THT:TO-92_Inline",
+ "Q7":"Package_TO_SOT_THT:TO-92_Inline","Q8":"Package_TO_SOT_THT:TO-92_Inline",
+ "Q9":"Package_TO_SOT_SMD:SOT-23","U3":"Package_TO_SOT_SMD:SOT-23-5",
+ "U4":"Package_SO:SOIC-8_3.9x4.9mm_P1.27mm","U7":"Package_TO_SOT_SMD:SOT-23",
+ "U1":"Package_DIP:DIP-14_W7.62mm","U2":"Package_DIP:DIP-14_W7.62mm",
+ "U5":"Package_DIP:DIP-14_W7.62mm","U6":"Package_DIP:DIP-14_W7.62mm",
+ "J1":"Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical",
+ "J2":"TerminalBlock:TerminalBlock_bornier-2_P5.08mm",
+ "RV1":"Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical",
+ "R9":"Resistor_SMD:R_1206_3216Metric",
+ "C2":"Capacitor_THT:C_Rect_L7.0mm_W2.5mm_P5.00mm",
+ "D1":"Diode_SMD:D_SOD-123","D2":"Diode_SMD:D_SOD-123",
+ "D3":"Diode_SMD:D_SMA","D4":"Diode_SMD:D_SMA",
+}
+def fp_of(ref):
+    if ref in FP: return FP[ref]
+    if ref and ref[0]=="R": return "Resistor_SMD:R_0805_2012Metric"
+    if ref and ref[0]=="C": return "Capacitor_SMD:C_0603_1608Metric"
+    return ""
 
 NETS = {
  "VS":   [("Q1","3"),("Q2","3"),("R1","1"),("R2","1"),("D1","2"),("D2","2"),("J1","1")],
@@ -191,7 +214,7 @@ def build(path):
             units = units + [(maxu, units[0][1], units[0][2] + 35)]
         for unit, x, y in units:
             n += 1
-            body += place(n, ref, lib, nm, val, unit, x, y) + "\n"
+            body += place(n, ref, lib, nm, val, unit, x, y, fp_of(ref)) + "\n"
             pins = pu.get(unit, {})
             for pin, (px, py) in pins.items():
                 pincoord[(ref, pin)] = (round(x+px, 3), round(y-py, 3))
