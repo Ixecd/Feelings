@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "/Users/qc/Feelings/hardware/ecp5-i5/spice/kicad/t1_frontend.kicad_sch")
-		(date "2026-10-08T20:11:55")
+		(date "2026-10-11T11:28:18")
 		(tool "Eeschema 10.0.3")
 		(sheet
 			(number "1")
@@ -201,7 +201,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000066")
+			(tstamps "00000000-0000-0000-0000-000000000074")
 			(units
 				(unit
 					(name "A")
@@ -255,7 +255,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000067")
+			(tstamps "00000000-0000-0000-0000-000000000075")
 			(units
 				(unit
 					(name "A")
@@ -309,7 +309,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000068")
+			(tstamps "00000000-0000-0000-0000-000000000076")
 			(units
 				(unit
 					(name "A")
@@ -363,7 +363,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000069")
+			(tstamps "00000000-0000-0000-0000-000000000077")
 			(units
 				(unit
 					(name "A")
@@ -417,7 +417,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000070")
+			(tstamps "00000000-0000-0000-0000-000000000078")
 			(units
 				(unit
 					(name "A")
@@ -471,7 +471,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000071")
+			(tstamps "00000000-0000-0000-0000-000000000079")
 			(units
 				(unit
 					(name "A")
@@ -741,7 +741,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000064")
+			(tstamps "00000000-0000-0000-0000-000000000072")
 			(units
 				(unit
 					(name "A")
@@ -813,7 +813,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000065")
+			(tstamps "00000000-0000-0000-0000-000000000073")
 			(units
 				(unit
 					(name "A")
@@ -823,6 +823,63 @@
 						)
 						(pin
 							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J3")
+			(value "VZ_OUT")
+			(footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical")
+			(datasheet "~")
+			(fields
+				(field
+					(name "Footprint") "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical")
+				(field
+					(name "Datasheet") "~")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Connector_Generic")
+				(part "Conn_01x03")
+				(description "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)")
+			)
+			(property
+				(name "Sheetname")
+				(value "")
+			)
+			(property
+				(name "Sheetfile")
+				(value "t1_frontend.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "connector")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Connector*:*_1x??_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "00000000-0000-0000-0000-000000000040")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
 						)
 					)
 				)
@@ -1651,7 +1708,7 @@
 		)
 		(comp
 			(ref "R7")
-			(value "1k")
+			(value "100R")
 			(footprint "Resistor_SMD:R_0805_2012Metric")
 			(datasheet "~")
 			(fields
@@ -2174,7 +2231,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000059")
+			(tstamps "00000000-0000-0000-0000-000000000067")
 			(units
 				(unit
 					(name "A")
@@ -2228,7 +2285,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000060")
+			(tstamps "00000000-0000-0000-0000-000000000068")
 			(units
 				(unit
 					(name "A")
@@ -2282,7 +2339,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000061")
+			(tstamps "00000000-0000-0000-0000-000000000069")
 			(units
 				(unit
 					(name "A")
@@ -2336,7 +2393,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000062")
+			(tstamps "00000000-0000-0000-0000-000000000070")
 			(units
 				(unit
 					(name "A")
@@ -2390,7 +2447,331 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000063")
+			(tstamps "00000000-0000-0000-0000-000000000071")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R21")
+			(value "22R")
+			(footprint "Resistor_SMD:R_0805_2012Metric")
+			(datasheet "~")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+				(field
+					(name "Datasheet") "~")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "Sheetname")
+				(value "")
+			)
+			(property
+				(name "Sheetfile")
+				(value "t1_frontend.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "00000000-0000-0000-0000-000000000033")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R22")
+			(value "22R")
+			(footprint "Resistor_SMD:R_0805_2012Metric")
+			(datasheet "~")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+				(field
+					(name "Datasheet") "~")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "Sheetname")
+				(value "")
+			)
+			(property
+				(name "Sheetfile")
+				(value "t1_frontend.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "00000000-0000-0000-0000-000000000034")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R23")
+			(value "10k")
+			(footprint "Resistor_SMD:R_0805_2012Metric")
+			(datasheet "~")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+				(field
+					(name "Datasheet") "~")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "Sheetname")
+				(value "")
+			)
+			(property
+				(name "Sheetfile")
+				(value "t1_frontend.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "00000000-0000-0000-0000-000000000035")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R24")
+			(value "10k")
+			(footprint "Resistor_SMD:R_0805_2012Metric")
+			(datasheet "~")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+				(field
+					(name "Datasheet") "~")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "Sheetname")
+				(value "")
+			)
+			(property
+				(name "Sheetfile")
+				(value "t1_frontend.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "00000000-0000-0000-0000-000000000036")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R25")
+			(value "1M")
+			(footprint "Resistor_SMD:R_0805_2012Metric")
+			(datasheet "~")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+				(field
+					(name "Datasheet") "~")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "Sheetname")
+				(value "")
+			)
+			(property
+				(name "Sheetfile")
+				(value "t1_frontend.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "00000000-0000-0000-0000-000000000037")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R26")
+			(value "51k")
+			(footprint "Resistor_SMD:R_0805_2012Metric")
+			(datasheet "~")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+				(field
+					(name "Datasheet") "~")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "Sheetname")
+				(value "")
+			)
+			(property
+				(name "Sheetfile")
+				(value "t1_frontend.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "00000000-0000-0000-0000-000000000038")
 			(units
 				(unit
 					(name "A")
@@ -2501,10 +2882,10 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000039" "00000000-0000-0000-0000-000000000034"
-				"00000000-0000-0000-0000-000000000035" "00000000-0000-0000-0000-000000000037"
-				"00000000-0000-0000-0000-000000000038" "00000000-0000-0000-0000-000000000036"
-				"00000000-0000-0000-0000-000000000033"
+			(tstamps "00000000-0000-0000-0000-000000000046" "00000000-0000-0000-0000-000000000042"
+				"00000000-0000-0000-0000-000000000043" "00000000-0000-0000-0000-000000000047"
+				"00000000-0000-0000-0000-000000000044" "00000000-0000-0000-0000-000000000045"
+				"00000000-0000-0000-0000-000000000041"
 			)
 			(units
 				(unit
@@ -2625,9 +3006,9 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000042" "00000000-0000-0000-0000-000000000041"
-				"00000000-0000-0000-0000-000000000044" "00000000-0000-0000-0000-000000000043"
-				"00000000-0000-0000-0000-000000000040"
+			(tstamps "00000000-0000-0000-0000-000000000051" "00000000-0000-0000-0000-000000000050"
+				"00000000-0000-0000-0000-000000000052" "00000000-0000-0000-0000-000000000049"
+				"00000000-0000-0000-0000-000000000048"
 			)
 			(units
 				(unit
@@ -2801,8 +3182,8 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000047" "00000000-0000-0000-0000-000000000046"
-				"00000000-0000-0000-0000-000000000045"
+			(tstamps "00000000-0000-0000-0000-000000000055" "00000000-0000-0000-0000-000000000054"
+				"00000000-0000-0000-0000-000000000053"
 			)
 			(units
 				(unit
@@ -2885,9 +3266,9 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000051" "00000000-0000-0000-0000-000000000050"
-				"00000000-0000-0000-0000-000000000052" "00000000-0000-0000-0000-000000000049"
-				"00000000-0000-0000-0000-000000000048"
+			(tstamps "00000000-0000-0000-0000-000000000060" "00000000-0000-0000-0000-000000000057"
+				"00000000-0000-0000-0000-000000000058" "00000000-0000-0000-0000-000000000059"
+				"00000000-0000-0000-0000-000000000056"
 			)
 			(units
 				(unit
@@ -2998,9 +3379,9 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000056" "00000000-0000-0000-0000-000000000055"
-				"00000000-0000-0000-0000-000000000054" "00000000-0000-0000-0000-000000000057"
-				"00000000-0000-0000-0000-000000000053"
+			(tstamps "00000000-0000-0000-0000-000000000065" "00000000-0000-0000-0000-000000000064"
+				"00000000-0000-0000-0000-000000000063" "00000000-0000-0000-0000-000000000062"
+				"00000000-0000-0000-0000-000000000061"
 			)
 			(units
 				(unit
@@ -3111,7 +3492,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "00000000-0000-0000-0000-000000000058")
+			(tstamps "00000000-0000-0000-0000-000000000066")
 			(units
 				(unit
 					(name "A")
@@ -3124,6 +3505,78 @@
 						)
 						(pin
 							(num "3")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U8")
+			(value "AMC1351")
+			(footprint "Package_SO:SOIC-8_7.5x5.85mm_P1.27mm")
+			(datasheet "~")
+			(fields
+				(field
+					(name "Footprint") "Package_SO:SOIC-8_7.5x5.85mm_P1.27mm")
+				(field
+					(name "Datasheet") "~")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Isolator_Analog")
+				(part "AMC1351DWV")
+				(description "Precision Reinforced Isolated Amplifier, 5V Input, 300 kHz Bandwidth, 0.4V/V, 0.2% Gain Tolerance, Differential Output, SOIC-8")
+			)
+			(property
+				(name "Sheetname")
+				(value "")
+			)
+			(property
+				(name "Sheetfile")
+				(value "t1_frontend.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "Isolation-Amplifer")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "SOIC*7.5x5.85mm*P1.27mm*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "00000000-0000-0000-0000-000000000039")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "6")
 						)
 					)
 				)
@@ -3570,6 +4023,45 @@
 		)
 		(libpart
 			(lib "Connector_Generic")
+			(part "Conn_01x03")
+			(description "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)")
+			(footprints
+				(fp "Connector*:*_1x??_*")
+			)
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "Conn_01x03")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "Pin_1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "Pin_2")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "Pin_3")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Connector_Generic")
 			(part "Conn_01x08")
 			(description "Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)")
 			(footprints
@@ -3779,6 +4271,69 @@
 					(num "3")
 					(name "3")
 					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Isolator_Analog")
+			(part "AMC1351DWV")
+			(description "Precision Reinforced Isolated Amplifier, 5V Input, 300 kHz Bandwidth, 0.4V/V, 0.2% Gain Tolerance, Differential Output, SOIC-8")
+			(docs "https://www.ti.com/lit/gpn/AMC1351")
+			(footprints
+				(fp "SOIC*7.5x5.85mm*P1.27mm*")
+			)
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "AMC1351DWV")
+				(field
+					(name "Footprint") "Package_SO:SOIC-8_7.5x5.85mm_P1.27mm")
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/gpn/AMC1351")
+				(field
+					(name "Description") "Precision Reinforced Isolated Amplifier, 5V Input, 300 kHz Bandwidth, 0.4V/V, 0.2% Gain Tolerance, Differential Output, SOIC-8")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VDD1")
+					(type "power_in")
+				)
+				(pin
+					(num "2")
+					(name "IN")
+					(type "input")
+				)
+				(pin
+					(num "3")
+					(name "GND1")
+					(type "power_in")
+				)
+				(pin
+					(num "4")
+					(name "GND1")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "GND2")
+					(type "power_in")
+				)
+				(pin
+					(num "6")
+					(name "OUTN")
+					(type "output")
+				)
+				(pin
+					(num "7")
+					(name "OUTP")
+					(type "output")
+				)
+				(pin
+					(num "8")
+					(name "VDD2")
+					(type "power_in")
 				)
 			)
 		)
@@ -3995,6 +4550,10 @@
 			(uri "${KICAD10_SYMBOL_DIR}/Device.kicad_sym")
 		)
 		(library
+			(logical "Isolator_Analog")
+			(uri "${KICAD10_SYMBOL_DIR}/Isolator_Analog.kicad_sym")
+		)
+		(library
 			(logical "Reference_Voltage")
 			(uri "${KICAD10_SYMBOL_DIR}/Reference_Voltage.kicad_sym")
 		)
@@ -4094,6 +4653,12 @@
 				(pinfunction "VCC_14")
 				(pintype "power_in")
 			)
+			(node
+				(ref "U8")
+				(pin "1")
+				(pinfunction "VDD1_1")
+				(pintype "power_in")
+			)
 		)
 		(net
 			(code "2")
@@ -4122,10 +4687,9 @@
 			(name "/A1")
 			(class "Default")
 			(node
-				(ref "Q4")
-				(pin "2")
-				(pinfunction "G_2")
-				(pintype "input")
+				(ref "R21")
+				(pin "1")
+				(pintype "passive")
 			)
 			(node
 				(ref "R3")
@@ -4143,10 +4707,9 @@
 			(name "/A2")
 			(class "Default")
 			(node
-				(ref "Q3")
-				(pin "2")
-				(pinfunction "G_2")
-				(pintype "input")
+				(ref "R22")
+				(pin "1")
+				(pintype "passive")
 			)
 			(node
 				(ref "R4")
@@ -4223,6 +4786,11 @@
 				(ref "J2")
 				(pin "1")
 				(pinfunction "Pin_1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R25")
+				(pin "1")
 				(pintype "passive")
 			)
 		)
@@ -4410,6 +4978,12 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "J3")
+				(pin "3")
+				(pinfunction "Pin_3_3")
+				(pintype "passive")
+			)
+			(node
 				(ref "Q5")
 				(pin "1")
 				(pinfunction "E_1")
@@ -4439,6 +5013,16 @@
 			)
 			(node
 				(ref "R18")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R23")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R24")
 				(pin "2")
 				(pintype "passive")
 			)
@@ -4587,6 +5171,12 @@
 				(pinfunction "A_2")
 				(pintype "passive")
 			)
+			(node
+				(ref "U8")
+				(pin "5")
+				(pinfunction "GND2_5")
+				(pintype "power_in")
+			)
 		)
 		(net
 			(code "15")
@@ -4689,6 +5279,82 @@
 		)
 		(net
 			(code "20")
+			(name "/ISO_N")
+			(class "Default")
+			(node
+				(ref "J3")
+				(pin "2")
+				(pinfunction "Pin_2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U8")
+				(pin "6")
+				(pinfunction "OUTN_6")
+				(pintype "output")
+			)
+		)
+		(net
+			(code "21")
+			(name "/ISO_P")
+			(class "Default")
+			(node
+				(ref "J3")
+				(pin "1")
+				(pinfunction "Pin_1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U8")
+				(pin "7")
+				(pinfunction "OUTP_7")
+				(pintype "output")
+			)
+		)
+		(net
+			(code "22")
+			(name "/LG1")
+			(class "Default")
+			(node
+				(ref "Q3")
+				(pin "2")
+				(pinfunction "G_2")
+				(pintype "input")
+			)
+			(node
+				(ref "R22")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R23")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "23")
+			(name "/LG2")
+			(class "Default")
+			(node
+				(ref "Q4")
+				(pin "2")
+				(pinfunction "G_2")
+				(pintype "input")
+			)
+			(node
+				(ref "R21")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R24")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "24")
 			(name "/LH1B")
 			(class "Default")
 			(node
@@ -4709,7 +5375,7 @@
 			)
 		)
 		(net
-			(code "21")
+			(code "25")
 			(name "/LH2B")
 			(class "Default")
 			(node
@@ -4730,7 +5396,7 @@
 			)
 		)
 		(net
-			(code "22")
+			(code "26")
 			(name "/MID1")
 			(class "Default")
 			(node
@@ -4752,7 +5418,7 @@
 			)
 		)
 		(net
-			(code "23")
+			(code "27")
 			(name "/MID2")
 			(class "Default")
 			(node
@@ -4785,9 +5451,26 @@
 				(pinfunction "D_3")
 				(pintype "passive")
 			)
+			(node
+				(ref "R26")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U8")
+				(pin "3")
+				(pinfunction "GND1_3")
+				(pintype "power_in")
+			)
+			(node
+				(ref "U8")
+				(pin "4")
+				(pinfunction "GND1_4")
+				(pintype "passive")
+			)
 		)
 		(net
-			(code "24")
+			(code "28")
 			(name "/N1")
 			(class "Default")
 			(node
@@ -4802,7 +5485,7 @@
 			)
 		)
 		(net
-			(code "25")
+			(code "29")
 			(name "/N2")
 			(class "Default")
 			(node
@@ -4817,7 +5500,7 @@
 			)
 		)
 		(net
-			(code "26")
+			(code "30")
 			(name "/OUT")
 			(class "Default")
 			(node
@@ -4832,7 +5515,7 @@
 			)
 		)
 		(net
-			(code "27")
+			(code "31")
 			(name "/QDB")
 			(class "Default")
 			(node
@@ -4853,7 +5536,7 @@
 			)
 		)
 		(net
-			(code "28")
+			(code "32")
 			(name "/QG")
 			(class "Default")
 			(node
@@ -4874,7 +5557,7 @@
 			)
 		)
 		(net
-			(code "29")
+			(code "33")
 			(name "/QLB")
 			(class "Default")
 			(node
@@ -4889,7 +5572,7 @@
 			)
 		)
 		(net
-			(code "30")
+			(code "34")
 			(name "/S")
 			(class "Default")
 			(node
@@ -4923,7 +5606,7 @@
 			)
 		)
 		(net
-			(code "31")
+			(code "35")
 			(name "/TL_K")
 			(class "Default")
 			(node
@@ -4950,7 +5633,7 @@
 			)
 		)
 		(net
-			(code "32")
+			(code "36")
 			(name "/TRIP_CMP")
 			(class "Default")
 			(node
@@ -4970,7 +5653,7 @@
 			)
 		)
 		(net
-			(code "33")
+			(code "37")
 			(name "/TRIP_RST")
 			(class "Default")
 			(node
@@ -4991,7 +5674,7 @@
 			)
 		)
 		(net
-			(code "34")
+			(code "38")
 			(name "/VDDA")
 			(class "Default")
 			(node
@@ -4999,9 +5682,15 @@
 				(pin "1")
 				(pintype "passive")
 			)
+			(node
+				(ref "U8")
+				(pin "8")
+				(pinfunction "VDD2_8")
+				(pintype "power_in")
+			)
 		)
 		(net
-			(code "35")
+			(code "39")
 			(name "/VN")
 			(class "Default")
 			(node
@@ -5017,7 +5706,7 @@
 			)
 		)
 		(net
-			(code "36")
+			(code "40")
 			(name "/VN2")
 			(class "Default")
 			(node
@@ -5037,7 +5726,7 @@
 			)
 		)
 		(net
-			(code "37")
+			(code "41")
 			(name "/VREF60")
 			(class "Default")
 			(node
@@ -5058,7 +5747,7 @@
 			)
 		)
 		(net
-			(code "38")
+			(code "42")
 			(name "/VS")
 			(class "Default")
 			(node
@@ -5103,7 +5792,28 @@
 			)
 		)
 		(net
-			(code "39")
+			(code "43")
+			(name "/VZ")
+			(class "Default")
+			(node
+				(ref "R25")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R26")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U8")
+				(pin "2")
+				(pinfunction "IN_2")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "44")
 			(name "unconnected-(U1-Pad8)")
 			(class "Default")
 			(node
@@ -5113,7 +5823,7 @@
 			)
 		)
 		(net
-			(code "40")
+			(code "45")
 			(name "unconnected-(U1-Pad10)")
 			(class "Default")
 			(node
@@ -5123,7 +5833,7 @@
 			)
 		)
 		(net
-			(code "41")
+			(code "46")
 			(name "unconnected-(U1-Pad12)")
 			(class "Default")
 			(node
@@ -5133,7 +5843,7 @@
 			)
 		)
 		(net
-			(code "42")
+			(code "47")
 			(name "unconnected-(U4-Pad7)")
 			(class "Default")
 			(node
@@ -5143,7 +5853,7 @@
 			)
 		)
 		(net
-			(code "43")
+			(code "48")
 			(name "unconnected-(U5-Pad8)")
 			(class "Default")
 			(node
@@ -5153,7 +5863,7 @@
 			)
 		)
 		(net
-			(code "44")
+			(code "49")
 			(name "unconnected-(U5-Pad11)")
 			(class "Default")
 			(node
@@ -5163,7 +5873,7 @@
 			)
 		)
 		(net
-			(code "45")
+			(code "50")
 			(name "unconnected-(U6-Pad6)")
 			(class "Default")
 			(node
@@ -5173,7 +5883,7 @@
 			)
 		)
 		(net
-			(code "46")
+			(code "51")
 			(name "unconnected-(U6-Pad8)")
 			(class "Default")
 			(node
@@ -5183,7 +5893,7 @@
 			)
 		)
 		(net
-			(code "47")
+			(code "52")
 			(name "unconnected-(U6-Pad11)")
 			(class "Default")
 			(node

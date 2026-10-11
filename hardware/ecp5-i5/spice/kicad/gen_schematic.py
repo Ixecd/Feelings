@@ -9,6 +9,7 @@ SYMS = "/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols"
 LIBFILE = {"Device":"Device.kicad_sym","Transistor_FET":"Transistor_FET.kicad_sym",
            "Transistor_BJT":"Transistor_BJT.kicad_sym","Amplifier_Operational":"Amplifier_Operational.kicad_sym",
            "Comparator":"Comparator.kicad_sym","Reference_Voltage":"Reference_Voltage.kicad_sym",
+           "Isolator_Analog":"Isolator_Analog.kicad_sym",
            "74xx":"74xx.kicad_sym","Connector_Generic":"Connector_Generic.kicad_sym"}
 
 def _extract(lib, name):
@@ -94,13 +95,20 @@ COMPS = [
  ("U3","Amplifier_Operational","MCP6001R","OPA171",C((1,60,130))),
  ("Q7","Transistor_FET","2N7000","2N7000",C((1,95,130))),("Q8","Transistor_BJT","2N3904","2N3904",C((1,35,130))),
  ("Q9","Transistor_FET","2N7002","2N7002",C((1,120,115))),
- ("R7","Device","R","1k",C((1,75,115))),("R8","Device","R","100k",C((1,110,140))),
+ ("R7","Device","R","100R",C((1,75,115))),("R8","Device","R","100k",C((1,110,140))),
  ("R9","Device","R","100R",C((1,95,150))),("R10","Device","R","4.7k",C((1,135,105))),
  ("R11","Device","R","10k",C((1,25,130))),("R12","Device","R","100k",C((1,25,145))),
  ("C1","Device","C","0.47n",C((1,50,145))),
  ("RV1","Device","R_Potentiometer","1k",C((1,30,175))),
  ("R13","Device","R","39k",C((1,45,175))),("R14","Device","R","10k",C((1,55,175))),("R15","Device","R","10k",C((1,65,175))),
  ("C2","Device","C","3.3u",C((1,130,40))),("D3","Device","D_Zener","36V",C((1,145,30))),("D4","Device","D_Zener","36V",C((1,145,50))),
+ # --- low-side gate resistors + pulldowns ---
+ ("R21","Device","R","22R",C((1,50,40))),("R22","Device","R","22R",C((1,50,70))),
+ ("R23","Device","R","10k",C((1,45,55))),("R24","Device","R","10k",C((1,45,85))),
+ # --- interface voltage sense (electrode V -> isolated amp -> header) ---
+ ("R25","Device","R","1M",C((1,160,30))),("R26","Device","R","51k",C((1,160,60))),
+ ("U8","Isolator_Analog","AMC1351DWV","AMC1351",C((1,200,45))),
+ ("J3","Connector_Generic","Conn_01x03","VZ_OUT",C((1,360,270))),
  # logic (multi-unit)
  ("U1","74xx","74HC04","SN74HC04",None),               # 6 units, placed below
  ("U2","74xx","74LS08","SN74HC08",None),               # 4 units
@@ -130,16 +138,17 @@ for _c in COMPS:
 
 # ---- block-based re-layout (big spacing so the PCB drop is spread out) ----
 BLOCKS = {
- "bridge": ["Q5","Q1","Q3","Q6","Q2","Q4","R3","R5","R1","D1","R4","R6","R2","D2"],
+ "bridge": ["Q5","Q1","Q3","Q6","Q2","Q4","R3","R5","R1","D1","R4","R6","R2","D2","R21","R23","R22","R24"],
  "protect":["C2","D3","D4","J2"],
  "sink":   ["U3","Q7","Q8","Q9","R9","R7","R8","R10","R11","R12","C1","RV1","R13","R14","R15"],
  "logic":  ["U1","U2"],
  "safety": ["U4","U5","U6","U7","R16","R17","R18","R19","R20"],
- "io":     ["J1"],
+ "sense":  ["U8","R25","R26"],
+ "io":     ["J1","J3"],
  "decoup": ["C3","C4","C5","C6","C7","C8"],
 }
 BLOCK_POS = {"bridge":(80,80),"protect":(80,400),"sink":(480,80),"logic":(880,80),
-             "safety":(880,400),"io":(1200,80),"decoup":(1200,300)}
+             "safety":(880,400),"sense":(480,400),"io":(1200,80),"decoup":(1200,300)}
 _NC, _DX, _DY = 5, 50, 50
 def relayout():
     out = {}
@@ -171,6 +180,8 @@ FP = {
  "C2":"Capacitor_THT:C_Rect_L7.0mm_W2.5mm_P5.00mm",
  "D1":"Diode_SMD:D_SOD-123","D2":"Diode_SMD:D_SOD-123",
  "D3":"Diode_SMD:D_SMA","D4":"Diode_SMD:D_SMA",
+ "U8":"Package_SO:SOIC-8_7.5x5.85mm_P1.27mm",
+ "J3":"Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
 }
 def fp_of(ref):
     if ref in FP: return FP[ref]
@@ -186,18 +197,21 @@ NETS = {
           ("U5","7"),("U6","7"),("U5","9"),("U5","10"),("U5","12"),("U5","13"),
           ("U6","4"),("U6","5"),("U6","9"),("U6","10"),("U6","12"),("U6","13"),
           ("U4","4"),("U4","5"),("U4","6"),("U7","2"),("R18","2"),
-          ("J1","4"),("C3","2"),("C4","2"),("C5","2"),("C6","2"),("C7","2"),("C8","2")],
+          ("J1","4"),("C3","2"),("C4","2"),("C5","2"),("C6","2"),("C7","2"),("C8","2"),
+          ("R23","2"),("R24","2"),("U8","5"),("J3","3")],
  "+12V": [("U3","5"),("J1","2"),("C8","1")],
  "+5V":  [("J1","3"),("U1","14"),("U2","14"),("U5","14"),("U6","14"),("U4","8"),
           ("R16","1"),("R19","1"),("R20","1"),("RV1","1"),
-          ("C3","1"),("C4","1"),("C5","1"),("C6","1"),("C7","1")],
- "VDDA": [("R10","1")],
- "A1":   [("U2","8"),("Q4","2"),("R3","1")],
- "A2":   [("U2","11"),("Q3","2"),("R4","1")],
+          ("C3","1"),("C4","1"),("C5","1"),("C6","1"),("C7","1"),("U8","1")],
+ "VDDA": [("R10","1"),("U8","8")],
+ "A1":   [("U2","8"),("R3","1"),("R21","1")],
+ "A2":   [("U2","11"),("R4","1"),("R22","1")],
+ "LG1":  [("R22","2"),("Q3","2"),("R23","1")],
+ "LG2":  [("R21","2"),("Q4","2"),("R24","1")],
  "G1":   [("Q1","2"),("R1","2"),("D1","1"),("Q5","3")],
  "G2":   [("Q2","2"),("R2","2"),("D2","1"),("Q6","3")],
  "MID1": [("Q1","1"),("Q3","3"),("C2","1")],
- "MID2": [("Q2","1"),("Q4","3"),("D3","2"),("D4","2"),("J2","2")],
+ "MID2": [("Q2","1"),("Q4","3"),("D3","2"),("D4","2"),("J2","2"),("R26","2"),("U8","3"),("U8","4")],
  "B":    [("Q3","1"),("Q4","1"),("Q7","3")],
  "S":    [("Q7","1"),("R9","1"),("U3","4"),("Q9","2"),("U4","3")],
  "QG":   [("Q7","2"),("R7","2"),("R8","1")],
@@ -209,8 +223,11 @@ NETS = {
  "QDB":  [("Q8","2"),("R11","2"),("R12","1")],
  "VN":   [("RV1","2"),("R13","1")],
  "VN2":  [("R13","2"),("R14","1"),("R15","1")],
- "EL1":  [("C2","2"),("D3","1"),("D4","1"),("J2","1")],
+ "EL1":  [("C2","2"),("D3","1"),("D4","1"),("J2","1"),("R25","1")],
  "AWD":  [("R10","2"),("Q9","3")],
+ "VZ":   [("R25","2"),("R26","1"),("U8","2")],
+ "ISO_P":[("U8","7"),("J3","1")],
+ "ISO_N":[("U8","6"),("J3","2")],
  "IN1":  [("J1","5"),("U1","1"),("U2","2")],
  "IN2":  [("J1","6"),("U1","3"),("U2","5")],
  "IN1B": [("U1","2"),("U2","13")],

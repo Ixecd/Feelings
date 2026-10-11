@@ -2031,6 +2031,680 @@
 				)
 				(embedded_fonts no)
 			)
+		(symbol "Isolator_Analog:AMC1351DWV"
+				(pin_names
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "U"
+					(at -7.112 8.636 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "AMC1351DWV"
+					(at 9.144 8.636 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" "Package_SO:SOIC-8_7.5x5.85mm_P1.27mm"
+					(at 0 -20.574 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" "https://www.ti.com/lit/gpn/AMC1351"
+					(at 0 -24.892 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "Precision Reinforced Isolated Amplifier, 5V Input, 300 kHz Bandwidth, 0.4V/V, 0.2% Gain Tolerance, Differential Output, SOIC-8"
+					(at 0 -22.86 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "Isolation-Amplifer"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_fp_filters" "SOIC*7.5x5.85mm*P1.27mm*"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "AMC1351DWV_0_0"
+					(polyline
+						(pts
+							(xy -5.334 -5.08) (xy -5.334 -6.858) (xy -2.54 -6.858)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -4.318 -5.08) (xy -5.334 -5.08)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(circle
+						(center -2.54 -6.858)
+						(radius 0.1778)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type outline)
+						)
+					)
+				)
+				(symbol "AMC1351DWV_0_1"
+					(rectangle
+						(start -7.62 7.62)
+						(end 7.62 -7.62)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(polyline
+						(pts
+							(xy -7.62 0) (xy -5.842 0) (xy -5.842 5.08) (xy -4.318 5.08)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -4.318 -6.35) (xy -0.762 -2.794) (xy -0.762 2.794) (xy -4.318 6.35) (xy -4.318 -6.35)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -4.064 5.08) (xy -3.556 5.08)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -4.064 -5.08) (xy -3.556 -5.08)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -3.81 5.334) (xy -3.81 4.826)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -2.54 7.62) (xy -2.54 4.572)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -2.54 -7.62) (xy -2.54 -4.572)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -0.381 0.508) (xy 0.889 0.508) (xy 0.508 0.381) (xy 0.508 0.635) (xy 0.889 0.508)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy -0.381 -0.508) (xy 0.889 -0.508) (xy 0.508 -0.635) (xy 0.508 -0.381) (xy 0.889 -0.508)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 2.54 7.62) (xy 2.54 3.81)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 2.54 -7.62) (xy 2.54 -3.81)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 2.794 2.794) (xy 2.794 2.286)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 3.048 2.54) (xy 2.54 2.54)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 3.048 -2.54) (xy 2.54 -2.54)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 6.35 0) (xy 1.524 -4.826) (xy 1.524 4.826) (xy 6.35 0)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 7.62 2.54) (xy 3.81 2.54)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(polyline
+						(pts
+							(xy 7.62 -2.54) (xy 3.81 -2.54)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+				)
+				(symbol "AMC1351DWV_1_1"
+					(pin power_in line
+						(at -2.54 10.16 270)
+						(length 2.54)
+						(name "VDD1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin input line
+						(at -10.16 0 0)
+						(length 2.54)
+						(name "IN"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin power_in line
+						(at -2.54 -10.16 90)
+						(length 2.54)
+						(name "GND1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -2.54 -10.16 90)
+						(length 2.54)
+						(hide yes)
+						(name "GND1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "4"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin power_in line
+						(at 2.54 -10.16 90)
+						(length 2.54)
+						(name "GND2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "5"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output line
+						(at 10.16 -2.54 180)
+						(length 2.54)
+						(name "OUTN"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "6"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin output line
+						(at 10.16 2.54 180)
+						(length 2.54)
+						(name "OUTP"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "7"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin power_in line
+						(at 2.54 10.16 270)
+						(length 2.54)
+						(name "VDD2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "8"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+		(symbol "Connector_Generic:Conn_01x03"
+				(pin_names
+					(offset 1.016)
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "J"
+					(at 0 5.08 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "Conn_01x03"
+					(at 0 -5.08 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "connector"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_fp_filters" "Connector*:*_1x??_*"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "Conn_01x03_1_1"
+					(rectangle
+						(start -1.27 3.81)
+						(end 1.27 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(rectangle
+						(start -1.27 2.667)
+						(end 0 2.413)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(rectangle
+						(start -1.27 0.127)
+						(end 0 -0.127)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(rectangle
+						(start -1.27 -2.413)
+						(end 0 -2.667)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(pin passive line
+						(at -5.08 2.54 0)
+						(length 3.81)
+						(name "Pin_1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -5.08 0 0)
+						(length 3.81)
+						(name "Pin_2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -5.08 -2.54 0)
+						(length 3.81)
+						(name "Pin_3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
 		(symbol "74xx:74HC04"
 				(exclude_from_sim no)
 				(in_bom yes)
@@ -5646,7 +6320,7 @@
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
 		(uuid "00000000-0000-0000-0000-000000000019")
 		(property "Reference" "R7" (at 480 127.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
-		(property "Value" "1k" (at 480 132.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "100R" (at 480 132.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 480 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Datasheet" "~" (at 480 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R7") (unit 1))))
@@ -5808,11 +6482,107 @@
 		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "D4") (unit 1))))
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 280 180 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000033")
+		(property "Reference" "R21" (at 280 177.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "22R" (at 280 182.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 280 180 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 280 180 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R21") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 130 230 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000034")
+		(property "Reference" "R22" (at 130 227.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "22R" (at 130 232.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 130 230 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 130 230 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R22") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 80 230 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000035")
+		(property "Reference" "R23" (at 80 227.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "10k" (at 80 232.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 80 230 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 80 230 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R23") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 180 230 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000036")
+		(property "Reference" "R24" (at 180 227.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "10k" (at 180 232.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 180 230 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 180 230 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R24") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 530 400 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000037")
+		(property "Reference" "R25" (at 530 397.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "1M" (at 530 402.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 530 400 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 530 400 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R25") (unit 1))))
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 580 400 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000038")
+		(property "Reference" "R26" (at 580 397.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "51k" (at 580 402.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 580 400 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 580 400 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "R26") (unit 1))))
+	)
+	(symbol
+		(lib_id "Isolator_Analog:AMC1351DWV")
+		(at 480 400 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000039")
+		(property "Reference" "U8" (at 480 397.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "AMC1351" (at 480 402.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "Package_SO:SOIC-8_7.5x5.85mm_P1.27mm" (at 480 400 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 480 400 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "U8") (unit 1))))
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x03")
+		(at 1250 80 0)
+		(unit 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
+		(uuid "00000000-0000-0000-0000-000000000040")
+		(property "Reference" "J3" (at 1250 77.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "VZ_OUT" (at 1250 82.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" (at 1250 80 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 1250 80 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(instances (project "feelings" (path "/00000000-0000-0000-0000-000000000001" (reference "J3") (unit 1))))
+	)
+	(symbol
 		(lib_id "74xx:74HC04")
 		(at 880 130 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000033")
+		(uuid "00000000-0000-0000-0000-000000000041")
 		(property "Reference" "U1" (at 880 127.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC04" (at 880 132.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 880 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5824,7 +6594,7 @@
 		(at 930 130 0)
 		(unit 2)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000034")
+		(uuid "00000000-0000-0000-0000-000000000042")
 		(property "Reference" "U1" (at 930 127.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC04" (at 930 132.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 930 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5836,7 +6606,7 @@
 		(at 980 130 0)
 		(unit 3)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000035")
+		(uuid "00000000-0000-0000-0000-000000000043")
 		(property "Reference" "U1" (at 980 127.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC04" (at 980 132.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 980 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5848,7 +6618,7 @@
 		(at 1030 130 0)
 		(unit 4)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000036")
+		(uuid "00000000-0000-0000-0000-000000000044")
 		(property "Reference" "U1" (at 1030 127.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC04" (at 1030 132.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 1030 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5860,7 +6630,7 @@
 		(at 1080 130 0)
 		(unit 5)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000037")
+		(uuid "00000000-0000-0000-0000-000000000045")
 		(property "Reference" "U1" (at 1080 127.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC04" (at 1080 132.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 1080 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5872,7 +6642,7 @@
 		(at 1130 130 0)
 		(unit 6)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000038")
+		(uuid "00000000-0000-0000-0000-000000000046")
 		(property "Reference" "U1" (at 1130 127.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC04" (at 1130 132.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 1130 130 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5884,7 +6654,7 @@
 		(at 880 165 0)
 		(unit 7)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000039")
+		(uuid "00000000-0000-0000-0000-000000000047")
 		(property "Reference" "U1" (at 880 162.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC04" (at 880 167.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 880 165 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5896,7 +6666,7 @@
 		(at 880 180 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000040")
+		(uuid "00000000-0000-0000-0000-000000000048")
 		(property "Reference" "U2" (at 880 177.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC08" (at 880 182.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 880 180 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5908,7 +6678,7 @@
 		(at 930 180 0)
 		(unit 2)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000041")
+		(uuid "00000000-0000-0000-0000-000000000049")
 		(property "Reference" "U2" (at 930 177.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC08" (at 930 182.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 930 180 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5920,7 +6690,7 @@
 		(at 980 180 0)
 		(unit 3)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000042")
+		(uuid "00000000-0000-0000-0000-000000000050")
 		(property "Reference" "U2" (at 980 177.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC08" (at 980 182.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 980 180 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5932,7 +6702,7 @@
 		(at 1030 180 0)
 		(unit 4)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000043")
+		(uuid "00000000-0000-0000-0000-000000000051")
 		(property "Reference" "U2" (at 1030 177.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC08" (at 1030 182.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 1030 180 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5944,7 +6714,7 @@
 		(at 880 215 0)
 		(unit 5)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000044")
+		(uuid "00000000-0000-0000-0000-000000000052")
 		(property "Reference" "U2" (at 880 212.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC08" (at 880 217.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 880 215 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5956,7 +6726,7 @@
 		(at 880 400 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000045")
+		(uuid "00000000-0000-0000-0000-000000000053")
 		(property "Reference" "U4" (at 880 397.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "LM393" (at 880 402.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 880 400 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5968,7 +6738,7 @@
 		(at 930 400 0)
 		(unit 2)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000046")
+		(uuid "00000000-0000-0000-0000-000000000054")
 		(property "Reference" "U4" (at 930 397.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "LM393" (at 930 402.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 930 400 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5980,7 +6750,7 @@
 		(at 880 435 0)
 		(unit 3)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000047")
+		(uuid "00000000-0000-0000-0000-000000000055")
 		(property "Reference" "U4" (at 880 432.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "LM393" (at 880 437.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 880 435 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5992,7 +6762,7 @@
 		(at 880 450 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000048")
+		(uuid "00000000-0000-0000-0000-000000000056")
 		(property "Reference" "U5" (at 880 447.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC00" (at 880 452.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 880 450 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6004,7 +6774,7 @@
 		(at 930 450 0)
 		(unit 2)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000049")
+		(uuid "00000000-0000-0000-0000-000000000057")
 		(property "Reference" "U5" (at 930 447.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC00" (at 930 452.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 930 450 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6016,7 +6786,7 @@
 		(at 980 450 0)
 		(unit 3)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000050")
+		(uuid "00000000-0000-0000-0000-000000000058")
 		(property "Reference" "U5" (at 980 447.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC00" (at 980 452.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 980 450 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6028,7 +6798,7 @@
 		(at 1030 450 0)
 		(unit 4)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000051")
+		(uuid "00000000-0000-0000-0000-000000000059")
 		(property "Reference" "U5" (at 1030 447.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC00" (at 1030 452.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 1030 450 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6040,7 +6810,7 @@
 		(at 880 485 0)
 		(unit 5)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000052")
+		(uuid "00000000-0000-0000-0000-000000000060")
 		(property "Reference" "U5" (at 880 482.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC00" (at 880 487.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 880 485 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6052,7 +6822,7 @@
 		(at 880 500 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000053")
+		(uuid "00000000-0000-0000-0000-000000000061")
 		(property "Reference" "U6" (at 880 497.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC08" (at 880 502.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 880 500 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6064,7 +6834,7 @@
 		(at 930 500 0)
 		(unit 2)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000054")
+		(uuid "00000000-0000-0000-0000-000000000062")
 		(property "Reference" "U6" (at 930 497.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC08" (at 930 502.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 930 500 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6076,7 +6846,7 @@
 		(at 980 500 0)
 		(unit 3)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000055")
+		(uuid "00000000-0000-0000-0000-000000000063")
 		(property "Reference" "U6" (at 980 497.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC08" (at 980 502.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 980 500 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6088,7 +6858,7 @@
 		(at 1030 500 0)
 		(unit 4)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000056")
+		(uuid "00000000-0000-0000-0000-000000000064")
 		(property "Reference" "U6" (at 1030 497.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC08" (at 1030 502.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 1030 500 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6100,7 +6870,7 @@
 		(at 880 535 0)
 		(unit 5)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000057")
+		(uuid "00000000-0000-0000-0000-000000000065")
 		(property "Reference" "U6" (at 880 532.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "SN74HC08" (at 880 537.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_DIP:DIP-14_W7.62mm" (at 880 535 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6112,7 +6882,7 @@
 		(at 1080 500 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000058")
+		(uuid "00000000-0000-0000-0000-000000000066")
 		(property "Reference" "U7" (at 1080 497.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "TL431" (at 1080 502.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 1080 500 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6124,7 +6894,7 @@
 		(at 880 550 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000059")
+		(uuid "00000000-0000-0000-0000-000000000067")
 		(property "Reference" "R16" (at 880 547.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "10k" (at 880 552.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 880 550 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6136,7 +6906,7 @@
 		(at 930 550 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000060")
+		(uuid "00000000-0000-0000-0000-000000000068")
 		(property "Reference" "R17" (at 930 547.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "39k" (at 930 552.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 930 550 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6148,7 +6918,7 @@
 		(at 980 550 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000061")
+		(uuid "00000000-0000-0000-0000-000000000069")
 		(property "Reference" "R18" (at 980 547.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "1k" (at 980 552.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 980 550 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6160,7 +6930,7 @@
 		(at 1030 550 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000062")
+		(uuid "00000000-0000-0000-0000-000000000070")
 		(property "Reference" "R19" (at 1030 547.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "10k" (at 1030 552.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 1030 550 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6172,7 +6942,7 @@
 		(at 1080 550 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000063")
+		(uuid "00000000-0000-0000-0000-000000000071")
 		(property "Reference" "R20" (at 1080 547.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "10k" (at 1080 552.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 1080 550 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6184,7 +6954,7 @@
 		(at 1200 80 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000064")
+		(uuid "00000000-0000-0000-0000-000000000072")
 		(property "Reference" "J1" (at 1200 77.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "CTRL" (at 1200 82.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" (at 1200 80 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6196,7 +6966,7 @@
 		(at 230 400 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000065")
+		(uuid "00000000-0000-0000-0000-000000000073")
 		(property "Reference" "J2" (at 230 397.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "ELECTRODE" (at 230 402.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "TerminalBlock:TerminalBlock_MaiXu_MX126-5.0-02P_1x02_P5.00mm" (at 230 400 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6208,7 +6978,7 @@
 		(at 1200 300 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000066")
+		(uuid "00000000-0000-0000-0000-000000000074")
 		(property "Reference" "C3" (at 1200 297.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "100n" (at 1200 302.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 1200 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6220,7 +6990,7 @@
 		(at 1250 300 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000067")
+		(uuid "00000000-0000-0000-0000-000000000075")
 		(property "Reference" "C4" (at 1250 297.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "100n" (at 1250 302.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 1250 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6232,7 +7002,7 @@
 		(at 1300 300 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000068")
+		(uuid "00000000-0000-0000-0000-000000000076")
 		(property "Reference" "C5" (at 1300 297.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "100n" (at 1300 302.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 1300 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6244,7 +7014,7 @@
 		(at 1350 300 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000069")
+		(uuid "00000000-0000-0000-0000-000000000077")
 		(property "Reference" "C6" (at 1350 297.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "100n" (at 1350 302.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 1350 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6256,7 +7026,7 @@
 		(at 1400 300 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000070")
+		(uuid "00000000-0000-0000-0000-000000000078")
 		(property "Reference" "C7" (at 1400 297.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "100n" (at 1400 302.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 1400 300 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6268,7 +7038,7 @@
 		(at 1200 350 0)
 		(unit 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no)
-		(uuid "00000000-0000-0000-0000-000000000071")
+		(uuid "00000000-0000-0000-0000-000000000079")
 		(property "Reference" "C8" (at 1200 347.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Value" "100n" (at 1200 352.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 1200 350 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -6515,600 +7285,715 @@
 		(effects (font (size 1.0 1.0)) (justify left bottom))
 		(uuid "00000000-0000-0000-0000-000000700048")
 	)
+	(label "GND"
+		(at 80.0 233.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700049")
+	)
+	(label "GND"
+		(at 180.0 233.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700050")
+	)
+	(label "GND"
+		(at 482.54 410.16 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700051")
+	)
+	(label "GND"
+		(at 1244.92 82.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700052")
+	)
 	(label "+12V"
 		(at 477.46 87.62 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700049")
+		(uuid "00000000-0000-0000-0000-000000700053")
 	)
 	(label "+12V"
 		(at 1194.92 74.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700050")
+		(uuid "00000000-0000-0000-0000-000000700054")
 	)
 	(label "+12V"
 		(at 1200.0 346.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700051")
+		(uuid "00000000-0000-0000-0000-000000700055")
 	)
 	(label "+5V"
 		(at 1194.92 77.46 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700052")
+		(uuid "00000000-0000-0000-0000-000000700056")
 	)
 	(label "+5V"
 		(at 880.0 152.3 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700053")
+		(uuid "00000000-0000-0000-0000-000000700057")
 	)
 	(label "+5V"
 		(at 880.0 202.3 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700054")
+		(uuid "00000000-0000-0000-0000-000000700058")
 	)
 	(label "+5V"
 		(at 880.0 472.3 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700055")
+		(uuid "00000000-0000-0000-0000-000000700059")
 	)
 	(label "+5V"
 		(at 880.0 522.3 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700056")
+		(uuid "00000000-0000-0000-0000-000000700060")
 	)
 	(label "+5V"
 		(at 877.46 427.38 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700057")
+		(uuid "00000000-0000-0000-0000-000000700061")
 	)
 	(label "+5V"
 		(at 880.0 546.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700058")
+		(uuid "00000000-0000-0000-0000-000000700062")
 	)
 	(label "+5V"
 		(at 1030.0 546.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700059")
+		(uuid "00000000-0000-0000-0000-000000700063")
 	)
 	(label "+5V"
 		(at 1080.0 546.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700060")
+		(uuid "00000000-0000-0000-0000-000000700064")
 	)
 	(label "+5V"
 		(at 530.0 176.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700061")
+		(uuid "00000000-0000-0000-0000-000000700065")
 	)
 	(label "+5V"
 		(at 1200.0 296.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700062")
+		(uuid "00000000-0000-0000-0000-000000700066")
 	)
 	(label "+5V"
 		(at 1250.0 296.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700063")
+		(uuid "00000000-0000-0000-0000-000000700067")
 	)
 	(label "+5V"
 		(at 1300.0 296.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700064")
+		(uuid "00000000-0000-0000-0000-000000700068")
 	)
 	(label "+5V"
 		(at 1350.0 296.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700065")
+		(uuid "00000000-0000-0000-0000-000000700069")
 	)
 	(label "+5V"
 		(at 1400.0 296.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700066")
+		(uuid "00000000-0000-0000-0000-000000700070")
+	)
+	(label "+5V"
+		(at 477.46 389.84 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700071")
 	)
 	(label "VDDA"
 		(at 580.0 126.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700067")
+		(uuid "00000000-0000-0000-0000-000000700072")
+	)
+	(label "VDDA"
+		(at 482.54 389.84 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700073")
 	)
 	(label "A1"
 		(at 987.62 180.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700068")
-	)
-	(label "A1"
-		(at 74.92 130.0 0)
-		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700069")
+		(uuid "00000000-0000-0000-0000-000000700074")
 	)
 	(label "A1"
 		(at 130.0 126.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700070")
+		(uuid "00000000-0000-0000-0000-000000700075")
+	)
+	(label "A1"
+		(at 280.0 176.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700076")
 	)
 	(label "A2"
 		(at 1037.62 180.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700071")
-	)
-	(label "A2"
-		(at 174.92 80.0 0)
-		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700072")
+		(uuid "00000000-0000-0000-0000-000000700077")
 	)
 	(label "A2"
 		(at 80.0 176.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700073")
+		(uuid "00000000-0000-0000-0000-000000700078")
+	)
+	(label "A2"
+		(at 130.0 226.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700079")
+	)
+	(label "LG1"
+		(at 130.0 233.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700080")
+	)
+	(label "LG1"
+		(at 174.92 80.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700081")
+	)
+	(label "LG1"
+		(at 80.0 226.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700082")
+	)
+	(label "LG2"
+		(at 280.0 183.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700083")
+	)
+	(label "LG2"
+		(at 74.92 130.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700084")
+	)
+	(label "LG2"
+		(at 180.0 226.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700085")
 	)
 	(label "G1"
 		(at 124.92 80.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700074")
+		(uuid "00000000-0000-0000-0000-000000700086")
 	)
 	(label "G1"
 		(at 230.0 133.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700075")
+		(uuid "00000000-0000-0000-0000-000000700087")
 	)
 	(label "G1"
 		(at 276.19 130.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700076")
+		(uuid "00000000-0000-0000-0000-000000700088")
 	)
 	(label "G1"
 		(at 82.54 74.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700077")
+		(uuid "00000000-0000-0000-0000-000000700089")
 	)
 	(label "G2"
 		(at 274.92 80.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700078")
+		(uuid "00000000-0000-0000-0000-000000700090")
 	)
 	(label "G2"
 		(at 180.0 183.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700079")
+		(uuid "00000000-0000-0000-0000-000000700091")
 	)
 	(label "G2"
 		(at 226.19 180.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700080")
+		(uuid "00000000-0000-0000-0000-000000700092")
 	)
 	(label "G2"
 		(at 232.54 74.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700081")
+		(uuid "00000000-0000-0000-0000-000000700093")
 	)
 	(label "MID1"
 		(at 132.54 74.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700082")
+		(uuid "00000000-0000-0000-0000-000000700094")
 	)
 	(label "MID1"
 		(at 182.54 74.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700083")
+		(uuid "00000000-0000-0000-0000-000000700095")
 	)
 	(label "MID1"
 		(at 80.0 396.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700084")
+		(uuid "00000000-0000-0000-0000-000000700096")
 	)
 	(label "MID2"
 		(at 282.54 74.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700085")
+		(uuid "00000000-0000-0000-0000-000000700097")
 	)
 	(label "MID2"
 		(at 82.54 124.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700086")
+		(uuid "00000000-0000-0000-0000-000000700098")
 	)
 	(label "MID2"
 		(at 133.81 400.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700087")
+		(uuid "00000000-0000-0000-0000-000000700099")
 	)
 	(label "MID2"
 		(at 183.81 400.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700088")
+		(uuid "00000000-0000-0000-0000-000000700100")
 	)
 	(label "MID2"
 		(at 224.92 402.54 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700089")
+		(uuid "00000000-0000-0000-0000-000000700101")
+	)
+	(label "MID2"
+		(at 580.0 403.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700102")
+	)
+	(label "MID2"
+		(at 477.46 410.16 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700103")
+	)
+	(label "MID2"
+		(at 477.46 410.16 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700104")
 	)
 	(label "B"
 		(at 182.54 85.08 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700090")
+		(uuid "00000000-0000-0000-0000-000000700105")
 	)
 	(label "B"
 		(at 82.54 135.08 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700091")
+		(uuid "00000000-0000-0000-0000-000000700106")
 	)
 	(label "B"
 		(at 532.54 74.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700092")
+		(uuid "00000000-0000-0000-0000-000000700107")
 	)
 	(label "S"
 		(at 532.54 85.08 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700093")
+		(uuid "00000000-0000-0000-0000-000000700108")
 	)
 	(label "S"
 		(at 680.0 76.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700094")
+		(uuid "00000000-0000-0000-0000-000000700109")
 	)
 	(label "S"
 		(at 472.38 82.54 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700095")
+		(uuid "00000000-0000-0000-0000-000000700110")
 	)
 	(label "S"
 		(at 632.54 85.08 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700096")
+		(uuid "00000000-0000-0000-0000-000000700111")
 	)
 	(label "S"
 		(at 872.38 397.46 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700097")
+		(uuid "00000000-0000-0000-0000-000000700112")
 	)
 	(label "QG"
 		(at 524.92 80.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700098")
+		(uuid "00000000-0000-0000-0000-000000700113")
 	)
 	(label "QG"
 		(at 480.0 133.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700099")
+		(uuid "00000000-0000-0000-0000-000000700114")
 	)
 	(label "QG"
 		(at 530.0 126.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700100")
+		(uuid "00000000-0000-0000-0000-000000700115")
 	)
 	(label "OUT"
 		(at 487.62 80.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700101")
+		(uuid "00000000-0000-0000-0000-000000700116")
 	)
 	(label "OUT"
 		(at 480.0 126.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700102")
+		(uuid "00000000-0000-0000-0000-000000700117")
 	)
 	(label "INP"
 		(at 472.38 77.46 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700103")
+		(uuid "00000000-0000-0000-0000-000000700118")
 	)
 	(label "INP"
 		(at 582.54 74.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700104")
+		(uuid "00000000-0000-0000-0000-000000700119")
 	)
 	(label "INP"
 		(at 680.0 183.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700105")
+		(uuid "00000000-0000-0000-0000-000000700120")
 	)
 	(label "INP"
 		(at 480.0 176.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700106")
+		(uuid "00000000-0000-0000-0000-000000700121")
 	)
 	(label "LH1B"
 		(at 130.0 133.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700107")
+		(uuid "00000000-0000-0000-0000-000000700122")
 	)
 	(label "LH1B"
 		(at 74.92 80.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700108")
+		(uuid "00000000-0000-0000-0000-000000700123")
 	)
 	(label "LH1B"
 		(at 180.0 126.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700109")
+		(uuid "00000000-0000-0000-0000-000000700124")
 	)
 	(label "LH2B"
 		(at 80.0 183.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700110")
+		(uuid "00000000-0000-0000-0000-000000700125")
 	)
 	(label "LH2B"
 		(at 224.92 80.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700111")
+		(uuid "00000000-0000-0000-0000-000000700126")
 	)
 	(label "LH2B"
 		(at 130.0 176.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700112")
+		(uuid "00000000-0000-0000-0000-000000700127")
 	)
 	(label "ENB"
 		(at 630.0 126.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700113")
+		(uuid "00000000-0000-0000-0000-000000700128")
 	)
 	(label "ENB"
 		(at 624.92 80.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700114")
+		(uuid "00000000-0000-0000-0000-000000700129")
 	)
 	(label "ENB"
 		(at 987.62 130.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700115")
+		(uuid "00000000-0000-0000-0000-000000700130")
 	)
 	(label "QDB"
 		(at 574.92 80.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700116")
+		(uuid "00000000-0000-0000-0000-000000700131")
 	)
 	(label "QDB"
 		(at 630.0 133.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700117")
+		(uuid "00000000-0000-0000-0000-000000700132")
 	)
 	(label "QDB"
 		(at 680.0 126.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700118")
+		(uuid "00000000-0000-0000-0000-000000700133")
 	)
 	(label "VN"
 		(at 533.81 180.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700119")
+		(uuid "00000000-0000-0000-0000-000000700134")
 	)
 	(label "VN"
 		(at 580.0 176.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700120")
+		(uuid "00000000-0000-0000-0000-000000700135")
 	)
 	(label "VN2"
 		(at 580.0 183.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700121")
+		(uuid "00000000-0000-0000-0000-000000700136")
 	)
 	(label "VN2"
 		(at 630.0 176.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700122")
+		(uuid "00000000-0000-0000-0000-000000700137")
 	)
 	(label "VN2"
 		(at 680.0 176.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700123")
+		(uuid "00000000-0000-0000-0000-000000700138")
 	)
 	(label "EL1"
 		(at 80.0 403.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700124")
+		(uuid "00000000-0000-0000-0000-000000700139")
 	)
 	(label "EL1"
 		(at 126.19 400.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700125")
+		(uuid "00000000-0000-0000-0000-000000700140")
 	)
 	(label "EL1"
 		(at 176.19 400.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700126")
+		(uuid "00000000-0000-0000-0000-000000700141")
 	)
 	(label "EL1"
 		(at 224.92 400.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700127")
+		(uuid "00000000-0000-0000-0000-000000700142")
+	)
+	(label "EL1"
+		(at 530.0 396.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700143")
 	)
 	(label "AWD"
 		(at 580.0 133.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700128")
+		(uuid "00000000-0000-0000-0000-000000700144")
 	)
 	(label "AWD"
 		(at 632.54 74.92 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700129")
+		(uuid "00000000-0000-0000-0000-000000700145")
+	)
+	(label "VZ"
+		(at 530.0 403.81 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700146")
+	)
+	(label "VZ"
+		(at 580.0 396.19 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700147")
+	)
+	(label "VZ"
+		(at 469.84 400.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700148")
+	)
+	(label "ISO_P"
+		(at 490.16 397.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700149")
+	)
+	(label "ISO_P"
+		(at 1244.92 77.46 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700150")
+	)
+	(label "ISO_N"
+		(at 490.16 402.54 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700151")
+	)
+	(label "ISO_N"
+		(at 1244.92 80.0 0)
+		(effects (font (size 1.0 1.0)) (justify left bottom))
+		(uuid "00000000-0000-0000-0000-000000700152")
 	)
 	(label "IN1"
 		(at 1194.92 82.54 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700130")
+		(uuid "00000000-0000-0000-0000-000000700153")
 	)
 	(label "IN1"
 		(at 872.38 130.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700131")
+		(uuid "00000000-0000-0000-0000-000000700154")
 	)
 	(label "IN1"
 		(at 872.38 182.54 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700132")
+		(uuid "00000000-0000-0000-0000-000000700155")
 	)
 	(label "IN2"
 		(at 1194.92 85.08 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700133")
+		(uuid "00000000-0000-0000-0000-000000700156")
 	)
 	(label "IN2"
 		(at 922.38 130.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700134")
+		(uuid "00000000-0000-0000-0000-000000700157")
 	)
 	(label "IN2"
 		(at 922.38 182.54 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700135")
+		(uuid "00000000-0000-0000-0000-000000700158")
 	)
 	(label "IN1B"
 		(at 887.62 130.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700136")
+		(uuid "00000000-0000-0000-0000-000000700159")
 	)
 	(label "IN1B"
 		(at 1022.38 182.54 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700137")
+		(uuid "00000000-0000-0000-0000-000000700160")
 	)
 	(label "IN2B"
 		(at 937.62 130.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700138")
+		(uuid "00000000-0000-0000-0000-000000700161")
 	)
 	(label "IN2B"
 		(at 972.38 182.54 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700139")
+		(uuid "00000000-0000-0000-0000-000000700162")
 	)
 	(label "N1"
 		(at 887.62 180.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700140")
+		(uuid "00000000-0000-0000-0000-000000700163")
 	)
 	(label "N1"
 		(at 972.38 177.46 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700141")
+		(uuid "00000000-0000-0000-0000-000000700164")
 	)
 	(label "N2"
 		(at 937.62 180.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700142")
+		(uuid "00000000-0000-0000-0000-000000700165")
 	)
 	(label "N2"
 		(at 1022.38 177.46 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700143")
+		(uuid "00000000-0000-0000-0000-000000700166")
 	)
 	(label "EN_MCU"
 		(at 1194.92 87.62 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700144")
+		(uuid "00000000-0000-0000-0000-000000700167")
 	)
 	(label "EN_MCU"
 		(at 872.38 497.46 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700145")
+		(uuid "00000000-0000-0000-0000-000000700168")
 	)
 	(label "EN_SAFE"
 		(at 887.62 450.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700146")
+		(uuid "00000000-0000-0000-0000-000000700169")
 	)
 	(label "EN_SAFE"
 		(at 922.38 447.46 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700147")
+		(uuid "00000000-0000-0000-0000-000000700170")
 	)
 	(label "EN_SAFE"
 		(at 872.38 502.54 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700148")
+		(uuid "00000000-0000-0000-0000-000000700171")
 	)
 	(label "EN_OUT"
 		(at 887.62 500.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700149")
+		(uuid "00000000-0000-0000-0000-000000700172")
 	)
 	(label "EN_OUT"
 		(at 972.38 130.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700150")
+		(uuid "00000000-0000-0000-0000-000000700173")
 	)
 	(label "EN_OUT"
 		(at 872.38 177.46 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700151")
+		(uuid "00000000-0000-0000-0000-000000700174")
 	)
 	(label "EN_OUT"
 		(at 922.38 177.46 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700152")
+		(uuid "00000000-0000-0000-0000-000000700175")
 	)
 	(label "TRIP_CMP"
 		(at 887.62 400.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700153")
+		(uuid "00000000-0000-0000-0000-000000700176")
 	)
 	(label "TRIP_CMP"
 		(at 880.0 553.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700154")
+		(uuid "00000000-0000-0000-0000-000000700177")
 	)
 	(label "TRIP_CMP"
 		(at 872.38 447.46 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700155")
+		(uuid "00000000-0000-0000-0000-000000700178")
 	)
 	(label "QLB"
 		(at 937.62 450.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700156")
+		(uuid "00000000-0000-0000-0000-000000700179")
 	)
 	(label "QLB"
 		(at 872.38 452.54 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700157")
+		(uuid "00000000-0000-0000-0000-000000700180")
 	)
 	(label "TRIP_RST"
 		(at 922.38 452.54 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700158")
+		(uuid "00000000-0000-0000-0000-000000700181")
 	)
 	(label "TRIP_RST"
 		(at 1194.92 90.16 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700159")
+		(uuid "00000000-0000-0000-0000-000000700182")
 	)
 	(label "TRIP_RST"
 		(at 1080.0 553.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700160")
+		(uuid "00000000-0000-0000-0000-000000700183")
 	)
 	(label "VREF60"
 		(at 872.38 402.54 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700161")
+		(uuid "00000000-0000-0000-0000-000000700184")
 	)
 	(label "VREF60"
 		(at 930.0 553.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700162")
+		(uuid "00000000-0000-0000-0000-000000700185")
 	)
 	(label "VREF60"
 		(at 980.0 546.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700163")
+		(uuid "00000000-0000-0000-0000-000000700186")
 	)
 	(label "TL_K"
 		(at 1080.0 497.46 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700164")
+		(uuid "00000000-0000-0000-0000-000000700187")
 	)
 	(label "TL_K"
 		(at 1082.54 500.0 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700165")
+		(uuid "00000000-0000-0000-0000-000000700188")
 	)
 	(label "TL_K"
 		(at 1030.0 553.81 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700166")
+		(uuid "00000000-0000-0000-0000-000000700189")
 	)
 	(label "TL_K"
 		(at 930.0 546.19 0)
 		(effects (font (size 1.0 1.0)) (justify left bottom))
-		(uuid "00000000-0000-0000-0000-000000700167")
+		(uuid "00000000-0000-0000-0000-000000700190")
 	)
 	(sheet_instances
 		(path "/" (page "1"))
